@@ -1,0 +1,116 @@
+<template>
+  <div class="progress">
+    <div
+      v-for="(step, index) in steps"
+      :key="step.path"
+      class="step"
+      :class="{ active: isActive(step.path), completed: isCompleted(step.path) }"
+      @click="go(step.path)"
+    >
+      <div class="step-number">{{ index + 1 }}</div>
+      <div class="step-label">{{ step.label }}</div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { useRoute, useRouter } from 'vue-router'
+
+const props = defineProps({ config: Object, data: Object })
+const router = useRouter()
+const route = useRoute()
+
+const steps = [
+  { path: '/door-thickness', label: 'Spessore porta' },
+  { path: '/wall-thickness', label: 'Spessore muro' },
+  { path: '/measures', label: 'Misure' },
+  { path: '/summary', label: 'Riepilogo' }
+]
+
+function isActive(path) {
+  return route.path === path
+}
+
+function isCompleted(path) {
+  if (!props.config) return false
+  switch (path) {
+    case '/door-thickness': return !!props.config.door
+    case '/wall-thickness': return !!props.config.wall
+    case '/measures': return !!props.config.type && !!props.config.width && !!props.config.height
+    default: return false
+  }
+}
+
+function rollbackData(path) {
+  const stepOrder = ['/door-thickness', '/wall-thickness', '/measures', '/summary']
+  const index = stepOrder.indexOf(path)
+  stepOrder.slice(index + 1).forEach(p => {
+    switch (p) {
+      case '/door-thickness': props.config.door = ''; break
+      case '/wall-thickness': props.config.wall = ''; break
+      case '/measures':
+        props.config.type = ''
+        props.config.mode = 'fixed'
+        props.config.width = ''
+        props.config.height = ''
+        break
+    }
+  })
+}
+
+function go(path) {
+  rollbackData(path)
+  router.push({ path })
+}
+</script>
+
+<style scoped>
+.progress {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.step-number {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.step-label {
+  font-size: 0.85rem;
+}
+
+.step.active {
+  background-color: #facc15;
+  color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.step.completed {
+  background-color: #10b981;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+</style>
