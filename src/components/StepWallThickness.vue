@@ -23,9 +23,11 @@ const router = useRouter()
 
 function select(value) {
   props.config.wall = value
+  props.config.currentStep = '/measures'
   router.push('/measures')
 }
 </script>
+
 
 <style scoped>
 .step-card {

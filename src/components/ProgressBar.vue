@@ -14,11 +14,10 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
-const props = defineProps({ config: Object, data: Object })
+const props = defineProps({ config: Object })
 const router = useRouter()
-const route = useRoute()
 
 const steps = [
   { path: '/door-thickness', label: 'Spessore porta' },
@@ -28,39 +27,38 @@ const steps = [
 ]
 
 function isActive(path) {
-  return route.path === path
+  return props.config.currentStep === path
 }
 
 function isCompleted(path) {
-  if (!props.config) return false
   switch (path) {
     case '/door-thickness': return !!props.config.door
     case '/wall-thickness': return !!props.config.wall
-    case '/measures': return !!props.config.type && !!props.config.width && !!props.config.height
+    case '/measures':
+      return !!props.config.type && !!props.config.width && !!props.config.height
     default: return false
   }
 }
 
 function rollbackData(path) {
-  const stepOrder = ['/door-thickness', '/wall-thickness', '/measures', '/summary']
-  const index = stepOrder.indexOf(path)
-  stepOrder.slice(index + 1).forEach(p => {
-    switch (p) {
-      case '/door-thickness': props.config.door = ''; break
-      case '/wall-thickness': props.config.wall = ''; break
-      case '/measures':
-        props.config.type = ''
-        props.config.mode = 'fixed'
-        props.config.width = ''
-        props.config.height = ''
-        break
+  const order = ['/door-thickness', '/wall-thickness', '/measures', '/summary']
+  const index = order.indexOf(path)
+
+  order.slice(index + 1).forEach(p => {
+    if (p === '/wall-thickness') props.config.wall = ''
+    if (p === '/measures') {
+      props.config.type = ''
+      props.config.mode = 'fixed'
+      props.config.width = ''
+      props.config.height = ''
     }
   })
 }
 
 function go(path) {
   rollbackData(path)
-  router.push({ path })
+  props.config.currentStep = path
+  router.push(path)
 }
 </script>
 

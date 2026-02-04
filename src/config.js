@@ -6,7 +6,8 @@ export const config = reactive({
   type: '',
   mode: 'fixed',
   width: '',
-  height: ''
+  height: '',
+  currentStep: '/door-thickness'
 })
 
 watch(
@@ -20,4 +21,15 @@ watch(
 export function loadConfig() {
   const saved = JSON.parse(localStorage.getItem('doorConfig'))
   if (saved) Object.assign(config, saved)
+}
+
+export function resetConfig() {
+  localStorage.removeItem('doorConfig')
+  config.door = ''
+  config.wall = ''
+  config.type = ''
+  config.mode = 'fixed'
+  config.width = ''
+  config.height = ''
+  config.currentStep = '/door-thickness'
 }

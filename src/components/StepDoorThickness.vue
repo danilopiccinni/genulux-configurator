@@ -21,9 +21,11 @@ const router = useRouter()
 
 function select(value) {
   props.config.door = value
+  props.config.currentStep = '/wall-thickness'
   router.push('/wall-thickness')
 }
 </script>
+
 
 <style scoped>
 .step-card {

@@ -69,8 +69,12 @@ watch([measureType, mode, width, height], () => {
 })
 
 function goNext() {
-  if(measureType.value && width.value && height.value) router.push('/summary')
+  if (measureType.value && width.value && height.value) {
+    props.config.currentStep = '/summary'
+    router.push('/summary')
+  }
 }
+
 </script>
 
 <style scoped>
