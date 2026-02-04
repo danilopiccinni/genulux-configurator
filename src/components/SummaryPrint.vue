@@ -34,15 +34,6 @@ import jsPDF from 'jspdf'
 const props = defineProps({ door: String, wall: String, type: String, width: String, height: String, data: Object })
 const pdfContent = ref(null)
 
-function print() {
-  const win = window.open('', '_blank')
-  win.document.write(`<html><head><title>Scheda tecnica</title></head><body>${pdfContent.value.innerHTML}</body></html>`)
-  win.document.close()
-  win.focus()
-  win.print()
-  win.close()
-}
-
 async function download() {
   const canvas = await html2canvas(pdfContent.value, { scale: 2 })
   const imgData = canvas.toDataURL('image/png')
@@ -60,7 +51,7 @@ async function download() {
   pdf.save('scheda-tecnica-porta.pdf')
 }
 
-defineExpose({ print, download })
+defineExpose({ download })
 </script>
 
 <style scoped>

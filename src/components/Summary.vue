@@ -14,7 +14,6 @@
     </div>
 
     <div class="actions">
-      <button @click="printRef.print()">Stampa</button>
       <button @click="printRef.download()">Download PDF</button>
     </div>
 
@@ -27,8 +26,8 @@ import { ref } from 'vue'
 import SummaryPrint from './SummaryPrint.vue'
 
 const props = defineProps({
-  config: Object, // viene passato da router-view
-  data: Object    // ConfigData per colori e stili
+  config: Object,
+  data: Object
 })
 
 const config = props.config
