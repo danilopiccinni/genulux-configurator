@@ -4,8 +4,12 @@
       v-for="(step, index) in steps"
       :key="step.path"
       class="step"
-      :class="{ active: isActive(step.path), completed: isCompleted(step.path) }"
-      @click="go(step.path)"
+      :class="{
+        active: isActive(step.path),
+        completed: isCompleted(step.path),
+        locked: isLocked(step.path)
+      }"
+      @click="tryGo(step.path)"
     >
       <div class="step-number">{{ index + 1 }}</div>
       <div class="step-label">{{ step.label }}</div>
@@ -28,7 +32,6 @@ const steps = [
 ]
 
 function isActive(path) {
-  // fallback sul percorso reale se currentStep non è impostato
   return props.config.currentStep === path || route.path === path
 }
 
@@ -42,8 +45,29 @@ function isCompleted(path) {
   }
 }
 
+// Un passo è bloccato se uno qualsiasi dei passi precedenti non è completato
+function isLocked(path) {
+  const order = steps.map(s => s.path)
+  const stepIndex = order.indexOf(path)
+  if (stepIndex === 0) return false
+
+  for (let i = 0; i < stepIndex; i++) {
+    if (!isCompleted(order[i])) return true
+  }
+  return false
+}
+
+// Blocca il salto se il passo è locked
+function tryGo(path) {
+  if (isLocked(path)) return
+  rollbackData(path)
+  props.config.currentStep = path
+  router.push(path)
+}
+
+// Reset dei dati dei passi successivi
 function rollbackData(path) {
-  const order = ['/door-thickness', '/wall-thickness', '/measures', '/summary']
+  const order = steps.map(s => s.path)
   const index = order.indexOf(path)
 
   order.slice(index + 1).forEach(p => {
@@ -56,12 +80,6 @@ function rollbackData(path) {
       props.config.height = ''
     }
   })
-}
-
-function go(path) {
-  rollbackData(path)
-  props.config.currentStep = path
-  router.push(path)
 }
 </script>
 
@@ -96,6 +114,7 @@ function go(path) {
   font-size: 0.85rem;
 }
 
+/* Stati passo */
 .step.active {
   background-color: #facc15;
   color: #1f2937;
@@ -110,7 +129,13 @@ function go(path) {
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-.step:hover {
+.step.locked {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Hover solo su passi non bloccati */
+.step:not(.locked):hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
