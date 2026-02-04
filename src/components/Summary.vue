@@ -3,27 +3,30 @@
     <h2>Riepilogo configurazione</h2>
 
     <div class="image-container">
-        <img :src="data.images.summaryHeader" alt="Disegno tecnico" />
+      <img :src="data.images.summaryHeader" alt="Disegno tecnico" />
     </div>
 
     <div class="card">
-      <p><b>Porta:</b> {{ config.door }} mm</p>
-      <p><b>Muro:</b> {{ config.wall }} cm</p>
-      <p><b>Tipo misura:</b> {{ config.type }}</p>
-      <p><b>Dimensioni:</b> {{ config.width }} × {{ config.height }} mm</p>
+      <p><b>Tipo misura inserita:</b> {{ config.type }}</p>
+      <p><b>Misure Porta:</b> {{ measures.widthPorta }} × {{ measures.heightPorta }} mm</p>
+      <p><b>Misure passaggio Luce:</b> {{ measures.widthLuce }} × {{ measures.heightLuce }} mm</p>
+      <p><b>Misure apertura Muro:</b> {{ measures.widthMuro }} × {{ measures.heightMuro }} mm</p>
+      <p><b>Spessore Muro:</b> {{ config.wall }} cm</p>
+      <p><b>Spessore Porta:</b> {{ config.door }} mm</p>
     </div>
 
     <div class="actions">
       <button @click="printRef.download()">Download PDF</button>
     </div>
 
-    <SummaryPrint ref="printRef" v-bind="config" :data="data" />
+    <SummaryPrint ref="printRef" v-bind="config" :data="data" :measures="measures" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import SummaryPrint from './SummaryPrint.vue'
+import { calculateDerivedMeasures } from '../helpers/measureHelpers.js'
 
 const props = defineProps({
   config: Object,
@@ -32,9 +35,20 @@ const props = defineProps({
 
 const config = props.config
 const data = props.data
-
 const printRef = ref(null)
+
+// Misure calcolate in base al tipo e alle dimensioni inserite
+const measures = computed(() => {
+  if (!config.type || !config.width || !config.height) return {
+    widthPorta: 0, heightPorta: 0,
+    widthLuce: 0, heightLuce: 0,
+    widthMuro: 0, heightMuro: 0
+  }
+
+  return calculateDerivedMeasures(config.type, config.width, config.height)
+})
 </script>
+
 
 <style scoped>
 .summary {

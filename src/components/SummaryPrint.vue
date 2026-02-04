@@ -1,28 +1,27 @@
 <template>
   <div ref="pdfContent" class="print-wrapper">
     <header>
-      <h1>Scheda tecnica – Configurazione porta</h1>
-      <p class="subtitle">Documento riepilogativo</p>
+      <h1><strong>Genulux</strong></h1>
+      <h3>Scheda tecnica – Configurazione porta</h3>
     </header>
 
     <div class="image-container">
-        <img :src="data.images.summaryHeader" alt="Disegno tecnico" />
+      <img :src="data.images.summaryHeader" alt="Disegno tecnico" />
     </div>
 
     <section class="data-section">
       <table>
         <tbody>
-            <tr><th>Spessore porta</th><td>{{ door }} mm</td></tr>
-            <tr><th>Spessore muro</th><td>{{ wall }} cm</td></tr>
-            <tr><th>Tipo misura</th><td>{{ type }}</td></tr>
-            <tr><th>Dimensioni vano</th><td>{{ width }} × {{ height }} mm</td></tr>
+          <tr><th>Tipo misura inserita</th><td>{{ type }}</td></tr>
+          <tr><th>Misura Porta</th><td>{{ measures.widthPorta }} × {{ measures.heightPorta }} mm</td></tr>
+          <tr><th>Misura passaggio Luce</th><td>{{ measures.widthLuce }} × {{ measures.heightLuce }} mm</td></tr>
+          <tr><th>Misura apertura Muro</th><td>{{ measures.widthMuro }} × {{ measures.heightMuro }} mm</td></tr>
+          <tr><th>Spessore porta</th><td>{{ door }} mm</td></tr>
+          <tr><th>Spessore muro</th><td>{{ wall }} cm</td></tr>
         </tbody>
       </table>
     </section>
 
-    <footer>
-      <p>Documento generato automaticamente dal configuratore</p>
-    </footer>
   </div>
 </template>
 
@@ -31,7 +30,7 @@ import { ref } from 'vue'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 
-const props = defineProps({ door: String, wall: String, type: String, width: String, height: String, data: Object })
+const props = defineProps({ door: String, wall: String, type: String, width: String, height: String, data: Object, measures: Object })
 const pdfContent = ref(null)
 
 async function download() {
@@ -53,6 +52,7 @@ async function download() {
 
 defineExpose({ download })
 </script>
+
 
 <style scoped>
 .print-wrapper {
