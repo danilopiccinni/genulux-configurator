@@ -4,13 +4,26 @@
     class="app"
   >
 
-  <div class="button-container">
-    <!-- RESET SEMPRE VISIBILE -->
-    <button class="reset-btn" @click="newConfig">
-        Nuova configurazione
-    </button>
+  <div class="header">
+    
+    <h1>
+      <strong>
+        Genulux
+      </strong>
+    </h1>
+  
+    <h5>
+      {{ locales[config.currentLang].h2 }}
+    </h5>
   </div>
 
+  <div class="button-container">
+    <LanguageSelector/>
+    <!-- RESET SEMPRE VISIBILE -->
+    <button class="reset-btn" @click="newConfig">
+      {{ locales[config.currentLang].newConfiguration }}
+      </button>
+  </div>
     <ProgressBar :config="config" :data="ConfigData" />
     <router-view :config="config" :data="ConfigData" />
   </div>
@@ -22,6 +35,9 @@ import { useRouter } from 'vue-router'
 import ProgressBar from './components/ProgressBar.vue'
 import { config, loadConfig, resetConfig } from './config'
 import { ConfigData } from './configData'
+import LanguageSelector from './components/LanguageSelector.vue'
+import { locales } from './locales.js'
+
 
 const router = useRouter()
 
@@ -46,10 +62,17 @@ function newConfig() {
   position: relative;
 }
 
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 /* PULSANTE RESET */
 .button-container{
   display: flex;
-  justify-content: end;
+  justify-content:space-between;
   padding: 20px;
   margin-bottom: 20px;
 }

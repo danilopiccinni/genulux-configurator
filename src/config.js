@@ -1,6 +1,7 @@
 import { reactive, watch } from 'vue'
 
 export const config = reactive({
+  currentLang: 'it',
   door: '',
   wall: '',
   type: '',
