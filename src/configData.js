@@ -1,28 +1,73 @@
 import Disegno from './assets/images/disegno-tecnico.webp'
 
-
 export const ConfigData = {
-    images: {
-        summaryHeader: Disegno
-    },
-  /* Opzioni configurabili */
-  doorThicknessOptions: ['40', '44', '50'],
-  wallThicknessOptions: ['10', '12.5', '15'],
+  images: {
+    summaryHeader: Disegno
+  },
+
+  doorThicknessOptions: ['40', '44'],
+  wallThicknessOptions: ['10', '12.5'],
+
   measureTypes: [
     { label: 'Misura luce', value: 'luce' },
     { label: 'Misura porta', value: 'porta' },
     { label: 'Apertura muro', value: 'muro' }
   ],
-  fixedWidths: [600, 700, 800, 900],
-  fixedHeights: [2000, 2100, 2200],
 
-  /* Stile centralizzato moderno */
+
+  measuresConfig: {
+    luce: {
+      fixed: {
+        widths: [600, 700, 800, 900],
+        heights: [2000, 2100, 2200]
+      },
+      limits: {
+        minWidth: 500,
+        maxWidth: 1200,
+        minHeight: 1800,
+        maxHeight: 2600,
+        stepWidth: 1,
+        stepHeight: 1
+      }
+    },
+
+    porta: {
+      fixed: {
+        widths: [600, 700, 800],
+        heights: [2000, 2100]
+      },
+      limits: {
+        minWidth: 550,
+        maxWidth: 1100,
+        minHeight: 1900,
+        maxHeight: 2400,
+        stepWidth: 1,
+        stepHeight: 1
+      }
+    },
+
+    muro: {
+      fixed: {
+        widths: [700, 800, 900],
+        heights: [2100, 2200]
+      },
+      limits: {
+        minWidth: 600,
+        maxWidth: 1300,
+        minHeight: 2000,
+        maxHeight: 2700,
+        stepWidth: 1,
+        stepHeight: 1
+      }
+    }
+  },
+
   colors: {
-    primary: '#1f2937',        // colore principale testo
-    secondary: '#3b82f6',      // blu accent
-    background: '#f3f4f6',     // sfondo app chiaro
-    completedStep: '#10b981',  // verde step completato
-    activeStep: '#facc15',     // giallo step corrente
+    primary: '#1f2937',
+    secondary: '#3b82f6',
+    background: '#f3f4f6',
+    completedStep: '#10b981',
+    activeStep: '#facc15',
     buttonBg: '#ffffff',
     buttonHover: '#e5e7eb',
     buttonActive: '#3b82f6',
