@@ -17,7 +17,7 @@ export function calculateDerivedMeasures(type, width, height) {
       widthPorta = width
       heightPorta = height
       widthLuce = widthPorta + 20      // esempio: luce = porta + 20 mm
-      widthMuro = widthLuce + 40       // esempio: muro = luce + 40 mm
+      widthMuro = widthLuce * 2 + 40       // esempio: muro = luce + 40 mm
       heightLuce = heightPorta + 10
       heightMuro = heightLuce + 20
       break
@@ -26,7 +26,7 @@ export function calculateDerivedMeasures(type, width, height) {
       widthLuce = width
       heightLuce = height
       widthPorta = widthLuce - 20
-      widthMuro = widthLuce + 40
+      widthMuro = widthLuce * 2 + 20
       heightPorta = heightLuce - 10
       heightMuro = heightLuce + 20
       break
@@ -36,8 +36,8 @@ export function calculateDerivedMeasures(type, width, height) {
       heightMuro = height
       widthLuce = widthMuro - 40
       widthPorta = widthLuce - 20
-      heightLuce = heightMuro - 20
-      heightPorta = heightLuce - 10
+      heightLuce = heightMuro / 2 - 20
+      heightPorta = heightLuce / 2 - 10
       break
 
     default:
