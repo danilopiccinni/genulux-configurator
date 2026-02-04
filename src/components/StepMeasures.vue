@@ -98,13 +98,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({ config: Object, data: Object })
 const router = useRouter()
 
-// Config misure per il tipo selezionato
 const measureConfig = computed(() => {
   if (!props.config.type)
     return { fixed: { widths: [], heights: [] }, limits: { minWidth:0, maxWidth:0, minHeight:0, maxHeight:0, stepWidth:1, stepHeight:1 } }
@@ -120,10 +119,14 @@ function selectType(type) {
 
 function goNext() {
   if (props.config.type && props.config.width && props.config.height) {
-    router.push('/summary')
+    props.config.currentStep = '/summary'  // aggiorna currentStep
+    nextTick(() => {
+      router.push('/summary')
+    })
   }
 }
 </script>
+
 
 <style scoped>
 .step-card {

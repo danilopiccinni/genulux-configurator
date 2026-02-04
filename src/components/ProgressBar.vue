@@ -14,10 +14,11 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const props = defineProps({ config: Object })
 const router = useRouter()
+const route = useRoute()
 
 const steps = [
   { path: '/door-thickness', label: 'Spessore porta' },
@@ -27,7 +28,8 @@ const steps = [
 ]
 
 function isActive(path) {
-  return props.config.currentStep === path
+  // fallback sul percorso reale se currentStep non è impostato
+  return props.config.currentStep === path || route.path === path
 }
 
 function isCompleted(path) {
@@ -45,6 +47,7 @@ function rollbackData(path) {
   const index = order.indexOf(path)
 
   order.slice(index + 1).forEach(p => {
+    if (p === '/door-thickness') props.config.door = ''
     if (p === '/wall-thickness') props.config.wall = ''
     if (p === '/measures') {
       props.config.type = ''
