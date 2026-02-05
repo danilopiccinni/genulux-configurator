@@ -51,6 +51,22 @@ const measures = computed(() => {
 
 
 <style scoped>
+
+.image-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
 .summary {
   max-width: 800px;
   margin: auto;
