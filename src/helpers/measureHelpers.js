@@ -13,7 +13,7 @@ export function calculateDerivedMeasures(type, width, height) {
 
   // qui ipotizziamo una logica esemplificativa, modificabile con le formule reali
   switch (type) {
-    case 'porta':
+    case 'measurePorta':
       widthPorta = width
       heightPorta = height
       widthLuce = widthPorta + 20      // esempio: luce = porta + 20 mm
@@ -22,7 +22,7 @@ export function calculateDerivedMeasures(type, width, height) {
       heightMuro = heightLuce + 20
       break
 
-    case 'luce':
+    case 'measureLuce':
       widthLuce = width
       heightLuce = height
       widthPorta = widthLuce - 20
@@ -31,7 +31,7 @@ export function calculateDerivedMeasures(type, width, height) {
       heightMuro = heightLuce + 20
       break
 
-    case 'muro':
+    case 'measureMuro':
       widthMuro = width
       heightMuro = height
       widthLuce = widthMuro - 40
