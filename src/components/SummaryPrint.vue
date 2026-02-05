@@ -2,7 +2,7 @@
   <div ref="pdfContent" class="print-wrapper">
     <header>
       <h1><strong>Genulux</strong></h1>
-      <h3>Scheda tecnica – Configurazione porta</h3>
+      <h3>{{ locales[currentLang].documentHeader }}</h3>
     </header>
 
     <div class="image-container">
@@ -12,16 +12,14 @@
     <section class="data-section">
       <table>
         <tbody>
-          <tr><th>Tipo misura inserita</th><td>{{ type }}</td></tr>
-          <tr><th>Misura Porta</th><td>{{ measures.widthPorta }} × {{ measures.heightPorta }} mm</td></tr>
-          <tr><th>Misura passaggio Luce</th><td>{{ measures.widthLuce }} × {{ measures.heightLuce }} mm</td></tr>
-          <tr><th>Misura apertura Muro</th><td>{{ measures.widthMuro }} × {{ measures.heightMuro }} mm</td></tr>
-          <tr><th>Spessore porta</th><td>{{ door }} mm</td></tr>
-          <tr><th>Spessore muro</th><td>{{ wall }} cm</td></tr>
+          <tr><th>{{ locales[currentLang].doorDimensions }}</th><td>{{ measures.widthPorta }} × {{ measures.heightPorta }} mm</td></tr>
+          <tr><th>{{ locales[currentLang].lightPassageDimensions }}</th><td>{{ measures.widthLuce }} × {{ measures.heightLuce }} mm</td></tr>
+          <tr><th>{{ locales[currentLang].wallOpeningDimensions }}</th><td>{{ measures.widthMuro }} × {{ measures.heightMuro }} mm</td></tr>
+          <tr><th>{{ locales[currentLang].wallThickness }}</th><td>{{ wall }} cm</td></tr>
+          <tr><th>{{ locales[currentLang].doorThickness }}</th><td>{{ door }} mm</td></tr>
         </tbody>
       </table>
     </section>
-
   </div>
 </template>
 
@@ -29,8 +27,19 @@
 import { ref } from 'vue'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import { locales } from '../locales.js'
 
-const props = defineProps({ door: String, wall: String, type: String, width: String, height: String, data: Object, measures: Object })
+const props = defineProps({
+  door: String,
+  wall: String,
+  type: String,
+  width: String,
+  height: String,
+  data: Object,
+  measures: Object,
+  currentLang: String
+})
+
 const pdfContent = ref(null)
 
 async function download() {
@@ -47,11 +56,13 @@ async function download() {
     position += pdfHeight
     if (position < imgHeight) pdf.addPage()
   }
-  pdf.save('scheda-tecnica-porta.pdf')
+
+  pdf.save("Genulux")
 }
 
 defineExpose({ download })
 </script>
+
 
 
 <style scoped>

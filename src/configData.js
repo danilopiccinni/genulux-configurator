@@ -9,14 +9,14 @@ export const ConfigData = {
   wallThicknessOptions: ['10', '12.5'],
 
   measureTypes: [
-    { label: 'Misura luce', value: 'luce' },
-    { label: 'Misura porta', value: 'porta' },
-    { label: 'Apertura muro', value: 'muro' }
+    { label: 'Misura luce', value: 'measureLuce' },
+    { label: 'Misura porta', value: 'measurePorta' },
+    { label: 'Apertura muro', value: 'measureMuro' }
   ],
 
 
   measuresConfig: {
-    luce: {
+    measureLuce: {
       fixed: {
         widths: [600, 700, 800, 900],
         heights: [2000, 2100, 2200]
@@ -31,7 +31,7 @@ export const ConfigData = {
       }
     },
 
-    porta: {
+    measurePorta: {
       fixed: {
         widths: [600, 700, 800],
         heights: [2000, 2100]
@@ -46,7 +46,7 @@ export const ConfigData = {
       }
     },
 
-    muro: {
+    measureMur: {
       fixed: {
         widths: [700, 800, 900],
         heights: [2100, 2200]

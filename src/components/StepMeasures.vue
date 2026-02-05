@@ -1,6 +1,6 @@
 <template>
   <div class="step-card">
-    <h2>Tipo di misura</h2>
+    <h2>{{locales[config.currentLang].measureType}}</h2>
 
     <!-- SCELTA TIPO MISURA -->
     <div class="choices">
@@ -10,28 +10,28 @@
         :class="{ active: config.type === type.value }"
         @click="selectType(type.value)"
       >
-        {{ type.label }}
+        {{ locales[config.currentLang][type.value] }}
       </button>
     </div>
 
     <!-- INSERIMENTO MISURE -->
     <div v-if="config.type" class="measure-inputs">
-      <h3>Inserisci le misure</h3>
+      <h3>{{locales[config.currentLang].insertMeasures}}</h3>
 
       <!-- SCELTA MODALITÀ -->
       <div class="mode">
         <label>
-          <input type="radio" value="fixed" v-model="config.mode" /> Misure standard
+          <input type="radio" value="fixed" v-model="config.mode" /> {{locales[config.currentLang].standardMeasures}}
         </label>
         <label>
-          <input type="radio" value="custom" v-model="config.mode" /> Misure libere
+          <input type="radio" value="custom" v-model="config.mode" /> {{locales[config.currentLang].customMeasures}}
         </label>
       </div>
 
       <!-- MISURE STANDARD -->
       <div v-if="config.mode === 'fixed'" class="fixed">
         <select v-model.number="config.width">
-          <option disabled value="">Larghezza</option>
+          <option disabled value="">{{locales[config.currentLang].width}}</option>
           <option
             v-for="w in measureConfig.fixed.widths"
             :key="w"
@@ -42,7 +42,7 @@
         </select>
 
         <select v-model.number="config.height">
-          <option disabled value="">Altezza</option>
+          <option disabled value="">{{locales[config.currentLang].height}}</option>
           <option
             v-for="h in measureConfig.fixed.heights"
             :key="h"
@@ -56,7 +56,7 @@
       <!-- MISURE LIBERE CON SLIDER -->
       <div v-else class="custom">
         <div class="slider-group">
-          <label>Larghezza: {{ config.width }} mm</label>
+          <label>{{locales[config.currentLang].width}}: {{ config.width }} mm</label>
           <input
           type="range"
           :min="measureConfig.limits.minWidth"
@@ -71,7 +71,7 @@
         </div>
 
         <div class="slider-group">
-          <label>Altezza: {{ config.height }} mm</label>
+          <label>{{locales[config.currentLang].height}}: {{ config.height }} mm</label>
           <input
           type="range"
           :min="measureConfig.limits.minHeight"
@@ -91,7 +91,7 @@
         :disabled="!config.width || !config.height"
         @click="goNext"
       >
-        Continua
+        {{locales[config.currentLang].continue}}
       </button>
     </div>
   </div>
@@ -100,6 +100,7 @@
 <script setup>
 import { computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
+import { locales } from '../locales'
 
 const props = defineProps({ config: Object, data: Object })
 const router = useRouter()

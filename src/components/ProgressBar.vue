@@ -18,18 +18,35 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { locales } from '../locales'
 
 const props = defineProps({ config: Object })
 const router = useRouter()
 const route = useRoute()
 
-const steps = [
-  { path: '/door-thickness', label: 'Spessore porta' },
-  { path: '/wall-thickness', label: 'Spessore muro' },
-  { path: '/measures', label: 'Misure' },
-  { path: '/summary', label: 'Riepilogo' }
-]
+/**
+ * STEPS REATTIVI ALLA LINGUA
+ */
+const steps = computed(() => [
+  {
+    path: '/door-thickness',
+    label: locales[props.config.currentLang].doorThickness
+  },
+  {
+    path: '/wall-thickness',
+    label: locales[props.config.currentLang].wallThickness
+  },
+  {
+    path: '/measures',
+    label: locales[props.config.currentLang].measures
+  },
+  {
+    path: '/summary',
+    label: locales[props.config.currentLang].summary
+  }
+])
 
 function isActive(path) {
   return props.config.currentStep === path || route.path === path
@@ -37,17 +54,22 @@ function isActive(path) {
 
 function isCompleted(path) {
   switch (path) {
-    case '/door-thickness': return !!props.config.door
-    case '/wall-thickness': return !!props.config.wall
+    case '/door-thickness':
+      return !!props.config.door
+    case '/wall-thickness':
+      return !!props.config.wall
     case '/measures':
       return !!props.config.type && !!props.config.width && !!props.config.height
-    default: return false
+    default:
+      return false
   }
 }
 
-// Un passo è bloccato se uno qualsiasi dei passi precedenti non è completato
+/**
+ * Un passo è bloccato se uno qualsiasi dei precedenti non è completato
+ */
 function isLocked(path) {
-  const order = steps.map(s => s.path)
+  const order = steps.value.map(s => s.path)
   const stepIndex = order.indexOf(path)
   if (stepIndex === 0) return false
 
@@ -57,7 +79,6 @@ function isLocked(path) {
   return false
 }
 
-// Blocca il salto se il passo è locked
 function tryGo(path) {
   if (isLocked(path)) return
   rollbackData(path)
@@ -65,9 +86,11 @@ function tryGo(path) {
   router.push(path)
 }
 
-// Reset dei dati dei passi successivi
+/**
+ * Reset dei dati dei passi successivi
+ */
 function rollbackData(path) {
-  const order = steps.map(s => s.path)
+  const order = steps.value.map(s => s.path)
   const index = order.indexOf(path)
 
   order.slice(index + 1).forEach(p => {
@@ -114,7 +137,7 @@ function rollbackData(path) {
   font-size: 0.85rem;
 }
 
-/* Stati passo */
+/* Stati */
 .step.active {
   background-color: #facc15;
   color: #1f2937;
@@ -134,7 +157,6 @@ function rollbackData(path) {
   pointer-events: none;
 }
 
-/* Hover solo su passi non bloccati */
 .step:not(.locked):hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);

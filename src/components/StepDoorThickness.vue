@@ -1,6 +1,6 @@
 <template>
   <div class="step-card">
-    <h2>Seleziona spessore porta</h2>
+    <h2>{{locales[config.currentLang].doorThickness}}</h2>
     <div class="button-group">
       <button
         v-for="val in data.doorThicknessOptions"
@@ -16,6 +16,8 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { locales } from '../locales'
+
 const props = defineProps({ config: Object, data: Object })
 const router = useRouter()
 

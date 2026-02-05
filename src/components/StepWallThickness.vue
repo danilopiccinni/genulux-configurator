@@ -1,6 +1,6 @@
 <template>
   <div class="step-card">
-    <h2>Seleziona spessore muro</h2>
+    <h2>{{locales[config.currentLang].wallThickness}}</h2>
 
     <div class="button-group">
       <button
@@ -17,6 +17,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { locales } from '../locales'
 
 const props = defineProps({ config: Object, data: Object })
 const router = useRouter()
