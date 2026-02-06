@@ -46,7 +46,7 @@ export const ConfigData = {
       }
     },
 
-    measureMur: {
+    measureMuro: {
       fixed: {
         widths: [700, 800, 900],
         heights: [2100, 2200]
