@@ -17,7 +17,8 @@ const availableLangs = {
   it: 'Italiano',
   en: 'English',
   de: 'Deutsch',
-  es: 'Español'
+  es: 'Español',
+  fr: 'Français'
 }
 </script>
 
