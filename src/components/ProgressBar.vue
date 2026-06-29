@@ -19,158 +19,149 @@
   </div>
 </template>
 
+
 <script setup>
+
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { locales } from '../locales'
+import { stepOrder, rollbackToStep } from '../helpers/configHelpers'
 
-const props = defineProps({ 
-  config: Object 
+
+const props = defineProps({
+  config: Object,
+  data: Object
 })
+
 
 const router = useRouter()
 const route = useRoute()
 
+
+
 /**
- * STEPS REATTIVI ALLA LINGUA
+ * STEP REATTIVI ALLA LINGUA
  */
 const steps = computed(() => [
+
   {
     path: '/standard',
     label: locales[props.config.currentLang].standard
   },
+
   {
     path: '/door-thickness',
     label: locales[props.config.currentLang].doorThickness
   },
+
   {
     path: '/wall-thickness',
     label: locales[props.config.currentLang].wallThickness
   },
+
   {
     path: '/measures',
     label: locales[props.config.currentLang].measures
   },
+
   {
     path: '/summary',
     label: locales[props.config.currentLang].summary
   }
+
 ])
 
 
+
 function isActive(path) {
-  return props.config.currentStep === path || route.path === path
+
+  return props.config.currentStep === path ||
+         route.path === path
+
 }
 
 
+
 function isCompleted(path) {
-  switch (path) {
+
+  switch(path) {
+
 
     case '/standard':
       return !!props.config.standard
 
+
     case '/door-thickness':
       return !!props.config.door
+
 
     case '/wall-thickness':
       return !!props.config.wall
 
+
     case '/measures':
-      return (
-        !!props.config.type &&
-        !!props.config.width &&
-        !!props.config.height
-      )
+      return !!props.config.type &&
+             !!props.config.width &&
+             !!props.config.height
+
 
     default:
       return false
   }
+
 }
 
 
-/**
- * Uno step è bloccato se uno qualsiasi
- * degli step precedenti non è completato
- */
+
 function isLocked(path) {
 
-  const order = steps.value.map(s => s.path)
+  const index = stepOrder.indexOf(path)
 
-  const stepIndex = order.indexOf(path)
+  if (index <= 0) {
+    return false
+  }
 
-  if (stepIndex === 0) return false
 
+  for(let i = 0; i < index; i++) {
 
-  for (let i = 0; i < stepIndex; i++) {
-
-    if (!isCompleted(order[i])) {
+    if(!isCompleted(stepOrder[i])) {
       return true
     }
 
   }
 
+
   return false
+
 }
+
 
 
 function tryGo(path) {
 
-  if (isLocked(path)) return
+  if(isLocked(path)) return
 
-  rollbackData(path)
+
+  rollbackToStep(props.config, path)
 
   props.config.currentStep = path
 
   router.push(path)
+
 }
 
-
-/**
- * Reset dei dati degli step successivi
- */
-function rollbackData(path) {
-
-  const order = steps.value.map(s => s.path)
-
-  const index = order.indexOf(path)
-
-
-  order.slice(index + 1).forEach(p => {
-
-    if (p === '/standard') {
-      props.config.standard = ''
-    }
-
-    if (p === '/door-thickness') {
-      props.config.door = ''
-    }
-
-
-    if (p === '/wall-thickness') {
-      props.config.wall = ''
-    }
-
-
-    if (p === '/measures') {
-
-      props.config.type = ''
-      props.config.mode = 'fixed'
-      props.config.width = ''
-      props.config.height = ''
-
-    }
-
-  })
-}
 </script>
 
 
+
 <style scoped>
+
 .progress {
   display: flex;
   gap: 10px;
   margin-bottom: 40px;
 }
+
 
 .step {
   flex: 1;
@@ -187,10 +178,12 @@ function rollbackData(path) {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+
 .step-number {
   font-weight: bold;
   margin-bottom: 4px;
 }
+
 
 .step-label {
   font-size: 0.85rem;
@@ -223,4 +216,5 @@ function rollbackData(path) {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
 </style>
