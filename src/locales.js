@@ -7,6 +7,7 @@ export const locales = {
     // Configurazione
     doorThickness: "Spessore porta",
     wallThickness: "Spessore muro",
+    configurationStandard: "Standard di configurazione",
 
     // Riepilogo
     insertedMeasureType: "Tipo misura inserita",
@@ -59,6 +60,7 @@ export const locales = {
     // Configurazione
     doorThickness: "Door Thickness",
     wallThickness: "Wall Thickness",
+    configurationStandard: "Configuration standard",
 
     // Riepilogo
     insertedMeasureType: "Inserted Measure Type",
@@ -111,6 +113,7 @@ export const locales = {
     // Configurazione
     doorThickness: "Türstärke",
     wallThickness: "Wandstärke",
+    configurationStandard: "Konfigurationsstandard",
 
     // Riepilogo
     insertedMeasureType: "Eingegebener Maßtyp",
@@ -163,6 +166,7 @@ export const locales = {
     // Configurazione
     doorThickness: "Grosor de la puerta",
     wallThickness: "Grosor de la pared",
+    configurationStandard: "Estándar de configuración",
 
     // Riepilogo
     insertedMeasureType: "Tipo de medida ingresada",
@@ -215,6 +219,7 @@ export const locales = {
     // Configurazione
     doorThickness: "Épaisseur de la porte",
     wallThickness: "Épaisseur du mur",
+    configurationStandard: "Standard de configuration",
 
     // Riepilogo
     insertedMeasureType: "Type de mesure saisie",

@@ -7,6 +7,14 @@
     </div>
 
     <div class="card">
+      <p>
+        <b>{{ locales[currentLang].configurationStandard }}:</b>
+        {{ config.standard }} - {{
+          config.standard === 'IT'
+            ? locales[currentLang].international
+            : locales[currentLang].germany
+        }}
+      </p>
       <p><b>{{ locales[currentLang].doorDimensions }}:</b> {{ measures.widthPorta }} × {{ measures.heightPorta }} mm</p>
       <p><b>{{ locales[currentLang].lightPassageDimensions }}:</b> {{ measures.widthLuce }} × {{ measures.heightLuce }} mm</p>
       <p><b>{{ locales[currentLang].wallOpeningDimensions }}:</b> {{ measures.widthMuro }} × {{ measures.heightMuro }} mm</p>

@@ -12,6 +12,15 @@
     <section class="data-section">
       <table>
         <tbody>
+          <tr>
+            <th>{{ locales[currentLang].configurationStandard }}</th>
+            <td>
+              {{ standard }} -
+              {{ standard === 'IT'
+                ? locales[currentLang].international
+                : locales[currentLang].germany }}
+            </td>
+          </tr>
           <tr><th>{{ locales[currentLang].doorDimensions }}</th><td>{{ measures.widthPorta }} × {{ measures.heightPorta }} mm</td></tr>
           <tr><th>{{ locales[currentLang].lightPassageDimensions }}</th><td>{{ measures.widthLuce }} × {{ measures.heightLuce }} mm</td></tr>
           <tr><th>{{ locales[currentLang].wallOpeningDimensions }}</th><td>{{ measures.widthMuro }} × {{ measures.heightMuro }} mm</td></tr>
@@ -30,6 +39,7 @@ import jsPDF from 'jspdf'
 import { locales } from '../locales.js'
 
 const props = defineProps({
+  standard: String,
   door: String,
   wall: String,
   type: String,
