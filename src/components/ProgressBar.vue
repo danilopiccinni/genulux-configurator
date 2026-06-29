@@ -1,3 +1,5 @@
+// src/components/ProgressBar.vue
+
 <template>
   <div class="progress">
     <div
@@ -22,7 +24,10 @@ import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { locales } from '../locales'
 
-const props = defineProps({ config: Object })
+const props = defineProps({ 
+  config: Object 
+})
+
 const router = useRouter()
 const route = useRoute()
 
@@ -30,6 +35,10 @@ const route = useRoute()
  * STEPS REATTIVI ALLA LINGUA
  */
 const steps = computed(() => [
+  {
+    path: '/standard',
+    label: locales[props.config.currentLang].standard
+  },
   {
     path: '/door-thickness',
     label: locales[props.config.currentLang].doorThickness
@@ -48,63 +57,113 @@ const steps = computed(() => [
   }
 ])
 
+
 function isActive(path) {
   return props.config.currentStep === path || route.path === path
 }
 
+
 function isCompleted(path) {
   switch (path) {
+
+    case '/standard':
+      return !!props.config.standard
+
     case '/door-thickness':
       return !!props.config.door
+
     case '/wall-thickness':
       return !!props.config.wall
+
     case '/measures':
-      return !!props.config.type && !!props.config.width && !!props.config.height
+      return (
+        !!props.config.type &&
+        !!props.config.width &&
+        !!props.config.height
+      )
+
     default:
       return false
   }
 }
 
+
 /**
- * Un passo è bloccato se uno qualsiasi dei precedenti non è completato
+ * Uno step è bloccato se uno qualsiasi
+ * degli step precedenti non è completato
  */
 function isLocked(path) {
+
   const order = steps.value.map(s => s.path)
+
   const stepIndex = order.indexOf(path)
+
   if (stepIndex === 0) return false
 
+
   for (let i = 0; i < stepIndex; i++) {
-    if (!isCompleted(order[i])) return true
+
+    if (!isCompleted(order[i])) {
+      return true
+    }
+
   }
+
   return false
 }
 
+
 function tryGo(path) {
+
   if (isLocked(path)) return
+
   rollbackData(path)
+
   props.config.currentStep = path
+
   router.push(path)
 }
 
+
 /**
- * Reset dei dati dei passi successivi
+ * Reset dei dati degli step successivi
  */
 function rollbackData(path) {
+
   const order = steps.value.map(s => s.path)
+
   const index = order.indexOf(path)
 
+
   order.slice(index + 1).forEach(p => {
-    if (p === '/door-thickness') props.config.door = ''
-    if (p === '/wall-thickness') props.config.wall = ''
+
+    if (p === '/standard') {
+      props.config.standard = ''
+    }
+
+    if (p === '/door-thickness') {
+      props.config.door = ''
+    }
+
+
+    if (p === '/wall-thickness') {
+      props.config.wall = ''
+    }
+
+
     if (p === '/measures') {
+
       props.config.type = ''
       props.config.mode = 'fixed'
       props.config.width = ''
       props.config.height = ''
+
     }
+
   })
 }
 </script>
+
 
 <style scoped>
 .progress {
@@ -137,13 +196,14 @@ function rollbackData(path) {
   font-size: 0.85rem;
 }
 
-/* Stati */
+
 .step.active {
   background-color: #facc15;
   color: #1f2937;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
+
 
 .step.completed {
   background-color: #10b981;
@@ -152,10 +212,12 @@ function rollbackData(path) {
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+
 .step.locked {
   opacity: 0.4;
   pointer-events: none;
 }
+
 
 .step:not(.locked):hover {
   transform: translateY(-2px);

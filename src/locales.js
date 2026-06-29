@@ -41,7 +41,14 @@ export const locales = {
     // Tipi di misura
     measureLuce: "Misura luce",
     measurePorta: "Misura porta",
-    measureMuro: "Apertura muro"
+    measureMuro: "Apertura muro",
+
+    // Standard
+    standard: "Standard",
+    selectStandard: "Seleziona lo standard",
+    selectStandardDescription: "Scegli lo standard di configurazione da utilizzare per il calcolo delle misure.",
+    international: "Internazionale",
+    germany: "Germania",
   },
 
   en: {
@@ -86,7 +93,14 @@ export const locales = {
     // Tipi di misura
     measureLuce: "Light opening",
     measurePorta: "Door measurement",
-    measureMuro: "Wall opening"
+    measureMuro: "Wall opening",
+
+    // Standard
+    standard: "Standard",
+    selectStandard: "Select standard",
+    selectStandardDescription: "Choose the configuration standard to use for measurements calculation.",
+    international: "International",
+    germany: "Germany",
   },
 
   de: {
@@ -131,7 +145,14 @@ export const locales = {
     // Tipi di misura
     measureLuce: "Lichtöffnung",
     measurePorta: "Türmaß",
-    measureMuro: "Wandöffnung"
+    measureMuro: "Wandöffnung",
+
+    // Standard
+    standard: "Standard",
+    selectStandard: "Standard auswählen",
+    selectStandardDescription: "Wählen Sie den Konfigurationsstandard für die Maßberechnung.",
+    international: "International",
+    germany: "Deutschland",
   },
 
   es: {
@@ -176,7 +197,14 @@ export const locales = {
     // Tipi di misura
     measureLuce: "Medida luz",
     measurePorta: "Medida puerta",
-    measureMuro: "Apertura pared"
+    measureMuro: "Apertura pared",
+
+    // Standard
+    standard: "Estándar",
+    selectStandard: "Selecciona el estándar",
+    selectStandardDescription: "Elige el estándar de configuración que se utilizará para el cálculo de las medidas.",
+    international: "Internacional",
+    germany: "Alemania",
   },
 
   fr: {
@@ -221,6 +249,13 @@ export const locales = {
     // Tipi di misura
     measureLuce: "Mesure du passage libre",
     measurePorta: "Mesure de la porte",
-    measureMuro: "Ouverture du mur"
+    measureMuro: "Ouverture du mur",
+
+    // Standard
+    standard: "Standard",
+    selectStandard: "Sélectionnez le standard",
+    selectStandardDescription: "Choisissez le standard de configuration à utiliser pour le calcul des mesures.",
+    international: "International",
+    germany: "Allemagne",
   }
 }

@@ -43,12 +43,12 @@ const router = useRouter()
 
 onMounted(() => {
   loadConfig()
-  router.replace(config.currentStep || '/door-thickness')
+  router.replace(config.currentStep || '/standard')
 })
 
 function newConfig() {
   resetConfig()
-  router.replace('/door-thickness')
+  router.replace('/standard')
 }
 </script>
 

@@ -2,13 +2,14 @@ import { reactive, watch } from 'vue'
 
 export const config = reactive({
   currentLang: 'it',
+  standard:'',
   door: '',
   wall: '',
   type: '',
   mode: 'fixed',
   width: '',
   height: '',
-  currentStep: '/door-thickness'
+  currentStep: '/standard'
 })
 
 watch(
@@ -26,11 +27,12 @@ export function loadConfig() {
 
 export function resetConfig() {
   localStorage.removeItem('doorConfig')
+  config.standard = ''
   config.door = ''
   config.wall = ''
   config.type = ''
   config.mode = 'fixed'
   config.width = ''
   config.height = ''
-  config.currentStep = '/door-thickness'
+  config.currentStep = '/standard'
 }

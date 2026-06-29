@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import StepStandard from '../components/StepStandard.vue'
 import StepDoorThickness from '../components/StepDoorThickness.vue'
 import StepWallThickness from '../components/StepWallThickness.vue'
 import StepMeasures from '../components/StepMeasures.vue'
 import Summary from '../components/Summary.vue'
 
 const routes = [
-  { path: '/', redirect: '/door-thickness' },
+  { path: '/', redirect: '/standard' },
+  { path: '/standard', component: StepStandard },
   { path: '/door-thickness', component: StepDoorThickness },
   { path: '/wall-thickness', component: StepWallThickness },
   { path: '/measures', component: StepMeasures },
