@@ -33,10 +33,22 @@
     />
 
 
-    <router-view 
-      :config="config" 
-      :data="ConfigData" 
-    />
+    <router-view v-slot="{ Component }">
+
+      <Transition
+        name="fade-slide"
+        mode="out-in"
+      >
+
+        <component
+          :is="Component"
+          :config="config"
+          :data="ConfigData"
+        />
+
+      </Transition>
+
+    </router-view>
 
   </div>
 </template>
@@ -226,6 +238,41 @@ watch(
 .reset-btn:hover {
 
   background: #f3f4f6;
+
+}
+
+
+/* ==============================
+   ROUTE TRANSITION
+   ============================== */
+
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+
+}
+
+
+
+.fade-slide-enter-from {
+
+  opacity:0;
+
+  transform:translateX(30px);
+
+}
+
+
+
+.fade-slide-leave-to {
+
+  opacity:0;
+
+  transform:translateX(-30px);
 
 }
 
