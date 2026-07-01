@@ -1,7 +1,6 @@
 import { ConfigData } from '../configData'
 import { calculateMeasures } from './measureCalculator'
-
-
+import { AvailabilityStatus } from '../configData'
 
 /**
  * ============================================================================
@@ -18,28 +17,14 @@ import { calculateMeasures } from './measureCalculator'
  */
 
 
-
 /**
  * Ritorna il catalogo base dello standard scelto
- *
- * esempio:
- *
- * getCatalog('IT')
- *
- * ritorna:
- *
- * [
- *  {width:700,height:2100},
- *  {width:800,height:2100}
- * ]
  */
 export function getCatalog(standard) {
-
 
   if (!ConfigData.standards[standard]) {
     return []
   }
-
 
   return ConfigData.standards[standard].catalog
 
@@ -48,35 +33,21 @@ export function getCatalog(standard) {
 
 
 
-
 /**
  * Genera tutte le misure disponibili
- *
- * esempio:
- *
- * generateMeasureOptions(
- *    'IT',
- *    'measurePorta'
- * )
- *
- * ritorna tutte le porte
- * calcolate dalle luci standard IT
- *
+ * partendo dal catalogo standard.
  */
 export function generateMeasureOptions(
   standard,
   inputType
 ) {
 
-
   const catalog = getCatalog(standard)
-
 
   const result = []
 
 
   catalog.forEach(item => {
-
 
     const calculated = calculateMeasures({
 
@@ -85,11 +56,9 @@ export function generateMeasureOptions(
       inputType:
         ConfigData.standards[standard].baseMeasure,
 
-      width:
-        item.width,
+      width: item.width,
 
-      height:
-        item.height
+      height: item.height
 
     })
 
@@ -99,13 +68,10 @@ export function generateMeasureOptions(
     }
 
 
-
     let selected
 
 
-
-    switch(inputType) {
-
+    switch (inputType) {
 
       case 'measureLuce':
 
@@ -114,13 +80,11 @@ export function generateMeasureOptions(
         break
 
 
-
       case 'measurePorta':
 
         selected = calculated.porta
 
         break
-
 
 
       case 'measureMuro':
@@ -132,18 +96,24 @@ export function generateMeasureOptions(
     }
 
 
-
     if (!selected) {
       return
     }
 
 
+    /**
+     * Manteniamo anche le informazioni
+     * del catalogo (availability ecc...)
+     */
+    result.push({
 
-    result.push(selected)
+      ...selected,
 
+      availability: item.availability
+
+    })
 
   })
-
 
 
   return removeDuplicates(result)
@@ -155,24 +125,17 @@ export function generateMeasureOptions(
 
 
 /**
- * Elimina misure duplicate
- *
- * Può succedere perché due combinazioni
- * diverse potrebbero generare la stessa misura.
+ * Elimina eventuali duplicati.
  */
 function removeDuplicates(list) {
-
 
   const map = new Map()
 
 
-
   list.forEach(item => {
-
 
     const key =
       `${item.width}x${item.height}`
-
 
 
     map.set(

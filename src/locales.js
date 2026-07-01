@@ -50,6 +50,18 @@ export const locales = {
     selectStandardDescription: "Scegli lo standard di configurazione da utilizzare per il calcolo delle misure.",
     international: "Internazionale",
     germany: "Germania",
+
+    // Disponibilità misure
+    availability: "Disponibilità",
+
+    availabilityStock: "Disponibile a magazzino",
+    availabilityStockDelivery: "Consegna rapida",
+
+    availabilityProduction: "Disponibile su ordinazione",
+    availabilityProductionDelivery: "Tempi di consegna più lunghi",
+
+    availabilityUnavailable: "Misura non disponibile",
+    availabilityContact: "Contattare il nostro ufficio commerciale",
   },
 
   en: {
@@ -103,6 +115,18 @@ export const locales = {
     selectStandardDescription: "Choose the configuration standard to use for measurements calculation.",
     international: "International",
     germany: "Germany",
+
+    // Availability
+    availability: "Availability",
+
+    availabilityStock: "Available in stock",
+    availabilityStockDelivery: "Fast delivery",
+
+    availabilityProduction: "Available on request",
+    availabilityProductionDelivery: "Longer delivery times",
+
+    availabilityUnavailable: "Size unavailable",
+    availabilityContact: "Contact our sales office",
   },
 
   de: {
@@ -156,6 +180,18 @@ export const locales = {
     selectStandardDescription: "Wählen Sie den Konfigurationsstandard für die Maßberechnung.",
     international: "International",
     germany: "Deutschland",
+
+    // Verfügbarkeit
+    availability: "Verfügbarkeit",
+
+    availabilityStock: "Auf Lager verfügbar",
+    availabilityStockDelivery: "Schnelle Lieferung",
+
+    availabilityProduction: "Auf Bestellung verfügbar",
+    availabilityProductionDelivery: "Längere Lieferzeiten",
+
+    availabilityUnavailable: "Maß nicht verfügbar",
+    availabilityContact: "Kontaktieren Sie unser Verkaufsbüro",
   },
 
   es: {
@@ -209,6 +245,18 @@ export const locales = {
     selectStandardDescription: "Elige el estándar de configuración que se utilizará para el cálculo de las medidas.",
     international: "Internacional",
     germany: "Alemania",
+
+    // Disponibilidad
+    availability: "Disponibilidad",
+
+    availabilityStock: "Disponible en stock",
+    availabilityStockDelivery: "Entrega rápida",
+
+    availabilityProduction: "Disponible bajo pedido",
+    availabilityProductionDelivery: "Tiempos de entrega más largos",
+
+    availabilityUnavailable: "Medida no disponible",
+    availabilityContact: "Contactar con la oficina comercial",
   },
 
   fr: {
@@ -262,5 +310,17 @@ export const locales = {
     selectStandardDescription: "Choisissez le standard de configuration à utiliser pour le calcul des mesures.",
     international: "International",
     germany: "Allemagne",
+
+    // Disponibilité
+    availability: "Disponibilité",
+    
+    availabilityStock: "Disponible en stock",
+    availabilityStockDelivery: "Livraison rapide",
+
+    availabilityProduction: "Disponible sur commande",
+    availabilityProductionDelivery: "Délais de livraison plus longs",
+
+    availabilityUnavailable: "Dimension non disponible",
+    availabilityContact: "Contacter notre service commercial",
   }
 }

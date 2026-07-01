@@ -1,16 +1,23 @@
-```vue
 <template>
   <div ref="pdfContent" class="print-wrapper">
 
     <header>
       <h1><strong>Genulux</strong></h1>
-      <h3>{{ locales[currentLang].documentHeader }}</h3>
+      <h3>
+        {{ locales[currentLang].documentHeader }}
+      </h3>
     </header>
 
 
     <div class="image-container">
-      <img :src="data.images.summaryHeader" alt="Disegno tecnico" />
+
+      <img
+        :src="data.images.summaryHeader"
+        alt="Disegno tecnico"
+      />
+
     </div>
+
 
 
     <section class="data-section">
@@ -19,20 +26,54 @@
 
         <tbody>
 
+
           <tr>
 
             <th>
               {{ locales[currentLang].configurationStandard }}
             </th>
 
+
             <td>
+
               {{ standard }} -
-              {{ standard === 'IT'
-                ? locales[currentLang].international
-                : locales[currentLang].germany }}
+
+              {{
+                standard === 'IT'
+                  ? locales[currentLang].international
+                  : locales[currentLang].germany
+              }}
+
             </td>
 
           </tr>
+
+
+
+
+          <!-- DISPONIBILITA -->
+          <tr v-if="availabilityInfo">
+
+            <th>
+              {{ locales[currentLang].availability }}
+            </th>
+
+
+            <td>
+
+              {{ availabilityInfo.title }}
+
+              -
+
+              {{ availabilityInfo.description }}
+
+            </td>
+
+
+          </tr>
+
+
+
 
 
           <tr>
@@ -41,14 +82,21 @@
               {{ locales[currentLang].doorDimensions }}
             </th>
 
+
             <td>
+
               {{ measures?.porta?.width }}
               ×
               {{ measures?.porta?.height }}
               mm
+
             </td>
 
+
           </tr>
+
+
+
 
 
           <tr>
@@ -57,14 +105,21 @@
               {{ locales[currentLang].lightPassageDimensions }}
             </th>
 
+
             <td>
+
               {{ measures?.luce?.width }}
               ×
               {{ measures?.luce?.height }}
               mm
+
             </td>
 
+
           </tr>
+
+
+
 
 
           <tr>
@@ -73,14 +128,21 @@
               {{ locales[currentLang].wallOpeningDimensions }}
             </th>
 
+
             <td>
+
               {{ measures?.muro?.width }}
               ×
               {{ measures?.muro?.height }}
               mm
+
             </td>
 
+
           </tr>
+
+
+
 
 
           <tr>
@@ -89,14 +151,21 @@
               Telaio
             </th>
 
+
             <td>
+
               {{ measures?.telaio?.width }}
               ×
               {{ measures?.telaio?.height }}
               mm
+
             </td>
 
+
           </tr>
+
+
+
 
 
           <tr>
@@ -105,11 +174,18 @@
               {{ locales[currentLang].wallThickness }}
             </th>
 
+
             <td>
+
               {{ wall }} cm
+
             </td>
 
+
           </tr>
+
+
+
 
 
           <tr>
@@ -118,22 +194,29 @@
               {{ locales[currentLang].doorThickness }}
             </th>
 
+
             <td>
+
               {{ door }} mm
+
             </td>
 
+
           </tr>
+
 
 
         </tbody>
 
       </table>
 
+
     </section>
 
 
   </div>
 </template>
+
 
 
 
@@ -151,23 +234,29 @@ import { locales } from '../locales.js'
 
 const props = defineProps({
 
-  standard: String,
+  standard:String,
 
-  door: String,
+  door:String,
 
-  wall: String,
+  wall:String,
 
-  type: String,
+  type:String,
 
-  width: String,
+  width:String,
 
-  height: String,
+  height:String,
 
-  data: Object,
 
-  measures: Object,
+  data:Object,
 
-  currentLang: String
+
+  measures:Object,
+
+
+  availabilityInfo:Object,
+
+
+  currentLang:String
 
 })
 
@@ -179,7 +268,7 @@ const pdfContent = ref(null)
 
 
 
-async function download() {
+async function download(){
 
 
   const canvas = await html2canvas(
@@ -187,24 +276,25 @@ async function download() {
     pdfContent.value,
 
     {
-      scale: 2
+      scale:2
     }
 
   )
 
 
-  const imgData = canvas.toDataURL('image/png')
+
+  const imgData =
+    canvas.toDataURL('image/png')
 
 
-  const pdf = new jsPDF(
 
-    'p',
+  const pdf =
+    new jsPDF(
+      'p',
+      'mm',
+      'a4'
+    )
 
-    'mm',
-
-    'a4'
-
-  )
 
 
   const pdfWidth = 210
@@ -212,17 +302,22 @@ async function download() {
   const pdfHeight = 297
 
 
+
   const imgWidth = pdfWidth
 
+
   const imgHeight =
-    (canvas.height * pdfWidth) / canvas.width
+    (canvas.height * pdfWidth)
+    /
+    canvas.width
+
 
 
   let position = 0
 
 
 
-  while (position < imgHeight) {
+  while(position < imgHeight){
 
 
     pdf.addImage(
@@ -242,21 +337,24 @@ async function download() {
     )
 
 
+
     position += pdfHeight
 
 
 
-    if (position < imgHeight) {
+    if(position < imgHeight){
 
       pdf.addPage()
 
     }
 
+
   }
 
 
 
-  pdf.save("Genulux")
+  pdf.save("Genulux.pdf")
+
 
 }
 
@@ -273,87 +371,73 @@ defineExpose({
 
 
 
+
 <style scoped>
 
 .print-wrapper {
 
-  width: 210mm;
+  width:210mm;
 
-  min-height: 297mm;
+  min-height:297mm;
 
-  padding: 20mm;
+  padding:20mm;
 
-  background: white;
+  background:white;
 
-  color: black;
+  color:black;
 
-  position: fixed;
+  position:fixed;
 
-  top: -9999px;
+  top:-9999px;
 
-  left: -9999px;
+  left:-9999px;
 
-  font-family: 'Inter', sans-serif;
+  font-family:'Inter',sans-serif;
 
 }
+
 
 
 header h1 {
 
-  margin-bottom: 5px;
+  margin-bottom:5px;
 
-  font-size: 1.4rem;
-
-}
-
-
-.subtitle {
-
-  font-size: 0.9rem;
-
-  color: #555;
+  font-size:1.4rem;
 
 }
+
 
 
 table {
 
-  width: 100%;
+  width:100%;
 
-  border-collapse: collapse;
+  border-collapse:collapse;
 
-  margin-top: 20px;
+  margin-top:20px;
+
+}
+
+
+
+th,
+td {
+
+  border:1px solid #000;
+
+  padding:10px;
 
 }
 
-
-th, td {
-
-  border: 1px solid #000;
-
-  padding: 10px;
-
-}
 
 
 th {
 
-  background-color: #f2f2f2;
+  background:#f2f2f2;
 
-  text-align: left;
-
-}
-
-
-footer {
-
-  margin-top: 40px;
-
-  font-size: 0.8rem;
-
-  color: #666;
+  text-align:left;
 
 }
+
 
 </style>
-

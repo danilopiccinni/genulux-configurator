@@ -23,7 +23,10 @@
 
 
     <!-- INSERIMENTO MISURE -->
-    <div v-if="config.type" class="measure-inputs">
+    <div
+      v-if="config.type"
+      class="measure-inputs"
+    >
 
 
       <h3>
@@ -32,10 +35,12 @@
 
 
 
+
       <!-- SCELTA MODALITÀ -->
       <div class="mode">
 
         <label>
+
           <input
             type="radio"
             value="fixed"
@@ -45,6 +50,7 @@
           {{ locales[config.currentLang].standardMeasures }}
 
         </label>
+
 
 
         <label>
@@ -59,7 +65,9 @@
 
         </label>
 
+
       </div>
+
 
 
 
@@ -86,10 +94,14 @@
             :key="w"
             :value="w"
           >
+
             {{ w }} mm
+
           </option>
 
+
         </select>
+
 
 
 
@@ -109,7 +121,9 @@
             :key="h"
             :value="h"
           >
+
             {{ h }} mm
+
           </option>
 
 
@@ -117,6 +131,8 @@
 
 
       </div>
+
+
 
 
 
@@ -133,9 +149,12 @@
 
 
           <label>
+
             {{ locales[config.currentLang].width }}:
             {{ config.width }} mm
+
           </label>
+
 
 
           <input
@@ -159,7 +178,11 @@
 
           </div>
 
+
         </div>
+
+
+
 
 
 
@@ -168,9 +191,12 @@
 
 
           <label>
+
             {{ locales[config.currentLang].height }}:
             {{ config.height }} mm
+
           </label>
+
 
 
           <input
@@ -180,6 +206,7 @@
             :step="measureConfig.limits.stepHeight"
             v-model.number="config.height"
           />
+
 
 
           <div class="slider-labels">
@@ -203,6 +230,32 @@
 
 
 
+
+
+      <!-- DISPONIBILITÀ MISURA -->
+      <div
+        v-if="availabilityInfo"
+        class="availability"
+        :class="availabilityInfo.type"
+      >
+
+        <strong>
+          {{ availabilityInfo.title }}
+        </strong>
+
+
+        <p>
+          {{ availabilityInfo.description }}
+        </p>
+
+
+      </div>
+
+
+
+
+
+
       <button
         class="next"
         :disabled="!config.width || !config.height"
@@ -222,6 +275,8 @@
 
 
 
+
+
 <script setup>
 
 import { computed, nextTick, watch } from 'vue'
@@ -229,12 +284,15 @@ import { useRouter } from 'vue-router'
 
 import { locales } from '../locales'
 import { generateMeasureOptions } from '../helpers/measureCatalog'
+import { getAvailabilityInfo } from '../helpers/availabilityHelper'
+import { resolveAvailability } from '../helpers/availabilityResolver'
 
 
 
 const props = defineProps({
 
   config:Object,
+
   data:Object
 
 })
@@ -247,56 +305,58 @@ const router = useRouter()
 
 
 
+
 /**
  * Preselezione automatica tipo misura
- * in base allo standard scelto
  */
 watch(
+
   () => props.config.standard,
 
-  (standard) => {
+
+  (standard)=>{
 
 
-    if (!standard) {
+    if(!standard){
+
       return
+
     }
 
 
 
-    /**
-     * Imposta il tipo solo se
-     * l'utente non ha già scelto
-     */
-    if (!props.config.type) {
+    if(!props.config.type){
 
 
-      if (standard === 'IT') {
 
-        props.config.type = 'measureLuce'
+      if(standard === 'IT'){
+
+        props.config.type='measureLuce'
 
       }
 
 
 
-      if (standard === 'DE') {
+      if(standard === 'DE'){
 
-        props.config.type = 'measurePorta'
+        props.config.type='measurePorta'
 
       }
 
 
 
-      props.config.mode = 'fixed'
+      props.config.mode='fixed'
 
-      props.config.width = ''
+      props.config.width=''
 
-      props.config.height = ''
+      props.config.height=''
 
 
     }
 
 
   },
+
 
   {
     immediate:true
@@ -314,25 +374,31 @@ watch(
 /**
  * Configurazione limiti custom
  */
-const measureConfig = computed(() => {
+const measureConfig = computed(()=>{
 
 
-  if (!props.config.type) {
+  if(!props.config.type){
+
 
     return {
 
       limits:{
+
         minWidth:0,
         maxWidth:0,
+
         minHeight:0,
         maxHeight:0,
+
         stepWidth:1,
         stepHeight:1
+
       }
 
     }
 
   }
+
 
 
   return props.data.measuresConfig[props.config.type]
@@ -349,15 +415,15 @@ const measureConfig = computed(() => {
 
 
 /**
- * Misure generate dallo standard
+ * Misure generate dal catalogo
  */
-const standardMeasures = computed(() => {
+const standardMeasures = computed(()=>{
 
 
-  if (
+  if(
     !props.config.standard ||
     !props.config.type
-  ) {
+  ){
 
     return []
 
@@ -387,7 +453,7 @@ const standardMeasures = computed(() => {
 /**
  * Larghezze disponibili
  */
-const availableWidths = computed(() => {
+const availableWidths = computed(()=>{
 
 
   return [
@@ -395,7 +461,9 @@ const availableWidths = computed(() => {
     ...new Set(
 
       standardMeasures.value.map(
-        item => item.width
+
+        item=>item.width
+
       )
 
     )
@@ -413,14 +481,14 @@ const availableWidths = computed(() => {
 
 
 
+
 /**
- * Altezze disponibili
- * filtrate dalla larghezza scelta
+ * Altezze filtrate dalla larghezza
  */
-const availableHeights = computed(() => {
+const availableHeights = computed(()=>{
 
 
-  if (!props.config.width) {
+  if(!props.config.width){
 
     return []
 
@@ -434,12 +502,16 @@ const availableHeights = computed(() => {
 
       standardMeasures.value
 
-        .filter(item =>
+        .filter(item=>
+
           item.width === props.config.width
+
         )
 
-        .map(item =>
+        .map(item=>
+
           item.height
+
         )
 
     )
@@ -457,10 +529,99 @@ const availableHeights = computed(() => {
 
 
 
-function widthChanged() {
+/**
+ * Risoluzione disponibilità
+ *
+ * Funziona per:
+ *
+ * - misura standard
+ * - misura libera
+ *
+ */
+const currentAvailability = computed(()=>{
 
 
-  const exists = standardMeasures.value.some(item =>
+  if(
+
+    !props.config.standard ||
+    !props.config.width ||
+    !props.config.height
+
+  ){
+
+    return null
+
+  }
+
+
+
+  return resolveAvailability({
+
+    standard:
+      props.config.standard,
+
+
+    width:
+      props.config.width,
+
+
+    height:
+      props.config.height
+
+  })
+
+
+})
+
+
+
+
+
+
+
+
+
+/**
+ * Messaggio disponibilità tradotto
+ */
+const availabilityInfo = computed(()=>{
+
+
+  if(
+    !currentAvailability.value
+  ){
+
+    return null
+
+  }
+
+
+
+  return getAvailabilityInfo(
+
+    currentAvailability.value.availability,
+
+    props.config.currentLang,
+
+    locales
+
+  )
+
+
+})
+
+
+
+
+
+
+
+
+
+function widthChanged(){
+
+
+  const exists = standardMeasures.value.some(item=>
 
     item.width === props.config.width &&
     item.height === props.config.height
@@ -469,11 +630,12 @@ function widthChanged() {
 
 
 
-  if (!exists) {
+  if(!exists){
 
-    props.config.height = ''
+    props.config.height=''
 
   }
+
 
 }
 
@@ -485,10 +647,10 @@ function widthChanged() {
 
 
 
-function heightChanged() {
+function heightChanged(){
 
 
-  const exists = standardMeasures.value.some(item =>
+  const exists = standardMeasures.value.some(item=>
 
     item.width === props.config.width &&
     item.height === props.config.height
@@ -497,9 +659,9 @@ function heightChanged() {
 
 
 
-  if (!exists) {
+  if(!exists){
 
-    props.config.width = ''
+    props.config.width=''
 
   }
 
@@ -514,16 +676,17 @@ function heightChanged() {
 
 
 
-function selectType(type) {
+function selectType(type){
 
 
-  props.config.type = type
+  props.config.type=type
 
-  props.config.mode = 'fixed'
+  props.config.mode='fixed'
 
-  props.config.width = ''
+  props.config.width=''
 
-  props.config.height = ''
+  props.config.height=''
+
 
 }
 
@@ -535,21 +698,26 @@ function selectType(type) {
 
 
 
-function goNext() {
+function goNext(){
 
 
-  if (
+  if(
+
     props.config.type &&
     props.config.width &&
     props.config.height
-  ) {
+
+  ){
+
 
     props.config.currentStep='/summary'
 
 
     nextTick(()=>{
 
+
       router.push('/summary')
+
 
     })
 
@@ -564,9 +732,13 @@ function goNext() {
 
 
 
+
+
+
+
 <style scoped>
 
-.step-card {
+.step-card{
 
   background:v-bind('data.colors.cardBg');
 
@@ -576,12 +748,11 @@ function goNext() {
 
   box-shadow:v-bind('data.colors.cardShadow');
 
-  transition:transform 0.3s;
-
 }
 
 
-h2 {
+
+h2{
 
   margin-bottom:1rem;
 
@@ -590,7 +761,8 @@ h2 {
 }
 
 
-.choices {
+
+.choices{
 
   display:flex;
 
@@ -600,12 +772,11 @@ h2 {
 
   flex-wrap:wrap;
 
-  margin-bottom:20px;
-
 }
 
 
-.choices button {
+
+.choices button{
 
   padding:10px 20px;
 
@@ -615,14 +786,13 @@ h2 {
 
   background:v-bind('data.colors.buttonBg');
 
-  font-weight:600;
-
   cursor:pointer;
 
 }
 
 
-.choices button.active {
+
+.choices button.active{
 
   background:v-bind('data.colors.buttonActive');
 
@@ -631,7 +801,8 @@ h2 {
 }
 
 
-.measure-inputs {
+
+.measure-inputs{
 
   margin-top:2rem;
 
@@ -646,7 +817,8 @@ h2 {
 }
 
 
-.mode {
+
+.mode{
 
   display:flex;
 
@@ -655,8 +827,9 @@ h2 {
 }
 
 
+
 .fixed,
-.custom {
+.custom{
 
   display:flex;
 
@@ -671,10 +844,11 @@ h2 {
 }
 
 
-select,
-input[type="range"] {
 
-  padding:0.8rem;
+select,
+input[type="range"]{
+
+  padding:.8rem;
 
   border-radius:6px;
 
@@ -685,7 +859,8 @@ input[type="range"] {
 }
 
 
-.slider-group {
+
+.slider-group{
 
   display:flex;
 
@@ -694,7 +869,8 @@ input[type="range"] {
 }
 
 
-.slider-labels {
+
+.slider-labels{
 
   display:flex;
 
@@ -705,33 +881,110 @@ input[type="range"] {
 }
 
 
-.next {
+
+
+
+.availability{
+
+  width:100%;
+
+  max-width:500px;
+
+  padding:14px;
+
+  border-radius:10px;
+
+  text-align:center;
+
+  border:1px solid;
+
+}
+
+
+
+.availability strong{
+
+  display:block;
+
+  margin-bottom:5px;
+
+}
+
+
+
+.availability p{
+
+  margin:0;
+
+}
+
+
+
+.availability.success{
+
+  background:#ecfdf5;
+
+  color:#166534;
+
+  border-color:#22c55e;
+
+}
+
+
+
+.availability.warning{
+
+  background:#fff7ed;
+
+  color:#9a3412;
+
+  border-color:#f97316;
+
+}
+
+
+
+.availability.error{
+
+  background:#fef2f2;
+
+  color:#991b1b;
+
+  border-color:#ef4444;
+
+}
+
+
+
+
+
+.next{
 
   margin-top:2rem;
 
   padding:12px 25px;
 
-  font-weight:bold;
+  border:none;
 
   border-radius:8px;
 
   cursor:pointer;
 
-  border:none;
+  background:v-bind('data.colors.buttonActive');
 
   color:white;
-
-  background:v-bind('data.colors.buttonActive');
 
 }
 
 
-.next:disabled {
+
+.next:disabled{
 
   background:#9ca3af;
 
   cursor:not-allowed;
 
 }
+
 
 </style>
