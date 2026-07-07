@@ -111,9 +111,12 @@ export function rollbackToStep(config, path) {
 
         case '/wall-thickness':
 
+          config.wallType = ''
+
           config.wall = ''
 
           break
+
 
 
 
@@ -131,6 +134,7 @@ export function rollbackToStep(config, path) {
           config.standard = ''
 
           break
+
 
 
 

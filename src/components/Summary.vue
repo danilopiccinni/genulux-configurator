@@ -98,7 +98,15 @@
 
       </p>
 
+      <p>
 
+        <b>
+          {{ locales[currentLang].wallType }}:
+        </b>
+
+        {{ locales[currentLang][config.wallType] }}
+
+      </p>
 
 
       <p>

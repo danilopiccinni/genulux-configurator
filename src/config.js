@@ -11,6 +11,8 @@ export const config = reactive({
 
   door:'',
 
+  wallType: '',
+
   wall:'',
 
   type:'',
@@ -76,6 +78,8 @@ export function resetConfig(){
   config.standard=''
 
   config.door=''
+
+  config.wallType = ''
 
   config.wall=''
 

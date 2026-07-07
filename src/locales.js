@@ -66,6 +66,12 @@ export const locales = {
     // Tipo di porta
     woodDoor: 'Legno 40–44 mm',
     glassDoor: 'Vetro 8–12.7 mm',
+
+
+    // WALL TYPES
+    wallType: 'Tipo di muro',
+    massivbau: 'Muratura massiva',
+    trockenbau: 'Parete in cartongesso',
   },
 
   en: {
@@ -135,7 +141,12 @@ export const locales = {
     // Tipo di porta
     woodDoor: 'Wood 40–44 mm',
     glassDoor: 'Glass 8–12.7 mm',
-  },
+
+    // WALL TYPES
+    wallType: 'Wall type',
+    massivbau: 'Solid construction',
+    trockenbau: 'Drywall construction',
+      },
 
   de: {
     // Branding
@@ -204,6 +215,11 @@ export const locales = {
     //Tipo di porta
     woodDoor: 'Holz 40–44 mm',
     glassDoor: 'Glas 8–12.7 mm',
+
+    // WALL TYPES
+    wallType: 'Wandtyp',
+    massivbau: 'Massivbau',
+    trockenbau: 'Trockenbau',
   },
 
   es: {
@@ -273,6 +289,11 @@ export const locales = {
     // tipo di porta
     woodDoor: 'Mader 40–44 mma',
     glassDoor: 'Vidri 8–12.7 mmo',
+
+    // WALL TYPES
+    wallType: 'Tipo de pared',
+    massivbau: 'Construcción maciza',
+    trockenbau: 'Construcción de paneles de yeso',
   },
 
   fr: {
@@ -342,5 +363,10 @@ export const locales = {
     // Tipo di porta
     woodDoor: 'Bois 40–44 mm',
     glassDoor: 'Verre 8–12.7 mm',
+
+    // WALL TYPES
+    wallType: 'Type de mur',
+    massivbau: 'Construction massive',
+    trockenbau: 'Construction en plaques de plâtre',
   }
 }

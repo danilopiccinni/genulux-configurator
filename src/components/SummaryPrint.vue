@@ -165,7 +165,20 @@
           </tr>
 
 
+          <tr>
 
+            <th>
+              {{ locales[currentLang].wallType }}
+            </th>
+
+
+            <td>
+
+              {{ locales[currentLang][wallType] }}
+
+            </td>
+
+          </tr>
 
 
           <tr>
@@ -239,6 +252,8 @@ const props = defineProps({
   standard:String,
 
   door:String,
+
+  wallType:String,
 
   wall:String,
 

@@ -33,7 +33,35 @@ export const ConfigData = {
 
   doorThicknessOptions: ['40', '44'],
 
-  wallThicknessOptions: ['10', '12.5'],
+  wallTypes: [
+
+    'massivbau',
+
+    'trockenbau'
+
+  ],
+
+
+  wallThicknessOptions: {
+
+    massivbau: [
+
+      '10',
+
+      '12.5'
+
+    ],
+
+
+    trockenbau: [
+
+      '10',
+
+      '12.5'
+
+    ]
+
+},
 
 
   /*

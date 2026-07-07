@@ -150,7 +150,8 @@ function isCompleted(path) {
 
     case '/wall-thickness':
 
-      return !!props.config.wall
+   return !!props.config.wallType &&
+          !!props.config.wall
 
 
 
