@@ -49,7 +49,7 @@ export const locales = {
     selectStandard: "Seleziona lo standard",
     selectStandardDescription: "Scegli lo standard di configurazione da utilizzare per il calcolo delle misure.",
     international: "Internazionale",
-    germany: "Germania",
+    germany: "DIN/Germania",
 
     // Disponibilità misure
     availability: "Disponibilità",
@@ -114,7 +114,7 @@ export const locales = {
     selectStandard: "Select standard",
     selectStandardDescription: "Choose the configuration standard to use for measurements calculation.",
     international: "International",
-    germany: "Germany",
+    germany: "DIN/Germany",
 
     // Availability
     availability: "Availability",
@@ -179,7 +179,7 @@ export const locales = {
     selectStandard: "Standard auswählen",
     selectStandardDescription: "Wählen Sie den Konfigurationsstandard für die Maßberechnung.",
     international: "International",
-    germany: "Deutschland",
+    germany: "DIN/Deutschland",
 
     // Verfügbarkeit
     availability: "Verfügbarkeit",
@@ -244,7 +244,7 @@ export const locales = {
     selectStandard: "Selecciona el estándar",
     selectStandardDescription: "Elige el estándar de configuración que se utilizará para el cálculo de las medidas.",
     international: "Internacional",
-    germany: "Alemania",
+    germany: "DIN/Alemania",
 
     // Disponibilidad
     availability: "Disponibilidad",
@@ -309,7 +309,7 @@ export const locales = {
     selectStandard: "Sélectionnez le standard",
     selectStandardDescription: "Choisissez le standard de configuration à utiliser pour le calcul des mesures.",
     international: "International",
-    germany: "Allemagne",
+    germany: "DIN/Allemagne",
 
     // Disponibilité
     availability: "Disponibilité",

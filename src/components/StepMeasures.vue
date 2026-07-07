@@ -1,12 +1,72 @@
 <template>
   <div class="step-card">
 
+
+    <!--
+      NUOVA SCELTA STANDARD MISURA
+
+      IT  -> Passaggio luce
+      DE  -> Misura porta DIN
+
+    -->
     <h2>
       {{ locales[config.currentLang].measureType }}
     </h2>
 
+    <div class="measure-choice">
 
-    <!-- SCELTA TIPO MISURA -->
+
+
+      <button
+        class="measure-option"
+        :class="{ active: config.type === 'measureLuce' }"
+        @click="selectMeasureType('light')"
+      >
+
+        <strong>
+          {{ locales[config.currentLang].measureLuce }}
+        </strong>
+
+        <small>
+          {{ locales[config.currentLang].international }}
+        </small>
+
+      </button>
+
+
+
+      <button
+        class="measure-option"
+        :class="{ active: config.type === 'measurePorta' }"
+        @click="selectMeasureType('door')"
+      >
+
+        <strong>
+          {{ locales[config.currentLang].measurePorta }}
+        </strong>
+
+        <small>
+          {{ locales[config.currentLang].germany }}
+        </small>
+
+      </button>
+
+
+    </div>
+
+
+
+
+
+    <!--
+      VECCHIA SCELTA TIPO MISURA
+
+      Conservata per eventuale riattivazione futura.
+
+    -->
+
+    <!--
+
     <div class="choices">
 
       <button
@@ -15,18 +75,48 @@
         :class="{ active: config.type === type.value }"
         @click="selectType(type.value)"
       >
+
         {{ locales[config.currentLang][type.value] }}
+
       </button>
+
+    </div>
+
+    -->
+
+
+
+
+
+    <!-- TIPO MISURA ATTIVO -->
+
+    <div
+      v-if="config.type"
+      class="measure-type-info"
+    >
+
+      <strong>
+        {{ locales[config.currentLang].measureType }}:
+      </strong>
+
+
+      {{ locales[config.currentLang][config.type] }}
+
 
     </div>
 
 
 
-    <!-- INSERIMENTO MISURE -->
+
+
+
+    <!-- INSERIMENTO -->
+
     <div
       v-if="config.type"
       class="measure-inputs"
     >
+
 
 
       <h3>
@@ -36,8 +126,11 @@
 
 
 
-      <!-- SCELTA MODALITÀ -->
+
+      <!-- MODALITA -->
+
       <div class="mode">
+
 
         <label>
 
@@ -47,9 +140,12 @@
             v-model="config.mode"
           />
 
+
           {{ locales[config.currentLang].standardMeasures }}
 
+
         </label>
+
 
 
 
@@ -61,7 +157,9 @@
             v-model="config.mode"
           />
 
+
           {{ locales[config.currentLang].customMeasures }}
+
 
         </label>
 
@@ -72,7 +170,11 @@
 
 
 
-      <!-- MISURE STANDARD -->
+
+
+
+      <!-- STANDARD -->
+
       <div
         v-if="config.mode === 'fixed'"
         class="fixed"
@@ -84,9 +186,11 @@
           @change="widthChanged"
         >
 
+
           <option disabled value="">
             {{ locales[config.currentLang].width }}
           </option>
+
 
 
           <option
@@ -106,14 +210,18 @@
 
 
 
+
         <select
           v-model.number="config.height"
           @change="heightChanged"
         >
 
+
           <option disabled value="">
             {{ locales[config.currentLang].height }}
           </option>
+
+
 
 
           <option
@@ -138,11 +246,14 @@
 
 
 
-      <!-- MISURE LIBERE -->
+
+      <!-- LIBERE -->
+
       <div
         v-else
         class="custom"
       >
+
 
 
         <div class="slider-group">
@@ -157,6 +268,7 @@
 
 
 
+
           <input
             type="range"
             :min="measureConfig.limits.minWidth"
@@ -164,6 +276,7 @@
             :step="measureConfig.limits.stepWidth"
             v-model.number="config.width"
           />
+
 
 
           <div class="slider-labels">
@@ -180,6 +293,7 @@
 
 
         </div>
+
 
 
 
@@ -211,18 +325,22 @@
 
           <div class="slider-labels">
 
+
             <span>
               min {{ measureConfig.limits.minHeight }}
             </span>
+
 
             <span>
               max {{ measureConfig.limits.maxHeight }}
             </span>
 
+
           </div>
 
 
         </div>
+
 
 
       </div>
@@ -232,7 +350,10 @@
 
 
 
-      <!-- DISPONIBILITÀ MISURA -->
+
+
+      <!-- DISPONIBILITA -->
+
       <div
         v-if="availabilityInfo"
         class="availability"
@@ -256,6 +377,7 @@
 
 
 
+
       <button
         class="next"
         :disabled="!config.width || !config.height"
@@ -270,6 +392,7 @@
 
     </div>
 
+
   </div>
 </template>
 
@@ -279,12 +402,15 @@
 
 <script setup>
 
-import { computed, nextTick, watch } from 'vue'
+import { computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { locales } from '../locales'
+
 import { generateMeasureOptions } from '../helpers/measureCatalog'
+
 import { getAvailabilityInfo } from '../helpers/availabilityHelper'
+
 import { resolveAvailability } from '../helpers/availabilityResolver'
 
 
@@ -305,64 +431,50 @@ const router = useRouter()
 
 
 
-
 /**
- * Preselezione automatica tipo misura
+ * Scelta nuovo flusso misura
+ *
+ * light:
+ * IT + passaggio luce
+ *
+ * door:
+ * DE + misura porta DIN
  */
-watch(
-
-  () => props.config.standard,
+function selectMeasureType(type){
 
 
-  (standard)=>{
-
-
-    if(!standard){
-
-      return
-
-    }
+  const newType =
+    type === 'light'
+      ? 'measureLuce'
+      : 'measurePorta'
 
 
 
-    if(!props.config.type){
+  const newStandard =
+    type === 'light'
+      ? 'IT'
+      : 'DE'
 
 
 
-      if(standard === 'IT'){
+  if(props.config.type !== newType){
 
-        props.config.type='measureLuce'
+    props.config.width=''
+    props.config.height=''
 
-      }
-
-
-
-      if(standard === 'DE'){
-
-        props.config.type='measurePorta'
-
-      }
-
-
-
-      props.config.mode='fixed'
-
-      props.config.width=''
-
-      props.config.height=''
-
-
-    }
-
-
-  },
-
-
-  {
-    immediate:true
   }
 
-)
+
+
+  props.config.standard = newStandard
+
+  props.config.type = newType
+
+  props.config.mode='fixed'
+
+
+}
+
 
 
 
@@ -385,17 +497,21 @@ const measureConfig = computed(()=>{
       limits:{
 
         minWidth:0,
+
         maxWidth:0,
 
         minHeight:0,
+
         maxHeight:0,
 
         stepWidth:1,
+
         stepHeight:1
 
       }
 
     }
+
 
   }
 
@@ -415,14 +531,17 @@ const measureConfig = computed(()=>{
 
 
 /**
- * Misure generate dal catalogo
+ * Catalogo misure standard
  */
 const standardMeasures = computed(()=>{
 
 
   if(
+
     !props.config.standard ||
+
     !props.config.type
+
   ){
 
     return []
@@ -481,9 +600,8 @@ const availableWidths = computed(()=>{
 
 
 
-
 /**
- * Altezze filtrate dalla larghezza
+ * Altezze filtrate
  */
 const availableHeights = computed(()=>{
 
@@ -530,13 +648,7 @@ const availableHeights = computed(()=>{
 
 
 /**
- * Risoluzione disponibilità
- *
- * Funziona per:
- *
- * - misura standard
- * - misura libera
- *
+ * Disponibilità reale misura
  */
 const currentAvailability = computed(()=>{
 
@@ -544,7 +656,9 @@ const currentAvailability = computed(()=>{
   if(
 
     !props.config.standard ||
+
     !props.config.width ||
+
     !props.config.height
 
   ){
@@ -557,16 +671,11 @@ const currentAvailability = computed(()=>{
 
   return resolveAvailability({
 
-    standard:
-      props.config.standard,
+    standard:props.config.standard,
 
+    width:props.config.width,
 
-    width:
-      props.config.width,
-
-
-    height:
-      props.config.height
+    height:props.config.height
 
   })
 
@@ -582,14 +691,12 @@ const currentAvailability = computed(()=>{
 
 
 /**
- * Messaggio disponibilità tradotto
+ * Disponibilità tradotta
  */
 const availabilityInfo = computed(()=>{
 
 
-  if(
-    !currentAvailability.value
-  ){
+  if(!currentAvailability.value){
 
     return null
 
@@ -618,15 +725,20 @@ const availabilityInfo = computed(()=>{
 
 
 
+/**
+ * Cambio larghezza misura standard
+ */
 function widthChanged(){
 
 
-  const exists = standardMeasures.value.some(item=>
+  const exists =
+    standardMeasures.value.some(item=>
 
-    item.width === props.config.width &&
-    item.height === props.config.height
+      item.width === props.config.width &&
 
-  )
+      item.height === props.config.height
+
+    )
 
 
 
@@ -647,15 +759,20 @@ function widthChanged(){
 
 
 
+/**
+ * Cambio altezza misura standard
+ */
 function heightChanged(){
 
 
-  const exists = standardMeasures.value.some(item=>
+  const exists =
+    standardMeasures.value.some(item=>
 
-    item.width === props.config.width &&
-    item.height === props.config.height
+      item.width === props.config.width &&
 
-  )
+      item.height === props.config.height
+
+    )
 
 
 
@@ -676,12 +793,31 @@ function heightChanged(){
 
 
 
+/**
+ * ----------------------------------------------------------------
+ * VECCHIA SELEZIONE MANUALE TIPO MISURA
+ *
+ * Conservata per futuro utilizzo.
+ *
+ * Se si vuole ripristinare basta:
+ *
+ * 1) togliere il commento
+ * 2) riattivare il blocco template choices
+ *
+ * ----------------------------------------------------------------
+ */
+
+
+/*
+
 function selectType(type){
 
 
-  props.config.type=type
+  props.config.type = type
+
 
   props.config.mode='fixed'
+
 
   props.config.width=''
 
@@ -690,6 +826,7 @@ function selectType(type){
 
 }
 
+*/
 
 
 
@@ -698,19 +835,26 @@ function selectType(type){
 
 
 
+
+/**
+ * Vai al riepilogo
+ */
 function goNext(){
 
 
   if(
 
     props.config.type &&
+
     props.config.width &&
+
     props.config.height
 
   ){
 
 
     props.config.currentStep='/summary'
+
 
 
     nextTick(()=>{
@@ -729,12 +873,6 @@ function goNext(){
 
 
 </script>
-
-
-
-
-
-
 
 <style scoped>
 
@@ -760,6 +898,108 @@ h2{
 
 }
 
+
+
+
+
+
+/*
+========================================
+SCELTA TIPO MISURA NUOVO FLUSSO
+========================================
+*/
+
+
+.measure-choice{
+
+  display:flex;
+
+  flex-direction:row;
+
+  justify-content:center;
+
+  align-items:stretch;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+}
+
+
+
+.measure-option{
+
+  width:240px;
+
+  min-height:120px;
+
+  padding:20px;
+
+  border-radius:12px;
+
+  border:2px solid v-bind('data.colors.primary');
+
+  background:v-bind('data.colors.buttonBg');
+
+  cursor:pointer;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:8px;
+
+  transition:all .25s ease;
+
+}
+
+
+
+.measure-option strong{
+
+  font-size:1.1rem;
+
+}
+
+
+
+.measure-option small{
+
+  font-size:.85rem;
+
+  opacity:.8;
+
+}
+
+
+
+.measure-option:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:0 6px 15px rgba(0,0,0,.12);
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+VECCHIA SCELTA MANUALE
+(preparata per futuro)
+========================================
+*/
 
 
 .choices{
@@ -802,6 +1042,19 @@ h2{
 
 
 
+
+
+
+
+
+
+/*
+========================================
+INSERIMENTO MISURE
+========================================
+*/
+
+
 .measure-inputs{
 
   margin-top:2rem;
@@ -818,6 +1071,9 @@ h2{
 
 
 
+
+
+
 .mode{
 
   display:flex;
@@ -825,6 +1081,9 @@ h2{
   gap:2rem;
 
 }
+
+
+
 
 
 
@@ -845,6 +1104,9 @@ h2{
 
 
 
+
+
+
 select,
 input[type="range"]{
 
@@ -860,6 +1122,9 @@ input[type="range"]{
 
 
 
+
+
+
 .slider-group{
 
   display:flex;
@@ -867,6 +1132,9 @@ input[type="range"]{
   flex-direction:column;
 
 }
+
+
+
 
 
 
@@ -882,6 +1150,17 @@ input[type="range"]{
 
 
 
+
+
+
+
+
+
+/*
+========================================
+DISPONIBILITA
+========================================
+*/
 
 
 .availability{
@@ -958,6 +1237,17 @@ input[type="range"]{
 
 
 
+
+
+
+
+/*
+========================================
+PULSANTE CONTINUA
+========================================
+*/
+
+
 .next{
 
   margin-top:2rem;
@@ -983,6 +1273,52 @@ input[type="range"]{
   background:#9ca3af;
 
   cursor:not-allowed;
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+INFO TIPO MISURA ATTIVO
+========================================
+*/
+
+
+.measure-type-info{
+
+  margin:1.5rem auto;
+
+  max-width:500px;
+
+  padding:12px 18px;
+
+  border-radius:8px;
+
+  background:#f3f4f6;
+
+  color:#374151;
+
+  text-align:center;
+
+  font-weight:500;
+
+}
+
+
+.measure-option.active{
+
+  background:v-bind('data.colors.buttonActive');
+
+  color:v-bind('data.colors.buttonActiveText');
+
+  transform:translateY(-3px);
 
 }
 

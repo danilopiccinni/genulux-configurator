@@ -77,13 +77,14 @@ const router = useRouter()
 const route = useRoute()
 
 
+
 /**
  * Ultimo step realmente valido raggiunto
  *
  * Serve per impedire al tasto avanti
- * del browser di saltare step incompleti
+ * del browser di saltare step incompleti.
  */
-let lastValidStep = '/standard'
+let lastValidStep = '/door-thickness'
 
 
 
@@ -91,7 +92,18 @@ onMounted(() => {
 
   loadConfig()
 
-  const startStep = config.currentStep || '/standard'
+  /**
+   * Compatibilità con vecchie configurazioni
+   * salvate quando esisteva ancora lo step
+   * "/standard".
+   */
+  const startStep =
+
+    config.currentStep === '/standard'
+      ? '/door-thickness'
+      : (config.currentStep || '/door-thickness')
+
+
 
   lastValidStep = startStep
 
@@ -105,9 +117,9 @@ function newConfig() {
 
   resetConfig()
 
-  lastValidStep = '/standard'
+  lastValidStep = '/door-thickness'
 
-  router.replace('/standard')
+  router.replace('/door-thickness')
 
 }
 
@@ -117,9 +129,10 @@ function newConfig() {
  * Gestione navigazione browser
  */
 watch(
-  () => route.path,
-  (newPath, oldPath) => {
 
+  () => route.path,
+
+  (newPath, oldPath) => {
 
     if (!oldPath) return
 
@@ -130,18 +143,14 @@ watch(
      */
     if (isRollback(oldPath, newPath)) {
 
-
       rollbackToStep(
         config,
         newPath
       )
 
-
       config.currentStep = newPath
 
-
       lastValidStep = newPath
-
 
       return
 
@@ -155,11 +164,9 @@ watch(
      */
     if (!canEnterStep(config, newPath)) {
 
-
       router.replace(
         lastValidStep
       )
-
 
       return
 
@@ -174,8 +181,8 @@ watch(
 
     lastValidStep = newPath
 
-
   }
+
 )
 
 </script>
