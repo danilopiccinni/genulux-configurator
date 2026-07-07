@@ -62,6 +62,10 @@ export const locales = {
 
     availabilityUnavailable: "Misura non disponibile",
     availabilityContact: "Contattare il nostro ufficio commerciale",
+
+    // Tipo di porta
+    woodDoor: 'Legno 40–44 mm',
+    glassDoor: 'Vetro 8–12.7 mm',
   },
 
   en: {
@@ -127,6 +131,10 @@ export const locales = {
 
     availabilityUnavailable: "Size unavailable",
     availabilityContact: "Contact our sales office",
+
+    // Tipo di porta
+    woodDoor: 'Wood 40–44 mm',
+    glassDoor: 'Glass 8–12.7 mm',
   },
 
   de: {
@@ -192,6 +200,10 @@ export const locales = {
 
     availabilityUnavailable: "Maß nicht verfügbar",
     availabilityContact: "Kontaktieren Sie unser Verkaufsbüro",
+
+    //Tipo di porta
+    woodDoor: 'Holz 40–44 mm',
+    glassDoor: 'Glas 8–12.7 mm',
   },
 
   es: {
@@ -257,6 +269,10 @@ export const locales = {
 
     availabilityUnavailable: "Medida no disponible",
     availabilityContact: "Contactar con la oficina comercial",
+
+    // tipo di porta
+    woodDoor: 'Mader 40–44 mma',
+    glassDoor: 'Vidri 8–12.7 mmo',
   },
 
   fr: {
@@ -322,5 +338,9 @@ export const locales = {
 
     availabilityUnavailable: "Dimension non disponible",
     availabilityContact: "Contacter notre service commercial",
+
+    // Tipo di porta
+    woodDoor: 'Bois 40–44 mm',
+    glassDoor: 'Verre 8–12.7 mm',
   }
 }

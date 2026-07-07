@@ -120,7 +120,11 @@
           {{ locales[currentLang].doorThickness }}:
         </b>
 
-        {{ config.door }} mm
+        {{
+          config.door === 'wood'
+            ? locales[currentLang].woodDoor
+            : locales[currentLang].glassDoor
+        }}
 
       </p>
 

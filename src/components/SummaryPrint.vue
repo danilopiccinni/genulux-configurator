@@ -194,13 +194,15 @@
               {{ locales[currentLang].doorThickness }}
             </th>
 
-
             <td>
 
-              {{ door }} mm
+              {{
+                door === 'wood'
+                  ? locales[currentLang].woodDoor
+                  : locales[currentLang].glassDoor
+              }}
 
             </td>
-
 
           </tr>
 
