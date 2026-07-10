@@ -94,3 +94,33 @@ export function resetConfig(){
   config.currentStep='/door-thickness'
 
 }
+
+/**
+ * Verifica se esiste una configurazione salvata
+ *
+ * Utilizzata dalla Welcome Page
+ *
+ * Serve per decidere se mostrare:
+ *
+ * - Continua configurazione
+ * - Nuova configurazione
+ */
+export function hasSavedConfiguration(){
+
+  return !!(
+
+    config.door ||
+
+    config.wallType ||
+
+    config.wall ||
+
+    config.type ||
+
+    config.width ||
+
+    config.height
+
+  )
+
+}

@@ -5,6 +5,7 @@
   >
 
     <div class="header">
+
       <h1>
         <strong>
           Genulux
@@ -14,57 +15,127 @@
       <h5>
         {{ locales[config.currentLang].h2 }}
       </h5>
+
     </div>
+
 
 
     <div class="button-container">
+
       <LanguageSelector/>
 
-      <!-- RESET SEMPRE VISIBILE -->
-      <button class="reset-btn" @click="newConfig">
-        {{ locales[config.currentLang].newConfiguration }}
-      </button>
+
+      <div
+        v-if="route.path !== '/'"
+        class="header-actions"
+      >
+
+
+        <!-- HOME CONFIGURATORE -->
+
+        <button
+          class="home-btn"
+          @click="goHome"
+        >
+
+          {{ locales[config.currentLang].homeConfigurator }}
+
+        </button>
+
+
+
+
+
+        <!-- NUOVA CONFIGURAZIONE -->
+
+        <button
+          class="reset-btn"
+          @click="newConfig"
+        >
+
+          {{ locales[config.currentLang].newConfiguration }}
+
+        </button>
+
+
+      </div>
+
+
     </div>
 
 
-    <ProgressBar 
-      :config="config" 
-      :data="ConfigData" 
+
+
+
+    <ProgressBar
+
+      v-if="route.path !== '/'"
+
+      :config="config"
+
+      :data="ConfigData"
+
     />
+
+
+
 
 
     <router-view v-slot="{ Component }">
 
+
       <Transition
+
         name="fade-slide"
+
         mode="out-in"
+
       >
 
+
         <component
+
           :is="Component"
+
           :config="config"
+
           :data="ConfigData"
+
         />
+
 
       </Transition>
 
+
     </router-view>
+
+
 
   </div>
 </template>
 
 
+
+
+
 <script setup>
 
 import { onMounted, watch } from 'vue'
+
 import { useRouter, useRoute } from 'vue-router'
 
+
 import ProgressBar from './components/ProgressBar.vue'
+
 import LanguageSelector from './components/LanguageSelector.vue'
 
+
 import { config, loadConfig, resetConfig } from './config'
+
 import { ConfigData } from './configData'
+
 import { locales } from './locales.js'
+
 
 import {
   rollbackToStep,
@@ -73,55 +144,112 @@ import {
 } from './helpers/configHelpers'
 
 
+
+
+
 const router = useRouter()
+
 const route = useRoute()
 
 
 
+
+
 /**
- * Ultimo step realmente valido raggiunto
+ * Ultimo step valido raggiunto
  *
- * Serve per impedire al tasto avanti
- * del browser di saltare step incompleti.
+ * Serve per impedire:
+ *
+ * - forward browser
+ * - URL manuali
+ * - salti di configurazione
  */
 let lastValidStep = '/door-thickness'
 
 
 
+
+
+
+
 onMounted(() => {
+
 
   loadConfig()
 
+
+
   /**
-   * Compatibilità con vecchie configurazioni
-   * salvate quando esisteva ancora lo step
-   * "/standard".
+   * Compatibilità vecchie configurazioni
+   *
+   * Prima esisteva:
+   *
+   * /standard
+   *
+   * Ora il flusso parte da:
+   *
+   * /door-thickness
    */
-  const startStep =
+  if(config.currentStep === '/standard'){
 
-    config.currentStep === '/standard'
-      ? '/door-thickness'
-      : (config.currentStep || '/door-thickness')
+    config.currentStep = '/door-thickness'
+
+  }
 
 
 
-  lastValidStep = startStep
+  /**
+   * NON facciamo più:
+   *
+   * router.replace(config.currentStep)
+   *
+   *
+   * perché la pagina iniziale ora è:
+   *
+   * /
+   *
+   * Welcome
+   *
+   */
 
-  router.replace(startStep)
+
+
+  lastValidStep =
+    config.currentStep || '/door-thickness'
+
 
 })
 
 
 
-function newConfig() {
+
+
+
+
+
+function newConfig(){
+
 
   resetConfig()
 
+
   lastValidStep = '/door-thickness'
+
 
   router.replace('/door-thickness')
 
+
 }
+
+
+
+function goHome(){
+
+  router.push('/')
+
+}
+
+
 
 
 
@@ -132,45 +260,100 @@ watch(
 
   () => route.path,
 
-  (newPath, oldPath) => {
 
-    if (!oldPath) return
+  (newPath, oldPath)=>{
+
+
+    if(!oldPath){
+
+      return
+
+    }
+
+
+
+
+    /**
+     * La Welcome non è uno step
+     */
+    if(newPath === '/'){
+
+      return
+
+    }
+
+
 
 
 
     /**
      * BACK browser
      */
-    if (isRollback(oldPath, newPath)) {
-
-      rollbackToStep(
-        config,
+    if(
+      isRollback(
+        oldPath,
         newPath
       )
+    ){
+
+
+      rollbackToStep(
+
+        config,
+
+        newPath
+
+      )
+
+
 
       config.currentStep = newPath
 
+
+
       lastValidStep = newPath
+
+
 
       return
 
     }
+
+
+
+
+
 
 
 
     /**
      * FORWARD browser
+     *
      * oppure URL scritto manualmente
      */
-    if (!canEnterStep(config, newPath)) {
+    if(
+      !canEnterStep(
+        config,
+        newPath
+      )
+    ){
+
 
       router.replace(
+
         lastValidStep
+
       )
+
 
       return
 
     }
+
+
+
+
+
 
 
 
@@ -179,108 +362,226 @@ watch(
      */
     config.currentStep = newPath
 
+
     lastValidStep = newPath
+
+
 
   }
 
 )
 
+
+
+
+
 </script>
+
+
 
 
 
 <style>
 
+
 .app {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.3s, color 0.3s;
-  position: relative;
+
+  max-width:900px;
+
+  margin:auto;
+
+  padding:40px 20px;
+
+  font-family:'Inter',sans-serif;
+
+  transition:
+    background .3s,
+    color .3s;
+
+  position:relative;
+
 }
+
+
 
 
 .header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:10px;
+
 }
 
 
 
-/* PULSANTE RESET */
+
+
+
 .button-container{
 
-  display: flex;
+
+  display:flex;
+
   justify-content:space-between;
-  padding: 20px;
-  margin-bottom: 20px;
+
+  padding:20px;
+
+  margin-bottom:20px;
+
 
 }
+
+
+
+
 
 
 
 .reset-btn {
 
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  font-weight: 600;
 
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
+  padding:8px 14px;
 
-  background: white;
-  color: #374151;
+  font-size:.85rem;
 
-  cursor: pointer;
+  font-weight:600;
 
-  transition: all 0.2s;
+
+  border-radius:8px;
+
+  border:1px solid #d1d5db;
+
+
+  background:white;
+
+  color:#374151;
+
+
+  cursor:pointer;
+
+
+  transition:all .2s;
+
 
 }
+
+
 
 
 
 .reset-btn:hover {
 
-  background: #f3f4f6;
+
+  background:#f3f4f6;
+
 
 }
 
 
-/* ==============================
-   ROUTE TRANSITION
-   ============================== */
+
+
+
+
+
+/*
+==============================
+ROUTE TRANSITION
+==============================
+*/
 
 
 .fade-slide-enter-active,
 .fade-slide-leave-active {
 
+
   transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
+
+    opacity .35s ease,
+
+    transform .35s ease;
+
 
 }
+
+
 
 
 
 .fade-slide-enter-from {
 
+
   opacity:0;
 
   transform:translateX(30px);
 
+
 }
+
+
 
 
 
 .fade-slide-leave-to {
 
+
   opacity:0;
 
   transform:translateX(-30px);
 
+
 }
+
+.header-actions{
+
+  display:flex;
+
+  gap:10px;
+
+  align-items:center;
+
+}
+
+
+
+.home-btn {
+
+  padding:8px 14px;
+
+  font-size:.85rem;
+
+  font-weight:600;
+
+
+  border-radius:8px;
+
+  border:1px solid #d1d5db;
+
+
+  background:white;
+
+  color:#374151;
+
+
+  cursor:pointer;
+
+
+  transition:all .2s;
+
+}
+
+
+
+.home-btn:hover {
+
+  background:#f3f4f6;
+
+}
+
+
 
 </style>

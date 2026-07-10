@@ -1,5 +1,8 @@
 export const locales = {
   it: {
+    
+    homeConfigurator: 'Home configuratore',
+
     // Branding
     h1: "Genulux",
     h2: "Configuratore",
@@ -72,9 +75,29 @@ export const locales = {
     wallType: 'Tipo di muro',
     massivbau: 'Muratura massiva',
     trockenbau: 'Parete in cartongesso',
+
+
+    // Welcome configuratore
+
+
+    welcomeTitle: 'Configuratore porte filomuro',
+    welcomeDescription:'Configura la tua porta in pochi semplici passaggi. Al termine potrai scaricare un PDF riepilogativo con tutte le misure della configurazione.',
+    welcomeFeaturesTitle: 'Durante la configurazione ti verrà richiesto di selezionare:',
+    welcomeFeatureDoor: 'Tipo di porta',
+    welcomeFeatureWallType: 'Tipo di parete',
+    welcomeFeatureWallThickness: 'Spessore della parete',
+    welcomeFeatureMeasures: 'Misure della porta',
+    savedConfigurationTitle: 'Configurazione trovata',
+    savedConfigurationDescription:'È stata trovata una configurazione salvata. Puoi continuare da dove avevi interrotto oppure iniziare una nuova configurazione.',
+    startConfiguration: 'Inizia configurazione',
+    continueConfiguration: 'Continua configurazione',
+    newConfiguration: 'Nuova configurazione',
   },
 
   en: {
+
+    homeConfigurator: 'Configurator Home',
+
     // Branding
     h1: "Genulux",
     h2: "Configurator",
@@ -146,9 +169,26 @@ export const locales = {
     wallType: 'Wall type',
     massivbau: 'Solid construction',
     trockenbau: 'Drywall construction',
-      },
+    
+    // Welcome configuratore
+    welcomeTitle: 'Flush door configurator',
+    welcomeDescription:'Configure your door in just a few steps. At the end you will be able to download a PDF summary containing all the configuration measurements.',
+    welcomeFeaturesTitle: 'During the configuration you will be asked to select:',
+    welcomeFeatureDoor: 'Door type',
+    welcomeFeatureWallType: 'Wall type',
+    welcomeFeatureWallThickness: 'Wall thickness',
+    welcomeFeatureMeasures: 'Door dimensions',
+    savedConfigurationTitle: 'Saved configuration found',
+    savedConfigurationDescription:'A previously saved configuration has been found. You can continue where you left off or start a new configuration.',
+    startConfiguration: 'Start configuration',
+    continueConfiguration: 'Continue configuration',
+    newConfiguration: 'New configuration',
+  },
 
   de: {
+
+    homeConfigurator: 'Konfigurator Startseite',
+
     // Branding
     h1: "Genulux",
     h2: "Konfigurator",
@@ -220,9 +260,27 @@ export const locales = {
     wallType: 'Wandtyp',
     massivbau: 'Massivbau',
     trockenbau: 'Trockenbau',
+
+
+    // Welcome configuratore
+    welcomeTitle: 'Konfigurator für flächenbündige Türen',
+    welcomeDescription:'Konfigurieren Sie Ihre Tür in wenigen Schritten. Am Ende können Sie eine PDF-Zusammenfassung mit allen Maßen herunterladen.',
+    welcomeFeaturesTitle: 'Während der Konfiguration wählen Sie aus:',
+    welcomeFeatureDoor: 'Türtyp',
+    welcomeFeatureWallType: 'Wandtyp',
+    welcomeFeatureWallThickness: 'Wandstärke',
+    welcomeFeatureMeasures: 'Türmaße',
+    savedConfigurationTitle: 'Gespeicherte Konfiguration gefunden',
+    savedConfigurationDescription:'Es wurde eine gespeicherte Konfiguration gefunden. Sie können dort fortfahren, wo Sie aufgehört haben, oder eine neue Konfiguration starten.',
+    startConfiguration: 'Konfiguration starten',
+    continueConfiguration: 'Konfiguration fortsetzen',
+    newConfiguration: 'Neue Konfiguration',
   },
 
   es: {
+
+    homeConfigurator: 'Inicio configurador',
+
     // Branding
     h1: "Genulux",
     h2: "Configurador",
@@ -294,9 +352,27 @@ export const locales = {
     wallType: 'Tipo de pared',
     massivbau: 'Construcción maciza',
     trockenbau: 'Construcción de paneles de yeso',
+
+ 
+    // Welcome configuratore
+    welcomeTitle: 'Configurador de puertas enrasadas',
+    welcomeDescription:'Configure su puerta en pocos pasos. Al finalizar podrá descargar un PDF con el resumen completo de las medidas.',
+    welcomeFeaturesTitle: 'Durante la configuración deberá seleccionar:',
+    welcomeFeatureDoor: 'Tipo de puerta',
+    welcomeFeatureWallType: 'Tipo de pared',
+    welcomeFeatureWallThickness: 'Espesor de la pared',
+    welcomeFeatureMeasures: 'Medidas de la puerta',
+    savedConfigurationTitle: 'Configuración guardada encontrada',
+    savedConfigurationDescription:'Se ha encontrado una configuración guardada. Puede continuar donde lo dejó o iniciar una nueva configuración.',
+    startConfiguration: 'Iniciar configuración',
+    continueConfiguration: 'Continuar configuración',
+    newConfiguration: 'Nueva configuración',
   },
 
   fr: {
+
+    homeConfigurator: 'Accueil configurateur',
+
     // Branding
     h1: "Genulux",
     h2: "Configurateur",
@@ -368,5 +444,20 @@ export const locales = {
     wallType: 'Type de mur',
     massivbau: 'Construction massive',
     trockenbau: 'Construction en plaques de plâtre',
+
+    
+    // Welcome configuratore
+    welcomeTitle: 'Configurateur de portes affleurantes',
+    welcomeDescription:'Configurez votre porte en quelques étapes. À la fin, vous pourrez télécharger un PDF récapitulatif avec toutes les dimensions.',
+    welcomeFeaturesTitle: 'Pendant la configuration, vous devrez sélectionner :',
+    welcomeFeatureDoor: 'Type de porte',
+    welcomeFeatureWallType: 'Type de cloison',
+    welcomeFeatureWallThickness: 'Épaisseur de la cloison',
+    welcomeFeatureMeasures: 'Dimensions de la porte',
+    savedConfigurationTitle: 'Configuration enregistrée trouvée',
+    savedConfigurationDescription:'Une configuration enregistrée a été trouvée. Vous pouvez reprendre où vous vous étiez arrêté ou commencer une nouvelle configuration.',
+    startConfiguration: 'Commencer la configuration',
+    continueConfiguration: 'Continuer la configuration',
+    newConfiguration: 'Nouvelle configuration',
   }
 }
