@@ -1,8 +1,46 @@
 import { reactive, watch } from 'vue'
 
+/**
+ * Lingua iniziale del configuratore.
+ *
+ * Al primo avvio viene utilizzata
+ * la lingua del browser.
+ *
+ * Se non è supportata,
+ * viene usato l'italiano.
+ */
+function getBrowserLanguage(){
+
+  const lang =
+    navigator.language
+      .split('-')[0]
+      .toLowerCase()
+
+  const supported = [
+
+    'it',
+
+    'en',
+
+    'de',
+
+    'fr',
+
+    'es'
+
+  ]
+
+  return supported.includes(lang)
+
+    ? lang
+
+    : 'it'
+
+}
+
 export const config = reactive({
 
-  currentLang: 'it',
+  currentLang: getBrowserLanguage(),
 
   // Viene impostato automaticamente da StepMeasures
   // IT -> Passaggio luce
@@ -11,7 +49,7 @@ export const config = reactive({
 
   door:'',
 
-  wallType: '',
+  wallType:'',
 
   wall:'',
 
@@ -79,7 +117,7 @@ export function resetConfig(){
 
   config.door=''
 
-  config.wallType = ''
+  config.wallType=''
 
   config.wall=''
 
@@ -96,11 +134,10 @@ export function resetConfig(){
 }
 
 /**
- * Verifica se esiste una configurazione salvata
+ * Verifica se esiste una configurazione salvata.
  *
  * Utilizzata dalla Welcome Page
- *
- * Serve per decidere se mostrare:
+ * per decidere se mostrare:
  *
  * - Continua configurazione
  * - Nuova configurazione
