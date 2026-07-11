@@ -3,14 +3,12 @@
 
 
     <!--
-      SCELTA TIPO MURO
-
-      Rimane sempre disponibile.
-      Permette all'utente di correggere
-      una scelta errata senza rollback.
+    ========================================
+    TIPO MURO
+    ========================================
     -->
 
-    <div class="wall-choice">
+    <div class="choice-box">
 
 
       <h2>
@@ -19,33 +17,42 @@
 
 
 
-      <div class="wall-buttons">
+      <div class="button-group">
 
 
         <button
-          class="wall-option"
-          :class="{ active: config.wallType === 'massivbau' }"
+
+          class="option-button"
+
+          :class="{
+            active: config.wallType === 'massivbau'
+          }"
+
           @click="selectWallType('massivbau')"
+
         >
 
-          <strong>
-            {{ locales[config.currentLang].massivbau }}
-          </strong>
+          {{ locales[config.currentLang].massivbau }}
 
         </button>
 
 
 
 
+
         <button
-          class="wall-option"
-          :class="{ active: config.wallType === 'trockenbau' }"
+
+          class="option-button"
+
+          :class="{
+            active: config.wallType === 'trockenbau'
+          }"
+
           @click="selectWallType('trockenbau')"
+
         >
 
-          <strong>
-            {{ locales[config.currentLang].trockenbau }}
-          </strong>
+          {{ locales[config.currentLang].trockenbau }}
 
         </button>
 
@@ -54,6 +61,7 @@
 
 
     </div>
+
 
 
 
@@ -63,57 +71,106 @@
 
 
     <!--
-      SCELTA SPESSORE MURO
+    ========================================
+    SPESSORE MURO
+    ========================================
     -->
 
+
     <div
+
       v-if="config.wallType"
-      class="thickness-choice"
+
+      class="choice-box"
+
     >
 
 
       <h2>
+
         {{ locales[config.currentLang].wallThickness }}
+
       </h2>
 
 
 
 
-      <div class="selected-wall">
-
-        <strong>
-          {{ locales[config.currentLang].wallType }}:
-        </strong>
+      <div class="thickness-list">
 
 
-        {{ locales[config.currentLang][config.wallType] }}
+        <div
 
+          v-for="item in availableWallThickness"
 
-      </div>
+          :key="item.value"
 
+          class="thickness-item"
 
-
-
-
-      <div class="button-group">
-
-
-        <button
-          v-for="val in availableWallThickness"
-          :key="val"
-          :class="{ active: config.wall === val }"
-          @click="select(val)"
         >
 
-          {{ val }} cm
 
-        </button>
+
+          <button
+
+            class="option-button"
+
+            :disabled="!item.enabled"
+
+            :class="{
+
+              active: config.wall === item.value,
+
+              disabled: !item.enabled
+
+            }"
+
+            @click="selectThickness(item)"
+
+          >
+
+            {{ item.value }} cm
+
+
+          </button>
+
+
+
+
+
+          <!--
+          Informazione tecnica derivata
+          SOLO TROCKENBAU
+          -->
+
+          <small
+
+            v-if="
+              config.wallType === 'trockenbau'
+              &&
+              item.panel
+            "
+
+            class="panel-note"
+
+          >
+
+            {{ locales[config.currentLang].wallPanel }}:
+
+            {{ locales[config.currentLang][item.panel] }}
+
+
+          </small>
+
+
+
+        </div>
 
 
       </div>
 
 
     </div>
+
 
 
   </div>
@@ -123,12 +180,20 @@
 
 
 
+
+
+
+
 <script setup>
 
+
 import { computed } from 'vue'
+
 import { useRouter } from 'vue-router'
 
 import { locales } from '../locales'
+
+
 
 
 
@@ -141,20 +206,20 @@ const props = defineProps({
 })
 
 
+
+
+
 const router = useRouter()
 
 
 
 
 
+
+
 /**
- * Spessori disponibili
- *
- * Attualmente uguali per:
- * - massivbau
- * - trockenbau
- *
- * Preparato per future differenze.
+ * Lista spessori disponibili
+ * in base al tipo muro scelto
  */
 const availableWallThickness = computed(()=>{
 
@@ -168,7 +233,9 @@ const availableWallThickness = computed(()=>{
 
 
   return props.data.wallThicknessOptions[
+
     props.config.wallType
+
   ]
 
 
@@ -181,13 +248,12 @@ const availableWallThickness = computed(()=>{
 
 
 
+
 /**
  * Cambio tipo muro
  *
- * Rimane sempre possibile.
- *
- * Cambio tipo =
- * reset dello spessore scelto.
+ * Reset delle scelte
+ * dipendenti
  */
 function selectWallType(type){
 
@@ -196,6 +262,8 @@ function selectWallType(type){
 
 
   props.config.wall = ''
+
+  props.config.wallPanel = ''
 
 
 }
@@ -210,11 +278,45 @@ function selectWallType(type){
 
 /**
  * Scelta spessore
+ *
+ * Nel caso trockenbau:
+ * la pannellatura viene ricavata
+ * automaticamente dallo spessore
  */
-function select(value){
+function selectThickness(item){
 
 
-  props.config.wall = value
+  if(!item.enabled){
+
+    return
+
+  }
+
+
+
+  props.config.wall = item.value
+
+
+
+
+
+  if(props.config.wallType === 'trockenbau'){
+
+
+    props.config.wallPanel = item.panel || ''
+
+
+  }
+  else {
+
+
+    props.config.wallPanel = ''
+
+
+  }
+
+
+
 
 
   props.config.currentStep='/measures'
@@ -226,7 +328,12 @@ function select(value){
 }
 
 
+
 </script>
+
+
+
+
 
 
 
@@ -234,7 +341,9 @@ function select(value){
 
 <style scoped>
 
+
 .step-card {
+
 
   background:v-bind('data.colors.cardBg');
 
@@ -244,163 +353,44 @@ function select(value){
 
   box-shadow:v-bind('data.colors.cardShadow');
 
-  text-align:center;
-
-  transition:transform .3s;
 
 }
+
+
+
+
+
+
+.choice-box {
+
+
+  width:100%;
+
+  padding:25px;
+
+  margin-bottom:25px;
+
+  border-radius:12px;
+
+  background:#f9fafb;
+
+  text-align:center;
+
+
+}
+
+
+
 
 
 
 h2 {
 
-  margin-bottom:1rem;
-
-}
-
-
-
-
-
-
-
-/*
-========================================
-TIPO MURO
-========================================
-*/
-
-
-.wall-choice {
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-}
-
-
-
-
-
-
-.wall-buttons {
-
-  display:flex;
-
-  gap:20px;
-
-  justify-content:center;
-
-  flex-wrap:wrap;
-
-}
-
-
-
-
-
-.wall-option {
-
-  width:220px;
-
-  padding:20px;
-
-  border-radius:12px;
-
-  border:2px solid v-bind('data.colors.primary');
-
-  background:v-bind('data.colors.buttonBg');
-
-  cursor:pointer;
-
-  font-weight:600;
-
-  transition:all .25s ease;
-
-}
-
-
-
-
-
-.wall-option.active {
-
-  background:v-bind('data.colors.buttonActive');
-
-  color:v-bind('data.colors.buttonActiveText');
-
-  border-color:v-bind('data.colors.buttonActive');
-
-}
-
-
-
-
-
-.wall-option:hover {
-
-  background:v-bind('data.colors.buttonHover');
-
-  transform:translateY(-3px);
-
-}
-
-
-
-
-
-
-.wall-option.active:hover {
-
-  background:v-bind('data.colors.buttonActive');
-
-}
-
-
-
-
-
-
-
-
-
-/*
-========================================
-SPESSORE MURO
-========================================
-*/
-
-
-.thickness-choice {
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  margin-top:30px;
-
-}
-
-
-
-
-
-.selected-wall {
 
   margin-bottom:20px;
 
-  padding:10px 15px;
+  font-size:1.1rem;
 
-  border-radius:8px;
-
-  background:#f3f4f6;
-
-  color:#374151;
 
 }
 
@@ -411,11 +401,32 @@ SPESSORE MURO
 
 .button-group {
 
+
   display:flex;
+
+  justify-content:center;
 
   gap:15px;
 
+  flex-wrap:wrap;
+
+
+}
+
+
+
+
+
+
+.thickness-list {
+
+  display:flex;
+
   justify-content:center;
+
+  align-items:flex-start;
+
+  gap:20px;
 
   flex-wrap:wrap;
 
@@ -426,11 +437,33 @@ SPESSORE MURO
 
 
 
-button {
+.thickness-item {
 
-  padding:12px 20px;
 
-  border-radius:8px;
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:8px;
+
+
+}
+
+
+
+
+
+
+.option-button {
+
+
+  min-width:150px;
+
+  padding:15px 25px;
+
+  border-radius:10px;
 
   border:2px solid v-bind('data.colors.primary');
 
@@ -440,7 +473,8 @@ button {
 
   cursor:pointer;
 
-  transition:all .2s;
+  transition:.2s;
+
 
 }
 
@@ -449,7 +483,23 @@ button {
 
 
 
-.button-group button.active {
+.option-button:hover:not(:disabled) {
+
+
+  background:v-bind('data.colors.buttonHover');
+
+  transform:translateY(-2px);
+
+
+}
+
+
+
+
+
+
+.option-button.active {
+
 
   background:v-bind('data.colors.buttonActive');
 
@@ -457,6 +507,7 @@ button {
 
   border-color:v-bind('data.colors.buttonActive');
 
+
 }
 
 
@@ -464,9 +515,33 @@ button {
 
 
 
-.button-group button:hover {
+.option-button:disabled,
+.option-button.disabled {
 
-  background:v-bind('data.colors.buttonHover');
+
+  opacity:.35;
+
+  cursor:not-allowed;
+
+  background:#e5e7eb;
+
+
+}
+
+
+
+
+
+
+.panel-note {
+
+
+  color:#4b5563;
+
+  font-size:.9rem;
+
+  font-style:italic;
+
 
 }
 

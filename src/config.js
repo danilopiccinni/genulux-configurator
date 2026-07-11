@@ -1,5 +1,6 @@
 import { reactive, watch } from 'vue'
 
+
 /**
  * Lingua iniziale del configuratore.
  *
@@ -16,6 +17,7 @@ function getBrowserLanguage(){
       .split('-')[0]
       .toLowerCase()
 
+
   const supported = [
 
     'it',
@@ -30,6 +32,7 @@ function getBrowserLanguage(){
 
   ]
 
+
   return supported.includes(lang)
 
     ? lang
@@ -38,20 +41,67 @@ function getBrowserLanguage(){
 
 }
 
+
+
+
+
 export const config = reactive({
+
 
   currentLang: getBrowserLanguage(),
 
+
+
   // Viene impostato automaticamente da StepMeasures
+  //
   // IT -> Passaggio luce
+  //
   // DE -> Misura porta
   standard:'',
 
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | Configurazione porta
+  |--------------------------------------------------------------------------
+  */
+
   door:'',
+
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | Configurazione muro
+  |--------------------------------------------------------------------------
+  |
+  | wallType:
+  | - massivbau
+  | - trockenbau
+  |
+  | wallPanel:
+  | - singlePanel
+  | - doublePanel
+  |
+  | wall:
+  | - spessore muro
+  |
+  */
 
   wallType:'',
 
+  wallPanel:'',
+
   wall:'',
+
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | Misure
+  |--------------------------------------------------------------------------
+  */
 
   type:'',
 
@@ -61,15 +111,26 @@ export const config = reactive({
 
   height:'',
 
+
+
   currentStep:'/door-thickness'
 
+
 })
+
+
+
+
+
+
+
 
 watch(
 
   config,
 
   (newVal)=>{
+
 
     localStorage.setItem(
 
@@ -79,7 +140,9 @@ watch(
 
     )
 
+
   },
+
 
   {
     deep:true
@@ -87,51 +150,100 @@ watch(
 
 )
 
+
+
+
+
+
+
+
+
 export function loadConfig(){
 
   const saved = JSON.parse(
-
     localStorage.getItem('doorConfig')
-
   )
+
 
   if(saved){
 
     Object.assign(
-
       config,
-
       saved
-
     )
+
+  }
+
+
+  if(!config.wallPanel){
+
+    config.wallPanel=''
 
   }
 
 }
 
+
+
+
+
+
+
+
+
 export function resetConfig(){
+
 
   localStorage.removeItem('doorConfig')
 
+
+
   config.standard=''
+
+
 
   config.door=''
 
+
+
   config.wallType=''
+
+
+  config.wallPanel=''
+
 
   config.wall=''
 
+
+
   config.type=''
+
+
 
   config.mode='fixed'
 
+
+
   config.width=''
+
+
 
   config.height=''
 
+
+
   config.currentStep='/door-thickness'
 
+
 }
+
+
+
+
+
+
+
+
 
 /**
  * Verifica se esiste una configurazione salvata.
@@ -144,11 +256,14 @@ export function resetConfig(){
  */
 export function hasSavedConfiguration(){
 
+
   return !!(
 
     config.door ||
 
     config.wallType ||
+
+    config.wallPanel ||
 
     config.wall ||
 
@@ -159,5 +274,6 @@ export function hasSavedConfiguration(){
     config.height
 
   )
+
 
 }

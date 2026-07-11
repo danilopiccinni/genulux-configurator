@@ -111,9 +111,13 @@ export function rollbackToStep(config, path) {
 
         case '/wall-thickness':
 
+
           config.wallType = ''
 
+          config.wallPanel = ''
+
           config.wall = ''
+
 
           break
 
@@ -122,6 +126,7 @@ export function rollbackToStep(config, path) {
 
 
         case '/measures':
+
 
           config.type = ''
 
@@ -132,6 +137,7 @@ export function rollbackToStep(config, path) {
           config.height = ''
 
           config.standard = ''
+
 
           break
 
@@ -160,6 +166,60 @@ export function rollbackToStep(config, path) {
 
 
 /**
+ * Verifica se il muro è completo
+ *
+ * Massivbau:
+ * - tipo muro
+ * - spessore
+ *
+ * Trockenbau:
+ * - tipo muro
+ * - pannellatura
+ * - spessore
+ */
+function isWallComplete(config){
+
+
+  if(!config.wallType){
+
+    return false
+
+  }
+
+
+
+  if(config.wallType === 'massivbau'){
+
+    return !!config.wall
+
+  }
+
+
+
+
+  if(config.wallType === 'trockenbau'){
+
+    return !!config.wall &&
+           !!config.wallPanel
+
+  }
+
+
+
+
+  return false
+
+}
+
+
+
+
+
+
+
+
+
+/**
  * Controlla se un utente può entrare in uno step
  *
  * Gestisce:
@@ -176,6 +236,7 @@ export function canEnterStep(config, path){
 
     case '/door-thickness':
 
+
       return true
 
 
@@ -183,6 +244,7 @@ export function canEnterStep(config, path){
 
 
     case '/wall-thickness':
+
 
       return !!config.door
 
@@ -192,8 +254,11 @@ export function canEnterStep(config, path){
 
     case '/measures':
 
+
       return !!config.door &&
-             !!config.wall
+             isWallComplete(config)
+
+
 
 
 
@@ -201,10 +266,15 @@ export function canEnterStep(config, path){
 
     case '/summary':
 
+
       return !!config.door &&
-             !!config.wall &&
+
+             isWallComplete(config) &&
+
              !!config.type &&
+
              !!config.width &&
+
              !!config.height
 
 
@@ -212,6 +282,7 @@ export function canEnterStep(config, path){
 
 
     default:
+
 
       return false
 

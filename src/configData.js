@@ -33,35 +33,114 @@ export const ConfigData = {
 
   doorThicknessOptions: ['40', '44'],
 
-  wallTypes: [
+  /*
+  |--------------------------------------------------------------------------
+  | Configurazione muro
+  |--------------------------------------------------------------------------
+  */
 
-    'massivbau',
 
-    'trockenbau'
+ /*
+|--------------------------------------------------------------------------
+| Configurazione muro
+|--------------------------------------------------------------------------
+*/
+
+
+wallTypes: [
+
+  'massivbau',
+
+  'trockenbau'
+
+],
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Spessori muro disponibili
+|--------------------------------------------------------------------------
+|
+| enabled:
+|
+| true  = selezionabile
+|
+| false = visibile ma bloccato
+|
+|
+| panel:
+|
+| utilizzato solo per trockenbau
+|
+| definisce automaticamente
+| la pannellatura derivata
+|
+*/
+
+
+wallThicknessOptions: {
+
+
+  massivbau:[
+
+
+    {
+
+      value:'10',
+
+      enabled:false
+
+    },
+
+
+    {
+
+      value:'12.5',
+
+      enabled:true
+
+    }
+
 
   ],
 
 
-  wallThicknessOptions: {
-
-    massivbau: [
-
-      '10',
-
-      '12.5'
-
-    ],
 
 
-    trockenbau: [
 
-      '10',
+  trockenbau:[
 
-      '12.5'
 
-    ]
+    {
+
+      value:'10',
+
+      enabled:false,
+
+      panel:'singlePanel'
+
+    },
+
+
+    {
+
+      value:'12.5',
+
+      enabled:true,
+
+      panel:'doublePanel'
+
+    }
+
+
+  ]
+
 
 },
+
+
 
 
   /*

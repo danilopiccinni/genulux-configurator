@@ -76,6 +76,11 @@ export const locales = {
     massivbau: 'Muratura massiva',
     trockenbau: 'Parete in cartongesso',
 
+    // Tipo muro - pannellatura cartongesso
+    wallPanel: 'Pannellatura cartongesso',
+    singlePanel: 'Singola lastra',
+    doublePanel: 'Doppia lastra',
+
 
     // Welcome configuratore
 
@@ -169,6 +174,11 @@ export const locales = {
     wallType: 'Wall type',
     massivbau: 'Solid construction',
     trockenbau: 'Drywall construction',
+
+    // Wall type - plasterboard paneling
+    wallPanel: 'Plasterboard paneling',
+    singlePanel: 'Single panel',
+    doublePanel: 'Double panel',
     
     // Welcome configuratore
     welcomeTitle: 'Flush door configurator',
@@ -260,6 +270,11 @@ export const locales = {
     wallType: 'Wandtyp',
     massivbau: 'Massivbau',
     trockenbau: 'Trockenbau',
+
+    // Wandtyp - Trockenbau Beplankung
+    wallPanel: 'Trockenbau Beplankung',
+    singlePanel: 'Einlagige Beplankung',
+    doublePanel: 'Doppellagige Beplankung',
 
 
     // Welcome configuratore
@@ -353,6 +368,11 @@ export const locales = {
     massivbau: 'Construcción maciza',
     trockenbau: 'Construcción de paneles de yeso',
 
+    // Tipo de pared - panelado de cartón yeso
+    wallPanel: 'Panelado de cartón yeso',
+    singlePanel: 'Panel simple',
+    doublePanel: 'Panel doble',
+
  
     // Welcome configuratore
     welcomeTitle: 'Configurador de puertas enrasadas',
@@ -444,6 +464,11 @@ export const locales = {
     wallType: 'Type de mur',
     massivbau: 'Construction massive',
     trockenbau: 'Construction en plaques de plâtre',
+
+    // Type de mur - panneaux en plaques de plâtre
+    wallPanel: 'Panneau de plaque de plâtre',
+    singlePanel: 'Panneau simple',
+    doublePanel: 'Double panneau',
 
     
     // Welcome configuratore

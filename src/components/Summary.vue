@@ -109,6 +109,21 @@
       </p>
 
 
+
+      <p
+        v-if="config.wallType === 'trockenbau'"
+      >
+
+        <b>
+          {{ locales[currentLang].wallPanel }}:
+        </b>
+
+        {{ locales[currentLang][config.wallPanel] }}
+
+      </p>
+
+
+
       <p>
 
         <b>

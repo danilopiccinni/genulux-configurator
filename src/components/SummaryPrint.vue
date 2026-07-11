@@ -181,6 +181,29 @@
           </tr>
 
 
+
+
+          <tr
+            v-if="wallType === 'trockenbau'"
+          >
+
+            <th>
+              {{ locales[currentLang].wallPanel }}
+            </th>
+
+
+            <td>
+
+              {{ locales[currentLang][wallPanel] }}
+
+            </td>
+
+          </tr>
+
+
+
+
+
           <tr>
 
             <th>
@@ -194,9 +217,7 @@
 
             </td>
 
-
           </tr>
-
 
 
 
@@ -256,6 +277,8 @@ const props = defineProps({
   wallType:String,
 
   wall:String,
+
+  wallPanel: String,
 
   type:String,
 
