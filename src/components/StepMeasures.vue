@@ -51,8 +51,25 @@
 
       </button>
 
+      <button
+        class="measure-option"
+        :class="{ active: config.type === 'measureMuro' }"
+        @click="selectMeasureType('wall')"
+      >
+  
+        <strong>
+          {{ locales[config.currentLang].measureMuro }}
+        </strong>
+  
+        <small>
+          IT / DE
+        </small>
+  
+      </button>
 
     </div>
+
+
 
 
 
@@ -407,7 +424,7 @@ import { useRouter } from 'vue-router'
 
 import { locales } from '../locales'
 
-import { generateMeasureOptions } from '../helpers/measureCatalog'
+import { generateMeasureOptions,generateWallOpeningOptions } from '../helpers/measureCatalog'
 
 import { getAvailabilityInfo } from '../helpers/availabilityHelper'
 
@@ -443,17 +460,42 @@ const router = useRouter()
 function selectMeasureType(type){
 
 
-  const newType =
-    type === 'light'
-      ? 'measureLuce'
-      : 'measurePorta'
+  let newType = ''
+  let newStandard = null
 
 
 
-  const newStandard =
-    type === 'light'
-      ? 'IT'
-      : 'DE'
+  switch(type){
+
+
+    case 'light':
+
+      newType = 'measureLuce'
+      newStandard = 'IT'
+
+      break
+
+
+
+    case 'door':
+
+      newType = 'measurePorta'
+      newStandard = 'DE'
+
+      break
+
+
+
+    case 'wall':
+
+      newType = 'measureMuro'
+      newStandard = null
+
+      break
+
+
+  }
+
 
 
 
@@ -463,6 +505,7 @@ function selectMeasureType(type){
     props.config.height=''
 
   }
+
 
 
 
@@ -536,13 +579,45 @@ const measureConfig = computed(()=>{
 const standardMeasures = computed(()=>{
 
 
-  if(
+  if(!props.config.type){
 
-    !props.config.standard ||
+    return []
 
-    !props.config.type
+  }
 
-  ){
+
+
+  /**
+   * Apertura muro
+   *
+   * Non ha standard iniziale.
+   *
+   * Il catalogo è unione:
+   *
+   * IT + DE
+   *
+   * Lo standard verrà assegnato
+   * dopo la scelta della misura.
+   */
+  if(props.config.type === 'measureMuro'){
+
+
+    return generateWallOpeningOptions()
+
+
+  }
+
+
+
+
+
+  /**
+   * Misure normali:
+   *
+   * measureLuce -> IT
+   * measurePorta -> DE
+   */
+  if(!props.config.standard){
 
     return []
 
@@ -654,13 +729,8 @@ const currentAvailability = computed(()=>{
 
 
   if(
-
-    !props.config.standard ||
-
     !props.config.width ||
-
     !props.config.height
-
   ){
 
     return null
@@ -669,6 +739,53 @@ const currentAvailability = computed(()=>{
 
 
 
+  /**
+   * Misura apertura muro
+   *
+   * La disponibilità arriva direttamente
+   * dal catalogo ibrido IT + DE
+   */
+  if(props.config.type === 'measureMuro'){
+
+
+    const selected =
+      standardMeasures.value.find(item =>
+
+        item.width === props.config.width &&
+
+        item.height === props.config.height
+
+      )
+
+
+
+    if(!selected){
+
+      return null
+
+    }
+
+
+
+    return {
+
+      availability:
+        selected.availability
+
+    }
+
+
+  }
+
+
+
+
+
+  /**
+   * Misure standard normali
+   *
+   * Usano il resolver classico
+   */
   return resolveAvailability({
 
     standard:props.config.standard,
@@ -748,6 +865,7 @@ function widthChanged(){
 
   }
 
+  resolveWallStandard()
 
 }
 
@@ -782,12 +900,44 @@ function heightChanged(){
 
   }
 
+  resolveWallStandard()
 
 }
 
 
 
 
+function resolveWallStandard(){
+
+
+  if(props.config.type !== 'measureMuro'){
+
+    return
+
+  }
+
+
+
+  const selected =
+    standardMeasures.value.find(item=>
+
+      item.width === props.config.width &&
+
+      item.height === props.config.height
+
+    )
+
+
+
+  if(selected?.originStandard){
+
+    props.config.standard =
+      selected.originStandard
+
+  }
+
+
+}
 
 
 
