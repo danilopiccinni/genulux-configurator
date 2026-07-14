@@ -20,6 +20,8 @@
     <div class="card">
 
 
+      
+      
       <p>
 
         <b>
@@ -27,7 +29,7 @@
         </b>
 
         {{ config.standard }} -
-
+        
         {{
           config.standard === 'IT'
             ? locales[currentLang].international
@@ -36,37 +38,30 @@
 
       </p>
 
-
-
-
+      
+      <div
+        v-for="item in summaryMeasures"
+        :key="item.key"
+      >
+      
+      
       <p>
-
-        <b>
-          {{ locales[currentLang].doorDimensions }}:
-        </b>
-
-        {{ measures?.porta?.width }}
-        ×
-        {{ measures?.porta?.height }}
-        mm
-
+      
+      <b>
+      {{ locales[currentLang][item.labelKey] }}:
+      </b>
+      
+      
+      {{ item.value.width }}
+      ×
+      {{ item.value.height }}
+      mm
+      
+      
       </p>
-
-
-
-
-      <p>
-
-        <b>
-          {{ locales[currentLang].lightPassageDimensions }}:
-        </b>
-
-        {{ measures?.luce?.width }}
-        ×
-        {{ measures?.luce?.height }}
-        mm
-
-      </p>
+      
+      
+      </div>
 
 
 
@@ -74,22 +69,8 @@
       <p>
 
         <b>
-          {{ locales[currentLang].wallOpeningDimensions }}:
+          Telaio:
         </b>
-
-        {{ measures?.muro?.width }}
-        ×
-        {{ measures?.muro?.height }}
-        mm
-
-      </p>
-
-
-
-
-      <p>
-
-        Telaio:
 
         {{ measures?.telaio?.width }}
         ×
@@ -251,6 +232,8 @@
 
       :installationNotes="installationNotes"
 
+      :summaryMeasures="summaryMeasures"
+
 
     />
 
@@ -279,6 +262,8 @@ import { getAvailabilityInfo } from '../helpers/availabilityHelper.js'
 import { locales } from '../locales.js'
 
 import { getInstallationNotes } from '../helpers/installationNotes'
+
+import { getSummaryMeasures } from '../helpers/summaryMeasures'
 
 
 
@@ -477,6 +462,28 @@ const installationNotes = computed(()=>{
 
   return getInstallationNotes(
     props.config
+  )
+
+
+})
+
+
+const summaryMeasures = computed(()=>{
+
+
+  if(!measures.value){
+
+    return []
+
+  }
+
+
+  return getSummaryMeasures(
+
+    config,
+
+    measures.value
+
   )
 
 

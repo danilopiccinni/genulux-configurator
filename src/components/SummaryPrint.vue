@@ -50,98 +50,25 @@
 
 
 
-
-          <!-- DISPONIBILITA -->
-          <tr v-if="availabilityInfo">
+          <tr
+            v-for="item in summaryMeasures"
+            :key="item.key"
+          >
 
             <th>
-              {{ locales[currentLang].availability }}
+              {{ locales[currentLang][item.labelKey] }}
             </th>
-
 
             <td>
 
-              {{ availabilityInfo.title }}
-
-              -
-
-              {{ availabilityInfo.description }}
-
-            </td>
-
-
-          </tr>
-
-
-
-
-
-          <tr>
-
-            <th>
-              {{ locales[currentLang].doorDimensions }}
-            </th>
-
-
-            <td>
-
-              {{ measures?.porta?.width }}
-              ×
-              {{ measures?.porta?.height }}
-              mm
+            {{ item.value?.width }}
+            ×
+            {{ item.value?.height }}
+            mm
 
             </td>
 
-
           </tr>
-
-
-
-
-
-          <tr>
-
-            <th>
-              {{ locales[currentLang].lightPassageDimensions }}
-            </th>
-
-
-            <td>
-
-              {{ measures?.luce?.width }}
-              ×
-              {{ measures?.luce?.height }}
-              mm
-
-            </td>
-
-
-          </tr>
-
-
-
-
-
-          <tr>
-
-            <th>
-              {{ locales[currentLang].wallOpeningDimensions }}
-            </th>
-
-
-            <td>
-
-              {{ measures?.muro?.width }}
-              ×
-              {{ measures?.muro?.height }}
-              mm
-
-            </td>
-
-
-          </tr>
-
-
 
 
 
@@ -237,6 +164,28 @@
               }}
 
             </td>
+
+          </tr>
+
+
+          <!-- DISPONIBILITA -->
+          <tr v-if="availabilityInfo">
+
+            <th>
+              {{ locales[currentLang].availability }}
+            </th>
+
+
+            <td>
+
+              {{ availabilityInfo.title }}
+
+              -
+
+              {{ availabilityInfo.description }}
+
+            </td>
+
 
           </tr>
 
@@ -347,7 +296,9 @@ const props = defineProps({
 
   currentLang:String,
 
-  installationNotes:Array
+  installationNotes:Array,
+
+  summaryMeasures:Array
 
 })
 
