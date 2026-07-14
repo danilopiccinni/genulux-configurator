@@ -78,7 +78,7 @@ const steps = computed(() => [
 
 
   {
-    path:'/door-thickness',
+    path:'/door',
 
     label:
       locales[props.config.currentLang].door
@@ -142,7 +142,7 @@ function isCompleted(path) {
   switch(path) {
 
 
-    case '/door-thickness':
+    case '/door':
 
       return !!props.config.door
 

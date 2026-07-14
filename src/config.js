@@ -113,7 +113,7 @@ export const config = reactive({
 
 
 
-  currentStep:'/door-thickness'
+  currentStep:'/door'
 
 
 })
@@ -232,7 +232,7 @@ export function resetConfig(){
 
 
 
-  config.currentStep='/door-thickness'
+  config.currentStep='/door'
 
 
 }

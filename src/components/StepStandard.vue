@@ -47,8 +47,8 @@ const router = useRouter()
 
 function select(standard) {
   props.config.standard = standard
-  props.config.currentStep = '/door-thickness'
-  router.push('/door-thickness')
+  props.config.currentStep = '/door'
+  router.push('/door')
 }
 </script>
 

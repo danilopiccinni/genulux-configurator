@@ -11,7 +11,7 @@
  */
 export const stepOrder = [
 
-  '/door-thickness',
+  '/door',
 
   '/wall-thickness',
 
@@ -234,7 +234,7 @@ export function canEnterStep(config, path){
 
 
 
-    case '/door-thickness':
+    case '/door':
 
 
       return true

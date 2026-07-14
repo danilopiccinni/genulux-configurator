@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Welcome from '../components/Welcome.vue'
-import Stepdoor from '../components/Stepdoor.vue'
+import Stepdoor from '../components/StepDoor.vue'
 import StepWallThickness from '../components/StepWallThickness.vue'
 import StepMeasures from '../components/StepMeasures.vue'
 import Summary from '../components/Summary.vue'
@@ -14,7 +14,7 @@ const routes = [
   },
 
   {
-    path: '/door-thickness',
+    path: '/door',
     component: Stepdoor
   },
 

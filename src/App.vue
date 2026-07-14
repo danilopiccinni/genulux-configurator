@@ -164,7 +164,7 @@ const route = useRoute()
  * - URL manuali
  * - salti di configurazione
  */
-let lastValidStep = '/door-thickness'
+let lastValidStep = '/door'
 
 
 
@@ -188,11 +188,11 @@ onMounted(() => {
    *
    * Ora il flusso parte da:
    *
-   * /door-thickness
+   * /door
    */
   if(config.currentStep === '/standard'){
 
-    config.currentStep = '/door-thickness'
+    config.currentStep = '/door'
 
   }
 
@@ -215,7 +215,7 @@ onMounted(() => {
 
 
   lastValidStep =
-    config.currentStep || '/door-thickness'
+    config.currentStep || '/door'
 
 
 })
@@ -233,10 +233,10 @@ function newConfig(){
   resetConfig()
 
 
-  lastValidStep = '/door-thickness'
+  lastValidStep = '/door'
 
 
-  router.replace('/door-thickness')
+  router.replace('/door')
 
 
 }

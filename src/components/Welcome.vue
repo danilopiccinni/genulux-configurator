@@ -261,7 +261,7 @@ function continueConfiguration(){
 
   router.push(
 
-    config.currentStep || '/door-thickness'
+    config.currentStep || '/door'
 
   )
 
@@ -280,7 +280,7 @@ function startNewConfiguration(){
   resetConfig()
 
 
-  router.push('/door-thickness')
+  router.push('/door')
 
 
 }
