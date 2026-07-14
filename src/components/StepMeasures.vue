@@ -287,11 +287,12 @@
 
 
           <input
-            type="range"
+            type="number"
             :min="measureConfig.limits.minWidth"
             :max="measureConfig.limits.maxWidth"
             :step="measureConfig.limits.stepWidth"
             v-model.number="config.width"
+            @change="validateWidth"
           />
 
 
@@ -331,11 +332,12 @@
 
 
           <input
-            type="range"
+            type="number"
             :min="measureConfig.limits.minHeight"
             :max="measureConfig.limits.maxHeight"
             :step="measureConfig.limits.stepHeight"
             v-model.number="config.height"
+            @change="validateHeight"
           />
 
 
@@ -713,6 +715,99 @@ const availableHeights = computed(()=>{
 
 
 })
+
+
+/**
+ * ============================================================================
+ * Validazione larghezza misura libera
+ * ----------------------------------------------------------------------------
+ *
+ * Mantiene il valore dentro i limiti configurati.
+ *
+ * ============================================================================
+ */
+function validateWidth(){
+
+
+  const limits =
+    measureConfig.value.limits
+
+
+
+  if(
+    props.config.width <
+    limits.minWidth
+  ){
+
+    props.config.width =
+      limits.minWidth
+
+  }
+
+
+
+
+  if(
+    props.config.width >
+    limits.maxWidth
+  ){
+
+    props.config.width =
+      limits.maxWidth
+
+  }
+
+
+}
+
+
+
+
+
+
+
+/**
+ * ============================================================================
+ * Validazione altezza misura libera
+ * ----------------------------------------------------------------------------
+ *
+ * Mantiene il valore dentro i limiti configurati.
+ *
+ * ============================================================================
+ */
+function validateHeight(){
+
+
+  const limits =
+    measureConfig.value.limits
+
+
+
+  if(
+    props.config.height <
+    limits.minHeight
+  ){
+
+    props.config.height =
+      limits.minHeight
+
+  }
+
+
+
+
+  if(
+    props.config.height >
+    limits.maxHeight
+  ){
+
+    props.config.height =
+      limits.maxHeight
+
+  }
+
+
+}
 
 
 
@@ -1258,7 +1353,7 @@ INSERIMENTO MISURE
 
 
 select,
-input[type="range"]{
+input[type="number"]{
 
   padding:.8rem;
 
