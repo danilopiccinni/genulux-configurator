@@ -177,6 +177,44 @@
       </p>
 
 
+      <!--
+      ================================================
+      NOTE INSTALLAZIONE
+      ================================================
+      -->
+      
+      <div
+        v-if="installationNotes.length"
+        class="installation-notes"
+      >
+  
+  
+        <div
+          v-for="note in installationNotes"
+          :key="note.titleKey"
+          class="installation-note"
+        >
+  
+  
+          <h3>
+  
+            ℹ️ {{ locales[config.currentLang][note.titleKey] }}
+  
+          </h3>
+  
+  
+          <p>
+  
+            {{ locales[config.currentLang][note.textKey] }}
+  
+          </p>
+  
+  
+        </div>
+
+    </div>
+
+
 
     </div>
 
@@ -211,6 +249,9 @@
 
       :currentLang="currentLang"
 
+      :installationNotes="installationNotes"
+
+
     />
 
 
@@ -236,6 +277,8 @@ import { resolveAvailability } from '../helpers/availabilityResolver.js'
 import { getAvailabilityInfo } from '../helpers/availabilityHelper.js'
 
 import { locales } from '../locales.js'
+
+import { getInstallationNotes } from '../helpers/installationNotes'
 
 
 
@@ -424,6 +467,23 @@ const availabilityInfo = computed(() => {
 
 
 
+/**
+ * Note tecniche installazione
+ *
+ * Generate in base alla configurazione scelta.
+ */
+const installationNotes = computed(()=>{
+
+
+  return getInstallationNotes(
+    props.config
+  )
+
+
+})
+
+
+
 </script>
 
 
@@ -596,6 +656,41 @@ h2 {
 
 }
 
+
+.installation-notes{
+
+  width:100%;
+
+  margin-top:2rem;
+
+}
+
+
+.installation-note{
+
+  padding:18px;
+
+  border-radius:10px;
+
+  background:#f3f4f6;
+
+  border:1px solid #d1d5db;
+
+}
+
+
+.installation-note h3{
+
+  margin-bottom:10px;
+
+}
+
+
+.installation-note p{
+
+  margin:0;
+
+}
 
 
 </style>

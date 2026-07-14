@@ -250,6 +250,55 @@
     </section>
 
 
+    <section>
+      <!--
+      ================================================
+      INSTALLATION NOTES
+      ================================================
+      -->
+
+      <div
+        v-if="installationNotes.length"
+        class="print-section"
+      >
+
+
+        <h2>
+
+          {{ locales[currentLang].installationInformation }}
+
+        </h2>
+
+
+
+        <div
+          v-for="note in installationNotes"
+          :key="note.titleKey"
+        >
+
+
+          <h3>
+
+            {{ locales[currentLang][note.titleKey] }}
+
+          </h3>
+
+
+
+          <p>
+
+            {{ locales[currentLang][note.textKey] }}
+
+          </p>
+
+
+        </div>
+
+
+      </div>
+    </section>
+
+
   </div>
 </template>
 
@@ -296,7 +345,9 @@ const props = defineProps({
   availabilityInfo:Object,
 
 
-  currentLang:String
+  currentLang:String,
+
+  installationNotes:Array
 
 })
 

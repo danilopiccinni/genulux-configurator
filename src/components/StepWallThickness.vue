@@ -62,6 +62,19 @@
 
     </div>
 
+    <div
+      v-if="config.wallType === 'massivbau'"
+      class="wall-info"
+    >
+      <strong>
+        ℹ️ {{ locales[config.currentLang].solidcostructionInfoTitle }}
+      </strong>
+
+      <p>
+        {{ locales[config.currentLang].solidcostructionInfoText }}
+      </p>
+    </div>
+
 
 
 
@@ -108,6 +121,29 @@
 
         >
 
+        <!--
+        Informazione tecnica derivata
+        SOLO TROCKENBAU
+        -->
+        
+        <small 
+        
+          v-if="
+            config.wallType === 'trockenbau'
+            &&
+            item.panel
+          "
+        
+          class="wall-info"
+        
+        >
+        
+          {{ locales[config.currentLang].wallPanel }}:
+        
+          {{ locales[config.currentLang][item.panel] }}
+        
+        
+        </small>
 
 
           <button
@@ -137,29 +173,6 @@
 
 
 
-          <!--
-          Informazione tecnica derivata
-          SOLO TROCKENBAU
-          -->
-
-          <small
-
-            v-if="
-              config.wallType === 'trockenbau'
-              &&
-              item.panel
-            "
-
-            class="panel-note"
-
-          >
-
-            {{ locales[config.currentLang].wallPanel }}:
-
-            {{ locales[config.currentLang][item.panel] }}
-
-
-          </small>
 
 
 
@@ -542,6 +555,39 @@ h2 {
 
   font-style:italic;
 
+
+}
+
+
+.wall-info{
+
+  margin-top:20px;
+
+  padding:16px;
+
+  border-radius:10px;
+
+  background:#eff6ff;
+
+  border:1px solid #93c5fd;
+
+  color:#1e3a8a;
+
+}
+
+.wall-info strong{
+
+  display:block;
+
+  margin-bottom:8px;
+
+}
+
+.wall-info p{
+
+  margin:0;
+
+  line-height:1.5;
 
 }
 

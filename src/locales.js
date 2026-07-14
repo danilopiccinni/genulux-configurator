@@ -97,6 +97,9 @@ export const locales = {
     startConfiguration: 'Inizia configurazione',
     continueConfiguration: 'Continua configurazione',
     newConfiguration: 'Nuova configurazione',
+
+    solidcostructionInfoTitle: "Informazione per pareti in muratura",
+    solidcostructionInfoText:"Per l'installazione su pareti in muratura è necessario prevedere un pannello porta intonaco. Il pannello non è incluso nella fornitura Genulux e dovrà essere procurato separatamente.",
   },
 
   en: {
@@ -193,6 +196,9 @@ export const locales = {
     startConfiguration: 'Start configuration',
     continueConfiguration: 'Continue configuration',
     newConfiguration: 'New configuration',
+
+    solidcostructionInfoTitle: "Information for solidcostruction walls",
+    solidcostructionInfoText:"For installation in solidcostruction walls, a plaster carrier panel is required. The panel is not supplied by Genulux and must be sourced separately.",
   },
 
   de: {
@@ -290,6 +296,9 @@ export const locales = {
     startConfiguration: 'Konfiguration starten',
     continueConfiguration: 'Konfiguration fortsetzen',
     newConfiguration: 'Neue Konfiguration',
+
+    solidcostructionInfoTitle: "Hinweis für Massivbauwände",
+    solidcostructionInfoText:"Für den Einbau in Massivbauwände ist eine Putzträgerplatte erforderlich. Diese ist nicht im Lieferumfang von Genulux enthalten und muss bauseits bereitgestellt werden.",
   },
 
   es: {
@@ -387,6 +396,9 @@ export const locales = {
     startConfiguration: 'Iniciar configuración',
     continueConfiguration: 'Continuar configuración',
     newConfiguration: 'Nueva configuración',
+
+    solidcostructionInfoTitle: "Información para muros de mampostería",
+    solidcostructionInfoText:"Para la instalación en muros de mampostería es necesario utilizar un panel portaenlucido. Este panel no está incluido en el suministro de Genulux y debe adquirirse por separado.",
   },
 
   fr: {
@@ -484,5 +496,8 @@ export const locales = {
     startConfiguration: 'Commencer la configuration',
     continueConfiguration: 'Continuer la configuration',
     newConfiguration: 'Nouvelle configuration',
+
+    solidcostructionInfoTitle: "Information pour les murs maçonnés",
+    solidcostructionInfoText:"Pour une installation dans un mur maçonné, un panneau support d'enduit est nécessaire. Ce panneau n'est pas fourni par Genulux et doit être approvisionné séparément.",
   }
 }
