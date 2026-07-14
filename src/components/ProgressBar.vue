@@ -81,7 +81,7 @@ const steps = computed(() => [
     path:'/door-thickness',
 
     label:
-      locales[props.config.currentLang].doorThickness
+      locales[props.config.currentLang].door
   },
 
 

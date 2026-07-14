@@ -140,7 +140,7 @@
       <p>
 
         <b>
-          {{ locales[currentLang].doorThickness }}:
+          {{ locales[currentLang].door }}:
         </b>
 
         {{

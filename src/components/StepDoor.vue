@@ -2,7 +2,7 @@
   <div class="step-card">
 
     <h2>
-      {{ locales[config.currentLang].doorThickness }}
+      {{ locales[config.currentLang].door }}
     </h2>
 
     <div class="button-group">

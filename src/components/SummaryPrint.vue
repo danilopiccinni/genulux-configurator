@@ -225,7 +225,7 @@
           <tr>
 
             <th>
-              {{ locales[currentLang].doorThickness }}
+              {{ locales[currentLang].door }}
             </th>
 
             <td>

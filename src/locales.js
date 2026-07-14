@@ -8,7 +8,7 @@ export const locales = {
     h2: "Configuratore",
 
     // Configurazione
-    doorThickness: "Spessore porta",
+    door: "Porta",
     wallThickness: "Spessore muro",
     configurationStandard: "Standard di configurazione",
 
@@ -111,7 +111,7 @@ export const locales = {
     h2: "Configurator",
 
     // Configurazione
-    doorThickness: "Door Thickness",
+    door: "Door",
     wallThickness: "Wall Thickness",
     configurationStandard: "Configuration standard",
 
@@ -210,7 +210,7 @@ export const locales = {
     h2: "Konfigurator",
 
     // Configurazione
-    doorThickness: "Türstärke",
+    door: "Tür",
     wallThickness: "Wandstärke",
     configurationStandard: "Konfigurationsstandard",
 
@@ -310,7 +310,7 @@ export const locales = {
     h2: "Configurador",
 
     // Configurazione
-    doorThickness: "Grosor de la puerta",
+    door: "Puerta",
     wallThickness: "Grosor de la pared",
     configurationStandard: "Estándar de configuración",
 
@@ -410,7 +410,7 @@ export const locales = {
     h2: "Configurateur",
 
     // Configurazione
-    doorThickness: "Épaisseur de la porte",
+    door: "Porte",
     wallThickness: "Épaisseur du mur",
     configurationStandard: "Standard de configuration",
 
