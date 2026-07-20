@@ -20,6 +20,12 @@
         @click="selectMeasureType('light')"
       >
 
+      <img
+        :src="lightMeasureIcon"
+        alt="Light Measure"
+        class="option-icon"
+      />
+
         <strong>
           {{ locales[config.currentLang].measureLuce }}
         </strong>
@@ -40,6 +46,12 @@
         @click="selectMeasureType('door')"
       >
 
+      <img
+        :src="doorMeasureIcon"
+        alt="Door Measure"
+        class="option-icon"
+      />
+
         <strong>
           {{ locales[config.currentLang].measurePorta }}
         </strong>
@@ -59,6 +71,12 @@
         :class="{ active: config.type === 'measureMuro' }"
         @click="selectMeasureType('wall')"
       >
+
+      <img
+        :src="wallMeasureIcon"
+        alt="Wall Measure"
+        class="option-icon"
+      />
 
         <strong>
           {{ locales[config.currentLang].measureMuro }}
@@ -335,6 +353,10 @@ import { generateMeasureOptions,generateWallOpeningOptions } from '../helpers/me
 import { getAvailabilityInfo } from '../helpers/availabilityHelper'
 
 import { resolveAvailability } from '../helpers/availabilityResolver'
+
+import lightMeasureIcon from '../assets/images/ICONS_Konfigurator/passaggioluce.png'
+import doorMeasureIcon from '../assets/images/ICONS_Konfigurator/porta.png'
+import wallMeasureIcon from '../assets/images/ICONS_Konfigurator/aperturamuro.png'
 
 
 
@@ -1641,6 +1663,36 @@ CONTINUA
   cursor:not-allowed;
 
   box-shadow:none;
+
+}
+
+
+.option-icon {
+
+  width:58px;
+
+  height:58px;
+
+  object-fit:contain;
+
+  transition:
+    transform .25s ease,
+    filter .25s ease,
+    opacity .25s ease;
+
+}
+
+.option-card:hover .option-icon {
+
+  transform:scale(1.08);
+
+}
+
+.option-card.active .option-icon {
+
+  filter:
+    brightness(0)
+    invert(1);
 
 }
 

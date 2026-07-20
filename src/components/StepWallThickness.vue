@@ -22,6 +22,13 @@
           @click="selectWallType('massivbau')"
         >
 
+        <img
+          :src="solidWallIcon"
+          alt="Solid wall"
+          class="option-icon"
+        />
+
+
         <strong>
           {{ locales[config.currentLang].massivbau }}
         </strong>
@@ -38,6 +45,12 @@
           }"
           @click="selectWallType('trockenbau')"
         >
+
+        <img
+          :src="drywallIcon"
+          alt="Drywall"
+          class="option-icon"
+        />
 
         <strong>
           {{ locales[config.currentLang].trockenbau }}
@@ -128,6 +141,12 @@
 @click="selectThickness(item)"
 >
 
+<img
+  :src="thicknessIcon"
+  alt="Thickness"
+  class="option-icon"
+/>
+
 <strong>
   {{ item.value }} cm
 </strong>
@@ -186,6 +205,11 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { locales } from '../locales'
+
+import solidWallIcon from '../assets/images/ICONS_Konfigurator/mattoni.png'
+import drywallIcon from '../assets/images/ICONS_Konfigurator/cartongesso.png'
+import thicknessIcon from '../assets/images/ICONS_Konfigurator/spessore.png'
+
 
 
 
@@ -628,6 +652,35 @@ h2 {
   display:block;
 
   margin-top:4px;
+
+}
+
+.option-icon {
+
+  width:58px;
+
+  height:58px;
+
+  object-fit:contain;
+
+  transition:
+    transform .25s ease,
+    filter .25s ease,
+    opacity .25s ease;
+
+}
+
+.option-card:hover .option-icon {
+
+  transform:scale(1.08);
+
+}
+
+.option-card.active .option-icon {
+
+  filter:
+    brightness(0)
+    invert(1);
 
 }
 

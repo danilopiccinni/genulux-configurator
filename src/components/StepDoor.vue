@@ -13,6 +13,13 @@
         @click="select('wood')"
       >
 
+
+      <img
+        :src="woodIcon"
+        alt=""
+        class="option-icon"
+      >
+
         <strong>
           {{ locales[config.currentLang].woodDoor }}
         </strong>
@@ -25,6 +32,12 @@
         class="option-card"
         :class="{ active: config.door === 'glass' }"
         @click="select('glass')"
+      >
+
+      <img
+        :src="glassIcon"
+        alt=""
+        class="option-icon"
       >
 
         <strong>
@@ -42,6 +55,9 @@
 
 import { useRouter } from 'vue-router'
 import { locales } from '../locales'
+
+import woodIcon from '../assets/images/ICONS_Konfigurator/legno.png'
+import glassIcon from '../assets/images/ICONS_Konfigurator/vetro.png'
 
 const props = defineProps({
   config: Object,
@@ -235,6 +251,35 @@ h2 {
 .option-card.active strong {
 
   color:v-bind('data.colors.buttonActiveText');
+
+}
+
+.option-icon {
+
+  width:58px;
+
+  height:58px;
+
+  object-fit:contain;
+
+  transition:
+    transform .25s ease,
+    filter .25s ease,
+    opacity .25s ease;
+
+}
+
+.option-card:hover .option-icon {
+
+  transform:scale(1.08);
+
+}
+
+.option-card.active .option-icon {
+
+  filter:
+    brightness(0)
+    invert(1);
 
 }
 
