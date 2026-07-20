@@ -1,117 +1,165 @@
 <template>
-  <div
-    :style="{ background: ConfigData.colors.background, color: ConfigData.colors.primary }"
-    class="app"
-  >
 
-    <div class="header">
-
-      <h1>
-        <strong>
-          Genulux
-        </strong>
-      </h1>
-
-      <h5>
-        {{ locales[config.currentLang].h2 }}
-      </h5>
-
-    </div>
+  <div class="page">
 
 
-
-    <div class="button-container">
-
-      <LanguageSelector/>
-
-
-      <div
-        v-if="route.path !== '/'"
-        class="header-actions"
-      >
+    <!-- ========================================
+         HEADER BRAND
+    ========================================= -->
 
 
-        <!-- HOME CONFIGURATORE -->
-
-        <button
-          class="home-btn"
-          @click="goHome"
-        >
-
-          {{ locales[config.currentLang].homeConfigurator }}
-
-        </button>
+    <header class="topbar">
 
 
+      <div class="logo-container">
 
 
+        <img
 
-        <!-- NUOVA CONFIGURAZIONE -->
+          class="logo"
 
-        <button
-          class="reset-btn"
-          @click="newConfig"
-        >
+          src="./assets/images/logo_ags_weis.png"
 
-          {{ locales[config.currentLang].newConfiguration }}
+          alt="AGS"
 
-        </button>
+        />
 
 
       </div>
 
 
-    </div>
+
+
+
+      <div class="topbar-actions">
+
+
+        <LanguageSelector />
 
 
 
 
 
-    <ProgressBar
-
-      v-if="route.path !== '/'"
-
-      :config="config"
-
-      :data="ConfigData"
-
-    />
+        <div
+          v-if="route.path !== '/'"
+          class="header-actions"
+        >
 
 
 
+          <!-- HOME CONFIGURATORE -->
+
+          <button
+
+            class="header-btn"
+
+            @click="goHome"
+
+          >
+
+            {{ locales[config.currentLang].homeConfigurator }}
 
 
-    <router-view v-slot="{ Component }">
+          </button>
 
 
-      <Transition
-
-        name="fade-slide"
-
-        mode="out-in"
-
-      >
 
 
-        <component
-
-          :is="Component"
-
-          :config="config"
-
-          :data="ConfigData"
-
-        />
 
 
-      </Transition>
+          <!-- NUOVA CONFIGURAZIONE -->
+
+          <button
+
+            class="header-btn"
+
+            @click="newConfig"
+
+          >
+
+            {{ locales[config.currentLang].newConfiguration }}
 
 
-    </router-view>
+          </button>
 
+
+
+        </div>
+
+
+      </div>
+
+
+    </header>
+
+
+
+
+
+
+
+
+    <!-- ========================================
+         AREA CONFIGURATORE
+    ========================================= -->
+
+
+    <main class="configurator">
+
+
+
+      <ProgressBar
+
+        v-if="route.path !== '/'"
+
+        :config="config"
+
+        :data="ConfigData"
+
+      />
+
+
+
+
+
+
+
+      <router-view v-slot="{ Component }">
+
+
+        <Transition
+
+          name="fade-slide"
+
+          mode="out-in"
+
+        >
+
+
+          <component
+
+            :is="Component"
+
+            :config="config"
+
+            :data="ConfigData"
+
+          />
+
+
+        </Transition>
+
+
+      </router-view>
+
+
+
+    </main>
 
 
   </div>
+
+
 </template>
 
 
@@ -381,103 +429,109 @@ watch(
 
 
 
-<style>
+<style scoped>
 
 
-.app {
+/*
+========================================
+PAGE BACKGROUND
+========================================
+*/
 
-  max-width:900px;
 
-  margin:auto;
+.page {
 
-  padding:40px 20px;
+
+  min-height:100vh;
+
 
   font-family:'Inter',sans-serif;
 
-  transition:
-    background .3s,
-    color .3s;
 
-  position:relative;
+  background:
+
+
+    linear-gradient(
+
+      rgba(255, 255, 255, 0),
+
+      rgba(255, 255, 255, 0)
+
+    ),
+
+
+    url('./assets/images/bild_start.jpg');
+
+
+
+  background-size:cover;
+
+
+  background-position:left center;
+
+
+  background-repeat:no-repeat;
+
+
+  background-attachment:fixed;
+
+
+
+  color:v-bind('ConfigData.colors.text');
 
 }
 
 
 
 
-.header{
 
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
-
-  gap:10px;
-
-}
+/*
+========================================
+TOPBAR
+========================================
+*/
 
 
+.topbar {
 
 
-
-
-.button-container{
+  height:68px;
 
 
   display:flex;
+
 
   justify-content:space-between;
 
-  padding:20px;
 
-  margin-bottom:20px;
-
-
-}
+  align-items:center;
 
 
 
+  padding:
+
+    0 45px;
 
 
 
+  background:
 
-.reset-btn {
-
-
-  padding:8px 14px;
-
-  font-size:.85rem;
-
-  font-weight:600;
-
-
-  border-radius:8px;
-
-  border:1px solid #d1d5db;
-
-
-  background:white;
-
-  color:#374151;
-
-
-  cursor:pointer;
-
-
-  transition:all .2s;
-
-
-}
+    v-bind('ConfigData.colors.primary');
 
 
 
 
+  box-shadow:
 
-.reset-btn:hover {
+
+    0 6px 25px rgba(0,0,0,.05);
 
 
-  background:#f3f4f6;
+
+  position:relative;
+
+
+  z-index:10;
 
 
 }
@@ -489,9 +543,249 @@ watch(
 
 
 /*
-==============================
+========================================
+LOGO
+========================================
+*/
+
+
+.logo {
+
+
+  width:145px;
+
+
+  height:auto;
+
+
+  display:block;
+
+
+}
+
+
+
+
+
+
+
+
+.logo-container {
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+RIGHT ACTIONS
+========================================
+*/
+
+
+.topbar-actions {
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  gap:20px;
+
+
+}
+
+
+
+
+
+
+
+
+.header-actions {
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  gap:12px;
+
+
+}
+
+
+
+
+
+
+
+
+.header-btn {
+
+
+  padding:
+
+    10px 18px;
+
+
+
+  font-size:.85rem;
+
+
+  font-weight:600;
+
+
+
+  border-radius:
+
+    v-bind('ConfigData.colors.radius');
+
+
+
+  border:
+
+    1px solid
+
+    v-bind('ConfigData.colors.border');
+
+
+
+  background:
+
+    v-bind('ConfigData.colors.surface');
+
+
+
+  color:
+
+    v-bind('ConfigData.colors.text');
+
+
+
+  cursor:pointer;
+
+
+
+  transition:
+
+    all
+
+    v-bind('ConfigData.colors.transition');
+
+
+
+}
+
+
+
+
+
+
+
+.header-btn:hover {
+
+
+  background:
+
+    v-bind('ConfigData.colors.primaryLight');
+
+
+
+  border-color:
+
+    v-bind('ConfigData.colors.primary');
+
+
+
+  color:
+
+    v-bind('ConfigData.colors.primary');
+
+
+
+  transform:
+
+    translateY(-2px);
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+CONFIGURATOR POSITION
+========================================
+*/
+
+
+.configurator {
+
+
+  width:
+
+    min(900px,90%);
+
+
+
+  margin-left:auto;
+
+
+
+  margin-right:6vw;
+
+
+
+  padding:
+
+
+    45px 0 70px;
+
+
+
+  position:relative;
+
+
+  z-index:2;
+
+
+}
+
+
+
+
+
+
+
+
+/*
+========================================
 ROUTE TRANSITION
-==============================
+========================================
 */
 
 
@@ -501,7 +795,9 @@ ROUTE TRANSITION
 
   transition:
 
+
     opacity .35s ease,
+
 
     transform .35s ease;
 
@@ -517,10 +813,14 @@ ROUTE TRANSITION
 
   opacity:0;
 
-  transform:translateX(30px);
+
+  transform:
+
+    translateX(30px);
 
 
 }
+
 
 
 
@@ -531,57 +831,103 @@ ROUTE TRANSITION
 
   opacity:0;
 
-  transform:translateX(-30px);
+
+  transform:
+
+    translateX(-30px);
 
 
 }
 
-.header-actions{
 
-  display:flex;
 
-  gap:10px;
 
-  align-items:center;
+
+
+
+
+
+/*
+========================================
+RESPONSIVE
+========================================
+*/
+
+
+@media(max-width:900px){
+
+
+  .topbar {
+
+
+    padding:
+
+      0 25px;
+
+
+  }
+
+
+
+  .configurator {
+
+
+    width:92%;
+
+
+    margin:
+
+      0 auto;
+
+
+  }
+
+
 
 }
 
 
 
-.home-btn {
-
-  padding:8px 14px;
-
-  font-size:.85rem;
-
-  font-weight:600;
 
 
-  border-radius:8px;
 
-  border:1px solid #d1d5db;
-
-
-  background:white;
-
-  color:#374151;
+@media(max-width:650px){
 
 
-  cursor:pointer;
+
+  .topbar {
 
 
-  transition:all .2s;
+    height:auto;
+
+
+    padding:
+
+      20px;
+
+
+    flex-direction:column;
+
+
+    gap:20px;
+
+
+  }
+
+
+
+
+  .topbar-actions {
+
+
+    flex-direction:column;
+
+
+  }
+
+
+
 
 }
-
-
-
-.home-btn:hover {
-
-  background:#f3f4f6;
-
-}
-
-
 
 </style>

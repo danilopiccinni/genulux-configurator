@@ -1,6 +1,6 @@
 export const locales = {
   it: {
-    
+    language: "Lingua",
     homeConfigurator: 'Home configuratore',
 
     // Branding
@@ -84,8 +84,10 @@ export const locales = {
 
     // Welcome configuratore
 
+    welcomeTitle: "Benvenuto nel configuratore AGS",
+    welcomeText1: "Configura il tuo controtelaio in pochi semplici passaggi, scegliendo le caratteristiche più adatte alle tue esigenze.",
+    welcomeText2: "Al termine della configurazione otterrai un riepilogo completo con tutte le misure e le informazioni necessarie.",
 
-    welcomeTitle: 'Configuratore porte filomuro',
     welcomeDescription:'Configura la tua porta in pochi semplici passaggi. Al termine potrai scaricare un PDF riepilogativo con tutte le misure della configurazione.',
     welcomeFeaturesTitle: 'Durante la configurazione ti verrà richiesto di selezionare:',
     welcomeFeatureDoor: 'Tipo di porta',
@@ -103,6 +105,7 @@ export const locales = {
   },
 
   en: {
+    language: "Language",
 
     homeConfigurator: 'Configurator Home',
 
@@ -184,7 +187,10 @@ export const locales = {
     doublePanel: 'Double panel',
     
     // Welcome configuratore
-    welcomeTitle: 'Flush door configurator',
+    welcomeTitle: "Welcome to the AGS Configurator",
+    welcomeText1: "Configure your pocket door frame in just a few simple steps by selecting the options that best suit your project.",
+    welcomeText2: "At the end of the process you will receive a complete summary with all dimensions and configuration details.",
+
     welcomeDescription:'Configure your door in just a few steps. At the end you will be able to download a PDF summary containing all the configuration measurements.',
     welcomeFeaturesTitle: 'During the configuration you will be asked to select:',
     welcomeFeatureDoor: 'Door type',
@@ -202,6 +208,7 @@ export const locales = {
   },
 
   de: {
+    language: "Sprache",
 
     homeConfigurator: 'Konfigurator Startseite',
 
@@ -284,7 +291,12 @@ export const locales = {
 
 
     // Welcome configuratore
-    welcomeTitle: 'Konfigurator für flächenbündige Türen',
+
+    welcomeTitle: "Willkommen beim AGS-Konfigurator",
+    welcomeText1: "Konfigurieren Sie Ihren Schiebetürkasten in nur wenigen Schritten entsprechend Ihren Anforderungen.",
+    welcomeText2: "Am Ende der Konfiguration erhalten Sie eine vollständige Übersicht mit allen Maßen und den gewählten Einstellungen.",
+
+
     welcomeDescription:'Konfigurieren Sie Ihre Tür in wenigen Schritten. Am Ende können Sie eine PDF-Zusammenfassung mit allen Maßen herunterladen.',
     welcomeFeaturesTitle: 'Während der Konfiguration wählen Sie aus:',
     welcomeFeatureDoor: 'Türtyp',
@@ -302,6 +314,7 @@ export const locales = {
   },
 
   es: {
+    language: "Idioma",
 
     homeConfigurator: 'Inicio configurador',
 
@@ -384,7 +397,11 @@ export const locales = {
 
  
     // Welcome configuratore
-    welcomeTitle: 'Configurador de puertas enrasadas',
+
+    welcomeTitle: "Bienvenido al configurador AGS",
+    welcomeText1: "Configure su armazón para puerta corredera en unos sencillos pasos seleccionando las opciones que mejor se adapten a su proyecto.",
+    welcomeText2: "Al finalizar la configuración obtendrá un resumen completo con todas las medidas y la información seleccionada.",
+
     welcomeDescription:'Configure su puerta en pocos pasos. Al finalizar podrá descargar un PDF con el resumen completo de las medidas.',
     welcomeFeaturesTitle: 'Durante la configuración deberá seleccionar:',
     welcomeFeatureDoor: 'Tipo de puerta',
@@ -402,6 +419,8 @@ export const locales = {
   },
 
   fr: {
+
+    language: "Langue",
 
     homeConfigurator: 'Accueil configurateur',
 
@@ -484,7 +503,11 @@ export const locales = {
 
     
     // Welcome configuratore
-    welcomeTitle: 'Configurateur de portes affleurantes',
+
+    welcomeTitle: "Bienvenue dans le configurateur AGS",
+    welcomeText1: "Configurez votre châssis pour porte coulissante en quelques étapes simples selon vos besoins.",
+    welcomeText2: "À la fin de la configuration, vous obtiendrez un récapitulatif complet avec toutes les dimensions et les informations sélectionnées.",
+
     welcomeDescription:'Configurez votre porte en quelques étapes. À la fin, vous pourrez télécharger un PDF récapitulatif avec toutes les dimensions.',
     welcomeFeaturesTitle: 'Pendant la configuration, vous devrez sélectionner :',
     welcomeFeatureDoor: 'Type de porte',

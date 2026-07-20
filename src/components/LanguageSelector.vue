@@ -1,6 +1,6 @@
 <template>
   <div class="language-selector">
-    <label for="lang-select">Lingua:</label>
+    <label for="lang-select">{{ locales[config.currentLang].language }}:</label>
     <select id="lang-select" v-model="config.currentLang">
       <option v-for="(label, code) in availableLangs" :key="code" :value="code">
         {{ label }}
@@ -11,6 +11,8 @@
 
 <script setup>
 import { config } from '../config.js'
+
+import { locales } from '../locales'
 
 // Definiamo le lingue disponibili
 const availableLangs = {
@@ -27,7 +29,6 @@ const availableLangs = {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 1rem;
 }
 
 select {

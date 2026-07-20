@@ -1,4 +1,4 @@
-import Disegno from './assets/images/disegno-tecnico.webp'
+import Disegno from './assets/images/disegno_tecnico.png'
 
 /*
 |--------------------------------------------------------------------------
@@ -359,30 +359,162 @@ wallThicknessOptions: {
   | Colori
   |--------------------------------------------------------------------------
   */
-
   colors: {
 
-    primary: '#1f2937',
+    /* ==========================================================
+    * BRAND
+    * Colori principali Genulux / AGS
+    * ========================================================== */
 
-    secondary: '#3b82f6',
+    primary: '#8C1D40',
+    primaryHover: '#A3244B',
+    primaryDark: '#6F1732',
+    primaryLight: '#F8EEF2',
 
-    background: '#f3f4f6',
 
-    completedStep: '#10b981',
 
-    activeStep: '#facc15',
+    /* ==========================================================
+    * BACKGROUND
+    * ========================================================== */
 
-    buttonBg: '#ffffff',
+    background: '#F6F7F9',
+    surface: '#FFFFFF',
+    surfaceAlt: '#FAFAFA',
 
-    buttonHover: '#e5e7eb',
 
-    buttonActive: '#3b82f6',
 
-    buttonActiveText: '#ffffff',
+    /* ==========================================================
+    * TESTI
+    * ========================================================== */
 
-    cardBg: '#ffffff',
+    text: '#222222',
+    textSecondary: '#5F6368',
+    textLight: '#8C8C8C',
+    textWhite: '#FFFFFF',
 
-    cardShadow: '0 4px 6px rgba(0,0,0,0.1)'
+
+
+    /* ==========================================================
+    * BORDI
+    * ========================================================== */
+
+    border: '#E3E5E8',
+    borderLight: '#F1F2F4',
+    borderDark: '#CFCFCF',
+
+
+
+    /* ==========================================================
+    * BOTTONI
+    * ========================================================== */
+
+    buttonBg: '#FFFFFF',
+    buttonHover: '#F8EEF2',
+
+    buttonActive: '#8C1D40',
+    buttonActiveHover: '#A3244B',
+    buttonActiveText: '#FFFFFF',
+
+    buttonSecondary: '#F5F5F5',
+    buttonSecondaryHover: '#ECECEC',
+
+
+
+    /* ==========================================================
+    * CARD
+    * ========================================================== */
+
+    cardBg: '#ffffff9b',
+    cardBorder: '#ECECEC',
+
+    cardShadow:
+      '0 8px 24px rgba(0,0,0,.08)',
+
+    cardShadowHover:
+      '0 14px 35px rgba(0,0,0,.12)',
+
+
+
+    /* ==========================================================
+    * PROGRESS BAR
+    * ========================================================== */
+
+    completedStep: '#8C1D40',
+    activeStep: '#A3244B',
+    inactiveStep: '#FFFFFF',
+    lockedStep: '#ECECEC',
+
+
+
+    /* ==========================================================
+    * INPUT
+    * ========================================================== */
+
+    inputBg: '#FFFFFF',
+    inputBorder: '#D7D7D7',
+    inputBorderFocus: '#8C1D40',
+    inputPlaceholder: '#A5A5A5',
+
+
+
+    /* ==========================================================
+    * INFO BOX
+    * ========================================================== */
+
+    infoBg: '#F8EEF2',
+    infoBorder: '#D69AB0',
+    infoText: '#6F1732',
+
+
+
+    /* ==========================================================
+    * SUCCESS
+    * ========================================================== */
+
+    successBg: '#ECFDF5',
+    successBorder: '#22C55E',
+    successText: '#166534',
+
+
+
+    /* ==========================================================
+    * WARNING
+    * ========================================================== */
+
+    warningBg: '#FFF7ED',
+    warningBorder: '#F59E0B',
+    warningText: '#B45309',
+
+
+
+    /* ==========================================================
+    * ERROR
+    * ========================================================== */
+
+    errorBg: '#FEF2F2',
+    errorBorder: '#EF4444',
+    errorText: '#B91C1C',
+
+
+
+    /* ==========================================================
+    * TRANSITIONS
+    * ========================================================== */
+
+    transitionFast: '.18s ease',
+    transition: '.25s ease',
+    transitionSlow: '.35s ease',
+
+
+
+    /* ==========================================================
+    * BORDER RADIUS
+    * ========================================================== */
+
+    radiusSmall: '6px',
+    radius: '10px',
+    radiusLarge: '16px',
+    radiusXL: '22px'
 
   }
 

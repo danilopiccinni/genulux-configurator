@@ -1,24 +1,24 @@
 <template>
   <div class="summary">
 
-    <h2>
-      {{ locales[currentLang].documentSubtitle }}
-    </h2>
-
-
-    <div class="image-container">
-
-      <img
-        :src="data.images.summaryHeader"
-        alt="Disegno tecnico"
-      />
-
-    </div>
-
-
-
+    
+    
+    
     <div class="card">
-
+      
+      <h2>
+        {{ locales[currentLang].documentSubtitle }}
+      </h2>
+  
+  
+      <div class="image-container">
+  
+        <img
+          :src="data.images.summaryHeader"
+          alt="Disegno tecnico"
+        />
+  
+      </div>
 
       
       

@@ -268,27 +268,58 @@ function tryGo(path){
 
   display:flex;
 
-  gap:10px;
+  justify-content:space-between;
 
-  margin-bottom:40px;
+  align-items:flex-start;
+
+  position:relative;
+
+  margin:45px 10px 55px;
 
 }
 
 
 
+/*
+========================================
+LINEA CENTRALE
+========================================
+*/
+
+.progress::before {
+
+  content:"";
+
+  position:absolute;
+
+  top:18px;
+
+  left:11%;
+
+  right:11%;
+
+  height:2px;
+
+  background:v-bind('data.colors.border');
+
+  z-index:0;
+
+}
+
+
+
+
+
+
+
 .step {
+
+  position:relative;
+
+  z-index:1;
 
   flex:1;
 
-  text-align:center;
-
-  padding:10px 0;
-
-  border-radius:8px;
-
-  cursor:pointer;
-
-  transition:all .3s;
 
   display:flex;
 
@@ -296,77 +327,253 @@ function tryGo(path){
 
   align-items:center;
 
-  justify-content:center;
 
-  background:#fff;
+  cursor:pointer;
 
-  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+
+  transition:
+    transform .25s ease;
 
 }
+
+
+
+
 
 
 
 .step-number {
 
-  font-weight:bold;
+  width:38px;
 
-  margin-bottom:4px;
+  height:38px;
+
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+
+  border-radius:50%;
+
+
+  background:v-bind('data.colors.surface');
+
+
+  border:
+
+    2px solid
+
+    v-bind('data.colors.border');
+
+
+  color:v-bind('data.colors.textSecondary');
+
+
+  font-weight:700;
+
+
+  font-size:.9rem;
+
+
+  transition:
+
+    all .3s ease;
+
 
 }
+
+
+
+
 
 
 
 .step-label {
 
+  margin-top:14px;
+
+
   font-size:.85rem;
 
+
+  font-weight:600;
+
+
+  color:v-bind('data.colors.textSecondary');
+
+
+  transition:.3s ease;
+
+
 }
 
 
 
-.step.active {
-
-  background-color:#facc15;
-
-  color:#1f2937;
-
-  transform:translateY(-2px);
-
-  box-shadow:0 6px 12px rgba(0,0,0,0.15);
-
-}
 
 
 
-.step.completed {
 
-  background-color:#10b981;
+
+
+/*
+========================================
+ATTIVO
+========================================
+*/
+
+
+.step.active .step-number {
+
+
+  background:v-bind('data.colors.primary');
+
+
+  border-color:v-bind('data.colors.primary');
+
 
   color:white;
 
-  transform:translateY(-2px);
 
-  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  transform:scale(1.15);
+
+
+  box-shadow:
+
+    0 8px 22px
+
+    rgba(140,29,64,.35);
+
 
 }
 
+
+
+.step.active .step-label {
+
+
+  color:v-bind('data.colors.primary');
+
+
+  font-weight:700;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+COMPLETATO
+========================================
+*/
+
+
+.step.completed .step-number {
+
+
+  background:v-bind('data.colors.primary');
+
+
+  border-color:v-bind('data.colors.primary');
+
+
+  color:white;
+
+
+}
+
+
+
+.step.completed .step-label {
+
+
+  color:v-bind('data.colors.text');
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+BLOCCATO
+========================================
+*/
 
 
 .step.locked {
 
-  opacity:.4;
 
-  pointer-events:none;
+  
+
+  cursor:not-allowed;
 
 }
 
 
 
+
+
+
+
+.step.locked .step-number {
+
+
+  background:v-bind('data.colors.surfaceAlt');
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+HOVER
+========================================
+*/
+
+
 .step:not(.locked):hover {
 
-  transform:translateY(-2px);
 
-  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  transform:translateY(-4px);
+
+
+}
+
+
+
+
+
+.step:not(.locked):hover .step-number {
+
+
+  box-shadow:
+
+    0 8px 18px
+
+    rgba(0,0,0,.12);
+
 
 }
 

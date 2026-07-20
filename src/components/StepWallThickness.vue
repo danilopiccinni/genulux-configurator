@@ -2,57 +2,46 @@
   <div class="step-card">
 
 
-    <!--
-    ========================================
-    TIPO MURO
-    ========================================
-    -->
+    <!-- TIPO MURO -->
 
-    <div class="choice-box">
-
+    <div class="section">
 
       <h2>
         {{ locales[config.currentLang].wallType }}
       </h2>
 
 
-
       <div class="button-group">
 
 
         <button
-
-          class="option-button"
-
+          class="option-card"
           :class="{
             active: config.wallType === 'massivbau'
           }"
-
           @click="selectWallType('massivbau')"
-
         >
 
+        <strong>
           {{ locales[config.currentLang].massivbau }}
+        </strong>
 
         </button>
 
 
 
 
-
         <button
-
-          class="option-button"
-
+          class="option-card"
           :class="{
             active: config.wallType === 'trockenbau'
           }"
-
           @click="selectWallType('trockenbau')"
-
         >
 
+        <strong>
           {{ locales[config.currentLang].trockenbau }}
+        </strong>
 
         </button>
 
@@ -62,17 +51,27 @@
 
     </div>
 
+
+
+
+
+    <!-- INFO MURO MASSIVO -->
+
     <div
       v-if="config.wallType === 'massivbau'"
-      class="wall-info"
+      class="info-box"
     >
+
       <strong>
         ℹ️ {{ locales[config.currentLang].solidcostructionInfoTitle }}
       </strong>
 
+
       <p>
         {{ locales[config.currentLang].solidcostructionInfoText }}
       </p>
+
+
     </div>
 
 
@@ -80,22 +79,12 @@
 
 
 
-
-
-
-    <!--
-    ========================================
-    SPESSORE MURO
-    ========================================
-    -->
+    <!-- SPESSORE MURO -->
 
 
     <div
-
       v-if="config.wallType"
-
-      class="choice-box"
-
+      class="section"
     >
 
 
@@ -112,44 +101,20 @@
 
 
         <div
-
           v-for="item in availableWallThickness"
-
           :key="item.value"
-
           class="thickness-item"
-
         >
 
-        <!--
-        Informazione tecnica derivata
-        SOLO TROCKENBAU
-        -->
-        
-        <small 
-        
-          v-if="
-            config.wallType === 'trockenbau'
-            &&
-            item.panel
-          "
-        
-          class="wall-info"
-        
-        >
-        
-          {{ locales[config.currentLang].wallPanel }}:
-        
-          {{ locales[config.currentLang][item.panel] }}
+
+
         
         
-        </small>
+
 
 
           <button
-
-            class="option-button"
-
+            class="option-card"
             :disabled="!item.enabled"
 
             :class="{
@@ -157,22 +122,37 @@
               active: config.wall === item.value,
 
               disabled: !item.enabled
-
+              
             }"
 
-            @click="selectThickness(item)"
+@click="selectThickness(item)"
+>
 
-          >
-
-            {{ item.value }} cm
-
-
-          </button>
+<strong>
+  {{ item.value }} cm
+</strong>
 
 
+</button>
 
+<!-- INFO PANNELLO CARTONGESSO -->
 
+<div
+  v-if="
+    config.wallType === 'trockenbau'
+    &&
+    item.panel
+  "
+  class="panel-info"
+>
 
+  <!-- {{ locales[config.currentLang].wallPanel }}: -->
+
+  <strong>
+    {{ locales[config.currentLang][item.panel] }}
+  </strong>
+
+</div>
 
 
 
@@ -188,6 +168,7 @@
 
   </div>
 </template>
+
 
 
 
@@ -354,18 +335,27 @@ function selectThickness(item){
 
 <style scoped>
 
-
 .step-card {
-
 
   background:v-bind('data.colors.cardBg');
 
-  padding:30px;
+  padding:45px;
 
-  border-radius:12px;
+  border-radius:v-bind('data.colors.radiusXL');
 
   box-shadow:v-bind('data.colors.cardShadow');
 
+  border:1px solid v-bind('data.colors.cardBorder');
+
+  transition:.25s ease;
+
+}
+
+
+
+.step-card:hover {
+
+  box-shadow:v-bind('data.colors.cardShadowHover');
 
 }
 
@@ -373,25 +363,13 @@ function selectThickness(item){
 
 
 
+.section {
 
-.choice-box {
-
-
-  width:100%;
-
-  padding:25px;
-
-  margin-bottom:25px;
-
-  border-radius:12px;
-
-  background:#f9fafb;
+  margin-bottom:35px;
 
   text-align:center;
 
-
 }
-
 
 
 
@@ -399,14 +377,15 @@ function selectThickness(item){
 
 h2 {
 
+  margin-bottom:25px;
 
-  margin-bottom:20px;
+  font-size:1.35rem;
 
-  font-size:1.1rem;
+  color:v-bind('data.colors.text');
 
+  font-weight:700;
 
 }
-
 
 
 
@@ -414,18 +393,131 @@ h2 {
 
 .button-group {
 
-
   display:flex;
 
   justify-content:center;
 
-  gap:15px;
+  gap:20px;
 
   flex-wrap:wrap;
 
+}
+
+
+
+
+
+.option-card {
+
+  width:220px;
+
+  min-height:60px;
+
+  padding:20px;
+
+  border-radius:v-bind('data.colors.radiusLarge');
+
+  border:1px solid v-bind('data.colors.border');
+
+  background:v-bind('data.colors.buttonBg');
+
+  cursor:pointer;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:10px;
+
+  transition:.25s ease;
+
+  box-shadow:
+
+    0 6px 18px rgba(0,0,0,.06);
 
 }
 
+
+.option-card strong {
+
+  font-size:1.05rem;
+
+  color:v-bind('data.colors.primary');
+
+  letter-spacing:.3px;
+
+}
+
+
+
+
+.option-card:hover:not(:disabled) {
+
+  transform:translateY(-4px);
+
+  background:v-bind('data.colors.buttonHover');
+
+  border-color:v-bind('data.colors.primary');
+
+  box-shadow:
+
+    0 12px 28px rgba(140,29,64,.14);
+
+}
+
+
+
+
+
+.option-card.active {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      v-bind('data.colors.buttonActive'),
+
+      v-bind('data.colors.primaryHover')
+
+    );
+
+
+  border-color:v-bind('data.colors.buttonActive');
+
+  color:v-bind('data.colors.buttonActiveText');
+
+
+  box-shadow:
+
+    0 12px 30px rgba(140,29,64,.28);
+
+}
+
+
+.option-card.active strong {
+
+  color:v-bind('data.colors.buttonActiveText');
+
+}
+
+
+
+.option-card:disabled,
+.option-card.disabled {
+
+  opacity:.35;
+
+  cursor:not-allowed;
+
+  background:v-bind('data.colors.lockedStep');
+
+}
 
 
 
@@ -449,9 +541,7 @@ h2 {
 
 
 
-
 .thickness-item {
-
 
   display:flex;
 
@@ -459,35 +549,7 @@ h2 {
 
   align-items:center;
 
-  gap:8px;
-
-
-}
-
-
-
-
-
-
-.option-button {
-
-
-  min-width:150px;
-
-  padding:15px 25px;
-
-  border-radius:10px;
-
-  border:2px solid v-bind('data.colors.primary');
-
-  background:v-bind('data.colors.buttonBg');
-
-  font-weight:600;
-
-  cursor:pointer;
-
-  transition:.2s;
-
+  gap:12px;
 
 }
 
@@ -495,31 +557,19 @@ h2 {
 
 
 
+.info-box {
 
-.option-button:hover:not(:disabled) {
+  margin:20px 0 35px;
 
+  padding:18px;
 
-  background:v-bind('data.colors.buttonHover');
+  border-radius:v-bind('data.colors.radius');
 
-  transform:translateY(-2px);
+  background:v-bind('data.colors.infoBg');
 
+  border:1px solid v-bind('data.colors.infoBorder');
 
-}
-
-
-
-
-
-
-.option-button.active {
-
-
-  background:v-bind('data.colors.buttonActive');
-
-  color:v-bind('data.colors.buttonActiveText');
-
-  border-color:v-bind('data.colors.buttonActive');
-
+  color:v-bind('data.colors.infoText');
 
 }
 
@@ -527,55 +577,7 @@ h2 {
 
 
 
-
-.option-button:disabled,
-.option-button.disabled {
-
-
-  opacity:.35;
-
-  cursor:not-allowed;
-
-  background:#e5e7eb;
-
-
-}
-
-
-
-
-
-
-.panel-note {
-
-
-  color:#4b5563;
-
-  font-size:.9rem;
-
-  font-style:italic;
-
-
-}
-
-
-.wall-info{
-
-  margin-top:20px;
-
-  padding:16px;
-
-  border-radius:10px;
-
-  background:#eff6ff;
-
-  border:1px solid #93c5fd;
-
-  color:#1e3a8a;
-
-}
-
-.wall-info strong{
+.info-box strong {
 
   display:block;
 
@@ -583,11 +585,49 @@ h2 {
 
 }
 
-.wall-info p{
+
+
+
+
+.info-box p {
 
   margin:0;
 
-  line-height:1.5;
+  line-height:1.6;
+
+}
+
+
+
+
+
+.panel-info {
+
+  padding:10px 14px;
+
+  border-radius:v-bind('data.colors.radiusSmall');
+
+  background:v-bind('data.colors.primaryLight');
+
+  color:v-bind('data.colors.primaryDark');
+
+  font-size:.85rem;
+
+  text-align:center;
+
+  max-width:180px;
+
+}
+
+
+
+
+
+.panel-info strong {
+
+  display:block;
+
+  margin-top:4px;
 
 }
 

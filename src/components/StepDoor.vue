@@ -8,6 +8,7 @@
     <div class="button-group">
 
       <button
+        class="option-card"
         :class="{ active: config.door === 'wood' }"
         @click="select('wood')"
       >
@@ -21,6 +22,7 @@
 
 
       <button
+        class="option-card"
         :class="{ active: config.door === 'glass' }"
         @click="select('glass')"
       >
@@ -62,21 +64,53 @@ function select(type) {
 
 <style scoped>
 
-.step-card{
+.step-card {
 
   background:v-bind('data.colors.cardBg');
 
-  padding:30px;
+  padding:45px;
 
-  border-radius:12px;
+  border-radius:v-bind('data.colors.radiusXL');
 
   box-shadow:v-bind('data.colors.cardShadow');
 
+  border:1px solid v-bind('data.colors.cardBorder');
+
   text-align:center;
+
+  transition:.25s ease;
 
 }
 
-.button-group{
+
+
+.step-card:hover {
+
+  box-shadow:v-bind('data.colors.cardShadowHover');
+
+}
+
+
+
+
+
+h2 {
+
+  margin:0;
+
+  color:v-bind('data.colors.text');
+
+  font-size:1.4rem;
+
+  font-weight:700;
+
+}
+
+
+
+
+
+.button-group {
 
   display:flex;
 
@@ -86,66 +120,123 @@ function select(type) {
 
   flex-wrap:wrap;
 
-  margin-top:25px;
+  margin-top:35px;
 
 }
 
-button{
 
-  min-width:220px;
 
-  padding:18px;
 
-  border-radius:12px;
 
-  border:2px solid v-bind('data.colors.primary');
+.option-card {
+
+  width:220px;
+
+  min-height:60px;
+
+  padding:20px;
+
+  border-radius:v-bind('data.colors.radiusLarge');
+
+  border:1px solid v-bind('data.colors.border');
 
   background:v-bind('data.colors.buttonBg');
 
   cursor:pointer;
 
-  transition:all .25s ease;
-
   display:flex;
 
   flex-direction:column;
 
+  justify-content:center;
+
   align-items:center;
 
-  gap:8px;
+  gap:10px;
+
+  transition:.25s ease;
+
+  box-shadow:
+
+    0 6px 18px rgba(0,0,0,.06);
 
 }
 
-button strong{
 
-  font-size:1rem;
+
+
+
+.option-card strong {
+
+  font-size:1.05rem;
+
+  color:v-bind('data.colors.primary');
+
+  letter-spacing:.3px;
 
 }
 
-button small{
 
-  font-size:.85rem;
 
-  opacity:.8;
 
-}
 
-button:hover{
+.option-card:hover {
+
+  transform:translateY(-4px);
+
+  border-color:v-bind('data.colors.primary');
 
   background:v-bind('data.colors.buttonHover');
 
-  transform:translateY(-2px);
+  box-shadow:
+
+    0 12px 28px rgba(140,29,64,.14);
 
 }
 
-button.active{
 
-  background:v-bind('data.colors.buttonActive');
 
-  color:v-bind('data.colors.buttonActiveText');
+
+
+.option-card.active {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      v-bind('data.colors.buttonActive'),
+
+      v-bind('data.colors.primaryHover')
+
+    );
+
+
 
   border-color:v-bind('data.colors.buttonActive');
 
+
+
+  box-shadow:
+
+    0 12px 30px rgba(140,29,64,.28);
+
+
+
+  transform:translateY(-4px);
+
 }
+
+
+
+
+
+.option-card.active strong {
+
+  color:v-bind('data.colors.buttonActiveText');
+
+}
+
 
 </style>

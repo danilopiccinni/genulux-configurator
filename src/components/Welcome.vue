@@ -1,6 +1,6 @@
 <template>
 
-  <div class="welcome-card">
+  <div class="step-card">
 
 
     <div class="welcome-header">
@@ -17,7 +17,13 @@
 
       <p class="description">
 
-        {{ locales[config.currentLang].welcomeDescription }}
+        {{ locales[config.currentLang].welcomeText1 }}
+
+      </p>
+
+            <p class="description">
+
+        {{ locales[config.currentLang].welcomeText2 }}
 
       </p>
 
@@ -29,7 +35,7 @@
 
 
 
-    <div class="features">
+    <!-- <div class="features">
 
 
       <h3>
@@ -109,7 +115,7 @@
       </div>
 
 
-    </div>
+    </div> -->
 
 
 
@@ -233,7 +239,6 @@
 
 import { useRouter } from 'vue-router'
 
-
 import { locales } from '../locales'
 
 
@@ -246,6 +251,11 @@ import {
   hasSavedConfiguration
 
 } from '../config'
+
+const props = defineProps({
+  config: Object,
+  data: Object
+})
 
 
 
@@ -296,23 +306,35 @@ function startNewConfiguration(){
 <style scoped>
 
 
-.welcome-card{
+/*
+==============================
+WELCOME CARD
+==============================
+*/
 
+.step-card {
 
-  max-width:850px;
+  background:v-bind('data.colors.cardBg');
 
-  margin:30px auto;
+  padding:45px;
 
-  padding:55px 60px;
+  border-radius:v-bind('data.colors.radiusXL');
 
-  background:white;
+  box-shadow:v-bind('data.colors.cardShadow');
 
-  border-radius:18px;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.08);
+  border:1px solid v-bind('data.colors.cardBorder');
 
   text-align:center;
+
+  transition:.25s ease;
+
+}
+
+
+
+.step-card:hover {
+
+  box-shadow:v-bind('data.colors.cardShadowHover');
 
 }
 
@@ -324,8 +346,7 @@ function startNewConfiguration(){
 
 .welcome-header{
 
-
-  max-width:650px;
+  max-width:680px;
 
   margin:auto;
 
@@ -338,14 +359,15 @@ function startNewConfiguration(){
 
 h1{
 
+  font-size:2.5rem;
 
-  font-size:2.2rem;
+  margin:0 0 18px;
 
-  margin:0 0 15px;
+  letter-spacing:1px;
 
-  letter-spacing:.5px;
+  color:#8C1D40;
 
-  color:#1f2937;
+  font-weight:700;
 
 }
 
@@ -356,12 +378,13 @@ h1{
 
 h2{
 
+  font-size:1.55rem;
 
-  font-size:1.5rem;
+  margin-bottom:28px;
 
-  margin-bottom:25px;
+  color:#2f2930;
 
-  color:#374151;
+  font-weight:600;
 
 }
 
@@ -373,14 +396,13 @@ h2{
 
 .description{
 
+  line-height:1.8;
 
-  line-height:1.7;
+  font-size:1.08rem;
 
-  font-size:1.05rem;
+  color:#5b5560;
 
-  color:#4b5563;
-
-  margin-bottom:45px;
+  margin-bottom:50px;
 
 }
 
@@ -401,10 +423,9 @@ FEATURES
 
 .features{
 
+  max-width:620px;
 
-  max-width:600px;
-
-  margin:0 auto 45px;
+  margin:0 auto 50px;
 
 }
 
@@ -415,10 +436,11 @@ FEATURES
 
 .features h3{
 
+  margin-bottom:28px;
 
-  margin-bottom:25px;
+  font-size:1.2rem;
 
-  font-size:1.15rem;
+  color:#2f2930;
 
 }
 
@@ -429,12 +451,11 @@ FEATURES
 
 .feature-list{
 
-
   display:flex;
 
   flex-direction:column;
 
-  gap:15px;
+  gap:16px;
 
 }
 
@@ -445,20 +466,37 @@ FEATURES
 
 .feature-item{
 
-
   display:flex;
 
   align-items:center;
 
-  gap:15px;
+  gap:18px;
 
-  padding:14px 18px;
+  padding:18px 22px;
 
-  background:#f9fafb;
+  background:#faf7f8;
 
-  border-radius:12px;
+  border-radius:16px;
 
   text-align:left;
+
+  border:1px solid rgba(140,29,64,.08);
+
+  transition:.25s ease;
+
+}
+
+
+
+
+
+
+.feature-item:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(140,29,64,.10);
 
 }
 
@@ -469,10 +507,9 @@ FEATURES
 
 .feature-icon{
 
+  width:32px;
 
-  width:28px;
-
-  height:28px;
+  height:32px;
 
   display:flex;
 
@@ -482,13 +519,16 @@ FEATURES
 
   border-radius:50%;
 
-  background:#2563eb;
+  background:#8C1D40;
 
   color:white;
 
   font-weight:bold;
 
   flex-shrink:0;
+
+  box-shadow:
+    0 4px 10px rgba(140,29,64,.25);
 
 }
 
@@ -499,10 +539,9 @@ FEATURES
 
 .feature-item p{
 
-
   margin:0;
 
-  color:#374151;
+  color:#3f3740;
 
 }
 
@@ -523,10 +562,9 @@ CONFIGURAZIONE SALVATA
 
 .saved-box{
 
+  border-top:1px solid #eadde1;
 
-  border-top:1px solid #e5e7eb;
-
-  padding-top:35px;
+  padding-top:40px;
 
 }
 
@@ -537,8 +575,9 @@ CONFIGURAZIONE SALVATA
 
 .saved-box h3{
 
+  margin-bottom:12px;
 
-  margin-bottom:10px;
+  color:#2f2930;
 
 }
 
@@ -549,8 +588,7 @@ CONFIGURAZIONE SALVATA
 
 .saved-box p{
 
-
-  color:#4b5563;
+  color:#5b5560;
 
 }
 
@@ -571,16 +609,15 @@ BUTTONS
 
 .buttons{
 
-
   display:flex;
 
   justify-content:center;
 
-  gap:15px;
+  gap:18px;
 
   flex-wrap:wrap;
 
-  margin-top:30px;
+  margin-top:35px;
 
 }
 
@@ -591,10 +628,9 @@ BUTTONS
 
 button{
 
+  padding:14px 34px;
 
-  padding:13px 30px;
-
-  border-radius:10px;
+  border-radius:14px;
 
   border:none;
 
@@ -605,8 +641,10 @@ button{
   font-size:.95rem;
 
   transition:
-    transform .2s,
-    box-shadow .2s;
+
+    transform .25s ease,
+
+    box-shadow .25s ease;
 
 }
 
@@ -617,8 +655,7 @@ button{
 
 button:hover{
 
-
-  transform:translateY(-2px);
+  transform:translateY(-3px);
 
 }
 
@@ -629,13 +666,28 @@ button:hover{
 
 .primary{
 
-
-  background:#2563eb;
+  background:#8C1D40;
 
   color:white;
 
   box-shadow:
-    0 5px 12px rgba(37,99,235,.25);
+
+    0 8px 18px rgba(140,29,64,.25);
+
+}
+
+
+
+
+
+
+.primary:hover{
+
+  background:#B02D53;
+
+  box-shadow:
+
+    0 12px 25px rgba(140,29,64,.30);
 
 }
 
@@ -646,10 +698,22 @@ button:hover{
 
 .secondary{
 
+  background:#f5eef1;
 
-  background:#f3f4f6;
+  color:#8C1D40;
 
-  color:#374151;
+  border:1px solid rgba(140,29,64,.15);
+
+}
+
+
+
+
+
+
+.secondary:hover{
+
+  background:#eadde1;
 
 }
 
@@ -660,10 +724,10 @@ button:hover{
 
 .start{
 
-
-  min-width:230px;
+  min-width:240px;
 
 }
+
 
 
 </style>

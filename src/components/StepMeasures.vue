@@ -2,23 +2,20 @@
   <div class="step-card">
 
 
-    <!--
-      NUOVA SCELTA STANDARD MISURA
-
-      IT  -> Passaggio luce
-      DE  -> Misura porta DIN
-
-    -->
     <h2>
       {{ locales[config.currentLang].measureType }}
     </h2>
 
+
+
+
+    <!-- SCELTA TIPO MISURA -->
+
     <div class="measure-choice">
 
 
-
       <button
-        class="measure-option"
+        class="option-card"
         :class="{ active: config.type === 'measureLuce' }"
         @click="selectMeasureType('light')"
       >
@@ -35,8 +32,10 @@
 
 
 
+
+
       <button
-        class="measure-option"
+        class="option-card"
         :class="{ active: config.type === 'measurePorta' }"
         @click="selectMeasureType('door')"
       >
@@ -51,21 +50,26 @@
 
       </button>
 
+
+
+
+
       <button
-        class="measure-option"
+        class="option-card"
         :class="{ active: config.type === 'measureMuro' }"
         @click="selectMeasureType('wall')"
       >
-  
+
         <strong>
           {{ locales[config.currentLang].measureMuro }}
         </strong>
-  
+
         <small>
           IT / DE
         </small>
-  
+
       </button>
+
 
     </div>
 
@@ -75,41 +79,11 @@
 
 
 
-    <!--
-      VECCHIA SCELTA TIPO MISURA
+    <!-- TIPO ATTIVO -->
 
-      Conservata per eventuale riattivazione futura.
-
-    -->
-
-    <!--
-
-    <div class="choices">
-
-      <button
-        v-for="type in data.measureTypes"
-        :key="type.value"
-        :class="{ active: config.type === type.value }"
-        @click="selectType(type.value)"
-      >
-
-        {{ locales[config.currentLang][type.value] }}
-
-      </button>
-
-    </div>
-
-    -->
-
-
-
-
-
-    <!-- TIPO MISURA ATTIVO -->
-
-    <div
+    <!-- <div
       v-if="config.type"
-      class="measure-type-info"
+      class="info-box"
     >
 
       <strong>
@@ -120,7 +94,8 @@
       {{ locales[config.currentLang][config.type] }}
 
 
-    </div>
+    </div> -->
+
 
 
 
@@ -135,7 +110,6 @@
     >
 
 
-
       <h3>
         {{ locales[config.currentLang].insertMeasures }}
       </h3>
@@ -143,8 +117,6 @@
 
 
 
-
-      <!-- MODALITA -->
 
       <div class="mode">
 
@@ -157,9 +129,7 @@
             v-model="config.mode"
           />
 
-
           {{ locales[config.currentLang].standardMeasures }}
-
 
         </label>
 
@@ -174,9 +144,7 @@
             v-model="config.mode"
           />
 
-
           {{ locales[config.currentLang].customMeasures }}
-
 
         </label>
 
@@ -189,12 +157,9 @@
 
 
 
-
-      <!-- STANDARD -->
-
       <div
         v-if="config.mode === 'fixed'"
-        class="fixed"
+        class="input-box"
       >
 
 
@@ -203,11 +168,9 @@
           @change="widthChanged"
         >
 
-
           <option disabled value="">
             {{ locales[config.currentLang].width }}
           </option>
-
 
 
           <option
@@ -227,18 +190,14 @@
 
 
 
-
         <select
           v-model.number="config.height"
           @change="heightChanged"
         >
 
-
           <option disabled value="">
             {{ locales[config.currentLang].height }}
           </option>
-
-
 
 
           <option
@@ -264,26 +223,18 @@
 
 
 
-      <!-- LIBERE -->
-
       <div
         v-else
-        class="custom"
+        class="input-box"
       >
 
 
-
-        <div class="slider-group">
-
+        <div class="field">
 
           <label>
-
             {{ locales[config.currentLang].width }}:
             {{ config.width }} mm
-
           </label>
-
-
 
 
           <input
@@ -295,40 +246,18 @@
             @change="validateWidth"
           />
 
-
-
-          <div class="slider-labels">
-
-            <span>
-              min {{ measureConfig.limits.minWidth }}
-            </span>
-
-            <span>
-              max {{ measureConfig.limits.maxWidth }}
-            </span>
-
-          </div>
-
-
         </div>
 
 
 
 
 
-
-
-
-        <div class="slider-group">
-
+        <div class="field">
 
           <label>
-
             {{ locales[config.currentLang].height }}:
             {{ config.height }} mm
-
           </label>
-
 
 
           <input
@@ -340,26 +269,7 @@
             @change="validateHeight"
           />
 
-
-
-          <div class="slider-labels">
-
-
-            <span>
-              min {{ measureConfig.limits.minHeight }}
-            </span>
-
-
-            <span>
-              max {{ measureConfig.limits.maxHeight }}
-            </span>
-
-
-          </div>
-
-
         </div>
-
 
 
       </div>
@@ -370,9 +280,6 @@
 
 
 
-
-      <!-- DISPONIBILITA -->
-
       <div
         v-if="availabilityInfo"
         class="availability"
@@ -382,7 +289,6 @@
         <strong>
           {{ availabilityInfo.title }}
         </strong>
-
 
         <p>
           {{ availabilityInfo.description }}
@@ -408,13 +314,11 @@
       </button>
 
 
-
     </div>
 
 
   </div>
 </template>
-
 
 
 
@@ -1121,27 +1025,53 @@ function goNext(){
 
 <style scoped>
 
-.step-card{
+
+.step-card {
 
   background:v-bind('data.colors.cardBg');
 
-  padding:30px;
+  padding:45px;
 
-  border-radius:12px;
+  border-radius:v-bind('data.colors.radiusXL');
 
   box-shadow:v-bind('data.colors.cardShadow');
 
-}
-
-
-
-h2{
-
-  margin-bottom:1rem;
+  border:1px solid v-bind('data.colors.cardBorder');
 
   text-align:center;
 
+  transition:.25s ease;
+
 }
+
+
+
+.step-card:hover {
+
+  box-shadow:v-bind('data.colors.cardShadowHover');
+
+}
+
+
+
+
+
+
+
+h2 {
+
+  margin-bottom:30px;
+
+  font-size:1.35rem;
+
+  color:v-bind('data.colors.text');
+
+  font-weight:700;
+
+}
+
+
+
 
 
 
@@ -1150,20 +1080,16 @@ h2{
 
 /*
 ========================================
-SCELTA TIPO MISURA NUOVO FLUSSO
+SCELTA TIPO MISURA
 ========================================
 */
 
 
-.measure-choice{
+.measure-choice {
 
   display:flex;
 
-  flex-direction:row;
-
   justify-content:center;
-
-  align-items:stretch;
 
   gap:20px;
 
@@ -1173,17 +1099,23 @@ SCELTA TIPO MISURA NUOVO FLUSSO
 
 
 
-.measure-option{
 
-  width:240px;
 
-  min-height:120px;
+
+
+
+
+.option-card {
+
+  width:220px;
+
+  min-height:60px;
 
   padding:20px;
 
-  border-radius:12px;
+  border-radius:v-bind('data.colors.radiusLarge');
 
-  border:2px solid v-bind('data.colors.primary');
+  border:1px solid v-bind('data.colors.border');
 
   background:v-bind('data.colors.buttonBg');
 
@@ -1197,37 +1129,103 @@ SCELTA TIPO MISURA NUOVO FLUSSO
 
   align-items:center;
 
-  gap:8px;
+  gap:10px;
 
-  transition:all .25s ease;
+  transition:.25s ease;
 
-}
+  box-shadow:
 
-
-
-.measure-option strong{
-
-  font-size:1.1rem;
+    0 6px 18px rgba(0,0,0,.06);
 
 }
 
 
 
-.measure-option small{
+
+
+
+
+.option-card strong {
+
+  font-size:1.05rem;
+
+  color:v-bind('data.colors.primary');
+
+}
+
+
+
+
+
+
+
+.option-card small {
+
+  color:v-bind('data.colors.textSecondary');
 
   font-size:.85rem;
 
-  opacity:.8;
+}
+
+
+
+
+
+
+
+.option-card:hover {
+
+  transform:translateY(-4px);
+
+  background:v-bind('data.colors.buttonHover');
+
+  border-color:v-bind('data.colors.primary');
+
+  box-shadow:
+
+    0 12px 28px rgba(140,29,64,.14);
 
 }
 
 
 
-.measure-option:hover{
 
-  transform:translateY(-3px);
 
-  box-shadow:0 6px 15px rgba(0,0,0,.12);
+
+
+.option-card.active {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      v-bind('data.colors.buttonActive'),
+
+      v-bind('data.colors.primaryHover')
+
+    );
+
+
+  border-color:v-bind('data.colors.buttonActive');
+
+  box-shadow:
+
+    0 12px 30px rgba(140,29,64,.28);
+
+}
+
+
+
+
+
+
+
+.option-card.active strong,
+.option-card.active small {
+
+  color:v-bind('data.colors.buttonActiveText');
 
 }
 
@@ -1241,47 +1239,30 @@ SCELTA TIPO MISURA NUOVO FLUSSO
 
 /*
 ========================================
-VECCHIA SCELTA MANUALE
-(preparata per futuro)
+INFO TIPO MISURA
 ========================================
 */
 
 
-.choices{
+.info-box {
 
-  display:flex;
+  margin:30px auto;
 
-  gap:15px;
+  max-width:520px;
 
-  justify-content:center;
+  padding:18px;
 
-  flex-wrap:wrap;
+  border-radius:v-bind('data.colors.radius');
 
-}
+  background:v-bind('data.colors.infoBg');
 
+  border:
 
+    1px solid
 
-.choices button{
+    v-bind('data.colors.infoBorder');
 
-  padding:10px 20px;
-
-  border-radius:8px;
-
-  border:2px solid v-bind('data.colors.primary');
-
-  background:v-bind('data.colors.buttonBg');
-
-  cursor:pointer;
-
-}
-
-
-
-.choices button.active{
-
-  background:v-bind('data.colors.buttonActive');
-
-  color:v-bind('data.colors.buttonActiveText');
+  color:v-bind('data.colors.infoText');
 
 }
 
@@ -1300,9 +1281,9 @@ INSERIMENTO MISURE
 */
 
 
-.measure-inputs{
+.measure-inputs {
 
-  margin-top:2rem;
+  margin-top:35px;
 
   display:flex;
 
@@ -1310,7 +1291,7 @@ INSERIMENTO MISURE
 
   align-items:center;
 
-  gap:1.5rem;
+  gap:25px;
 
 }
 
@@ -1319,11 +1300,47 @@ INSERIMENTO MISURE
 
 
 
-.mode{
+
+.measure-inputs h3 {
+
+  color:v-bind('data.colors.text');
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+MODALITA STANDARD / CUSTOM
+========================================
+*/
+
+
+.mode {
 
   display:flex;
 
-  gap:2rem;
+  justify-content:center;
+
+  gap:30px;
+
+  padding:18px 25px;
+
+  background:v-bind('data.colors.surfaceAlt');
+
+  border-radius:v-bind('data.colors.radius');
+
+  border:
+
+    1px solid
+
+    v-bind('data.colors.borderLight');
 
 }
 
@@ -1332,20 +1349,47 @@ INSERIMENTO MISURE
 
 
 
-.fixed,
-.custom{
+
+.mode label {
+
+  font-weight:600;
+
+  color:v-bind('data.colors.textSecondary');
+
+  cursor:pointer;
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+INPUT
+========================================
+*/
+
+
+.input-box {
+
+  width:100%;
+
+  max-width:520px;
 
   display:flex;
 
   flex-direction:column;
 
-  gap:1.5rem;
-
-  width:100%;
-
-  max-width:500px;
+  gap:18px;
 
 }
+
+
 
 
 
@@ -1353,28 +1397,25 @@ INSERIMENTO MISURE
 
 
 select,
-input[type="number"]{
+input[type="number"] {
 
-  padding:.8rem;
+  padding:14px;
 
-  border-radius:6px;
+  border-radius:v-bind('data.colors.radius');
 
-  border:1px solid #d1d5db;
+  border:
 
-  width:100%;
+    1px solid
 
-}
+    v-bind('data.colors.inputBorder');
 
+  background:v-bind('data.colors.inputBg');
 
+  color:v-bind('data.colors.text');
 
+  font-size:1rem;
 
-
-
-.slider-group{
-
-  display:flex;
-
-  flex-direction:column;
+  transition:.25s ease;
 
 }
 
@@ -1383,13 +1424,60 @@ input[type="number"]{
 
 
 
-.slider-labels{
 
-  display:flex;
 
-  justify-content:space-between;
+select:focus,
+input[type="number"]:focus {
 
-  font-size:.85rem;
+  outline:none;
+
+  border-color:v-bind('data.colors.inputBorderFocus');
+
+  box-shadow:
+
+    0 0 0 3px rgba(140,29,64,.12);
+
+}
+
+
+
+
+
+
+
+
+
+.field {
+
+  padding:22px;
+
+  border-radius:v-bind('data.colors.radiusLarge');
+
+  background:v-bind('data.colors.surfaceAlt');
+
+  border:
+
+    1px solid
+
+    v-bind('data.colors.borderLight');
+
+}
+
+
+
+
+
+
+
+.field label {
+
+  display:block;
+
+  margin-bottom:10px;
+
+  font-weight:700;
+
+  color:v-bind('data.colors.text');
 
 }
 
@@ -1403,22 +1491,20 @@ input[type="number"]{
 
 /*
 ========================================
-DISPONIBILITA
+DISPONIBILITA'
 ========================================
 */
 
 
-.availability{
+.availability {
 
   width:100%;
 
-  max-width:500px;
+  max-width:520px;
 
-  padding:14px;
+  padding:18px;
 
-  border-radius:10px;
-
-  text-align:center;
+  border-radius:v-bind('data.colors.radiusLarge');
 
   border:1px solid;
 
@@ -1426,55 +1512,49 @@ DISPONIBILITA
 
 
 
-.availability strong{
-
-  display:block;
-
-  margin-bottom:5px;
-
-}
 
 
 
-.availability p{
 
-  margin:0;
+.availability.success {
+
+  background:v-bind('data.colors.successBg');
+
+  color:v-bind('data.colors.successText');
+
+  border-color:v-bind('data.colors.successBorder');
 
 }
 
 
 
-.availability.success{
-
-  background:#ecfdf5;
-
-  color:#166534;
-
-  border-color:#22c55e;
-
-}
 
 
 
-.availability.warning{
 
-  background:#fff7ed;
+.availability.warning {
 
-  color:#9a3412;
+  background:v-bind('data.colors.warningBg');
 
-  border-color:#f97316;
+  color:v-bind('data.colors.warningText');
+
+  border-color:v-bind('data.colors.warningBorder');
 
 }
 
 
 
-.availability.error{
 
-  background:#fef2f2;
 
-  color:#991b1b;
 
-  border-color:#ef4444;
+
+.availability.error {
+
+  background:v-bind('data.colors.errorBg');
+
+  color:v-bind('data.colors.errorText');
+
+  border-color:v-bind('data.colors.errorBorder');
 
 }
 
@@ -1488,82 +1568,79 @@ DISPONIBILITA
 
 /*
 ========================================
-PULSANTE CONTINUA
+CONTINUA
 ========================================
 */
 
 
-.next{
+.next {
 
-  margin-top:2rem;
+  margin-top:25px;
 
-  padding:12px 25px;
+  padding:14px 40px;
 
   border:none;
 
-  border-radius:8px;
+  border-radius:v-bind('data.colors.radius');
 
-  cursor:pointer;
+  background:
 
-  background:v-bind('data.colors.buttonActive');
+    linear-gradient(
 
-  color:white;
+      135deg,
 
-}
+      v-bind('data.colors.buttonActive'),
 
+      v-bind('data.colors.primaryHover')
 
+    );
 
-.next:disabled{
-
-  background:#9ca3af;
-
-  cursor:not-allowed;
-
-}
-
-
-
-
-
-
-
-
-
-/*
-========================================
-INFO TIPO MISURA ATTIVO
-========================================
-*/
-
-
-.measure-type-info{
-
-  margin:1.5rem auto;
-
-  max-width:500px;
-
-  padding:12px 18px;
-
-  border-radius:8px;
-
-  background:#f3f4f6;
-
-  color:#374151;
-
-  text-align:center;
-
-  font-weight:500;
-
-}
-
-
-.measure-option.active{
-
-  background:v-bind('data.colors.buttonActive');
 
   color:v-bind('data.colors.buttonActiveText');
 
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+
+  box-shadow:
+
+    0 10px 25px rgba(140,29,64,.25);
+
+}
+
+
+
+
+
+
+
+.next:hover:not(:disabled) {
+
   transform:translateY(-3px);
+
+  box-shadow:
+
+    0 15px 30px rgba(140,29,64,.32);
+
+}
+
+
+
+
+
+
+
+.next:disabled {
+
+  background:v-bind('data.colors.lockedStep');
+
+  color:v-bind('data.colors.textLight');
+
+  cursor:not-allowed;
+
+  box-shadow:none;
 
 }
 
