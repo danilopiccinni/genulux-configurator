@@ -156,6 +156,14 @@
 
     </main>
 
+    <Footer
+
+      :config="config"
+
+      :data="ConfigData"
+
+    />
+
 
   </div>
 
@@ -183,6 +191,8 @@ import { config, loadConfig, resetConfig } from './config'
 import { ConfigData } from './configData'
 
 import { locales } from './locales.js'
+
+import Footer from './components/Footer.vue'
 
 
 import {
@@ -329,6 +339,17 @@ watch(
       return
 
     }
+    
+    /**
+     * Pagine informative
+     *
+     * Non fanno parte del flusso configuratore
+     */
+    if(newPath === '/impressum'){
+
+      return
+
+    }
 
 
 
@@ -441,8 +462,11 @@ PAGE BACKGROUND
 
 .page {
 
-
   min-height:100vh;
+
+  display:flex;
+
+  flex-direction:column;
 
 
   font-family:'Inter',sans-serif;
@@ -452,11 +476,8 @@ PAGE BACKGROUND
 
 
     linear-gradient(
-
-      rgba(255, 255, 255, 0),
-
-      rgba(255, 255, 255, 0)
-
+      rgba(255,255,255,0),
+      rgba(255,255,255,0)
     ),
 
 
@@ -466,12 +487,9 @@ PAGE BACKGROUND
 
   background-size:cover;
 
-
   background-position:left center;
 
-
   background-repeat:no-repeat;
-
 
   background-attachment:fixed;
 
@@ -500,38 +518,36 @@ TOPBAR
 
   display:flex;
 
-
   justify-content:space-between;
-
 
   align-items:center;
 
 
-
-  padding:
-
-    0 45px;
-
+  padding:0 45px;
 
 
   background:
-
     v-bind('ConfigData.colors.primary');
 
 
 
-
   box-shadow:
-
-
     0 6px 25px rgba(0,0,0,.05);
 
 
 
-  position:relative;
+  position:fixed;
 
 
-  z-index:10;
+  top:0;
+
+  left:0;
+
+  width:100%;
+
+
+  z-index:100;
+
 
 
 }
@@ -744,6 +760,7 @@ CONFIGURATOR POSITION
 
 
 .configurator {
+  flex:1;
 
 
   width:
@@ -763,7 +780,7 @@ CONFIGURATOR POSITION
   padding:
 
 
-    45px 0 70px;
+    78px 0 70px;
 
 
 

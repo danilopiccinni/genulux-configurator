@@ -402,7 +402,7 @@ LINEA CENTRALE
   font-weight:600;
 
 
-  color:v-bind('data.colors.textSecondary');
+  color:v-bind('data.colors.textWhite');
 
 
   transition:.3s ease;

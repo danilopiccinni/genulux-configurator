@@ -1,5 +1,8 @@
 export const locales = {
   it: {
+
+    impressum: "Note legali",
+
     language: "Lingua",
     homeConfigurator: 'Home configuratore',
 
@@ -105,6 +108,9 @@ export const locales = {
   },
 
   en: {
+
+    impressum: "Legal Notice",
+
     language: "Language",
 
     homeConfigurator: 'Configurator Home',
@@ -208,6 +214,9 @@ export const locales = {
   },
 
   de: {
+
+    impressum: "Impressum",
+
     language: "Sprache",
 
     homeConfigurator: 'Konfigurator Startseite',
@@ -314,6 +323,9 @@ export const locales = {
   },
 
   es: {
+
+    impressum: "Aviso legal",
+
     language: "Idioma",
 
     homeConfigurator: 'Inicio configurador',
@@ -419,6 +431,8 @@ export const locales = {
   },
 
   fr: {
+
+    impressum: "Mentions légales",
 
     language: "Langue",
 

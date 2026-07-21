@@ -5,6 +5,7 @@ import StepDoor from '../components/StepDoor.vue'
 import StepWallThickness from '../components/StepWallThickness.vue'
 import StepMeasures from '../components/StepMeasures.vue'
 import Summary from '../components/Summary.vue'
+import Impressum from '../components/Impressum.vue'
 
 const routes = [
 
@@ -31,6 +32,11 @@ const routes = [
   {
     path: '/summary',
     component: Summary
+  },
+
+  {
+    path: '/impressum',
+    component: Impressum
   }
 
 ]
