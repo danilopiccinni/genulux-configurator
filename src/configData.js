@@ -337,11 +337,11 @@ wallThicknessOptions: {
 
       limits: {
 
-        minWidth: 600,
-        maxWidth: 1300,
+        minWidth: 0,
+        maxWidth: 3000,
 
-        minHeight: 2000,
-        maxHeight: 2700,
+        minHeight: 0,
+        maxHeight: 3000,
 
         stepWidth: 1,
         stepHeight: 1

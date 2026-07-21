@@ -261,7 +261,7 @@
             :max="measureConfig.limits.maxWidth"
             :step="measureConfig.limits.stepWidth"
             v-model.number="config.width"
-            @change="validateWidth"
+            @input="validateWidth"
           />
 
         </div>
@@ -284,7 +284,7 @@
             :max="measureConfig.limits.maxHeight"
             :step="measureConfig.limits.stepHeight"
             v-model.number="config.height"
-            @change="validateHeight"
+            @input="validateHeight"
           />
 
         </div>
@@ -763,37 +763,86 @@ const currentAvailability = computed(()=>{
   /**
    * Misura apertura muro
    *
-   * La disponibilità arriva direttamente
-   * dal catalogo ibrido IT + DE
+   * Gestione:
+   *
+   * fixed  -> catalogo IT + DE
+   * custom -> resolver limiti
    */
   if(props.config.type === 'measureMuro'){
 
 
-    const selected =
-      standardMeasures.value.find(item =>
-
-        item.width === props.config.width &&
-
-        item.height === props.config.height
-
-      )
+    if(props.config.mode === 'fixed'){
 
 
+      const selected =
+        standardMeasures.value.find(item =>
 
-    if(!selected){
+          item.width === props.config.width &&
 
-      return null
+          item.height === props.config.height
+
+        )
+
+
+      if(selected){
+
+
+        return {
+
+          availability:
+            selected.availability
+
+        }
+
+
+      }
+
 
     }
 
 
 
-    return {
 
-      availability:
-        selected.availability
+    if(props.config.mode === 'custom'){
+
+
+      const selected =
+        standardMeasures.value.find(item =>
+
+          item.width === props.config.width &&
+
+          item.height === props.config.height
+
+        )
+
+
+      if(selected){
+
+
+        return {
+
+          availability:
+            selected.availability
+
+        }
+
+
+      }
+
+
+
+      return {
+
+        availability:'production'
+
+      }
+
 
     }
+
+
+
+    return null
 
 
   }
