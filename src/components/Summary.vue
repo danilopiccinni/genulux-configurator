@@ -20,6 +20,41 @@
   
       </div>
 
+      <div class="technical-measures-table">
+        <table>
+          <thead>
+            <tr>
+              <th>CL</th>
+              <th>C</th>
+              <th>A</th>
+              <th>B</th>
+              <th>H</th>
+              <th>TH</th>
+              <th>H1</th>
+              <th>HL</th>
+              <th>TB</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+
+
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
       
       
       <p>
@@ -696,6 +731,155 @@ h2 {
 .installation-note p{
 
   margin:0;
+
+}
+
+
+/*
+================================================
+TECHNICAL MEASURES TABLE
+================================================
+*/
+
+
+.technical-measures-table{
+
+  width:100%;
+
+  margin:35px 0;
+
+  overflow-x:auto;
+
+}
+
+
+
+
+
+.technical-measures-table table{
+
+  width:100%;
+
+  border-collapse:separate;
+
+  border-spacing:0;
+
+  table-layout:fixed;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+
+
+.technical-measures-table th{
+
+  background:
+
+    v-bind('data.colors.primary');
+
+
+  color:white;
+
+  padding:14px 6px;
+
+  font-size:.85rem;
+
+  font-weight:700;
+
+  border-right:
+
+    1px solid rgba(255,255,255,.2);
+
+}
+
+
+
+
+
+.technical-measures-table th:last-child{
+
+  border-right:none;
+
+}
+
+
+
+
+
+.technical-measures-table td{
+
+  height:55px;
+
+  background:white;
+
+  text-align:center;
+
+  padding:12px 6px;
+
+  font-size:.95rem;
+
+  font-weight:600;
+
+  color:
+
+    v-bind('data.colors.text');
+
+
+  border:
+
+    1px solid #ececec;
+
+}
+
+
+
+
+
+.technical-measures-table tbody td:first-child{
+
+  border-bottom-left-radius:12px;
+
+}
+
+
+
+
+
+.technical-measures-table tbody td:last-child{
+
+  border-bottom-right-radius:12px;
+
+}
+
+
+
+
+
+@media(max-width:700px){
+
+
+  .technical-measures-table{
+
+    overflow-x:auto;
+
+  }
+
+
+
+  .technical-measures-table table{
+
+    min-width:850px;
+
+  }
+
 
 }
 

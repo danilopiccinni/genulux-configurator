@@ -18,6 +18,76 @@
 
     </div>
 
+    <!-- ================================================
+     TECHNICAL MEASURES TABLE PDF
+================================================ -->
+
+<div class="technical-measures-table">
+
+
+  <table>
+
+
+    <thead>
+
+      <tr>
+
+        <th>CL</th>
+
+        <th>C</th>
+
+        <th>A</th>
+
+        <th>B</th>
+
+        <th>H</th>
+
+        <th>TH</th>
+
+        <th>H1</th>
+
+        <th>HL</th>
+
+        <th>TB</th>
+
+      </tr>
+
+    </thead>
+
+
+    <tbody>
+
+      <tr>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+      </tr>
+
+
+    </tbody>
+
+
+  </table>
+
+
+  </div>
+
 
 
     <section class="data-section">
@@ -480,6 +550,71 @@ th {
   text-align:left;
 
 }
+
+/*
+================================================
+TECHNICAL MEASURES TABLE PDF
+================================================
+*/
+
+
+.technical-measures-table{
+
+  width:100%;
+
+  margin:25px 0;
+
+}
+
+
+
+
+
+.technical-measures-table table{
+
+  width:100%;
+
+  border-collapse:collapse;
+
+}
+
+
+
+
+
+.technical-measures-table th{
+  text-align: center;
+
+  padding:8px 4px;
+
+  font-size:10px;
+
+  font-weight:bold;
+
+  border:1px solid;
+
+}
+
+
+
+
+
+.technical-measures-table td{
+
+  height:35px;
+
+  text-align:center;
+
+  border:1px solid #000;
+
+  font-size:10px;
+
+}
+
+
+
+
+
 
 
 </style>
