@@ -228,17 +228,11 @@
   
         </div>
 
-    </div>
+      </div>
 
 
 
-    </div>
-
-
-
-
-
-    <div class="actions">
+      <div class="actions">
 
       <button @click="printRef.download()">
 
@@ -246,31 +240,37 @@
 
       </button>
 
+      </div>
+
+
+
+
+      <SummaryPrint
+
+        ref="printRef"
+
+        v-bind="config"
+
+        :data="data"
+
+        :measures="measures"
+
+        :availabilityInfo="availabilityInfo"
+
+        :currentLang="currentLang"
+
+        :installationNotes="installationNotes"
+
+        :summaryMeasures="summaryMeasures"
+
+
+      />
     </div>
 
 
 
 
-    <SummaryPrint
 
-      ref="printRef"
-
-      v-bind="config"
-
-      :data="data"
-
-      :measures="measures"
-
-      :availabilityInfo="availabilityInfo"
-
-      :currentLang="currentLang"
-
-      :installationNotes="installationNotes"
-
-      :summaryMeasures="summaryMeasures"
-
-
-    />
 
 
 
@@ -655,6 +655,8 @@ h2 {
 
 
 .actions {
+
+  margin-top: 35px;
 
   display:flex;
 
