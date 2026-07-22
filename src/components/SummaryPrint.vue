@@ -78,9 +78,9 @@
 
         <td>{{ measures?.porta?.height }}</td>
 
-        <td>{{ measures?.muro?.height }}</td>
-
         <td>{{ measures?.telaio?.height }}</td>
+        
+        <td>{{ measures?.muro?.height }}</td>
 
         <td>{{ measures?.porta?.width }}</td>
         
