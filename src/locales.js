@@ -30,6 +30,7 @@ export const locales = {
     customMeasures: "Misure libere",
     width: "Larghezza",
     height: "Altezza",
+    frame: "Telaio",
 
     // Azioni
     continue: "Continua",
@@ -139,6 +140,7 @@ export const locales = {
     customMeasures: "Custom measurements",
     width: "Width",
     height: "Height",
+    frame: "Frame",
 
     // Azioni
     continue: "Continue",
@@ -245,6 +247,7 @@ export const locales = {
     customMeasures: "Freie Maße",
     width: "Breite",
     height: "Höhe",
+    frame: "Zarge",
 
     // Azioni
     continue: "Weiter",
@@ -354,6 +357,7 @@ export const locales = {
     customMeasures: "Medidas libres",
     width: "Ancho",
     height: "Alto",
+    frame: "Marco",
 
     // Azioni
     continue: "Continuar",
@@ -462,6 +466,7 @@ export const locales = {
     customMeasures: "Mesures personnalisées",
     width: "Largeur",
     height: "Hauteur",
+    frame: "Huisserie",
 
     // Azioni
     continue: "Continuer",

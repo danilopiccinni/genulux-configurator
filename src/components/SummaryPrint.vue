@@ -145,7 +145,7 @@
           <tr>
 
             <th>
-              Telaio
+              {{ locales[currentLang].frame }}
             </th>
 
 

@@ -104,7 +104,7 @@
       <p>
 
         <b>
-          Telaio:
+          {{ locales[currentLang].frame }}:
         </b>
 
         {{ measures?.telaio?.width }}
