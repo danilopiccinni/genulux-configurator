@@ -47,7 +47,9 @@ export async function handler(event) {
 
       email,
 
-      message
+      message,
+
+      pdf
 
     } = body
 
@@ -100,7 +102,25 @@ ${email}
 <p>
 ${message}
 </p>
-`
+`,
+
+
+
+        attachments:[
+
+          {
+
+            filename:
+              'Genulux.pdf',
+
+
+            content:
+              pdf.split(',')[1]
+
+          }
+
+        ]
+
 
 
       })

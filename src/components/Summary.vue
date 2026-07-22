@@ -242,29 +242,37 @@
 
       </div>
 
-
+      
+      
 
 
       <SummaryPrint
 
         ref="printRef"
-
+        
         v-bind="config"
 
         :data="data"
 
         :measures="measures"
-
+        
         :availabilityInfo="availabilityInfo"
-
+        
         :currentLang="currentLang"
-
+        
         :installationNotes="installationNotes"
-
+        
         :summaryMeasures="summaryMeasures"
+        
+        />
+        
+        <QuoteRequest
+  
+          :printRef="printRef"
+  
+        />
 
 
-      />
     </div>
 
 
@@ -299,6 +307,8 @@ import { locales } from '../locales.js'
 import { getInstallationNotes } from '../helpers/installationNotes'
 
 import { getSummaryMeasures } from '../helpers/summaryMeasures'
+
+import QuoteRequest from './QuoteRequest.vue'
 
 
 

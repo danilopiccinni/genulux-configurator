@@ -346,7 +346,7 @@ const props = defineProps({
 
   wall:String,
 
-  wallPanel: String,
+  wallPanel:String,
 
   type:String,
 
@@ -357,12 +357,9 @@ const props = defineProps({
 
   data:Object,
 
-
   measures:Object,
 
-
   availabilityInfo:Object,
-
 
   currentLang:String,
 
@@ -380,7 +377,23 @@ const pdfContent = ref(null)
 
 
 
-async function download(){
+
+/**
+ * ============================================================
+ * GENERA PDF
+ * ------------------------------------------------------------
+ *
+ * Crea il documento PDF e lo restituisce.
+ *
+ * Usato da:
+ *
+ * - download manuale
+ * - richiesta preventivo email
+ *
+ * ============================================================
+ */
+async function generatePdf(){
+
 
 
   const canvas = await html2canvas(
@@ -388,15 +401,18 @@ async function download(){
     pdfContent.value,
 
     {
-      scale:2
+      scale:1
     }
 
   )
 
 
 
+
   const imgData =
     canvas.toDataURL('image/png')
+
+
 
 
 
@@ -409,19 +425,28 @@ async function download(){
 
 
 
+
+
   const pdfWidth = 210
 
   const pdfHeight = 297
 
 
 
+
   const imgWidth = pdfWidth
 
 
+
   const imgHeight =
-    (canvas.height * pdfWidth)
+    (
+      canvas.height * pdfWidth
+    )
     /
     canvas.width
+
+
+
 
 
 
@@ -429,7 +454,9 @@ async function download(){
 
 
 
+
   while(position < imgHeight){
+
 
 
     pdf.addImage(
@@ -450,7 +477,9 @@ async function download(){
 
 
 
+
     position += pdfHeight
+
 
 
 
@@ -465,16 +494,85 @@ async function download(){
 
 
 
-  pdf.save("Genulux.pdf")
+
+  return pdf
+
+
+}
+
+/**
+ * ============================================================
+ * GET PDF BLOB
+ * ------------------------------------------------------------
+ *
+ * Restituisce il PDF come file temporaneo.
+ *
+ * Usato per:
+ *
+ * - allegato email
+ * - invio preventivo
+ *
+ * ============================================================
+ */
+async function getPdfBlob(){
+
+
+  const pdf =
+    await generatePdf()
+
+
+
+  return pdf.output('blob')
 
 
 }
 
 
 
+
+
+
+
+
+/**
+ * ============================================================
+ * DOWNLOAD PDF
+ * ------------------------------------------------------------
+ *
+ * Scaricamento manuale utente
+ *
+ * ============================================================
+ */
+async function download(){
+
+
+
+  const pdf =
+    await generatePdf()
+
+
+
+  pdf.save(
+    "Genulux.pdf"
+  )
+
+
+}
+
+
+
+
+
+
+
+
 defineExpose({
 
-  download
+  download,
+
+  generatePdf,
+
+  getPdfBlob
 
 })
 
