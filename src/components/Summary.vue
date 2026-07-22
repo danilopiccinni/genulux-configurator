@@ -57,115 +57,171 @@
 
       
       
-      <p>
+<div class="summary-info">
 
-        <b>
-          {{ locales[currentLang].configurationStandard }}:
-        </b>
+  <!-- STANDARD -->
 
-        {{ config.standard }} -
-        
-        {{
-          config.standard === 'IT'
-            ? locales[currentLang].international
-            : locales[currentLang].germany
-        }}
+  <div class="summary-row">
 
-      </p>
+    <div class="summary-label">
 
-      
-      <div
-        v-for="item in summaryMeasures"
-        :key="item.key"
-      >
-      
-      
-      <p>
-      
-      <b>
-      {{ locales[currentLang][item.labelKey] }}:
-      </b>
-      
-      
+      {{ locales[currentLang].configurationStandard }}
+
+    </div>
+
+    <div class="summary-value">
+
+      {{ config.standard }} -
+
+      {{
+        config.standard === 'IT'
+          ? locales[currentLang].international
+          : locales[currentLang].germany
+      }}
+
+    </div>
+
+  </div>
+
+
+
+  <!-- MISURE PRINCIPALI -->
+
+  <div
+    v-for="item in summaryMeasures"
+    :key="item.key"
+    class="summary-row"
+  >
+
+    <div class="summary-label">
+
+      {{ locales[currentLang][item.labelKey] }}
+
+    </div>
+
+    <div class="summary-value">
+
       {{ item.value.width }}
       ×
       {{ item.value.height }}
       mm
-      
-      
-      </p>
-      
-      
-      </div>
+
+    </div>
+
+  </div>
 
 
 
+  <!-- TELAIO -->
 
-      <p>
+  <div class="summary-row">
 
-        <b>
-          {{ locales[currentLang].frame }}:
-        </b>
+    <div class="summary-label">
 
-        {{ measures?.telaio?.width }}
-        ×
-        {{ measures?.telaio?.height }}
-        mm
+      {{ locales[currentLang].frame }}
 
-      </p>
+    </div>
 
-      <p>
+    <div class="summary-value">
 
-        <b>
-          {{ locales[currentLang].wallType }}:
-        </b>
+      {{ measures?.telaio?.width }}
+      ×
+      {{ measures?.telaio?.height }}
+      mm
 
-        {{ locales[currentLang][config.wallType] }}
+    </div>
 
-      </p>
+  </div>
 
 
 
-      <p
-        v-if="config.wallType === 'trockenbau'"
-      >
+  <!-- TIPO MURO -->
 
-        <b>
-          {{ locales[currentLang].wallPanel }}:
-        </b>
+  <div class="summary-row">
 
-        {{ locales[currentLang][config.wallPanel] }}
+    <div class="summary-label">
 
-      </p>
+      {{ locales[currentLang].wallType }}
 
+    </div>
 
+    <div class="summary-value">
 
-      <p>
+      {{ locales[currentLang][config.wallType] }}
 
-        <b>
-          {{ locales[currentLang].wallThickness }}:
-        </b>
+    </div>
 
-        {{ config.wall }} cm
-
-      </p>
+  </div>
 
 
 
+  <!-- PANNELLATURA -->
 
-      <p>
+  <div
+    v-if="config.wallType === 'trockenbau'"
+    class="summary-row"
+  >
 
-        <b>
-          {{ locales[currentLang].door }}:
-        </b>
+    <div class="summary-label">
 
-        {{
-          config.door === 'wood'
-            ? locales[currentLang].woodDoor
-            : locales[currentLang].glassDoor
-        }}
+      {{ locales[currentLang].wallPanel }}
 
-      </p>
+    </div>
+
+    <div class="summary-value">
+
+      {{ locales[currentLang][config.wallPanel] }}
+
+    </div>
+
+  </div>
+
+
+
+  <!-- SPESSORE MURO -->
+
+  <div class="summary-row">
+
+    <div class="summary-label">
+
+      {{ locales[currentLang].wallThickness }}
+
+    </div>
+
+    <div class="summary-value">
+
+      {{ config.wall }} cm
+
+    </div>
+
+  </div>
+
+
+
+  <!-- PORTA -->
+
+  <div class="summary-row">
+
+    <div class="summary-label">
+
+      {{ locales[currentLang].door }}
+
+    </div>
+
+    <div class="summary-value">
+
+      {{
+        config.door === 'wood'
+          ? locales[currentLang].woodDoor
+          : locales[currentLang].glassDoor
+      }}
+
+    </div>
+
+  </div>
+
+
+</div>
 
 
 
@@ -892,6 +948,96 @@ TECHNICAL MEASURES TABLE
 
   }
 
+
+}
+
+/*
+================================================
+SUMMARY INFO
+================================================
+*/
+
+.summary-info{
+
+  margin:35px 0;
+
+  border:1px solid #e5e7eb;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  background:#fff;
+
+}
+
+
+
+.summary-row{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:30px;
+
+  padding:16px 20px;
+
+  border-bottom:1px solid #ececec;
+
+}
+
+
+
+.summary-row:last-child{
+
+  border-bottom:none;
+
+}
+
+
+
+.summary-label{
+
+  font-weight:700;
+
+  color:v-bind('data.colors.text');
+
+  text-align:left;
+
+}
+
+
+
+.summary-value{
+
+  text-align:right;
+
+  color:v-bind('data.colors.text');
+
+}
+
+
+
+@media(max-width:700px){
+
+  .summary-row{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+  }
+
+  .summary-value{
+
+    text-align:left;
+
+  }
 
 }
 
