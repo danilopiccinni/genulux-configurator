@@ -381,6 +381,8 @@ import { getSummaryMeasures } from '../helpers/summaryMeasures'
 
 import QuoteRequest from './QuoteRequest.vue'
 
+import { generateWallOpeningOptions } from '../helpers/measureCatalog'
+
 
 
 
@@ -505,19 +507,50 @@ const measures = computed(() => {
 const availabilityInfo = computed(() => {
 
 
-
-  if (
-
-    !config.standard ||
-
-    !config.width ||
-
-    !config.height
-
-  ) {
-
+  if(!measures.value){
 
     return null
+
+  }
+
+
+
+
+  let availability
+
+
+
+
+  /**
+   * Apertura muro
+   *
+   * Usa il catalogo unificato IT + DE
+   */
+  if(config.type === 'measureMuro'){
+
+
+    const wallCatalog =
+      generateWallOpeningOptions()
+
+
+
+    const selected =
+      wallCatalog.find(item =>
+
+
+        item.width === measures.value.muro.width &&
+
+
+        item.height === measures.value.muro.height
+
+
+      )
+
+
+
+
+    availability =
+      selected?.availability || 'production'
 
 
   }
@@ -527,21 +560,75 @@ const availabilityInfo = computed(() => {
 
 
 
-  const result = resolveAvailability({
+
+  /**
+   * Passaggio luce / Porta
+   *
+   * Usano resolver standard
+   */
+  else {
 
 
-    standard: config.standard,
+    let width
 
-
-    width: config.width,
-
-
-    height: config.height
+    let height
 
 
 
-  })
+    if(config.type === 'measureLuce'){
 
+
+      width =
+        measures.value.luce.width
+
+
+      height =
+        measures.value.luce.height
+
+
+    }
+
+
+
+
+    if(config.type === 'measurePorta'){
+
+
+      width =
+        measures.value.porta.width
+
+
+      height =
+        measures.value.porta.height
+
+
+    }
+
+
+
+
+    const result =
+      resolveAvailability({
+
+
+        standard:config.standard,
+
+
+        width,
+
+
+        height
+
+
+      })
+
+
+
+    availability =
+      result.availability
+
+
+  }
 
 
 
@@ -550,7 +637,7 @@ const availabilityInfo = computed(() => {
   return getAvailabilityInfo(
 
 
-    result.availability,
+    availability,
 
 
     currentLang.value,
@@ -559,9 +646,7 @@ const availabilityInfo = computed(() => {
     locales
 
 
-
   )
-
 
 
 })
