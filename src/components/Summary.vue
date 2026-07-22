@@ -38,15 +38,30 @@
 
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ measures?.muro?.width }}</td>
+
+              <td>{{ measures?.telaio?.width }}</td>
+
+              <td>{{ measures?.luce?.width }}</td>
+
+              <td>
+                {{
+                  measures?.telaio?.width &&
+                  measures?.luce?.width
+                    ? (measures.telaio.width - measures.luce.width) - 41.5
+                    : ''
+                }}
+              </td>
+
+              <td>{{ measures?.luce?.height }}</td>
+
+              <td>{{ measures?.porta?.height }}</td>
+
+              <td>{{ measures?.muro?.height }}</td>
+
+              <td>{{ measures?.telaio?.height }}</td>
+
+              <td>{{ measures?.porta?.width }}</td>
 
 
             </tr>
