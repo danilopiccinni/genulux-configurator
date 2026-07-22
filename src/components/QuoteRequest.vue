@@ -11,69 +11,62 @@
 
     <div class="form">
 
-
       <input
         v-model="form.name"
-        placeholder="Nome e cognome"
-        autocomplete="name"
+        placeholder="Nome e Cognome *"
       />
 
-
+      <input
+        v-model="form.company"
+        placeholder="Azienda"
+      />
 
       <input
         v-model="form.email"
-        placeholder="Email"
         type="email"
-        autocomplete="email"
+        placeholder="Email *"
       />
 
+      <input
+        v-model="form.phone"
+        placeholder="Telefono"
+      />
 
+      <input
+        v-model="form.country"
+        placeholder="Nazione"
+      />
+
+      <input
+        v-model="form.city"
+        placeholder="Città"
+      />
 
       <textarea
         v-model="form.message"
         placeholder="Messaggio"
       ></textarea>
 
-
-
-
-
       <button
-        @click="sendRequest"
         :disabled="sending"
+        @click="sendRequest"
       >
-
-        {{
-          sending
-            ? 'Invio in corso...'
-            : 'Invia richiesta'
-        }}
-
+        {{ sending ? 'Invio...' : 'Richiedi preventivo' }}
       </button>
-
-
 
       <p
         v-if="successMessage"
         class="success-message"
       >
-
         {{ successMessage }}
-
       </p>
-
-
 
       <p
         v-if="errorMessage"
         class="error-message"
       >
-
         {{ errorMessage }}
-
       </p>
-
-
 
     </div>
 
@@ -100,14 +93,21 @@ const props = defineProps({
 
 
 
-
 const form = reactive({
 
-  name:'',
+  name: '',
 
-  email:'',
+  company: '',
 
-  message:''
+  email: '',
+
+  phone: '',
+
+  country: '',
+
+  city: '',
+
+  message: ''
 
 })
 
@@ -256,20 +256,23 @@ async function sendRequest(){
           },
 
 
-          body:JSON.stringify({
+          body: JSON.stringify({
 
+            name: form.name,
 
-            name:form.name,
+            company: form.company,
 
+            email: form.email,
 
-            email:form.email,
+            phone: form.phone,
 
+            country: form.country,
 
-            message:form.message,
+            city: form.city,
 
+            message: form.message,
 
-            pdf:pdfBase64
-
+            pdf: pdfBase64
 
           })
 

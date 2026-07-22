@@ -1,17 +1,32 @@
 import { Resend } from 'resend'
 
+const requiredFields = {
+
+  name: true,
+
+  company: false,
+
+  email: true,
+
+  phone: false,
+
+  country: false,
+
+  city: false,
+
+  message: false
+
+}
 
 const resend = new Resend(
   process.env.RESEND_API_KEY
 )
 
-
-export async function handler(event) {
-
+export async function handler(event){
 
   if(event.httpMethod !== 'POST'){
 
-    return {
+    return{
 
       statusCode:405,
 
@@ -27,25 +42,23 @@ export async function handler(event) {
 
   }
 
+  try{
 
-
-
-
-  try {
-
-
-    const body =
-      JSON.parse(event.body)
-
-
-
-
+    const body = JSON.parse(event.body)
 
     const {
 
       name,
 
+      company,
+
       email,
+
+      phone,
+
+      country,
+
+      city,
 
       message,
 
@@ -53,88 +66,221 @@ export async function handler(event) {
 
     } = body
 
+    const fields = {
 
+      name,
 
+      company,
 
+      email,
 
+      phone,
 
-    const result =
-      await resend.emails.send({
+      country,
 
+      city,
 
-        from:
-          'Genulux <onboarding@resend.dev>',
+      message
 
+    }
 
-        to:
-          [
-            'danilop.webdev@gmail.com'
-          ],
+    /*
+    ============================================================
+    REQUIRED FIELDS VALIDATION
+    ============================================================
+    */
 
+    for(const field in requiredFields){
 
-        subject:
-          'Nuova richiesta Genulux',
+      if(
 
+        requiredFields[field] &&
+        !fields[field]?.toString().trim()
 
-        html:
+      ){
 
+        return{
+
+          statusCode:400,
+
+          body:JSON.stringify({
+
+            success:false,
+
+            error:`${field} is required`
+
+          })
+
+        }
+
+      }
+
+    }
+
+    /*
+    ============================================================
+    SEND EMAIL
+    ============================================================
+    */
+
+    const result = await resend.emails.send({
+
+      from:
+        'Genulux <onboarding@resend.dev>',
+
+      to:[
+        'danilop.webdev@gmail.com'
+      ],
+
+      subject:
+        'Neue Angebotsanfrage - Genulux Konfigurator',
+
+      html:
 
 `
-<h2>Nuova richiesta dal configuratore</h2>
+<div style="
+font-family:Arial,Helvetica,sans-serif;
+max-width:700px;
+margin:auto;
+line-height:1.6;
+color:#222;
+">
 
+<h2 style="margin-bottom:8px;">
+Neue Angebotsanfrage
+</h2>
 
 <p>
-<strong>Nome:</strong>
+Es wurde eine neue Angebotsanfrage über den
+<strong>Genulux-Konfigurator</strong>
+eingereicht.
+</p>
+
+<p>
+Die vollständige Konfiguration befindet sich
+im angehängten PDF.
+</p>
+
+<hr style="margin:30px 0;">
+
+<h3 style="margin-bottom:15px;">
+Kundendaten
+</h3>
+
+<table
+style="
+width:100%;
+border-collapse:collapse;
+">
+
+<tr>
+<td style="padding:8px 0;width:180px;">
+<strong>Name</strong>
+</td>
+
+<td>
 ${name}
-</p>
+</td>
+</tr>
 
+<tr>
+<td style="padding:8px 0;">
+<strong>Firma</strong>
+</td>
 
-<p>
-<strong>Email:</strong>
+<td>
+${company || '-'}
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px 0;">
+<strong>E-Mail</strong>
+</td>
+
+<td>
 ${email}
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px 0;">
+<strong>Telefon</strong>
+</td>
+
+<td>
+${phone || '-'}
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px 0;">
+<strong>Land</strong>
+</td>
+
+<td>
+${country || '-'}
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px 0;">
+<strong>Ort</strong>
+</td>
+
+<td>
+${city || '-'}
+</td>
+</tr>
+
+</table>
+
+<hr style="margin:30px 0;">
+
+<h3>
+Nachricht
+</h3>
+
+<div
+style="
+background:#f7f7f7;
+padding:15px;
+border-radius:8px;
+">
+
+${message || 'Keine Nachricht angegeben.'}
+
+</div>
+
+<hr style="margin:30px 0;">
+
+<p style="font-size:13px;color:#666;">
+
+Diese E-Mail wurde automatisch vom
+Genulux-Konfigurator generiert.
+
 </p>
 
-
-<p>
-<strong>Messaggio:</strong>
-</p>
-
-<p>
-${message}
-</p>
+</div>
 `,
 
+      attachments:[
 
+        {
 
-        attachments:[
+          filename:'Genulux.pdf',
 
-          {
+          content:pdf.split(',')[1]
 
-            filename:
-              'Genulux.pdf',
+        }
 
+      ]
 
-            content:
-              pdf.split(',')[1]
+    })
 
-          }
-
-        ]
-
-
-
-      })
-
-
-
-
-
-
-    return {
-
+    return{
 
       statusCode:200,
-
 
       body:JSON.stringify({
 
@@ -142,24 +288,15 @@ ${message}
 
         data:result
 
-
       })
-
 
     }
 
+  }catch(error){
 
-
-
-
-  } catch(error){
-
-
-    return {
-
+    return{
 
       statusCode:500,
-
 
       body:JSON.stringify({
 
@@ -167,14 +304,10 @@ ${message}
 
         error:error.message
 
-
       })
-
 
     }
 
-
   }
-
 
 }
