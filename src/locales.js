@@ -1,6 +1,8 @@
 export const locales = {
   it: {
 
+    technicalMeasuresTitle: "Misure tecniche",
+
     impressum: "Note legali",
 
     language: "Lingua",
@@ -106,9 +108,38 @@ export const locales = {
 
     solidcostructionInfoTitle: "Informazione per pareti in muratura",
     solidcostructionInfoText:"Per l'installazione su pareti in muratura è necessario prevedere un pannello porta intonaco. Il pannello non è incluso nella fornitura Genulux e dovrà essere procurato separatamente.",
+
+
+    quoteRequestTitle: "Richiedi preventivo",
+
+    quoteNamePlaceholder: "Nome e Cognome *",
+
+    quoteCompanyPlaceholder: "Azienda",
+
+    quoteEmailPlaceholder: "Email *",
+
+    quotePhonePlaceholder: "Telefono",
+
+    quoteCountryPlaceholder: "Nazione",
+
+    quoteCityPlaceholder: "Città",
+
+    quoteMessagePlaceholder: "Messaggio",
+
+    quoteSendButton: "Richiedi preventivo",
+
+    quoteSending: "Invio...",
+
+    quoteSuccessMessage: "Richiesta inviata correttamente. Ti ricontatteremo presto.",
+
+    quoteErrorMessage: "Si è verificato un errore durante l'invio della richiesta.",
+
+    quoteFormRequiredFields: "Compila tutti i campi richiesti",
   },
 
   en: {
+
+    technicalMeasuresTitle: "Technical measurements",
 
     impressum: "Legal Notice",
 
@@ -213,9 +244,38 @@ export const locales = {
 
     solidcostructionInfoTitle: "Information for solidcostruction walls",
     solidcostructionInfoText:"For installation in solidcostruction walls, a plaster carrier panel is required. The panel is not supplied by Genulux and must be sourced separately.",
+
+
+    quoteRequestTitle: "Request a quote",
+
+    quoteNamePlaceholder: "Full name *",
+
+    quoteCompanyPlaceholder: "Company",
+
+    quoteEmailPlaceholder: "Email *",
+
+    quotePhonePlaceholder: "Phone",
+
+    quoteCountryPlaceholder: "Country",
+
+    quoteCityPlaceholder: "City",
+
+    quoteMessagePlaceholder: "Message",
+
+    quoteSendButton: "Request quote",
+
+    quoteSending: "Sending...",
+
+    quoteSuccessMessage: "Request sent successfully. We will contact you soon.",
+
+    quoteErrorMessage: "An error occurred while sending the request.",
+
+    quoteFormRequiredFields: "Please fill in all required fields",
   },
 
   de: {
+
+    technicalMeasuresTitle: "Technische Maße",
 
     impressum: "Impressum",
 
@@ -323,9 +383,38 @@ export const locales = {
 
     solidcostructionInfoTitle: "Hinweis für Massivbauwände",
     solidcostructionInfoText:"Für den Einbau in Massivbauwände ist eine Putzträgerplatte erforderlich. Diese ist nicht im Lieferumfang von Genulux enthalten und muss bauseits bereitgestellt werden.",
+
+
+    quoteRequestTitle: "Angebot anfordern",
+
+    quoteNamePlaceholder: "Vor- und Nachname *",
+
+    quoteCompanyPlaceholder: "Firma",
+
+    quoteEmailPlaceholder: "E-Mail *",
+
+    quotePhonePlaceholder: "Telefon",
+
+    quoteCountryPlaceholder: "Land",
+
+    quoteCityPlaceholder: "Stadt",
+
+    quoteMessagePlaceholder: "Nachricht",
+
+    quoteSendButton: "Angebot anfordern",
+
+    quoteSending: "Senden...",
+
+    quoteSuccessMessage: "Anfrage erfolgreich gesendet. Wir werden Sie bald kontaktieren.",
+
+    quoteErrorMessage: "Beim Senden der Anfrage ist ein Fehler aufgetreten.",
+
+    quoteFormRequiredFields: "Bitte füllen Sie alle Pflichtfelder aus",
   },
 
   es: {
+
+    technicalMeasuresTitle: "Medidas técnicas",
 
     impressum: "Aviso legal",
 
@@ -432,9 +521,39 @@ export const locales = {
 
     solidcostructionInfoTitle: "Información para muros de mampostería",
     solidcostructionInfoText:"Para la instalación en muros de mampostería es necesario utilizar un panel portaenlucido. Este panel no está incluido en el suministro de Genulux y debe adquirirse por separado.",
+
+
+
+    quoteRequestTitle: "Solicitar presupuesto",
+
+    quoteNamePlaceholder: "Nombre y apellidos *",
+
+    quoteCompanyPlaceholder: "Empresa",
+
+    quoteEmailPlaceholder: "Correo electrónico *",
+
+    quotePhonePlaceholder: "Teléfono",
+
+    quoteCountryPlaceholder: "País",
+
+    quoteCityPlaceholder: "Ciudad",
+
+    quoteMessagePlaceholder: "Mensaje",
+
+    quoteSendButton: "Solicitar presupuesto",
+
+    quoteSending: "Enviando...",
+
+    quoteSuccessMessage: "Solicitud enviada correctamente. Nos pondremos en contacto pronto.",
+
+    quoteErrorMessage: "Se produjo un error al enviar la solicitud.",
+
+    quoteFormRequiredFields: "Complete todos los campos obligatorios",
   },
 
   fr: {
+
+    technicalMeasuresTitle: "Mesures techniques",
 
     impressum: "Mentions légales",
 
@@ -541,5 +660,32 @@ export const locales = {
 
     solidcostructionInfoTitle: "Information pour les murs maçonnés",
     solidcostructionInfoText:"Pour une installation dans un mur maçonné, un panneau support d'enduit est nécessaire. Ce panneau n'est pas fourni par Genulux et doit être approvisionné séparément.",
+
+
+    quoteRequestTitle: "Demander un devis",
+
+    quoteNamePlaceholder: "Nom et prénom *",
+
+    quoteCompanyPlaceholder: "Entreprise",
+
+    quoteEmailPlaceholder: "E-mail *",
+
+    quotePhonePlaceholder: "Téléphone",
+
+    quoteCountryPlaceholder: "Pays",
+
+    quoteCityPlaceholder: "Ville",
+
+    quoteMessagePlaceholder: "Message",
+
+    quoteSendButton: "Demander un devis",
+
+    quoteSending: "Envoi...",
+
+    quoteSuccessMessage: "Demande envoyée avec succès. Nous vous contacterons bientôt.",
+
+    quoteErrorMessage: "Une erreur s'est produite lors de l'envoi de la demande.",
+
+    quoteFormRequiredFields: "Veuillez remplir tous les champs obligatoires",
   }
 }

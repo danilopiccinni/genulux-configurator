@@ -4,7 +4,7 @@
 
 
     <h2>
-      Richiedi preventivo
+      {{ locales[config.currentLang].quoteRequestTitle }}
     </h2>
 
 
@@ -13,45 +13,45 @@
 
       <input
         v-model="form.name"
-        placeholder="Nome e Cognome *"
+        :placeholder="locales[config.currentLang].quoteNamePlaceholder"
       />
 
       <input
         v-model="form.company"
-        placeholder="Azienda"
+        :placeholder=locales[config.currentLang].quoteCompanyPlaceholder
       />
 
       <input
         v-model="form.email"
         type="email"
-        placeholder="Email *"
+        :placeholder=locales[config.currentLang].quoteEmailPlaceholder
       />
 
       <input
         v-model="form.phone"
-        placeholder="Telefono"
+        :placeholder=locales[config.currentLang].quotePhonePlaceholder
       />
 
       <input
         v-model="form.country"
-        placeholder="Nazione"
+        :placeholder=locales[config.currentLang].quoteCountryPlaceholder
       />
 
       <input
         v-model="form.city"
-        placeholder="Città"
+        :placeholder=locales[config.currentLang].quoteCityPlaceholder
       />
 
       <textarea
         v-model="form.message"
-        placeholder="Messaggio"
+        :placeholder=locales[config.currentLang].quoteMessagePlaceholder
       ></textarea>
 
       <button
         :disabled="sending"
         @click="sendRequest"
       >
-        {{ sending ? 'Invio...' : 'Richiedi preventivo' }}
+        {{ sending ? locales[config.currentLang].quoteSending : locales[config.currentLang].quoteSendButton }}
       </button>
 
       <p
@@ -81,6 +81,10 @@
 
 
 import { reactive, ref } from 'vue'
+
+import { config } from '../config.js'
+
+import { locales } from '../locales.js'
 
 
 
@@ -200,7 +204,7 @@ async function sendRequest(){
 
 
     errorMessage.value =
-      'Compila tutti i campi richiesti'
+      locales[config.currentLang].quoteErrorMessage
 
 
     return
@@ -299,7 +303,7 @@ async function sendRequest(){
 
 
       throw new Error(
-        'Invio richiesta fallito'
+        locales[config.currentLang].quoteErrorMessage
       )
 
 
@@ -311,7 +315,7 @@ async function sendRequest(){
 
 
     successMessage.value =
-      'Richiesta inviata correttamente'
+      locales[config.currentLang].quoteSuccessMessage
 
 
 
@@ -333,7 +337,7 @@ async function sendRequest(){
 
 
     errorMessage.value =
-      'Errore durante l’invio della richiesta'
+      locales[config.currentLang].quoteErrorMessage
 
 
 
