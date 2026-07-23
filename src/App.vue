@@ -4,93 +4,150 @@
 
 
     <!-- ========================================
-         HEADER BRAND
+         HEADER
     ========================================= -->
 
-
-    <header class="topbar">
-
-
-      <div class="logo-container">
+<header class="topbar">
 
 
-        <img
-
-          class="logo"
-
-          src="./assets/images/logo_ags_weis.png"
-
-          alt="AGS"
-
-        />
+  <div class="logo-container">
 
 
-      </div>
+    <img
+      class="logo"
+      src="./assets/images/logo_ags_weis.png"
+      alt="AGS"
+    />
+
+
+  </div>
 
 
 
 
+  <!-- DESKTOP ACTIONS -->
 
-      <div class="topbar-actions">
-
-
-        <LanguageSelector />
+  <div class="topbar-actions desktop-menu">
 
 
-
-
-
-        <div
-          v-if="route.path !== '/'"
-          class="header-actions"
-        >
+    <LanguageSelector />
 
 
 
-          <!-- HOME CONFIGURATORE -->
-
-          <button
-
-            class="header-btn"
-
-            @click="goHome"
-
-          >
-
-            {{ locales[config.currentLang].homeConfigurator }}
+    <div
+      v-if="route.path !== '/'"
+      class="header-actions"
+    >
 
 
-          </button>
+      <button
+        class="header-btn"
+        @click="goHome"
+      >
 
+        {{ locales[config.currentLang].homeConfigurator }}
 
+      </button>
 
 
 
+      <button
+        class="header-btn"
+        @click="newConfig"
+      >
 
-          <!-- NUOVA CONFIGURAZIONE -->
+        {{ locales[config.currentLang].newConfiguration }}
 
-          <button
-
-            class="header-btn"
-
-            @click="newConfig"
-
-          >
-
-            {{ locales[config.currentLang].newConfiguration }}
+      </button>
 
 
-          </button>
+    </div>
+
+
+  </div>
 
 
 
-        </div>
 
 
-      </div>
+  <!-- MOBILE BUTTON -->
+
+  <button
+
+    class="mobile-toggle"
+
+    type="button"
+
+    @click="toggleMobileMenu"
+
+  >
+
+    <span v-if="!mobileMenuOpen">
+      ☰
+    </span>
+
+    <span v-else>
+      ✕
+    </span>
 
 
-    </header>
+  </button>
+
+
+
+
+
+  <!-- MOBILE MENU -->
+
+  <div
+
+    class="mobile-menu"
+
+    :class="{open:mobileMenuOpen}"
+
+  >
+
+
+    <LanguageSelector />
+
+
+
+    <button
+
+      v-if="route.path !== '/'"
+
+      class="header-btn"
+
+      @click="goHome();closeMobileMenu()"
+
+    >
+
+      {{ locales[config.currentLang].homeConfigurator }}
+
+    </button>
+
+
+
+    <button
+
+      v-if="route.path !== '/'"
+
+      class="header-btn"
+
+      @click="newConfig();closeMobileMenu()"
+
+    >
+
+      {{ locales[config.currentLang].newConfiguration }}
+
+    </button>
+
+
+  </div>
+
+
+</header>
+
 
 
 
@@ -100,11 +157,13 @@
 
 
     <!-- ========================================
-         AREA CONFIGURATORE
+         CONFIGURATORE
     ========================================= -->
 
 
     <main class="configurator">
+
+
 
 
 
@@ -127,6 +186,7 @@
       <router-view v-slot="{ Component }">
 
 
+
         <Transition
 
           name="fade-slide"
@@ -134,6 +194,7 @@
           mode="out-in"
 
         >
+
 
 
           <component
@@ -147,14 +208,31 @@
           />
 
 
+
         </Transition>
+
 
 
       </router-view>
 
 
 
+
+
     </main>
+
+
+
+
+
+
+
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
 
     <Footer
 
@@ -163,6 +241,9 @@
       :data="ConfigData"
 
     />
+
+
+
 
 
   </div>
@@ -176,7 +257,7 @@
 
 <script setup>
 
-import { onMounted, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 import { useRouter, useRoute } from 'vue-router'
 
@@ -200,6 +281,24 @@ import {
   isRollback,
   canEnterStep
 } from './helpers/configHelpers'
+
+
+
+const mobileMenuOpen = ref(false)
+
+function toggleMobileMenu(){
+
+  mobileMenuOpen.value =
+    !mobileMenuOpen.value
+
+}
+
+
+function closeMobileMenu(){
+
+  mobileMenuOpen.value = false
+
+}
 
 
 
@@ -452,15 +551,13 @@ watch(
 
 <style scoped>
 
-
 /*
 ========================================
 PAGE BACKGROUND
 ========================================
 */
 
-
-.page {
+.page{
 
   min-height:100vh;
 
@@ -468,22 +565,16 @@ PAGE BACKGROUND
 
   flex-direction:column;
 
-
   font-family:'Inter',sans-serif;
 
-
   background:
-
 
     linear-gradient(
       rgba(255,255,255,0),
       rgba(255,255,255,0)
     ),
 
-
     url('./assets/images/bild_start.jpg');
-
-
 
   background-size:cover;
 
@@ -493,47 +584,22 @@ PAGE BACKGROUND
 
   background-attachment:fixed;
 
+  color:
 
-
-  color:v-bind('ConfigData.colors.text');
+    v-bind('ConfigData.colors.text');
 
 }
-
-
-
 
 
 /*
 ========================================
 TOPBAR
+Desktop:
+logo | lingua | bottoni
 ========================================
 */
 
-
-.topbar {
-
-
-  height:68px;
-
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-
-  padding:0 45px;
-
-
-  background:
-    v-bind('ConfigData.colors.primary');
-
-
-
-  box-shadow:
-    0 6px 25px rgba(0,0,0,.05);
-
+.topbar{
 
 
   position:fixed;
@@ -543,15 +609,44 @@ TOPBAR
 
   left:0;
 
+
   width:100%;
 
 
-  z-index:100;
+  height:72px;
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  justify-content:space-between;
+
+
+  padding:0 40px;
+
+
+  background:
+
+    v-bind('ConfigData.colors.primary');
+
+
+  box-shadow:
+
+    0 6px 25px rgba(0,0,0,.08);
+
+
+
+  z-index:1000;
+
+
+  box-sizing:border-box;
 
 
 
 }
-
 
 
 
@@ -565,40 +660,27 @@ LOGO
 */
 
 
-.logo {
-
-
-  width:145px;
-
-
-  height:auto;
-
-
-  display:block;
-
-
-}
-
-
-
-
-
-
-
-
-.logo-container {
-
+.logo-container{
 
   display:flex;
 
-
   align-items:center;
 
+  flex-shrink:0;
 
 }
 
 
 
+.logo{
+
+  width:145px;
+
+  height:auto;
+
+  display:block;
+
+}
 
 
 
@@ -607,12 +689,13 @@ LOGO
 
 /*
 ========================================
-RIGHT ACTIONS
+RIGHT AREA
+Lingua + pulsanti
 ========================================
 */
 
 
-.topbar-actions {
+.topbar-actions{
 
 
   display:flex;
@@ -621,7 +704,45 @@ RIGHT ACTIONS
   align-items:center;
 
 
-  gap:20px;
+  justify-content:flex-end;
+
+
+  gap:15px;
+
+
+  flex:1;
+
+
+  min-width:0;
+
+
+  white-space:nowrap;
+
+
+}
+
+
+
+
+
+
+
+.header-actions{
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  justify-content:flex-end;
+
+
+  gap:10px;
+
+
+  flex-shrink:0;
 
 
 }
@@ -633,7 +754,7 @@ RIGHT ACTIONS
 
 
 
-.header-actions {
+.header-btn{
 
 
   display:flex;
@@ -642,19 +763,13 @@ RIGHT ACTIONS
   align-items:center;
 
 
-  gap:12px;
+  justify-content:center;
 
 
-}
+  white-space:nowrap;
 
 
-
-
-
-
-
-
-.header-btn {
+  flex-shrink:0;
 
 
   padding:
@@ -667,7 +782,6 @@ RIGHT ACTIONS
 
 
   font-weight:600;
-
 
 
   border-radius:
@@ -699,13 +813,9 @@ RIGHT ACTIONS
   cursor:pointer;
 
 
-
   transition:
 
-    all
-
-    v-bind('ConfigData.colors.transition');
-
+    all .25s ease;
 
 
 }
@@ -715,8 +825,7 @@ RIGHT ACTIONS
 
 
 
-
-.header-btn:hover {
+.header-btn:hover{
 
 
   background:
@@ -736,10 +845,130 @@ RIGHT ACTIONS
     v-bind('ConfigData.colors.primary');
 
 
-
   transform:
 
     translateY(-2px);
+
+
+}
+
+
+/*
+========================================
+MOBILE MENU ELEMENTS
+========================================
+*/
+
+
+.mobile-toggle{
+
+  display:none;
+
+  position:relative;
+
+  z-index:10000;
+
+
+  border:none;
+
+  background:transparent;
+
+  color:white;
+
+  font-size:30px;
+
+  cursor:pointer;
+
+}
+
+
+
+
+
+.mobile-menu{
+
+
+  position:fixed;
+
+
+  top:64px;
+
+  left:0;
+
+
+  width:100%;
+
+
+
+  background:
+
+    v-bind('ConfigData.colors.primary');
+
+
+
+  padding:20px;
+
+
+
+  display:flex;
+
+
+  flex-direction:column;
+
+
+  gap:15px;
+
+
+
+  box-sizing:border-box;
+
+
+
+  transform:
+
+    translateY(-120%);
+
+
+
+  opacity:0;
+
+
+  visibility:hidden;
+
+
+
+  transition:
+
+    all .3s ease;
+
+
+
+  z-index:9999;
+
+
+
+  box-shadow:
+
+    0 15px 30px rgba(0,0,0,.15);
+
+
+}
+
+
+
+
+.mobile-menu.open{
+
+
+  transform:
+
+    translateY(0);
+
+
+  opacity:1;
+
+
+  visibility:visible;
 
 
 }
@@ -750,16 +979,16 @@ RIGHT ACTIONS
 
 
 
-
-
 /*
 ========================================
-CONFIGURATOR POSITION
+CONFIGURATOR AREA
 ========================================
 */
 
 
-.configurator {
+.configurator{
+
+
   flex:1;
 
 
@@ -772,15 +1001,14 @@ CONFIGURATOR POSITION
   margin-left:auto;
 
 
-
   margin-right:6vw;
 
 
 
-  padding:
+  padding-top:95px;
 
 
-    78px 0 70px;
+  padding-bottom:70px;
 
 
 
@@ -798,7 +1026,6 @@ CONFIGURATOR POSITION
 
 
 
-
 /*
 ========================================
 ROUTE TRANSITION
@@ -807,7 +1034,7 @@ ROUTE TRANSITION
 
 
 .fade-slide-enter-active,
-.fade-slide-leave-active {
+.fade-slide-leave-active{
 
 
   transition:
@@ -824,8 +1051,7 @@ ROUTE TRANSITION
 
 
 
-
-.fade-slide-enter-from {
+.fade-slide-enter-from{
 
 
   opacity:0;
@@ -842,8 +1068,7 @@ ROUTE TRANSITION
 
 
 
-
-.fade-slide-leave-to {
+.fade-slide-leave-to{
 
 
   opacity:0;
@@ -863,30 +1088,55 @@ ROUTE TRANSITION
 
 
 
-
 /*
 ========================================
-RESPONSIVE
+TABLET
 ========================================
 */
-
 
 @media(max-width:900px){
 
 
-  .topbar {
+  .topbar{
 
 
     padding:
 
-      0 25px;
+      0 20px;
 
 
   }
 
 
 
-  .configurator {
+  .logo{
+
+
+    width:120px;
+
+
+  }
+
+
+
+
+  .header-btn{
+
+
+    padding:
+
+      8px 12px;
+
+
+    font-size:.75rem;
+
+
+  }
+
+
+
+
+  .configurator{
 
 
     width:92%;
@@ -900,6 +1150,102 @@ RESPONSIVE
   }
 
 
+}
+
+
+
+
+
+
+
+
+
+
+/*
+========================================
+MOBILE
+========================================
+*/
+
+@media(max-width:768px){
+
+
+.topbar{
+
+  height:64px;
+
+  padding:0 15px;
+
+}
+
+
+
+.logo{
+
+  width:95px;
+
+}
+
+
+
+.desktop-menu{
+
+  display:none;
+
+}
+
+
+
+.mobile-toggle{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+
+.mobile-menu{
+
+  top:64px;
+
+}
+
+
+
+.mobile-menu.open{
+
+  transform:translateY(0);
+
+  opacity:1;
+
+  pointer-events:auto;
+
+}
+
+
+
+.mobile-menu .header-btn{
+
+  width:100%;
+
+}
+
+
+
+.configurator{
+
+  width:94%;
+
+  margin:0 auto;
+
+  padding-top:90px;
+
+}
+
 
 }
 
@@ -908,25 +1254,24 @@ RESPONSIVE
 
 
 
-@media(max-width:650px){
+
+
+/*
+========================================
+VERY SMALL MOBILE
+========================================
+*/
+
+@media(max-width:420px){
 
 
 
-  .topbar {
-
-
-    height:auto;
+  .topbar{
 
 
     padding:
 
-      20px;
-
-
-    flex-direction:column;
-
-
-    gap:20px;
+      8px 10px;
 
 
   }
@@ -934,10 +1279,28 @@ RESPONSIVE
 
 
 
-  .topbar-actions {
+
+  .logo{
 
 
-    flex-direction:column;
+    width:75px;
+
+
+  }
+
+
+
+
+
+  .header-btn{
+
+
+    padding:
+
+      6px;
+
+
+    font-size:.62rem;
 
 
   }
