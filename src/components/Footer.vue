@@ -140,7 +140,6 @@ const data = props.data
 
 <style scoped>
 
-
 /*
 ========================================
 FOOTER
@@ -153,48 +152,54 @@ FOOTER
 
   margin-top:auto;
 
+
   position:relative;
+
 
   z-index:5;
 
 
-  padding:28px 40px;
+
+  padding:
+
+    16px 40px;
 
 
 
   background:
 
-
-    rgba(255,255,255,.88);
+    rgba(255,255,255,.92);
 
 
 
   backdrop-filter:
 
-    blur(18px);
+    blur(14px);
 
 
 
   -webkit-backdrop-filter:
 
-    blur(18px);
+    blur(14px);
 
 
 
   border-top:
 
-    1px solid rgba(255,255,255,.35);
+    1px solid rgba(255,255,255,.45);
 
 
 
   box-shadow:
 
 
-    0 -8px 35px rgba(0,0,0,.08);
+    0 -4px 20px rgba(0,0,0,.06);
 
 
 
 }
+
+
 
 
 
@@ -222,22 +227,19 @@ CONTENT
   display:flex;
 
 
-  justify-content:space-between;
-
-
   align-items:center;
 
 
-
-  gap:30px;
-
+  justify-content:space-between;
 
 
-  flex-wrap:wrap;
+
+  gap:20px;
 
 
 
 }
+
 
 
 
@@ -263,7 +265,7 @@ COMPANY
 
 
 
-  gap:5px;
+  gap:2px;
 
 
 
@@ -284,7 +286,7 @@ COMPANY
 
 
 
-  font-size:1rem;
+  font-size:.9rem;
 
 
   font-weight:700;
@@ -308,7 +310,7 @@ COMPANY
 
 
 
-  font-size:.9rem;
+  font-size:.78rem;
 
 
 
@@ -339,15 +341,28 @@ CONTACT
 
 
 
-  gap:12px;
+  gap:10px;
 
 
 
-  flex-wrap:wrap;
+  font-size:.82rem;
 
 
 
-  font-size:.9rem;
+}
+
+
+
+
+
+
+
+.footer-contact span{
+
+
+  color:
+
+    v-bind('data.colors.textLight');
 
 
 
@@ -419,7 +434,11 @@ IMPRESSUM
 
 
 
-  font-weight:600;
+  font-size:.85rem;
+
+
+
+  font-weight:700;
 
 
 
@@ -448,9 +467,50 @@ IMPRESSUM
 
 
 
-  transform:
+}
 
-    translateY(-2px);
+
+
+
+
+
+
+
+
+/*
+========================================
+TABLET
+========================================
+*/
+
+
+@media(max-width:900px){
+
+
+  .footer{
+
+
+    padding:
+
+      14px 25px;
+
+
+
+  }
+
+
+
+
+  .footer-content{
+
+
+    gap:
+
+      15px;
+
+
+
+  }
 
 
 
@@ -466,19 +526,21 @@ IMPRESSUM
 
 /*
 ========================================
-RESPONSIVE
+MOBILE
 ========================================
 */
 
 
-@media(max-width:900px){
+@media(max-width:600px){
 
 
 
   .footer{
 
 
-    padding:25px;
+    padding:
+
+      14px 15px;
 
 
 
@@ -496,7 +558,16 @@ RESPONSIVE
 
 
 
+    justify-content:center;
+
+
     text-align:center;
+
+
+
+    gap:
+
+      10px;
 
 
 
@@ -507,15 +578,45 @@ RESPONSIVE
 
 
 
-  .footer-company,
-  .footer-contact{
+  .footer-company{
 
 
     align-items:center;
 
 
 
+  }
+
+
+
+
+
+
+  .footer-contact{
+
+
     justify-content:center;
+
+
+    flex-wrap:wrap;
+
+
+
+    font-size:.78rem;
+
+
+
+  }
+
+
+
+
+
+
+  .footer-link{
+
+
+    font-size:.8rem;
 
 
 
@@ -526,5 +627,53 @@ RESPONSIVE
 }
 
 
+
+
+
+
+
+
+
+/*
+========================================
+VERY SMALL
+========================================
+*/
+
+
+@media(max-width:380px){
+
+
+
+  .footer-contact{
+
+
+    flex-direction:column;
+
+
+
+    gap:
+
+      4px;
+
+
+
+  }
+
+
+
+
+  .footer-contact span{
+
+
+    display:none;
+
+
+
+  }
+
+
+
+}
 
 </style>
