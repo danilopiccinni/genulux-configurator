@@ -124,7 +124,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Città",
 
-    quoteMessagePlaceholder: "Messaggio",
+    quoteMessagePlaceholder: "Messaggio *",
 
     quoteSendButton: "Richiedi preventivo",
 
@@ -260,7 +260,7 @@ export const locales = {
 
     quoteCityPlaceholder: "City",
 
-    quoteMessagePlaceholder: "Message",
+    quoteMessagePlaceholder: "Message *",
 
     quoteSendButton: "Request quote",
 
@@ -399,7 +399,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Stadt",
 
-    quoteMessagePlaceholder: "Nachricht",
+    quoteMessagePlaceholder: "Nachricht *",
 
     quoteSendButton: "Angebot anfordern",
 
@@ -538,7 +538,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Ciudad",
 
-    quoteMessagePlaceholder: "Mensaje",
+    quoteMessagePlaceholder: "Mensaje *",
 
     quoteSendButton: "Solicitar presupuesto",
 
@@ -676,7 +676,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Ville",
 
-    quoteMessagePlaceholder: "Message",
+    quoteMessagePlaceholder: "Message *",
 
     quoteSendButton: "Demander un devis",
 

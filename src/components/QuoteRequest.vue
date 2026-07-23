@@ -204,7 +204,7 @@ async function sendRequest(){
 
 
     errorMessage.value =
-      locales[config.currentLang].quoteErrorMessage
+      locales[config.currentLang].quoteFormRequiredFields
 
 
     return
