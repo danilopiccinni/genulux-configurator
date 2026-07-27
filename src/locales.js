@@ -112,11 +112,11 @@ export const locales = {
 
     quoteRequestTitle: "Richiedi preventivo",
 
-    quoteNamePlaceholder: "Nome e Cognome *",
+    quoteNamePlaceholder: "Nome e Cognome",
 
     quoteCompanyPlaceholder: "Azienda",
 
-    quoteEmailPlaceholder: "Email *",
+    quoteEmailPlaceholder: "Email",
 
     quotePhonePlaceholder: "Telefono",
 
@@ -124,7 +124,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Città",
 
-    quoteMessagePlaceholder: "Messaggio *",
+    quoteMessagePlaceholder: "Messaggio",
 
     quoteSendButton: "Richiedi preventivo",
 
@@ -135,8 +135,38 @@ export const locales = {
     quoteErrorMessage: "Si è verificato un errore durante l'invio della richiesta.",
 
     quoteFormRequiredFields: "Compila tutti i campi richiesti",
-  },
 
+    quoteFieldRequired:
+      'Campo obbligatorio',
+
+    quoteFieldInvalid:
+      'Valore non valido',
+
+    quoteFieldTooLong:
+      'Testo troppo lungo',
+      
+      quoteNameLabel:
+        'Nome',
+
+      quoteCompanyLabel:
+        'Azienda',
+
+      quoteEmailLabel:
+        'Email',
+
+      quotePhoneLabel:
+        'Telefono',
+
+      quoteCountryLabel:
+        'Paese',
+
+      quoteCityLabel:
+        'Città',
+
+      quoteMessageLabel:
+        'Messaggio',
+  },
+      
   en: {
 
     technicalMeasuresTitle: "Technical measurements",
@@ -248,11 +278,11 @@ export const locales = {
 
     quoteRequestTitle: "Request a quote",
 
-    quoteNamePlaceholder: "Full name *",
+    quoteNamePlaceholder: "Full name",
 
     quoteCompanyPlaceholder: "Company",
 
-    quoteEmailPlaceholder: "Email *",
+    quoteEmailPlaceholder: "Email",
 
     quotePhonePlaceholder: "Phone",
 
@@ -260,7 +290,7 @@ export const locales = {
 
     quoteCityPlaceholder: "City",
 
-    quoteMessagePlaceholder: "Message *",
+    quoteMessagePlaceholder: "Message",
 
     quoteSendButton: "Request quote",
 
@@ -271,6 +301,36 @@ export const locales = {
     quoteErrorMessage: "An error occurred while sending the request.",
 
     quoteFormRequiredFields: "Please fill in all required fields",
+
+    quoteFieldRequired:
+      'Required field',
+
+    quoteFieldInvalid:
+      'Invalid value',
+
+    quoteFieldTooLong:
+      'Text too long',
+
+    quoteNameLabel:
+      'Name',
+
+    quoteCompanyLabel:
+      'Company',
+
+    quoteEmailLabel:
+      'Email',
+
+    quotePhoneLabel:
+      'Phone',
+
+    quoteCountryLabel:
+      'Country',
+
+    quoteCityLabel:
+      'City',
+
+    quoteMessageLabel:
+      'Message',
   },
 
   de: {
@@ -387,11 +447,11 @@ export const locales = {
 
     quoteRequestTitle: "Angebot anfordern",
 
-    quoteNamePlaceholder: "Vor- und Nachname *",
+    quoteNamePlaceholder: "Vor- und Nachname",
 
     quoteCompanyPlaceholder: "Firma",
 
-    quoteEmailPlaceholder: "E-Mail *",
+    quoteEmailPlaceholder: "E-Mail",
 
     quotePhonePlaceholder: "Telefon",
 
@@ -399,7 +459,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Stadt",
 
-    quoteMessagePlaceholder: "Nachricht *",
+    quoteMessagePlaceholder: "Nachricht",
 
     quoteSendButton: "Angebot anfordern",
 
@@ -410,6 +470,36 @@ export const locales = {
     quoteErrorMessage: "Beim Senden der Anfrage ist ein Fehler aufgetreten.",
 
     quoteFormRequiredFields: "Bitte füllen Sie alle Pflichtfelder aus",
+
+    quoteFieldRequired:
+      'Pflichtfeld',
+
+    quoteFieldInvalid:
+      'Ungültiger Wert',
+
+    quoteFieldTooLong:
+      'Text zu lang',
+
+    quoteNameLabel:
+      'Name',
+
+    quoteCompanyLabel:
+      'Firma',
+
+    quoteEmailLabel:
+      'E-Mail',
+
+    quotePhoneLabel:
+      'Telefon',
+
+    quoteCountryLabel:
+      'Land',
+
+    quoteCityLabel:
+      'Ort',
+
+    quoteMessageLabel:
+      'Nachricht',
   },
 
   es: {
@@ -526,11 +616,11 @@ export const locales = {
 
     quoteRequestTitle: "Solicitar presupuesto",
 
-    quoteNamePlaceholder: "Nombre y apellidos *",
+    quoteNamePlaceholder: "Nombre y apellidos",
 
     quoteCompanyPlaceholder: "Empresa",
 
-    quoteEmailPlaceholder: "Correo electrónico *",
+    quoteEmailPlaceholder: "Correo electrónico",
 
     quotePhonePlaceholder: "Teléfono",
 
@@ -538,7 +628,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Ciudad",
 
-    quoteMessagePlaceholder: "Mensaje *",
+    quoteMessagePlaceholder: "Mensaje",
 
     quoteSendButton: "Solicitar presupuesto",
 
@@ -549,6 +639,36 @@ export const locales = {
     quoteErrorMessage: "Se produjo un error al enviar la solicitud.",
 
     quoteFormRequiredFields: "Complete todos los campos obligatorios",
+
+    quoteFieldRequired:
+      'Campo obligatorio',
+
+    quoteFieldInvalid:
+      'Valor no válido',
+
+    quoteFieldTooLong:
+      'Texto demasiado largo',
+
+    quoteNameLabel:
+      'Nombre',
+
+    quoteCompanyLabel:
+      'Empresa',
+
+    quoteEmailLabel:
+      'Correo electrónico',
+
+    quotePhoneLabel:
+      'Teléfono',
+
+    quoteCountryLabel:
+      'País',
+
+    quoteCityLabel:
+      'Ciudad',
+
+    quoteMessageLabel:
+      'Mensaje',
   },
 
   fr: {
@@ -664,11 +784,11 @@ export const locales = {
 
     quoteRequestTitle: "Demander un devis",
 
-    quoteNamePlaceholder: "Nom et prénom *",
+    quoteNamePlaceholder: "Nom et prénom",
 
     quoteCompanyPlaceholder: "Entreprise",
 
-    quoteEmailPlaceholder: "E-mail *",
+    quoteEmailPlaceholder: "E-mail",
 
     quotePhonePlaceholder: "Téléphone",
 
@@ -676,7 +796,7 @@ export const locales = {
 
     quoteCityPlaceholder: "Ville",
 
-    quoteMessagePlaceholder: "Message *",
+    quoteMessagePlaceholder: "Message",
 
     quoteSendButton: "Demander un devis",
 
@@ -687,5 +807,35 @@ export const locales = {
     quoteErrorMessage: "Une erreur s'est produite lors de l'envoi de la demande.",
 
     quoteFormRequiredFields: "Veuillez remplir tous les champs obligatoires",
+
+    quoteFieldRequired:
+      'Champ obligatoire',
+
+    quoteFieldInvalid:
+      'Valeur invalide',
+
+    quoteFieldTooLong:
+      'Texte trop long',
+
+    quoteNameLabel:
+      'Nom',
+
+    quoteCompanyLabel:
+      'Entreprise',
+
+    quoteEmailLabel:
+      'E-mail',
+
+    quotePhoneLabel:
+      'Téléphone',
+
+    quoteCountryLabel:
+      'Pays',
+
+    quoteCityLabel:
+      'Ville',
+
+    quoteMessageLabel:
+      'Message',
   }
 }

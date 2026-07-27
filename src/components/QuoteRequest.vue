@@ -9,82 +9,238 @@
 
 
 
+
     <div class="form">
 
-      <input
-        v-model="form.name"
-        :placeholder="locales[config.currentLang].quoteNamePlaceholder"
-      />
 
-      <input
-        v-model="form.company"
-        :placeholder=locales[config.currentLang].quoteCompanyPlaceholder
-      />
+      <div
+        v-for="field in quoteFields"
+        :key="field.key"
+        class="field-wrapper"
+      >
 
-      <input
-        v-model="form.email"
-        type="email"
-        :placeholder=locales[config.currentLang].quoteEmailPlaceholder
-      />
 
-      <input
-        v-model="form.phone"
-        :placeholder=locales[config.currentLang].quotePhonePlaceholder
-      />
 
-      <input
-        v-model="form.country"
-        :placeholder=locales[config.currentLang].quoteCountryPlaceholder
-      />
+        <label class="field-label">
 
-      <input
-        v-model="form.city"
-        :placeholder=locales[config.currentLang].quoteCityPlaceholder
-      />
 
-      <textarea
-        v-model="form.message"
-        :placeholder=locales[config.currentLang].quoteMessagePlaceholder
-      ></textarea>
+          {{
+            locales[config.currentLang][field.label]
+            ||
+            field.emailLabel
+          }}
+
+
+          <span
+            v-if="field.required"
+            class="required-star"
+          >
+            *
+          </span>
+
+
+        </label>
+
+
+
+
+
+
+        <!-- INPUT -->
+
+        <input
+
+          v-if="field.type !== 'textarea'"
+
+          :ref="el => setFieldRef(field.key, el)"
+
+          v-model="form[field.key]"
+
+          :type="field.type"
+
+          :autocomplete="field.autocomplete"
+
+          :maxlength="field.maxLength"
+
+          :placeholder="
+            locales[config.currentLang][field.placeholder]
+          "
+
+          :class="{
+            error: errors[field.key]
+          }"
+
+          @input="validateField(field)"
+
+          @blur="validateField(field)"
+
+        />
+
+
+
+
+
+
+
+        <!-- TEXTAREA -->
+
+        <textarea
+
+          v-else
+
+          :ref="el => setFieldRef(field.key, el)"
+
+          v-model="form[field.key]"
+
+          :maxlength="field.maxLength"
+
+          :rows="field.rows"
+
+          :placeholder="
+            locales[config.currentLang][field.placeholder]
+          "
+
+          :class="{
+            error: errors[field.key]
+          }"
+
+          @input="validateField(field)"
+
+          @blur="validateField(field)"
+
+        />
+
+
+
+
+
+
+
+
+
+        <!-- ERROR -->
+
+        <small
+
+          v-if="errors[field.key]"
+
+          class="field-error"
+
+        >
+
+          {{
+            getErrorMessage(errors[field.key])
+          }}
+
+        </small>
+
+
+
+      </div>
+
+
+
+
+
+
+
+
 
       <button
+
         :disabled="sending"
+
         @click="sendRequest"
+
       >
-        {{ sending ? locales[config.currentLang].quoteSending : locales[config.currentLang].quoteSendButton }}
+
+
+        {{
+          sending
+          ?
+          locales[config.currentLang].quoteSending
+          :
+          locales[config.currentLang].quoteSendButton
+        }}
+
+
       </button>
 
-      <p
-        v-if="successMessage"
-        class="success-message"
-      >
-        {{ successMessage }}
-      </p>
+
+
+
+
+
+
 
       <p
-        v-if="errorMessage"
-        class="error-message"
+
+        v-if="successMessage"
+
+        class="success-message"
+
       >
-        {{ errorMessage }}
+
+        {{ successMessage }}
+
       </p>
+
+
+
+
+
+
+
+
+      <p
+
+        v-if="errorMessage"
+
+        class="error-message"
+
+      >
+
+        {{ errorMessage }}
+
+      </p>
+
+
 
     </div>
 
 
   </div>
 
+
 </template>
+
+
+
+
+
+
 
 
 
 <script setup>
 
 
-import { reactive, ref } from 'vue'
+import {
+  reactive,
+  ref
+} from 'vue'
+
 
 import { config } from '../config.js'
 
 import { locales } from '../locales.js'
+
+
+import { quoteFields } from '../../shared/quoteFields.js'
+
+
+
+
 
 
 
@@ -97,23 +253,84 @@ const props = defineProps({
 
 
 
-const form = reactive({
 
-  name: '',
 
-  company: '',
 
-  email: '',
 
-  phone: '',
 
-  country: '',
+/*
+========================================
+FORM
+========================================
+*/
 
-  city: '',
 
-  message: ''
+const form = reactive({})
+
+
+quoteFields.forEach(field=>{
+
+  form[field.key]=''
 
 })
+
+
+
+
+
+
+
+
+
+/*
+========================================
+ERROR STATE
+========================================
+*/
+
+
+const errors = reactive({})
+
+
+quoteFields.forEach(field=>{
+
+  errors[field.key]=''
+
+})
+
+
+
+
+
+
+
+
+
+/*
+========================================
+FIELD REFERENCES
+========================================
+*/
+
+
+const fieldRefs={}
+
+
+
+function setFieldRef(key,el){
+
+  if(el){
+
+    fieldRefs[key]=el
+
+  }
+
+}
+
+
+
+
+
 
 
 
@@ -128,6 +345,293 @@ const errorMessage = ref('')
 
 
 
+
+
+
+
+/*
+========================================
+VALIDATORS
+========================================
+*/
+
+
+function validateEmail(value){
+
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+
+
+}
+
+
+
+
+
+
+function validatePhone(value){
+
+
+  return /^[0-9+\s().-]+$/.test(value)
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+SINGLE FIELD VALIDATION
+========================================
+*/
+
+
+function validateField(field){
+
+
+
+  const value =
+    form[field.key]?.trim() || ''
+
+
+
+
+
+  errors[field.key]=''
+
+
+
+
+
+
+  if(
+
+    field.required &&
+    !value
+
+  ){
+
+    errors[field.key]='required'
+
+    return false
+
+  }
+
+
+
+
+
+
+
+
+  if(
+
+    value &&
+    field.maxLength &&
+    value.length > field.maxLength
+
+  ){
+
+    errors[field.key]='maxlength'
+
+    return false
+
+  }
+
+
+
+
+
+
+
+
+  if(
+
+    field.validation === 'email' &&
+    value &&
+    !validateEmail(value)
+
+  ){
+
+    errors[field.key]='email'
+
+    return false
+
+  }
+
+
+
+
+
+
+
+
+  if(
+
+    field.validation === 'phone' &&
+    value &&
+    !validatePhone(value)
+
+  ){
+
+    errors[field.key]='phone'
+
+    return false
+
+  }
+
+
+
+
+
+
+  return true
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+FORM VALIDATION
+========================================
+*/
+
+
+function validateForm(){
+
+
+  let firstInvalid=null
+
+
+
+  quoteFields.forEach(field=>{
+
+
+    const valid =
+      validateField(field)
+
+
+
+    if(
+
+      !valid &&
+      !firstInvalid
+
+    ){
+
+      firstInvalid=field.key
+
+    }
+
+
+  })
+
+
+
+
+
+
+  if(firstInvalid){
+
+
+    fieldRefs[firstInvalid]?.focus()
+
+
+    return false
+
+  }
+
+
+
+
+  return true
+
+
+}
+
+
+
+
+
+
+
+
+
+function getErrorMessage(type){
+
+
+
+  const lang =
+    locales[config.currentLang]
+
+
+
+
+  switch(type){
+
+
+    case 'required':
+
+      return lang.quoteFieldRequired
+
+
+
+    case 'email':
+
+      return lang.quoteEmailInvalid
+
+
+
+    case 'phone':
+
+      return lang.quotePhoneInvalid
+
+
+
+    case 'maxlength':
+
+      return lang.quoteFieldTooLong
+
+
+
+    default:
+
+      return ''
+
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+PDF
+========================================
+*/
+
+
 function blobToBase64(blob){
 
 
@@ -139,19 +643,17 @@ function blobToBase64(blob){
 
 
 
-    reader.onloadend = ()=>{
+    reader.onloadend=()=>{
 
 
-      resolve(
-        reader.result
-      )
+      resolve(reader.result)
 
 
     }
 
 
 
-    reader.onerror = ()=>{
+    reader.onerror=()=>{
 
 
       reject(
@@ -166,6 +668,36 @@ function blobToBase64(blob){
     reader.readAsDataURL(blob)
 
 
+  })
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+RESET
+========================================
+*/
+
+
+function resetForm(){
+
+
+  quoteFields.forEach(field=>{
+
+
+    form[field.key]=''
+
+
+    errors[field.key]=''
+
 
   })
 
@@ -176,7 +708,19 @@ function blobToBase64(blob){
 
 
 
+
+
+
+
+/*
+========================================
+SEND
+========================================
+*/
+
+
 async function sendRequest(){
+
 
 
   if(sending.value){
@@ -188,23 +732,26 @@ async function sendRequest(){
 
 
 
-  successMessage.value = ''
-
-  errorMessage.value = ''
 
 
+  successMessage.value=''
+
+  errorMessage.value=''
 
 
 
-  if(
-    !form.name ||
-    !form.email ||
-    !form.message
-  ){
+
+
+
+
+
+  if(!validateForm()){
 
 
     errorMessage.value =
-      locales[config.currentLang].quoteFormRequiredFields
+      locales[config.currentLang]
+      .quoteFormRequiredFields
+
 
 
     return
@@ -216,19 +763,22 @@ async function sendRequest(){
 
 
 
-  sending.value = true
+
+  sending.value=true
 
 
 
 
 
 
-  try {
+
+  try{
 
 
 
     const pdfBlob =
       await props.printRef.getPdfBlob()
+
 
 
 
@@ -242,13 +792,34 @@ async function sendRequest(){
 
 
 
+
+    const cleanData={}
+
+
+
+    quoteFields.forEach(field=>{
+
+
+      cleanData[field.key] =
+        form[field.key]?.trim() || ''
+
+
+    })
+
+
+
+
+
+
+
+
+
     const response =
       await fetch(
 
         '/.netlify/functions/send-email',
 
         {
-
 
           method:'POST',
 
@@ -260,23 +831,11 @@ async function sendRequest(){
           },
 
 
-          body: JSON.stringify({
+          body:JSON.stringify({
 
-            name: form.name,
+            ...cleanData,
 
-            company: form.company,
-
-            email: form.email,
-
-            phone: form.phone,
-
-            country: form.country,
-
-            city: form.city,
-
-            message: form.message,
-
-            pdf: pdfBase64
+            pdf:pdfBase64
 
           })
 
@@ -284,6 +843,8 @@ async function sendRequest(){
         }
 
       )
+
+
 
 
 
@@ -299,13 +860,11 @@ async function sendRequest(){
 
 
 
+
     if(!result.success){
 
 
-      throw new Error(
-        locales[config.currentLang].quoteErrorMessage
-      )
-
+      throw new Error()
 
     }
 
@@ -314,46 +873,51 @@ async function sendRequest(){
 
 
 
+
+
     successMessage.value =
-      locales[config.currentLang].quoteSuccessMessage
 
-
-
-
-
-    form.name = ''
-
-    form.email = ''
-
-    form.message = ''
+      locales[config.currentLang]
+      .quoteSuccessMessage
 
 
 
 
 
 
-  }catch(error){
+
+    resetForm()
+
+
+
+
+
+
+  }
+  catch(error){
 
 
 
     errorMessage.value =
-      locales[config.currentLang].quoteErrorMessage
+
+      locales[config.currentLang]
+      .quoteErrorMessage
 
 
 
-    console.error(
-      error
-    )
+    console.error(error)
 
-
-
-  }finally{
-
-
-    sending.value = false
 
 
   }
+  finally{
+
+
+    sending.value=false
+
+
+  }
+
 
 
 }
@@ -363,6 +927,12 @@ async function sendRequest(){
 
 
 </script>
+
+
+
+
+
+
 
 
 
@@ -398,6 +968,42 @@ async function sendRequest(){
 
 
 
+.field-wrapper{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+
+}
+
+
+
+.field-label{
+
+  text-align:left;
+
+  font-size:.9rem;
+
+  font-weight:600;
+
+  color:#333;
+
+}
+
+
+
+.required-star{
+
+  color:#dc2626;
+
+  margin-left:3px;
+
+}
+
+
+
 input,
 textarea{
 
@@ -421,6 +1027,27 @@ textarea{
 
 }
 
+
+
+.error{
+
+  border-color:#dc2626 !important;
+
+  background:#fff5f5;
+
+}
+
+
+
+.field-error{
+
+  color:#dc2626;
+
+  font-size:.85rem;
+
+  text-align:left;
+
+}
 
 
 
@@ -459,7 +1086,6 @@ button:disabled{
   cursor:not-allowed;
 
 }
-
 
 
 

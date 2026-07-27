@@ -1,313 +1,774 @@
+// netlify/functions/send-email.js
+
+
 import { Resend } from 'resend'
 
-const requiredFields = {
+import { quoteFields } from './quoteFields.js'
 
-  name: true,
 
-  company: false,
 
-  email: true,
 
-  phone: false,
-
-  country: false,
-
-  city: false,
-
-  message: false
-
-}
 
 const resend = new Resend(
   process.env.RESEND_API_KEY
 )
 
-export async function handler(event){
 
-  if(event.httpMethod !== 'POST'){
 
-    return{
 
-      statusCode:405,
 
-      body:JSON.stringify({
 
-        success:false,
 
-        message:'Method not allowed'
 
-      })
 
-    }
+/*
+============================================================
+SECURITY HELPERS
+============================================================
+*/
 
-  }
 
-  try{
+function escapeHtml(value=''){
 
-    const body = JSON.parse(event.body)
 
-    const {
+  return String(value)
 
-      name,
+    .replace(/&/g,'&amp;')
 
-      company,
+    .replace(/</g,'&lt;')
 
-      email,
+    .replace(/>/g,'&gt;')
 
-      phone,
+    .replace(/"/g,'&quot;')
 
-      country,
+    .replace(/'/g,'&#039;')
 
-      city,
 
-      message,
+}
 
-      pdf
 
-    } = body
 
-    const fields = {
 
-      name,
 
-      company,
 
-      email,
 
-      phone,
 
-      country,
+function sanitizeText(value=''){
 
-      city,
 
-      message
+  return String(value)
 
-    }
+    .trim()
+
+    .replace(/\s+/g,' ')
+
+
+}
+
+
+
+
+
+
+
+
+function validateEmail(email){
+
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    .test(email)
+
+
+}
+
+
+
+
+
+
+
+
+function validatePhone(phone){
+
+
+  return /^[0-9+\s().-]+$/.test(phone)
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+============================================================
+VALIDATION
+============================================================
+*/
+
+
+function validateFields(data){
+
+
+  for(const field of quoteFields){
+
+
+
+    const value =
+      data[field.key]
+
+
+
+
 
     /*
-    ============================================================
-    REQUIRED FIELDS VALIDATION
-    ============================================================
+    REQUIRED
     */
 
-    for(const field in requiredFields){
+    if(
 
-      if(
+      field.required &&
 
-        requiredFields[field] &&
-        !fields[field]?.toString().trim()
+      !value?.toString().trim()
 
-      ){
+    ){
 
-        return{
+      return `${field.key} is required`
 
-          statusCode:400,
+    }
 
-          body:JSON.stringify({
 
-            success:false,
 
-            error:`${field} is required`
 
-          })
 
-        }
+    /*
+    MAX LENGTH
+    */
+
+    if(
+
+      value &&
+
+      field.maxLength &&
+
+      value.length > field.maxLength
+
+    ){
+
+      return `${field.key} exceeds maximum length`
+
+    }
+
+
+
+
+
+    /*
+    FORMAT VALIDATION
+    */
+
+    if(
+
+      value &&
+
+      field.validation === 'email'
+
+    ){
+
+      if(!validateEmail(value)){
+
+
+        return 'Invalid email format'
+
 
       }
 
     }
 
-    /*
-    ============================================================
-    SEND EMAIL
-    ============================================================
-    */
 
-    const result = await resend.emails.send({
 
-      from:
-        'Genulux <onboarding@resend.dev>',
 
-      to:[
-        'danilop.webdev@gmail.com'
-      ],
 
-      subject:
-        'Neue Angebotsanfrage - Genulux Konfigurator',
+    if(
 
-      html:
+      value &&
 
-`
-<div style="
-font-family:Arial,Helvetica,sans-serif;
-max-width:700px;
-margin:auto;
-line-height:1.6;
-color:#222;
-">
+      field.validation === 'phone'
 
-<h2 style="margin-bottom:8px;">
-Neue Angebotsanfrage
-</h2>
+    ){
 
-<p>
-Es wurde eine neue Angebotsanfrage über den
-<strong>Genulux-Konfigurator</strong>
-eingereicht.
-</p>
+      if(!validatePhone(value)){
 
-<p>
-Die vollständige Konfiguration befindet sich
-im angehängten PDF.
-</p>
 
-<hr style="margin:30px 0;">
+        return 'Invalid phone format'
 
-<h3 style="margin-bottom:15px;">
-Kundendaten
-</h3>
 
-<table
-style="
-width:100%;
-border-collapse:collapse;
-">
-
-<tr>
-<td style="padding:8px 0;width:180px;">
-<strong>Name</strong>
-</td>
-
-<td>
-${name}
-</td>
-</tr>
-
-<tr>
-<td style="padding:8px 0;">
-<strong>Firma</strong>
-</td>
-
-<td>
-${company || '-'}
-</td>
-</tr>
-
-<tr>
-<td style="padding:8px 0;">
-<strong>E-Mail</strong>
-</td>
-
-<td>
-${email}
-</td>
-</tr>
-
-<tr>
-<td style="padding:8px 0;">
-<strong>Telefon</strong>
-</td>
-
-<td>
-${phone || '-'}
-</td>
-</tr>
-
-<tr>
-<td style="padding:8px 0;">
-<strong>Land</strong>
-</td>
-
-<td>
-${country || '-'}
-</td>
-</tr>
-
-<tr>
-<td style="padding:8px 0;">
-<strong>Ort</strong>
-</td>
-
-<td>
-${city || '-'}
-</td>
-</tr>
-
-</table>
-
-<hr style="margin:30px 0;">
-
-<h3>
-Nachricht
-</h3>
-
-<div
-style="
-background:#f7f7f7;
-padding:15px;
-border-radius:8px;
-">
-
-${message || 'Keine Nachricht angegeben.'}
-
-</div>
-
-<hr style="margin:30px 0;">
-
-<p style="font-size:13px;color:#666;">
-
-Diese E-Mail wurde automatisch vom
-Genulux-Konfigurator generiert.
-
-</p>
-
-</div>
-`,
-
-      attachments:[
-
-        {
-
-          filename:'Genulux.pdf',
-
-          content:pdf.split(',')[1]
-
-        }
-
-      ]
-
-    })
-
-    return{
-
-      statusCode:200,
-
-      body:JSON.stringify({
-
-        success:true,
-
-        data:result
-
-      })
+      }
 
     }
 
-  }catch(error){
 
-    return{
 
-      statusCode:500,
+  }
+
+
+
+
+
+  return null
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+============================================================
+EMAIL TABLE GENERATOR
+============================================================
+*/
+
+
+function generateEmailRows(data){
+
+
+
+  return quoteFields
+
+    .map(field=>{
+
+
+      const value =
+        data[field.key]
+
+
+
+      if(
+        !value
+      ){
+
+        return ''
+
+      }
+
+
+
+
+
+      return `
+
+<tr>
+
+<td style="
+padding:8px 0;
+width:180px;
+vertical-align:top;
+">
+
+<strong>
+
+${escapeHtml(field.emailLabel)}
+
+</strong>
+
+</td>
+
+
+<td style="
+padding:8px 0;
+">
+
+${escapeHtml(value).replace(/\n/g,'<br>')}
+
+</td>
+
+
+</tr>
+
+`
+
+    })
+
+    .join('')
+
+}
+
+
+
+
+
+
+
+
+
+/*
+============================================================
+PDF VALIDATION
+============================================================
+*/
+
+
+function extractPdf(pdf){
+
+
+  if(
+    !pdf ||
+    typeof pdf !== 'string'
+  ){
+
+    return null
+
+  }
+
+
+
+
+  const parts =
+    pdf.split(',')
+
+
+
+  if(parts.length !== 2){
+
+    return null
+
+  }
+
+
+
+  return parts[1]
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+============================================================
+NETLIFY FUNCTION
+============================================================
+*/
+
+
+export async function handler(event){
+
+
+
+  if(event.httpMethod !== 'POST'){
+
+
+    return {
+
+
+      statusCode:405,
+
 
       body:JSON.stringify({
 
         success:false,
 
-        error:error.message
+        error:'Method not allowed'
 
       })
 
+
     }
 
+
   }
+
+
+
+
+
+
+  try{
+
+
+
+    const body =
+      JSON.parse(event.body)
+
+
+
+
+
+
+    const pdfContent =
+      extractPdf(body.pdf)
+
+
+
+
+
+
+    if(!pdfContent){
+
+
+      return {
+
+
+        statusCode:400,
+
+
+        body:JSON.stringify({
+
+          success:false,
+
+          error:'Missing PDF attachment'
+
+        })
+
+
+      }
+
+
+    }
+
+
+
+
+
+
+
+
+    /*
+    NORMALIZE DATA
+    */
+
+
+    const data = {}
+
+
+
+    quoteFields.forEach(field=>{
+
+
+      data[field.key] =
+        sanitizeText(
+          body[field.key] || ''
+        )
+
+
+    })
+
+
+
+
+
+
+
+
+    /*
+    VALIDATE
+    */
+
+
+    const validationError =
+      validateFields(data)
+
+
+
+
+
+
+    if(validationError){
+
+
+      return {
+
+
+        statusCode:400,
+
+
+        body:JSON.stringify({
+
+          success:false,
+
+          error:validationError
+
+        })
+
+
+      }
+
+
+    }
+
+
+
+
+
+
+
+
+
+    /*
+    SEND EMAIL
+    */
+
+
+    const emailRows =
+      generateEmailRows(data)
+
+
+
+
+
+
+
+    const result =
+      await resend.emails.send({
+
+
+
+        from:
+
+          'Genulux <onboarding@resend.dev>',
+
+
+
+
+        to:[
+
+          'danilop.webdev@gmail.com'
+
+        ],
+
+
+
+
+        subject:
+
+          'Neue Angebotsanfrage - Genulux Konfigurator',
+
+
+
+
+
+        html:
+
+`
+
+<div
+
+style="
+font-family:Arial,Helvetica,sans-serif;
+max-width:700px;
+margin:auto;
+line-height:1.6;
+color:#222;
+"
+
+>
+
+
+<h2>
+
+Neue Angebotsanfrage
+
+</h2>
+
+
+
+<p>
+
+Es wurde eine neue Anfrage über den
+
+<strong>
+
+Genulux-Konfigurator
+
+</strong>
+
+eingereicht.
+
+</p>
+
+
+
+<p>
+
+Die vollständige Konfiguration befindet sich
+
+im angehängten PDF.
+
+</p>
+
+
+
+
+<hr style="margin:30px 0;">
+
+
+
+<h3>
+
+Kundendaten
+
+</h3>
+
+
+
+<table
+
+style="
+width:100%;
+border-collapse:collapse;
+"
+
+>
+
+
+${emailRows}
+
+
+</table>
+
+
+
+
+
+<hr style="margin:30px 0;">
+
+
+
+<p
+
+style="
+font-size:13px;
+color:#666;
+"
+
+>
+
+
+Diese E-Mail wurde automatisch vom
+
+Genulux-Konfigurator generiert.
+
+
+</p>
+
+
+
+</div>
+
+`,
+
+
+
+
+
+
+
+        attachments:[
+
+          {
+
+            filename:
+
+              'Genulux-Konfiguration.pdf',
+
+
+            content:
+
+              pdfContent
+
+
+          }
+
+        ]
+
+
+
+      })
+
+
+
+
+
+
+
+
+
+    return {
+
+
+      statusCode:200,
+
+
+      body:JSON.stringify({
+
+
+        success:true,
+
+
+        data:result
+
+
+      })
+
+
+    }
+
+
+
+
+
+  }
+
+  catch(error){
+
+
+
+    console.error(error)
+
+
+
+
+
+    return {
+
+
+      statusCode:500,
+
+
+      body:JSON.stringify({
+
+
+        success:false,
+
+
+        error:error.message || 'Server error'
+
+
+      })
+
+
+    }
+
+
+
+  }
+
+
 
 }
