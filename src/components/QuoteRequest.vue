@@ -2,16 +2,11 @@
 
   <div class="quote-card">
 
-
     <h2>
       {{ locales[config.currentLang].quoteRequestTitle }}
     </h2>
 
-
-
-
     <div class="form">
-
 
       <div
         v-for="field in quoteFields"
@@ -19,17 +14,13 @@
         class="field-wrapper"
       >
 
-
-
         <label class="field-label">
-
 
           {{
             locales[config.currentLang][field.label]
             ||
             field.emailLabel
           }}
-
 
           <span
             v-if="field.required"
@@ -38,11 +29,7 @@
             *
           </span>
 
-
         </label>
-
-
-
 
 
 
@@ -70,13 +57,15 @@
             error: errors[field.key]
           }"
 
-          @input="validateField(field)"
+          :aria-invalid="!!errors[field.key]"
 
-          @blur="validateField(field)"
+          :aria-describedby="`${field.key}-error`"
+
+          @input="onFieldInput(field)"
+
+          @blur="onFieldBlur(field)"
 
         />
-
-
 
 
 
@@ -104,15 +93,15 @@
             error: errors[field.key]
           }"
 
-          @input="validateField(field)"
+          :aria-invalid="!!errors[field.key]"
 
-          @blur="validateField(field)"
+          :aria-describedby="`${field.key}-error`"
 
-        />
+          @input="onFieldInput(field)"
 
+          @blur="onFieldBlur(field)"
 
-
-
+        ></textarea>
 
 
 
@@ -124,50 +113,41 @@
 
           v-if="errors[field.key]"
 
+          :id="`${field.key}-error`"
+
           class="field-error"
 
         >
 
-          {{
-            getErrorMessage(errors[field.key])
-          }}
+          {{ getErrorMessage(errors[field.key]) }}
 
         </small>
-
-
 
       </div>
 
 
 
 
-
-
-
-
-
       <button
-
         :disabled="sending"
-
         @click="sendRequest"
-
       >
 
+        <template v-if="sending">
 
-        {{
-          sending
-          ?
-          locales[config.currentLang].quoteSending
-          :
-          locales[config.currentLang].quoteSendButton
-        }}
+          <span class="spinner"></span>
 
+          {{ locales[config.currentLang].quoteSending }}
+
+        </template>
+
+        <template v-else>
+
+          {{ locales[config.currentLang].quoteSendButton }}
+
+        </template>
 
       </button>
-
-
-
 
 
 
@@ -177,16 +157,17 @@
 
         v-if="successMessage"
 
+        ref="successRef"
+
         class="success-message"
+
+        tabindex="-1"
 
       >
 
         {{ successMessage }}
 
       </p>
-
-
-
 
 
 
@@ -204,13 +185,9 @@
 
       </p>
 
-
-
     </div>
 
-
   </div>
-
 
 </template>
 
@@ -219,44 +196,21 @@
 
 
 
-
-
-
 <script setup>
-
 
 import {
   reactive,
-  ref
+  ref,
+  nextTick
 } from 'vue'
 
-
 import { config } from '../config.js'
-
 import { locales } from '../locales.js'
-
-
 import { quoteFields } from '../../shared/quoteFields.js'
 
-
-
-
-
-
-
 const props = defineProps({
-
-  printRef:Object
-
+  printRef: Object
 })
-
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -264,23 +218,10 @@ FORM
 ========================================
 */
 
-
 const form = reactive({})
-
-
-quoteFields.forEach(field=>{
-
-  form[field.key]=''
-
+quoteFields.forEach(field => {
+  form[field.key] = ''
 })
-
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -288,23 +229,29 @@ ERROR STATE
 ========================================
 */
 
-
 const errors = reactive({})
-
-
-quoteFields.forEach(field=>{
-
-  errors[field.key]=''
-
+quoteFields.forEach(field => {
+  errors[field.key] = ''
 })
 
+/*
+========================================
+TOUCHED FIELDS
+========================================
+*/
 
+const touched = reactive({})
+quoteFields.forEach(field => {
+  touched[field.key] = false
+})
 
+/*
+========================================
+SUBMITTED
+========================================
+*/
 
-
-
-
-
+const submitted = ref(false)
 
 /*
 ========================================
@@ -312,42 +259,40 @@ FIELD REFERENCES
 ========================================
 */
 
+const fieldRefs = {}
 
-const fieldRefs={}
+function setFieldRef(key, el) {
 
+  if (el) {
 
-
-function setFieldRef(key,el){
-
-  if(el){
-
-    fieldRefs[key]=el
+    fieldRefs[key] = el
 
   }
 
 }
 
+/*
+========================================
+STATE
+========================================
+*/
 
-
-
-
-
-
-
-
+const successRef = ref(null)
 const sending = ref(false)
-
 const successMessage = ref('')
-
 const errorMessage = ref('')
 
+/*
+========================================
+HELPERS
+========================================
+*/
 
+function getFieldValue(key) {
 
+  return form[key]?.trim() || ''
 
-
-
-
-
+}
 
 /*
 ========================================
@@ -355,35 +300,46 @@ VALIDATORS
 ========================================
 */
 
-
-function validateEmail(value){
-
+function validateEmail(value) {
 
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 
-
 }
 
-
-
-
-
-
-function validatePhone(value){
-
+function validatePhone(value) {
 
   return /^[0-9+\s().-]+$/.test(value)
 
+}
+
+/*
+========================================
+FIELD EVENTS
+========================================
+*/
+
+function onFieldInput(field) {
+
+  touched[field.key] = true
+
+  if (
+    submitted.value ||
+    errors[field.key]
+  ) {
+
+    validateField(field)
+
+  }
 
 }
 
+function onFieldBlur(field) {
 
+  touched[field.key] = true
 
+  validateField(field)
 
-
-
-
-
+}
 
 /*
 ========================================
@@ -391,118 +347,86 @@ SINGLE FIELD VALIDATION
 ========================================
 */
 
+function validateField(field) {
 
-function validateField(field){
+  const value = getFieldValue(field.key)
 
+  errors[field.key] = ''
 
+  /*
+  REQUIRED
 
-  const value =
-    form[field.key]?.trim() || ''
+  Lo mostriamo solo se:
+  - il form è stato inviato
+  - oppure il campo è già stato toccato
+  */
 
-
-
-
-
-  errors[field.key]=''
-
-
-
-
-
-
-  if(
-
+  if (
     field.required &&
-    !value
+    !value &&
+    (
+      submitted.value ||
+      touched[field.key]
+    )
+  ) {
 
-  ){
-
-    errors[field.key]='required'
+    errors[field.key] = 'required'
 
     return false
 
   }
 
+  /*
+  MAX LENGTH
+  */
 
-
-
-
-
-
-
-  if(
-
+  if (
     value &&
     field.maxLength &&
     value.length > field.maxLength
+  ) {
 
-  ){
-
-    errors[field.key]='maxlength'
+    errors[field.key] = 'maxlength'
 
     return false
 
   }
 
+  /*
+  EMAIL
+  */
 
-
-
-
-
-
-
-  if(
-
+  if (
     field.validation === 'email' &&
     value &&
     !validateEmail(value)
+  ) {
 
-  ){
-
-    errors[field.key]='email'
+    errors[field.key] = 'email'
 
     return false
 
   }
 
+  /*
+  PHONE
+  */
 
-
-
-
-
-
-
-  if(
-
+  if (
     field.validation === 'phone' &&
     value &&
     !validatePhone(value)
+  ) {
 
-  ){
-
-    errors[field.key]='phone'
+    errors[field.key] = 'phone'
 
     return false
 
   }
 
-
-
-
-
-
   return true
 
-
 }
-
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -510,120 +434,79 @@ FORM VALIDATION
 ========================================
 */
 
+function validateForm() {
 
-function validateForm(){
+  submitted.value = true
 
+  let firstInvalid = null
 
-  let firstInvalid=null
+  quoteFields.forEach(field => {
 
+    const valid = validateField(field)
 
-
-  quoteFields.forEach(field=>{
-
-
-    const valid =
-      validateField(field)
-
-
-
-    if(
-
+    if (
       !valid &&
       !firstInvalid
+    ) {
 
-    ){
-
-      firstInvalid=field.key
+      firstInvalid = field.key
 
     }
 
-
   })
 
+  if (firstInvalid) {
 
+    const element = fieldRefs[firstInvalid]
 
+    element?.focus()
 
+    element?.scrollIntoView({
 
+      behavior: 'smooth',
 
-  if(firstInvalid){
+      block: 'center'
 
-
-    fieldRefs[firstInvalid]?.focus()
-
+    })
 
     return false
 
   }
 
-
-
-
   return true
-
 
 }
 
+/*
+========================================
+ERROR MESSAGES
+========================================
+*/
 
+function getErrorMessage(type) {
 
+  const lang = locales[config.currentLang]
 
-
-
-
-
-
-function getErrorMessage(type){
-
-
-
-  const lang =
-    locales[config.currentLang]
-
-
-
-
-  switch(type){
-
+  switch (type) {
 
     case 'required':
-
       return lang.quoteFieldRequired
 
-
-
     case 'email':
-
       return lang.quoteEmailInvalid
 
-
-
     case 'phone':
-
       return lang.quotePhoneInvalid
 
-
-
     case 'maxlength':
-
       return lang.quoteFieldTooLong
 
-
-
     default:
-
       return ''
 
   }
 
-
 }
-
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -631,54 +514,31 @@ PDF
 ========================================
 */
 
+function blobToBase64(blob) {
 
-function blobToBase64(blob){
+  return new Promise((resolve, reject) => {
 
+    const reader = new FileReader()
 
-  return new Promise((resolve,reject)=>{
-
-
-    const reader =
-      new FileReader()
-
-
-
-    reader.onloadend=()=>{
-
+    reader.onloadend = () => {
 
       resolve(reader.result)
 
-
     }
 
-
-
-    reader.onerror=()=>{
-
+    reader.onerror = () => {
 
       reject(
         new Error('Errore conversione PDF')
       )
 
-
     }
 
-
-
     reader.readAsDataURL(blob)
-
 
   })
 
 }
-
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -686,31 +546,21 @@ RESET
 ========================================
 */
 
+function resetForm() {
 
-function resetForm(){
+  quoteFields.forEach(field => {
 
+    form[field.key] = ''
 
-  quoteFields.forEach(field=>{
+    errors[field.key] = ''
 
-
-    form[field.key]=''
-
-
-    errors[field.key]=''
-
+    touched[field.key] = false
 
   })
 
+  submitted.value = false
 
 }
-
-
-
-
-
-
-
-
 
 /*
 ========================================
@@ -718,213 +568,114 @@ SEND
 ========================================
 */
 
+async function sendRequest() {
 
-async function sendRequest(){
-
-
-
-  if(sending.value){
+  if (sending.value) {
 
     return
 
   }
 
+  successMessage.value = ''
+  errorMessage.value = ''
 
-
-
-
-
-  successMessage.value=''
-
-  errorMessage.value=''
-
-
-
-
-
-
-
-
-  if(!validateForm()){
-
+  if (!validateForm()) {
 
     errorMessage.value =
       locales[config.currentLang]
-      .quoteFormRequiredFields
-
-
+        .quoteFormRequiredFields
 
     return
 
   }
 
+  sending.value = true
 
-
-
-
-
-
-  sending.value=true
-
-
-
-
-
-
-
-  try{
-
-
+  try {
 
     const pdfBlob =
       await props.printRef.getPdfBlob()
 
-
-
-
-
-
     const pdfBase64 =
       await blobToBase64(pdfBlob)
 
+    const cleanData = {}
 
-
-
-
-
-
-    const cleanData={}
-
-
-
-    quoteFields.forEach(field=>{
-
+    quoteFields.forEach(field => {
 
       cleanData[field.key] =
-        form[field.key]?.trim() || ''
-
+        getFieldValue(field.key)
 
     })
 
-
-
-
-
-
-
-
-
     const response =
       await fetch(
-
         '/.netlify/functions/send-email',
-
         {
 
-          method:'POST',
+          method: 'POST',
 
+          headers: {
 
-          headers:{
-
-            'Content-Type':'application/json'
+            'Content-Type': 'application/json'
 
           },
 
-
-          body:JSON.stringify({
+          body: JSON.stringify({
 
             ...cleanData,
 
-            pdf:pdfBase64
+            pdf: pdfBase64
 
           })
 
-
         }
-
       )
-
-
-
-
-
-
-
-
 
     const result =
       await response.json()
 
+    if (!result.success) {
 
-
-
-
-
-
-    if(!result.success){
-
-
-      throw new Error()
+      throw new Error(result.error)
 
     }
 
-
-
-
-
-
-
-
     successMessage.value =
-
       locales[config.currentLang]
-      .quoteSuccessMessage
-
-
-
-
-
-
+        .quoteSuccessMessage
 
     resetForm()
 
+    await nextTick()
 
+      successRef.value?.focus()
 
+      successRef.value?.scrollIntoView({
 
+        behavior:'smooth',
 
+        block:'center'
+
+      })
 
   }
-  catch(error){
-
-
+  catch (error) {
 
     errorMessage.value =
-
       locales[config.currentLang]
-      .quoteErrorMessage
-
-
+        .quoteErrorMessage
 
     console.error(error)
 
+  }
+  finally {
 
+    sending.value = false
 
   }
-  finally{
-
-
-    sending.value=false
-
-
-  }
-
-
 
 }
-
-
-
-
 
 </script>
 
@@ -938,15 +689,11 @@ async function sendRequest(){
 
 <style scoped>
 
-
 .quote-card{
 
   margin-top:30px;
-
   padding:25px;
-
   background:white;
-
   border-radius:12px;
 
   box-shadow:
@@ -954,55 +701,37 @@ async function sendRequest(){
 
 }
 
-
-
 .form{
 
   display:flex;
-
   flex-direction:column;
-
   gap:15px;
 
 }
 
-
-
 .field-wrapper{
 
   display:flex;
-
   flex-direction:column;
-
   gap:6px;
 
 }
 
-
-
 .field-label{
 
   text-align:left;
-
   font-size:.9rem;
-
   font-weight:600;
-
   color:#333;
 
 }
 
-
-
 .required-star{
 
   color:#dc2626;
-
   margin-left:3px;
 
 }
-
-
 
 input,
 textarea{
@@ -1015,19 +744,31 @@ textarea{
 
   font-size:1rem;
 
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+
 }
 
+input:focus,
+textarea:focus{
 
+  outline:none;
+
+  border-color:#8c1d40;
+
+  box-shadow:
+    0 0 0 4px rgba(140,29,64,.12);
+
+}
 
 textarea{
 
   min-height:120px;
-
   resize:vertical;
 
 }
-
-
 
 .error{
 
@@ -1035,11 +776,14 @@ textarea{
 
   background:#fff5f5;
 
+  box-shadow:
+    0 0 0 4px rgba(220,38,38,.10);
+
 }
 
-
-
 .field-error{
+
+  margin-top:2px;
 
   color:#dc2626;
 
@@ -1047,11 +791,21 @@ textarea{
 
   text-align:left;
 
+  animation:fadeIn .18s ease;
+
 }
 
-
-
 button{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-height:48px;
 
   padding:12px 25px;
 
@@ -1067,54 +821,95 @@ button{
 
   font-weight:600;
 
-}
-
-
-
-button:hover{
-
-  opacity:.9;
+  transition:
+    opacity .2s,
+    transform .15s;
 
 }
 
+button:hover:not(:disabled){
 
+  transform:translateY(-1px);
+
+}
 
 button:disabled{
 
-  opacity:.6;
+  opacity:.7;
 
   cursor:not-allowed;
 
 }
 
+.spinner{
 
+  width:18px;
 
-.success-message{
+  height:18px;
 
-  margin-top:10px;
+  border:2px solid rgba(255,255,255,.35);
 
-  color:#16a34a;
+  border-top-color:white;
 
-  font-weight:600;
+  border-radius:50%;
 
-  text-align:center;
+  animation:spin .8s linear infinite;
 
 }
 
-
-
+.success-message,
 .error-message{
 
   margin-top:10px;
 
-  color:#dc2626;
-
   font-weight:600;
 
   text-align:center;
 
+  animation:fadeIn .25s ease;
+
 }
 
+.success-message{
 
+  color:#16a34a;
+
+}
+
+.error-message{
+
+  color:#dc2626;
+
+}
+
+@keyframes spin{
+
+  to{
+
+    transform:rotate(360deg);
+
+  }
+
+}
+
+@keyframes fadeIn{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(-4px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+  }
+
+}
 
 </style>
