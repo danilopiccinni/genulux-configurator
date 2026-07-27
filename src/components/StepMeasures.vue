@@ -609,11 +609,13 @@ const availableWidths = computed(()=>{
 const availableHeights = computed(()=>{
 
 
-  if(!props.config.width){
+  const measures = props.config.width
 
-    return []
+    ? standardMeasures.value.filter(item =>
+        item.width === props.config.width
+      )
 
-  }
+    : standardMeasures.value
 
 
 
@@ -621,19 +623,9 @@ const availableHeights = computed(()=>{
 
     ...new Set(
 
-      standardMeasures.value
-
-        .filter(item=>
-
-          item.width === props.config.width
-
-        )
-
-        .map(item=>
-
-          item.height
-
-        )
+      measures.map(item =>
+        item.height
+      )
 
     )
 
