@@ -165,6 +165,12 @@ export const locales = {
 
       quoteMessageLabel:
         'Messaggio',
+
+      quoteEmailInvalid:
+      'Inserisci un indirizzo email valido',
+
+    quotePhoneInvalid:
+      'Inserisci un numero di telefono valido',
   },
       
   en: {
@@ -331,6 +337,12 @@ export const locales = {
 
     quoteMessageLabel:
       'Message',
+
+      quoteEmailInvalid:
+        'Enter a valid email address',
+
+      quotePhoneInvalid:
+        'Enter a valid phone number',
   },
 
   de: {
@@ -500,6 +512,12 @@ export const locales = {
 
     quoteMessageLabel:
       'Nachricht',
+
+    quoteEmailInvalid:
+      'Bitte geben Sie eine gültige E-Mail-Adresse ein',
+
+    quotePhoneInvalid:
+      'Bitte geben Sie eine gültige Telefonnummer ein',
   },
 
   es: {
@@ -669,6 +687,12 @@ export const locales = {
 
     quoteMessageLabel:
       'Mensaje',
+
+    quoteEmailInvalid:
+      'Introduzca un correo electrónico válido',
+
+    quotePhoneInvalid:
+      'Introduzca un número de teléfono válido',
   },
 
   fr: {
@@ -837,5 +861,11 @@ export const locales = {
 
     quoteMessageLabel:
       'Message',
+
+    quoteEmailInvalid:
+      'Saisissez une adresse e-mail valide',
+
+    quotePhoneInvalid:
+      'Saisissez un numéro de téléphone valide',
   }
 }
