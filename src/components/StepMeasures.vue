@@ -144,7 +144,8 @@
           <input
             type="radio"
             value="fixed"
-            v-model="config.mode"
+            :checked="config.mode === 'fixed'"
+            @change="changeMeasureMode('fixed')"
           />
 
           {{ locales[config.currentLang].standardMeasures }}
@@ -159,7 +160,8 @@
           <input
             type="radio"
             value="custom"
-            v-model="config.mode"
+            :checked="config.mode === 'custom'"
+            @change="changeMeasureMode('custom')"
           />
 
           {{ locales[config.currentLang].customMeasures }}
@@ -905,6 +907,38 @@ const currentAvailability = computed(()=>{
 })
 
 
+function changeMeasureMode(mode){
+
+  props.config.mode = mode
+
+
+  /**
+   * Apertura muro:
+   *
+   * Le misure libere usano sempre IT
+   *
+   * Lo standard viene assegnato solo
+   * dalle misure fisse del catalogo.
+   */
+  if(
+    props.config.type === 'measureMuro' &&
+    mode === 'custom'
+  ){
+
+    props.config.standard = 'IT'
+
+  }
+
+
+  /**
+   * Reset misure quando cambio modalità
+   */
+  props.config.width = ''
+  props.config.height = ''
+
+}
+
+
 
 
 
@@ -1038,6 +1072,11 @@ function resolveWallStandard(){
 
     props.config.standard =
       selected.originStandard
+
+  }
+  else {
+
+    props.config.standard = 'IT'
 
   }
 
