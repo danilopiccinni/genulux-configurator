@@ -441,7 +441,7 @@ function selectMeasureType(type){
     case 'wall':
 
       newType = 'measureMuro'
-      newStandard = null
+      newStandard = 'IT'
 
       break
 
