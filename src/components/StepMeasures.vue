@@ -1131,7 +1131,6 @@ function goNext(){
 
 <style scoped>
 
-
 .step-card {
 
   background:v-bind('data.colors.cardBg');
@@ -1162,8 +1161,6 @@ function goNext(){
 
 
 
-
-
 h2 {
 
   margin-bottom:30px;
@@ -1175,10 +1172,6 @@ h2 {
   font-weight:700;
 
 }
-
-
-
-
 
 
 
@@ -1202,8 +1195,6 @@ SCELTA TIPO MISURA
   flex-wrap:wrap;
 
 }
-
-
 
 
 
@@ -1256,6 +1247,8 @@ SCELTA TIPO MISURA
   font-size:1.05rem;
 
   color:v-bind('data.colors.primary');
+
+  letter-spacing:.3px;
 
 }
 
@@ -1339,36 +1332,45 @@ SCELTA TIPO MISURA
 
 
 
+.option-icon {
+
+  width:58px;
+
+  height:58px;
+
+  object-fit:contain;
+
+  transition:
+
+    transform .25s ease,
+
+    filter .25s ease,
+
+    opacity .25s ease;
+
+}
 
 
 
 
-/*
-========================================
-INFO TIPO MISURA
-========================================
-*/
+
+.option-card:hover .option-icon {
+
+  transform:scale(1.08);
+
+}
 
 
-.info-box {
 
-  margin:30px auto;
 
-  max-width:520px;
 
-  padding:18px;
+.option-card.active .option-icon {
 
-  border-radius:v-bind('data.colors.radius');
+  filter:
 
-  background:v-bind('data.colors.infoBg');
+    brightness(0)
 
-  border:
-
-    1px solid
-
-    v-bind('data.colors.infoBorder');
-
-  color:v-bind('data.colors.infoText');
+    invert(1);
 
 }
 
@@ -1389,7 +1391,7 @@ INSERIMENTO MISURE
 
 .measure-inputs {
 
-  margin-top:35px;
+  margin-top:40px;
 
   display:flex;
 
@@ -1409,7 +1411,11 @@ INSERIMENTO MISURE
 
 .measure-inputs h3 {
 
+  margin:0;
+
   color:v-bind('data.colors.text');
+
+  font-size:1.15rem;
 
 }
 
@@ -1423,7 +1429,7 @@ INSERIMENTO MISURE
 
 /*
 ========================================
-MODALITA STANDARD / CUSTOM
+MODALITA'
 ========================================
 */
 
@@ -1433,6 +1439,8 @@ MODALITA STANDARD / CUSTOM
   display:flex;
 
   justify-content:center;
+
+  align-items:center;
 
   gap:30px;
 
@@ -1458,6 +1466,12 @@ MODALITA STANDARD / CUSTOM
 
 .mode label {
 
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
   font-weight:600;
 
   color:v-bind('data.colors.textSecondary');
@@ -1472,11 +1486,23 @@ MODALITA STANDARD / CUSTOM
 
 
 
+.mode input {
+
+  accent-color:v-bind('data.colors.primary');
+
+}
+
+
+
+
+
+
+
 
 
 /*
 ========================================
-INPUT
+INPUT BOX
 ========================================
 */
 
@@ -1501,11 +1527,12 @@ INPUT
 
 
 
-
 select,
 input[type="number"] {
 
-  padding:14px;
+  width:100%;
+
+  padding:14px 16px;
 
   border-radius:v-bind('data.colors.radius');
 
@@ -1523,8 +1550,9 @@ input[type="number"] {
 
   transition:.25s ease;
 
-}
+  box-sizing:border-box;
 
+}
 
 
 
@@ -1544,8 +1572,6 @@ input[type="number"]:focus {
     0 0 0 3px rgba(140,29,64,.12);
 
 }
-
-
 
 
 
@@ -1579,7 +1605,7 @@ input[type="number"]:focus {
 
   display:block;
 
-  margin-bottom:10px;
+  margin-bottom:12px;
 
   font-weight:700;
 
@@ -1592,6 +1618,32 @@ input[type="number"]:focus {
 
 
 
+
+.measure-input.invalid {
+
+  border:
+
+    2px solid
+
+    #dc2626;
+
+}
+
+
+
+
+
+.field-error {
+
+  margin:8px 0 0;
+
+  color:#dc2626;
+
+  font-size:.9rem;
+
+  font-weight:500;
+
+}
 
 
 
@@ -1608,11 +1660,41 @@ DISPONIBILITA'
 
   max-width:520px;
 
-  padding:18px;
+  padding:18px 22px;
 
   border-radius:v-bind('data.colors.radiusLarge');
 
   border:1px solid;
+
+  text-align:left;
+
+  box-sizing:border-box;
+
+}
+
+
+
+
+
+.availability strong {
+
+  display:block;
+
+  margin-bottom:8px;
+
+}
+
+
+
+
+
+
+
+.availability p {
+
+  margin:0;
+
+  line-height:1.5;
 
 }
 
@@ -1683,7 +1765,7 @@ CONTINUA
 
   margin-top:25px;
 
-  padding:14px 40px;
+  padding:14px 45px;
 
   border:none;
 
@@ -1705,6 +1787,8 @@ CONTINUA
   color:v-bind('data.colors.buttonActiveText');
 
   font-weight:700;
+
+  font-size:1rem;
 
   cursor:pointer;
 
@@ -1751,54 +1835,252 @@ CONTINUA
 }
 
 
-.option-icon {
 
-  width:58px;
 
-  height:58px;
 
-  object-fit:contain;
 
-  transition:
-    transform .25s ease,
-    filter .25s ease,
-    opacity .25s ease;
+
+
+
+/*
+========================================
+MOBILE
+========================================
+*/
+
+
+@media(max-width:768px){
+
+
+  .step-card {
+
+    padding:25px 18px;
+
+    border-radius:v-bind('data.colors.radiusLarge');
+
+  }
+
+
+
+
+
+  h2 {
+
+    font-size:1.15rem;
+
+    margin-bottom:22px;
+
+  }
+
+
+
+
+
+  .measure-choice {
+
+    flex-direction:column;
+
+    gap:15px;
+
+    width:100%;
+
+  }
+
+
+
+
+
+  .option-card {
+
+    width:100%;
+
+    min-height:0;
+
+    padding:18px;
+
+  }
+
+
+
+
+
+  .option-icon {
+
+    width:50px;
+
+    height:50px;
+
+  }
+
+
+
+
+
+  .measure-inputs {
+
+    margin-top:30px;
+
+    gap:20px;
+
+  }
+
+
+
+
+
+  .measure-inputs h3 {
+
+    font-size:1rem;
+
+  }
+
+
+
+
+
+  .mode {
+
+    width:100%;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    padding:16px;
+
+    align-items:flex-start;
+
+    box-sizing:border-box;
+
+  }
+
+
+
+
+
+  .mode label {
+
+    width:100%;
+
+  }
+
+
+
+
+
+  .input-box {
+
+    max-width:none;
+
+    width:100%;
+
+  }
+
+
+
+
+
+  .field {
+
+    padding:16px;
+
+  }
+
+
+
+
+
+  select,
+  input[type="number"] {
+
+    font-size:16px;
+
+    padding:13px;
+
+  }
+
+
+
+
+
+  .availability {
+
+    padding:16px;
+
+  }
+
+
+
+
+
+  .next {
+
+    width:100%;
+
+    padding:15px;
+
+  }
+
 
 }
 
-.option-card:hover .option-icon {
 
-  transform:scale(1.08);
+
+
+
+
+
+
+
+/*
+========================================
+PICCOLI SMARTPHONE
+========================================
+*/
+
+
+@media(max-width:400px){
+
+
+  .step-card {
+
+    padding:20px 14px;
+
+  }
+
+
+
+
+
+  .option-card strong {
+
+    font-size:.95rem;
+
+  }
+
+
+
+
+
+  .option-card small {
+
+    font-size:.8rem;
+
+  }
+
+
+
+
+
+  .field label {
+
+    font-size:.9rem;
+
+  }
+
+
+
+
 
 }
-
-.option-card.active .option-icon {
-
-  filter:
-    brightness(0)
-    invert(1);
-
-}
-
-.measure-input.invalid {
-
-  border: 2px solid #dc2626;
-
-}
-
-
-
-.field-error {
-
-  margin-top: 6px;
-
-  color: #dc2626;
-
-  font-size: .9rem;
-
-  font-weight: 500;
-
-}
-
-
 </style>
