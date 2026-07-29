@@ -161,7 +161,53 @@ export const locales = {
   */
 
     continue: 'Continua',
-    downloadPdf: 'Download PDF'
+    downloadPdf: 'Download PDF',
+
+      /*
+  ========================================
+  IMPRESSUM
+  ========================================
+  */
+
+    impressumTitle: 'Note legali',
+
+    impressumCompany: 'AGS-systems GmbH',
+
+    impressumHeadquarters: 'Sede legale',
+    impressumLogistics: 'Logistica',
+
+    impressumContact: 'Contatti',
+    impressumPhone: 'Telefono',
+    impressumEmail: 'Email',
+    impressumWeb: 'Sito web',
+
+    impressumCompanyData: 'Dati aziendali',
+    impressumLegalRepresentative: 'Rappresentante legale',
+    impressumRecipientCode: 'Codice destinatario',
+    impressumVatNumber: 'Partita IVA',
+
+    impressumOdrTitle: 'Risoluzione delle controversie online UE',
+    impressumOdrText1: 'Informativa obbligatoria ai sensi del Regolamento UE n. 524/2013 del Parlamento europeo e del Consiglio:',
+    impressumOdrText2: 'Piattaforma per la risoluzione online delle controversie dei consumatori della Commissione europea:',
+
+    impressumDisclaimerTitle: 'Limitazione di responsabilità',
+    impressumDisclaimerText1: 'AGS-systems GmbH si impegna, per quanto possibile, a garantire che le informazioni contenute in questo sito web siano corrette.',
+    impressumDisclaimerText2: 'Tuttavia, non viene fornita alcuna garanzia né assunta alcuna responsabilità riguardo all’attualità, correttezza o completezza delle informazioni fornite.',
+    impressumDisclaimerText3: 'Inoltre, AGS-systems GmbH non è responsabile dei contenuti dei siti web esterni collegati tramite collegamenti ipertestuali.',
+    impressumDisclaimerText4: 'AGS-systems GmbH si riserva il diritto di modificare o integrare le informazioni fornite senza preavviso.',
+
+    impressumPrivacyTitle: 'Responsabile del trattamento dei dati personali',
+    impressumPrivacyText1: 'Il responsabile del trattamento dei dati personali raccolti e trattati durante l’accesso e l’utilizzo del sito web è AGS-systems GmbH, 39025 Naturno.',
+    impressumPrivacyText2: 'Il referente per la protezione dei dati è il Sig. Thomas Alber.',
+    impressumPrivacyText3: 'Informazioni dettagliate sulla gestione dei dati personali dei visitatori del sito web sono disponibili nella sezione Privacy.',
+
+    impressumCopyrightImages: 'Fonti immagini',
+    impressumCopyright: 'Diritto d’autore',
+    impressumCopyrightText1: 'Il layout del sito web, la grafica utilizzata e i contenuti del sito di AGS-systems GmbH sono protetti dal diritto d’autore.',
+    impressumCopyrightText2: 'La riproduzione delle informazioni, in particolare l’utilizzo di testi, parti di testi o materiale grafico, richiede la preventiva autorizzazione scritta di AGS-systems GmbH.',
+    impressumCopyrightText3: '© AGS-systems GmbH 2025 - Tutti i diritti riservati.',
+
+    impressumBackButton: 'Vai al configuratore'
   },
 
   en: {
@@ -294,7 +340,6 @@ export const locales = {
   */
 
     quoteRequestTitle: 'Request a quote',
-
     quoteNameLabel: 'Name',
     quoteCompanyLabel: 'Company',
     quoteEmailLabel: 'Email',
@@ -302,7 +347,6 @@ export const locales = {
     quoteCountryLabel: 'Country',
     quoteCityLabel: 'City',
     quoteMessageLabel: 'Message',
-
     quoteNamePlaceholder: 'Full name',
     quoteCompanyPlaceholder: 'Company',
     quoteEmailPlaceholder: 'Email',
@@ -310,22 +354,15 @@ export const locales = {
     quoteCountryPlaceholder: 'Country',
     quoteCityPlaceholder: 'City',
     quoteMessagePlaceholder: 'Message',
-
     quoteSendButton: 'Request quote',
     quoteSending: 'Sending...',
-
     quoteSuccessMessage: 'Request sent successfully. We will contact you soon.',
-
     quoteErrorMessage: 'An error occurred while sending the request.',
-
     quoteFormRequiredFields: 'Please fill in all required fields',
-
     quoteFieldRequired: 'Required field',
     quoteFieldInvalid: 'Invalid value',
     quoteFieldTooLong: 'Text too long',
-
     quoteEmailInvalid: 'Enter a valid email address',
-
     quotePhoneInvalid: 'Enter a valid phone number',
 
     /*
@@ -335,7 +372,53 @@ export const locales = {
   */
 
     continue: 'Continue',
-    downloadPdf: 'Download PDF'
+    downloadPdf: 'Download PDF',
+
+    /*
+  ========================================
+  IMPRESSUM
+  ========================================
+  */
+
+    impressumTitle: 'Legal Notice',
+
+    impressumCompany: 'AGS-systems GmbH',
+
+    impressumHeadquarters: 'Registered office',
+    impressumLogistics: 'Logistics',
+
+    impressumContact: 'Contact',
+    impressumPhone: 'Phone',
+    impressumEmail: 'Email',
+    impressumWeb: 'Website',
+
+    impressumCompanyData: 'Company details',
+    impressumLegalRepresentative: 'Legal representative',
+    impressumRecipientCode: 'Recipient code',
+    impressumVatNumber: 'VAT number',
+
+    impressumOdrTitle: 'EU Online Dispute Resolution',
+    impressumOdrText1: 'Mandatory information pursuant to EU Regulation No. 524/2013 of the European Parliament and of the Council:',
+    impressumOdrText2: 'Platform for the online resolution of consumer disputes (ODR) of the European Commission:',
+
+    impressumDisclaimerTitle: 'Disclaimer',
+    impressumDisclaimerText1: 'AGS-systems GmbH strives to ensure, to the best of its ability, that the information contained on this website is accurate.',
+    impressumDisclaimerText2: 'However, no liability or guarantee is accepted for the timeliness, accuracy or completeness of the information provided.',
+    impressumDisclaimerText3: 'Furthermore, AGS-systems GmbH is not responsible for the content of external websites connected through hyperlinks.',
+    impressumDisclaimerText4: 'AGS-systems GmbH reserves the right to modify or supplement the information provided without prior notice.',
+
+    impressumPrivacyTitle: 'Controller of personal data processing',
+    impressumPrivacyText1: 'The controller responsible for processing personal data collected and processed during access to and use of the website is AGS-systems GmbH, 39025 Naturns.',
+    impressumPrivacyText2: 'The contact person for data protection is Mr. Thomas Alber.',
+    impressumPrivacyText3: 'Detailed information about how website visitors’ personal data is managed can be found in the Privacy section.',
+
+    impressumCopyrightImages: 'Image sources',
+    impressumCopyright: 'Copyright',
+    impressumCopyrightText1: 'The layout of the website, the graphics used and the contents of the AGS-systems GmbH website are protected by copyright.',
+    impressumCopyrightText2: 'The reproduction of information, in particular the use of texts, parts of texts or images, requires prior written authorization from AGS-systems GmbH.',
+    impressumCopyrightText3: '© AGS-systems GmbH 2025 - All rights reserved.',
+
+    impressumBackButton: 'Go to configurator'
   },
 
   de: {
@@ -500,7 +583,53 @@ export const locales = {
   */
 
     continue: 'Weiter',
-    downloadPdf: 'PDF herunterladen'
+    downloadPdf: 'PDF herunterladen',
+
+    /*
+  ========================================
+  IMPRESSUM
+  ========================================
+  */
+
+    impressumTitle: 'Impressum',
+
+    impressumCompany: 'AGS-systems GmbH',
+
+    impressumHeadquarters: 'Geschäftssitz',
+    impressumLogistics: 'Logistik',
+
+    impressumContact: 'Kontakt',
+    impressumPhone: 'Telefon',
+    impressumEmail: 'Email',
+    impressumWeb: 'Web',
+
+    impressumCompanyData: 'Unternehmensdaten',
+    impressumLegalRepresentative: 'Gesetzlicher Vertreter',
+    impressumRecipientCode: 'Empfängerkodex',
+    impressumVatNumber: 'MwSt.-Nr.',
+
+    impressumOdrTitle: 'EU Online-Streitbeilegung',
+    impressumOdrText1: 'Pflichtinformation nach EU-Verordnung Nr. 524/2013 des Europäischen Parlaments und Rats:',
+    impressumOdrText2: 'Plattform zur Online-Beilegung verbraucherrechtlicher Streitigkeiten (ODR) der Europäischen Kommission:',
+
+    impressumDisclaimerTitle: 'Haftungsausschluss',
+    impressumDisclaimerText1: 'Die AGS-systems GmbH bemüht sich, nach bestem Vermögen dafür Sorge zu tragen, dass die in diesem Internetauftritt enthaltenen Informationen zutreffend sind.',
+    impressumDisclaimerText2: 'Eine Haftung oder Garantie für die Aktualität, Richtigkeit und Vollständigkeit der zur Verfügung gestellten Informationen ist jedoch ausgeschlossen.',
+    impressumDisclaimerText3: 'Ferner ist die AGS-systems GmbH für den Inhalt der über Hyperlink extern verbundenen Internetauftritte nicht verantwortlich.',
+    impressumDisclaimerText4: 'Die AGS-systems GmbH behält sich vor, ohne Ankündigung, Änderungen oder Ergänzungen der bereitgestellten Informationen vorzunehmen.',
+
+    impressumPrivacyTitle: 'Verantwortlicher der Verarbeitung personenbezogener Daten',
+    impressumPrivacyText1: 'Verantwortlich für die Verarbeitung personenbezogener Daten, die bei Website-Zugriff und -Benutzung erhoben und verarbeitet werden, ist die AGS-systems GmbH, 39025 Naturns.',
+    impressumPrivacyText2: 'Ansprechpartner für den Datenschutz ist Herr Thomas Alber.',
+    impressumPrivacyText3: 'Detaillierte Informationen darüber, wie die personenbezogenen Daten der Website-Besucher verwaltet werden, finden Sie unter dem Punkt Datenschutz.',
+
+    impressumCopyrightImages: 'Bildquellen',
+    impressumCopyright: 'Urheberrecht',
+    impressumCopyrightText1: 'Das Layout der Homepage, die verwendeten Grafiken sowie die Inhalte des Internetauftritts der AGS-systems GmbH sind urheberrechtlich geschützt.',
+    impressumCopyrightText2: 'Die Vervielfältigung von Informationen, insbesondere die Verwendung von Texten, Textteilen oder Bildmaterial bedarf der vorherigen schriftlichen Genehmigung der AGS-systems GmbH.',
+    impressumCopyrightText3: '© AGS-systems GmbH 2025 - Alle Rechte vorbehalten.',
+
+    impressumBackButton: 'Zum Konfigurator'
   },
 
   es: {
@@ -665,7 +794,53 @@ export const locales = {
   */
 
     continue: 'Continuar',
-    downloadPdf: 'Descargar PDF'
+    downloadPdf: 'Descargar PDF',
+
+    /*
+  ========================================
+  IMPRESSUM
+  ========================================
+  */
+
+    impressumTitle: 'Aviso legal',
+
+    impressumCompany: 'AGS-systems GmbH',
+
+    impressumHeadquarters: 'Sede social',
+    impressumLogistics: 'Logística',
+
+    impressumContact: 'Contacto',
+    impressumPhone: 'Teléfono',
+    impressumEmail: 'Correo electrónico',
+    impressumWeb: 'Sitio web',
+
+    impressumCompanyData: 'Datos de la empresa',
+    impressumLegalRepresentative: 'Representante legal',
+    impressumRecipientCode: 'Código destinatario',
+    impressumVatNumber: 'Número de IVA',
+
+    impressumOdrTitle: 'Resolución de litigios en línea de la UE',
+    impressumOdrText1: 'Información obligatoria conforme al Reglamento UE n.º 524/2013 del Parlamento Europeo y del Consejo:',
+    impressumOdrText2: 'Plataforma de resolución en línea de litigios de consumidores (ODR) de la Comisión Europea:',
+
+    impressumDisclaimerTitle: 'Exención de responsabilidad',
+    impressumDisclaimerText1: 'AGS-systems GmbH se esfuerza por garantizar, en la medida de sus posibilidades, que la información contenida en este sitio web sea correcta.',
+    impressumDisclaimerText2: 'Sin embargo, no se acepta ninguna responsabilidad ni garantía sobre la actualidad, exactitud o integridad de la información proporcionada.',
+    impressumDisclaimerText3: 'Además, AGS-systems GmbH no se responsabiliza del contenido de sitios web externos enlazados mediante hipervínculos.',
+    impressumDisclaimerText4: 'AGS-systems GmbH se reserva el derecho de modificar o completar la información proporcionada sin previo aviso.',
+
+    impressumPrivacyTitle: 'Responsable del tratamiento de datos personales',
+    impressumPrivacyText1: 'El responsable del tratamiento de los datos personales recopilados y procesados durante el acceso y uso del sitio web es AGS-systems GmbH, 39025 Naturns.',
+    impressumPrivacyText2: 'El responsable de contacto para la protección de datos es el Sr. Thomas Alber.',
+    impressumPrivacyText3: 'Puede encontrar información detallada sobre la gestión de los datos personales de los visitantes del sitio web en la sección Privacidad.',
+
+    impressumCopyrightImages: 'Fuentes de imágenes',
+    impressumCopyright: 'Derechos de autor',
+    impressumCopyrightText1: 'El diseño del sitio web, los gráficos utilizados y los contenidos del sitio de AGS-systems GmbH están protegidos por derechos de autor.',
+    impressumCopyrightText2: 'La reproducción de información, especialmente el uso de textos, partes de textos o material gráfico, requiere la autorización previa por escrito de AGS-systems GmbH.',
+    impressumCopyrightText3: '© AGS-systems GmbH 2025 - Todos los derechos reservados.',
+
+    impressumBackButton: 'Ir al configurador'
   },
 
   fr: {
@@ -830,6 +1005,52 @@ export const locales = {
   */
 
     continue: 'Continuer',
-    downloadPdf: 'Télécharger le PDF'
+    downloadPdf: 'Télécharger le PDF',
+
+      /*
+  ========================================
+  IMPRESSUM
+  ========================================
+  */
+
+    impressumTitle: 'Mentions légales',
+
+    impressumCompany: 'AGS-systems GmbH',
+
+    impressumHeadquarters: 'Siège social',
+    impressumLogistics: 'Logistique',
+
+    impressumContact: 'Contact',
+    impressumPhone: 'Téléphone',
+    impressumEmail: 'E-mail',
+    impressumWeb: 'Site web',
+
+    impressumCompanyData: 'Données de l’entreprise',
+    impressumLegalRepresentative: 'Représentant légal',
+    impressumRecipientCode: 'Code destinataire',
+    impressumVatNumber: 'Numéro de TVA',
+
+    impressumOdrTitle: 'Règlement en ligne des litiges de l’UE',
+    impressumOdrText1: 'Information obligatoire conformément au règlement UE n° 524/2013 du Parlement européen et du Conseil :',
+    impressumOdrText2: 'Plateforme de règlement en ligne des litiges de consommation (ODR) de la Commission européenne :',
+
+    impressumDisclaimerTitle: 'Clause de non-responsabilité',
+    impressumDisclaimerText1: 'AGS-systems GmbH s’efforce de garantir, dans la mesure de ses possibilités, que les informations contenues sur ce site internet sont exactes.',
+    impressumDisclaimerText2: 'Toutefois, aucune responsabilité ni garantie n’est assumée concernant l’actualité, l’exactitude ou l’exhaustivité des informations fournies.',
+    impressumDisclaimerText3: 'AGS-systems GmbH n’est pas responsable du contenu des sites internet externes accessibles via des liens hypertextes.',
+    impressumDisclaimerText4: 'AGS-systems GmbH se réserve le droit de modifier ou de compléter les informations fournies sans préavis.',
+
+    impressumPrivacyTitle: 'Responsable du traitement des données personnelles',
+    impressumPrivacyText1: 'Le responsable du traitement des données personnelles collectées et traitées lors de l’accès et de l’utilisation du site internet est AGS-systems GmbH, 39025 Naturns.',
+    impressumPrivacyText2: 'Le contact pour la protection des données est Monsieur Thomas Alber.',
+    impressumPrivacyText3: 'Des informations détaillées sur la gestion des données personnelles des visiteurs du site sont disponibles dans la section Confidentialité.',
+
+    impressumCopyrightImages: 'Sources des images',
+    impressumCopyright: 'Droits d’auteur',
+    impressumCopyrightText1: 'La mise en page du site internet, les graphiques utilisés ainsi que les contenus du site AGS-systems GmbH sont protégés par le droit d’auteur.',
+    impressumCopyrightText2: 'La reproduction d’informations, notamment l’utilisation de textes, parties de textes ou images, nécessite l’autorisation écrite préalable d’AGS-systems GmbH.',
+    impressumCopyrightText3: '© AGS-systems GmbH 2025 - Tous droits réservés.',
+
+    impressumBackButton: 'Accéder au configurateur'
   }
 };

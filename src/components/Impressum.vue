@@ -7,7 +7,7 @@
 
 
       <h2>
-        Impressum
+        {{ locales[config.currentLang].impressumTitle }}
       </h2>
 
 
@@ -22,13 +22,13 @@
 
 
         <h3>
-          AGS-systems GmbH
+          {{ locales[config.currentLang].impressumCompany }}
         </h3>
 
 
         <p>
           <strong>
-            Geschäftssitz:
+            {{ locales[config.currentLang].impressumHeadquarters }}:
           </strong>
 
           Staben 47B |
@@ -42,7 +42,7 @@
         <p>
 
           <strong>
-            Logistik:
+            {{ locales[config.currentLang].impressumLogistics }}:
           </strong>
 
           Peter Mitterhofer Str. 12 |
@@ -69,7 +69,7 @@
 
 
         <h3>
-          Kontakt
+          {{ locales[config.currentLang].impressumContact }}
         </h3>
 
 
@@ -77,7 +77,7 @@
         <p>
 
           <strong>
-            Telefon:
+            {{ locales[config.currentLang].impressumPhone }}:
           </strong>
 
           +39 0473 666376
@@ -89,7 +89,7 @@
         <p>
 
           <strong>
-            Email:
+            {{ locales[config.currentLang].impressumEmail }}:
           </strong>
 
           info@ags-systems.com
@@ -101,7 +101,7 @@
         <p>
 
           <strong>
-            Web:
+            {{ locales[config.currentLang].impressumWeb }}:
           </strong>
 
           www.ags-systems.info
@@ -126,7 +126,7 @@
 
 
         <h3>
-          Unternehmensdaten
+          {{ locales[config.currentLang].impressumCompanyData }}
         </h3>
 
 
@@ -134,7 +134,7 @@
         <p>
 
           <strong>
-            Gesetzlicher Vertreter:
+            {{ locales[config.currentLang].impressumLegalRepresentative }}:
           </strong>
 
           Thomas Alber
@@ -146,7 +146,7 @@
         <p>
 
           <strong>
-            Empfängerkodex:
+            {{ locales[config.currentLang].impressumRecipientCode }}:
           </strong>
 
           M5UXCR1
@@ -158,7 +158,7 @@
         <p>
 
           <strong>
-            MwSt.-Nr. / P.IVA:
+            {{ locales[config.currentLang].impressumVatNumber }}:
           </strong>
 
           IT02509250219
@@ -183,15 +183,14 @@
 
 
         <h3>
-          EU Online-Streitbeilegung
+          {{ locales[config.currentLang].impressumOdrTitle }}
         </h3>
 
 
 
         <p>
 
-          Pflichtinformation nach EU-Verordnung Nr. 524/2013
-          des Europäischen Parlaments und Rats:
+          {{ locales[config.currentLang].impressumOdrText1 }}
 
         </p>
 
@@ -199,9 +198,7 @@
 
         <p>
 
-          Plattform zur Online-Beilegung
-          verbraucherrechtlicher Streitigkeiten (ODR)
-          der Europäischen Kommission:
+          {{ locales[config.currentLang].impressumOdrText2 }}
 
         </p>
 
@@ -232,17 +229,14 @@
 
 
         <h3>
-          Haftungsausschluss
+          {{ locales[config.currentLang].impressumDisclaimerTitle }}
         </h3>
 
 
 
         <p>
 
-          Die AGS-systems GmbH bemüht sich,
-          nach bestem Vermögen dafür Sorge zu tragen,
-          dass die in diesem Internetauftritt enthaltenen
-          Informationen zutreffend sind.
+          {{ locales[config.currentLang].impressumDisclaimerText1 }}
 
         </p>
 
@@ -250,9 +244,7 @@
 
         <p>
 
-          Eine Haftung oder Garantie für die Aktualität,
-          Richtigkeit und Vollständigkeit der zur Verfügung
-          gestellten Informationen ist jedoch ausgeschlossen.
+          {{ locales[config.currentLang].impressumDisclaimerText2 }}
 
         </p>
 
@@ -260,9 +252,7 @@
 
         <p>
 
-          Ferner ist die AGS-systems GmbH für den Inhalt
-          der über Hyperlink extern verbundenen Internetauftritte
-          nicht verantwortlich.
+          {{ locales[config.currentLang].impressumDisclaimerText3 }}
 
         </p>
 
@@ -270,9 +260,7 @@
 
         <p>
 
-          Die AGS-systems GmbH behält sich vor,
-          ohne Ankündigung, Änderungen oder Ergänzungen
-          der bereitgestellten Informationen vorzunehmen.
+          {{ locales[config.currentLang].impressumDisclaimerText4 }}
 
         </p>
 
@@ -294,16 +282,14 @@
 
 
         <h3>
-          Verantwortlicher der Verarbeitung personenbezogener Daten
+          {{ locales[config.currentLang].impressumPrivacyTitle }}
         </h3>
 
 
 
         <p>
 
-          Verantwortlich für die Verarbeitung personenbezogener Daten,
-          die bei Website-Zugriff und -Benutzung erhoben und verarbeitet
-          werden, ist die AGS-systems GmbH, 39025 Naturns.
+          {{ locales[config.currentLang].impressumPrivacyText1 }}
 
         </p>
 
@@ -311,8 +297,7 @@
 
         <p>
 
-          Ansprechpartner für den Datenschutz ist
-          Herr Thomas Alber.
+          {{ locales[config.currentLang].impressumPrivacyText2 }}
 
         </p>
 
@@ -320,9 +305,7 @@
 
         <p>
 
-          Detaillierte Informationen darüber,
-          wie die personenbezogenen Daten der Website-Besucher
-          verwaltet werden, finden Sie unter dem Punkt Datenschutz.
+          {{ locales[config.currentLang].impressumPrivacyText3 }}
 
         </p>
 
@@ -344,27 +327,25 @@
 
 
         <h3>
-          Bildquellen
+          {{ locales[config.currentLang].impressumCopyrightImages }}
         </h3>
 
 
         <p>
-          AGS-systems GmbH © 2025
+          {{ locales[config.currentLang].impressumCopyrightText3 }}
         </p>
 
 
 
         <h3>
-          Urheberrecht
+          {{ locales[config.currentLang].impressumCopyright }}
         </h3>
 
 
 
         <p>
 
-          Das Layout der Homepage, die verwendeten Grafiken
-          sowie die Inhalte des Internetauftritts der AGS-systems GmbH
-          sind urheberrechtlich geschützt.
+          {{ locales[config.currentLang].impressumCopyrightText1 }}
 
         </p>
 
@@ -372,10 +353,7 @@
 
         <p>
 
-          Die Vervielfältigung von Informationen,
-          insbesondere die Verwendung von Texten,
-          Textteilen oder Bildmaterial bedarf der vorherigen
-          schriftlichen Genehmigung der AGS-systems GmbH.
+          {{ locales[config.currentLang].impressumCopyrightText2 }}
 
         </p>
 
@@ -383,8 +361,7 @@
 
         <p class="copyright">
 
-          © AGS-systems GmbH 2025 -
-          Alle Rechte vorbehalten.
+          {{ locales[config.currentLang].impressumCopyrightText3 }}
 
         </p>
 
@@ -407,7 +384,7 @@
         @click="$router.push('/')"
       >
 
-        Zum Konfigurator
+        {{ locales[config.currentLang].impressumBackButton }}
 
       </button>
 
@@ -426,6 +403,8 @@
 
 
 <script setup>
+
+import { locales } from '../locales'
 
 import { useRouter } from 'vue-router'
 
