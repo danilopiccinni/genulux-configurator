@@ -75,6 +75,7 @@ export const locales = {
     frame: 'Telaio',
     min: 'min',
     max: 'max',
+    measureOutOfRange: 'Il valore deve essere compreso tra',
 
     /*
   ========================================
@@ -286,6 +287,7 @@ export const locales = {
     frame: 'Frame',
     min: 'min',
     max: 'max',
+    measureOutOfRange: 'The value must be between',
 
     /*
   ========================================
@@ -497,6 +499,7 @@ export const locales = {
     frame: 'Zarge',
     min: 'min',
     max: 'max',
+    measureOutOfRange: 'Der Wert muss zwischen',
 
     /*
   ========================================
@@ -708,6 +711,7 @@ export const locales = {
     frame: 'Marco',
     min: 'mín',
     max: 'máx',
+    measureOutOfRange: 'El valor debe estar comprendido entre',
 
     /*
   ========================================
@@ -919,6 +923,7 @@ export const locales = {
     frame: 'Huisserie',
     min: 'min',
     max: 'max',
+    measureOutOfRange: 'La valeur doit être comprise entre',
 
     /*
   ========================================

@@ -256,13 +256,25 @@
 
 
           <input
+            class="measure-input"
+            :class="{ invalid: widthInvalid }"
             type="number"
             :min="measureConfig.limits.minWidth"
             :max="measureConfig.limits.maxWidth"
             :step="measureConfig.limits.stepWidth"
             v-model.number="config.width"
-            @input="validateWidth"
           />
+
+          <p
+            v-if="widthInvalid"
+            class="field-error"
+          >
+            {{ locales[config.currentLang].width }}
+            {{ locales[config.currentLang].measureOutOfRange }}
+
+            ({{ measureConfig.limits.minWidth }} –
+            {{ measureConfig.limits.maxWidth }} mm)
+          </p>
 
         </div>
 
@@ -279,13 +291,25 @@
 
 
           <input
+            class="measure-input"
+            :class="{ invalid: heightInvalid }"
             type="number"
             :min="measureConfig.limits.minHeight"
             :max="measureConfig.limits.maxHeight"
             :step="measureConfig.limits.stepHeight"
             v-model.number="config.height"
-            @input="validateHeight"
           />
+
+          <p
+            v-if="heightInvalid"
+            class="field-error"
+          >
+            {{ locales[config.currentLang].height }}
+            {{ locales[config.currentLang].measureOutOfRange }}
+
+            ({{ measureConfig.limits.minHeight }} –
+            {{ measureConfig.limits.maxHeight }} mm)
+          </p>
 
         </div>
 
@@ -323,7 +347,7 @@
 
       <button
         class="next"
-        :disabled="!config.width || !config.height"
+        :disabled="!canContinue"
         @click="goNext"
       >
 
@@ -637,100 +661,119 @@ const availableHeights = computed(()=>{
 
 /**
  * ============================================================================
- * Validazione larghezza misura libera
+ * Validazione configurazione misure
  * ----------------------------------------------------------------------------
  *
- * Mantiene il valore dentro i limiti configurati.
+ * Abilita il pulsante Continua solo quando:
+ *
+ * - le misure standard rappresentano una combinazione valida
+ * - le misure libere rientrano nei limiti configurati
  *
  * ============================================================================
  */
-function validateWidth(){
+const canContinue = computed(() => {
 
 
+  if(
+
+    !props.config.type ||
+
+    !props.config.width ||
+
+    !props.config.height
+
+  ){
+
+    return false
+
+  }
+
+
+
+  /**
+   * --------------------------------------------------------
+   * Misure standard
+   * --------------------------------------------------------
+   */
+  if(props.config.mode === 'fixed'){
+
+
+    return standardMeasures.value.some(item =>
+
+      item.width === props.config.width &&
+
+      item.height === props.config.height
+
+    )
+
+  }
+
+
+
+  /**
+   * --------------------------------------------------------
+   * Misure libere
+   * --------------------------------------------------------
+   */
   const limits =
     measureConfig.value.limits
 
 
 
-  if(
-    props.config.width <
-    limits.minWidth
-  ){
+  return (
 
-    props.config.width =
-      limits.minWidth
+    props.config.width >= limits.minWidth &&
 
+    props.config.width <= limits.maxWidth &&
+
+    props.config.height >= limits.minHeight &&
+
+    props.config.height <= limits.maxHeight
+
+  )
+
+
+})
+
+
+
+const widthInvalid = computed(() => {
+
+  if (
+    props.config.mode !== 'custom' ||
+    props.config.width === ''
+  ) {
+    return false
   }
 
+  const limits = measureConfig.value.limits
+
+  return (
+    props.config.width < limits.minWidth ||
+    props.config.width > limits.maxWidth
+  )
+
+})
 
 
 
-  if(
-    props.config.width >
-    limits.maxWidth
-  ){
+const heightInvalid = computed(() => {
 
-    props.config.width =
-      limits.maxWidth
-
+  if (
+    props.config.mode !== 'custom' ||
+    props.config.height === ''
+  ) {
+    return false
   }
 
+  const limits = measureConfig.value.limits
 
-}
+  return (
+    props.config.height < limits.minHeight ||
+    props.config.height > limits.maxHeight
+  )
 
-
-
-
-
-
-
-/**
- * ============================================================================
- * Validazione altezza misura libera
- * ----------------------------------------------------------------------------
- *
- * Mantiene il valore dentro i limiti configurati.
- *
- * ============================================================================
- */
-function validateHeight(){
-
-
-  const limits =
-    measureConfig.value.limits
-
-
-
-  if(
-    props.config.height <
-    limits.minHeight
-  ){
-
-    props.config.height =
-      limits.minHeight
-
-  }
-
-
-
-
-  if(
-    props.config.height >
-    limits.maxHeight
-  ){
-
-    props.config.height =
-      limits.maxHeight
-
-  }
-
-
-}
-
-
-
-
-
+})
 
 
 
@@ -1734,6 +1777,26 @@ CONTINUA
   filter:
     brightness(0)
     invert(1);
+
+}
+
+.measure-input.invalid {
+
+  border: 2px solid #dc2626;
+
+}
+
+
+
+.field-error {
+
+  margin-top: 6px;
+
+  color: #dc2626;
+
+  font-size: .9rem;
+
+  font-weight: 500;
 
 }
 
