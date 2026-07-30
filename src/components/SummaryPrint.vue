@@ -1,307 +1,530 @@
 <template>
+
   <div ref="pdfContent" class="print-wrapper">
 
-    <header>
-      <h1><strong>Genulux</strong></h1>
-      <h3>
-        {{ locales[currentLang].documentHeader }}
-      </h3>
-    </header>
+    <!-- ====================================================== -->
+    <!-- PAGE 1 -->
+    <!-- ====================================================== -->
 
+    <section class="pdf-page">
 
-    <div class="image-container">
+      <!-- HEADER -->
 
-      <img
-        :src="data.images.summaryHeader"
-        alt="Disegno tecnico"
-      />
+      <header class="page-header">
 
-    </div>
 
-    <!-- ================================================
-     TECHNICAL MEASURES TABLE PDF
-================================================ -->
+        <div class="document-title">
 
-<div class="technical-measures-table">
 
+          <h1>
+            Genulux
+          </h1>
 
-  <table>
 
+          <p>
+            {{ locales[currentLang].documentHeader }}
+          </p>
 
-    <thead>
 
-      <tr>
+        </div>
 
-        <th>CL</th>
 
-        <th>C</th>
 
-        <th>A</th>
 
-        <th>B</th>
 
-        <th>H</th>
+        <div class="company-logo">
 
-        <th>TH</th>
+          
+          <img
 
-        <th>H1</th>
+            src="../assets/images/logo_ags.svg"
 
-        <th>HL</th>
+            alt="Company Logo"
 
-        <th>TB</th>
+          />
 
-      </tr>
 
-    </thead>
+        </div>
 
 
-    <tbody>
+      </header>
 
-      <tr>
 
-        <td>{{ measures?.muro?.width }}</td>
 
-        <td>{{ measures?.telaio?.width }}</td>
 
-        <td>{{ measures?.luce?.width }}</td>
 
-        <td>
-          {{
-            measures?.telaio?.width &&
-            measures?.luce?.width
-              ? (measures.telaio.width - measures.luce.width) - 41.5
-              : ''
-          }}
-        </td>
 
-        <td>{{ measures?.luce?.height }}</td>
+      <!-- TECHNICAL DRAWING -->
 
-        <td>{{ measures?.porta?.height }}</td>
+      <section class="drawing-section">
 
-        <td>{{ measures?.telaio?.height }}</td>
-        
-        <td>{{ measures?.muro?.height }}</td>
+        <img
+          :src="data.images.summaryHeader"
+          alt="Technical drawing"
+        />
 
-        <td>{{ measures?.porta?.width }}</td>
-        
-      </tr>
+      </section>
 
 
-    </tbody>
 
 
-  </table>
 
+      <!-- TECHNICAL TABLE -->
 
-  </div>
+      <section class="technical-section">
 
+        <div class="section-title">
 
+          {{ locales[currentLang].technicalMeasuresTitle }}
 
-    <section class="data-section">
+        </div>
 
-      <table>
+        <div class="technical-measures-table">
 
-        <tbody>
+          <table>
 
+            <thead>
 
-          <tr>
+              <tr>
 
-            <th>
-              {{ locales[currentLang].configurationStandard }}
-            </th>
+                <th>CL</th>
 
+                <th>C</th>
 
-            <td>
+                <th>A</th>
 
-              {{ standard }} -
+                <th>B</th>
 
-              {{
-                standard === 'IT'
-                  ? locales[currentLang].international
-                  : locales[currentLang].germany
-              }}
+                <th>H</th>
 
-            </td>
+                <th>TH</th>
 
-          </tr>
+                <th>H1</th>
 
+                <th>HL</th>
 
+                <th>TB</th>
 
-          <tr
-            v-for="item in summaryMeasures"
-            :key="item.key"
-          >
+              </tr>
 
-            <th>
-              {{ locales[currentLang][item.labelKey] }}
-            </th>
+            </thead>
 
-            <td>
+            <tbody>
 
-            {{ item.value?.width }}
-            ×
-            {{ item.value?.height }}
-            mm
+              <tr>
 
-            </td>
+                <td>
 
-          </tr>
+                  {{ measures?.muro?.width }}
 
+                </td>
 
+                <td>
 
-          <tr>
+                  {{ measures?.telaio?.width }}
 
-            <th>
-              {{ locales[currentLang].frame }}
-            </th>
+                </td>
 
+                <td>
 
-            <td>
+                  {{ measures?.luce?.width }}
 
-              {{ measures?.telaio?.width }}
-              ×
-              {{ measures?.telaio?.height }}
-              mm
+                </td>
 
-            </td>
+                <td>
 
+                  {{
 
-          </tr>
+                    measures?.telaio?.width &&
+                    measures?.luce?.width
 
+                      ? (measures.telaio.width - measures.luce.width) - 41.5
 
-          <tr>
+                      : ''
 
-            <th>
-              {{ locales[currentLang].wallType }}
-            </th>
+                  }}
 
+                </td>
 
-            <td>
+                <td>
 
-              {{ locales[currentLang][wallType] }}
+                  {{ measures?.luce?.height }}
 
-            </td>
+                </td>
 
-          </tr>
+                <td>
 
+                  {{ measures?.porta?.height }}
 
+                </td>
 
+                <td>
 
-          <tr
-            v-if="wallType === 'trockenbau'"
-          >
+                  {{ measures?.telaio?.height }}
 
-            <th>
-              {{ locales[currentLang].wallPanel }}
-            </th>
+                </td>
 
+                <td>
 
-            <td>
+                  {{ measures?.muro?.height }}
 
-              {{ locales[currentLang][wallPanel] }}
+                </td>
 
-            </td>
+                <td>
 
-          </tr>
+                  {{ measures?.porta?.width }}
 
+                </td>
 
+              </tr>
 
+            </tbody>
 
+          </table>
 
-          <tr>
+        </div>
 
-            <th>
-              {{ locales[currentLang].wallThickness }}
-            </th>
+      </section>
 
 
-            <td>
 
-              {{ wall }} cm
 
-            </td>
 
-          </tr>
+      <!-- FOOTER PAGE 1 -->
 
+      <footer class="page-footer">
 
+        <span>
 
+          Genulux
 
-          <tr>
+        </span>
 
-            <th>
-              {{ locales[currentLang].door }}
-            </th>
+        <span>
 
-            <td>
+          {{ locales[currentLang].documentHeader }}
 
-              {{
-                door === 'wood'
-                  ? locales[currentLang].woodDoor
-                  : locales[currentLang].glassDoor
-              }}
+        </span>
 
-            </td>
+        <span>
 
-          </tr>
+          1 / 2
 
+        </span>
 
-          <!-- DISPONIBILITA -->
-          <tr v-if="availabilityInfo">
-
-            <th>
-              {{ locales[currentLang].availability }}
-            </th>
-
-
-            <td>
-
-              {{ availabilityInfo.title }}
-
-              -
-
-              {{ availabilityInfo.description }}
-
-            </td>
-
-
-          </tr>
-
-
-
-        </tbody>
-
-      </table>
-
+      </footer>
 
     </section>
 
 
-    <section>
-      <!--
-      ================================================
-      INSTALLATION NOTES
-      ================================================
-      -->
+        <!-- ====================================================== -->
+    <!-- PAGE 2 -->
+    <!-- ====================================================== -->
 
-      <div
+    <section class="pdf-page">
+
+      <!-- HEADER -->
+
+      <header class="page-header">
+
+
+        <div class="document-title">
+
+
+          <h1>
+            Genulux
+          </h1>
+
+
+          <p>
+            {{ locales[currentLang].documentHeader }}
+          </p>
+
+
+        </div>
+
+
+
+
+
+        <div class="company-logo">
+
+          
+          <img
+
+            src="../assets/images/logo_ags.svg"
+
+            alt="Company Logo"
+
+          />
+
+
+        </div>
+
+
+      </header>
+
+
+
+
+
+      <!-- CONFIGURATION -->
+
+      <section class="configuration-section">
+
+        <div class="section-title">
+
+          {{ locales[currentLang].configuration }}
+
+        </div>
+
+        <table class="configuration-table">
+
+          <tbody>
+
+            <tr>
+
+              <th>
+
+                {{ locales[currentLang].configurationStandard }}
+
+              </th>
+
+              <td>
+
+                {{ standard }}
+
+                -
+
+                {{
+
+                  standard === 'IT'
+
+                    ? locales[currentLang].international
+
+                    : locales[currentLang].germany
+
+                }}
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr
+
+              v-for="item in summaryMeasures"
+
+              :key="item.key"
+
+            >
+
+              <th>
+
+                {{ locales[currentLang][item.labelKey] }}
+
+              </th>
+
+              <td>
+
+                {{ item.value.width }}
+
+                ×
+
+                {{ item.value.height }}
+
+                mm
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr>
+
+              <th>
+
+                {{ locales[currentLang].frame }}
+
+              </th>
+
+              <td>
+
+                {{ measures?.telaio?.width }}
+
+                ×
+
+                {{ measures?.telaio?.height }}
+
+                mm
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr>
+
+              <th>
+
+                {{ locales[currentLang].wallType }}
+
+              </th>
+
+              <td>
+
+                {{ locales[currentLang][wallType] }}
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr
+
+              v-if="wallType === 'trockenbau'"
+
+            >
+
+              <th>
+
+                {{ locales[currentLang].wallPanel }}
+
+              </th>
+
+              <td>
+
+                {{ locales[currentLang][wallPanel] }}
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr>
+
+              <th>
+
+                {{ locales[currentLang].wallThickness }}
+
+              </th>
+
+              <td>
+
+                {{ wall }} cm
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr>
+
+              <th>
+
+                {{ locales[currentLang].door }}
+
+              </th>
+
+              <td>
+
+                {{
+
+                  door === 'wood'
+
+                    ? locales[currentLang].woodDoor
+
+                    : locales[currentLang].glassDoor
+
+                }}
+
+              </td>
+
+            </tr>
+
+
+
+
+
+            <tr
+
+              v-if="availabilityInfo"
+
+            >
+
+              <th>
+
+                {{ locales[currentLang].availability }}
+
+              </th>
+
+              <td>
+
+                {{ availabilityInfo.title }}
+
+                -
+
+                {{ availabilityInfo.description }}
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+
+
+
+
+      <!-- INSTALLATION NOTES -->
+
+      <section
+
         v-if="installationNotes.length"
-        class="print-section"
+
+        class="installation-section"
+
       >
 
-
-        <h2>
+        <div class="section-title">
 
           {{ locales[currentLang].installationInformation }}
 
-        </h2>
+        </div>
 
 
 
         <div
-          v-for="note in installationNotes"
-          :key="note.titleKey"
-        >
 
+          v-for="note in installationNotes"
+
+          :key="note.titleKey"
+
+          class="installation-note"
+
+        >
 
           <h3>
 
@@ -309,23 +532,48 @@
 
           </h3>
 
-
-
           <p>
 
             {{ locales[currentLang][note.textKey] }}
 
           </p>
 
-
         </div>
 
+      </section>
 
-      </div>
+
+
+
+
+      <!-- FOOTER PAGE 2 -->
+
+      <footer class="page-footer">
+
+        <span>
+
+          Genulux
+
+        </span>
+
+        <span>
+
+          {{ locales[currentLang].documentHeader }}
+
+        </span>
+
+        <span>
+
+          2 / 2
+
+        </span>
+
+      </footer>
+
     </section>
 
-
   </div>
+
 </template>
 
 
@@ -361,7 +609,6 @@ const props = defineProps({
 
   height:String,
 
-
   data:Object,
 
   measures:Object,
@@ -384,85 +631,111 @@ const pdfContent = ref(null)
 
 
 
-
 /**
  * ============================================================
- * GENERA PDF
- * ------------------------------------------------------------
- *
- * Crea il documento PDF e lo restituisce.
- *
- * Usato da:
- *
- * - download manuale
- * - richiesta preventivo email
- *
+ * CREA PDF
  * ============================================================
  */
+
 async function generatePdf(){
 
+  const pdf = new jsPDF(
 
+    'p',
 
-  const canvas = await html2canvas(
+    'mm',
 
-    pdfContent.value,
-
-    {
-      scale:1
-    }
+    'a4'
 
   )
 
 
 
+  const pages =
 
-  const imgData =
-    canvas.toDataURL('image/png')
-
-
+    pdfContent.value.querySelectorAll('.pdf-page')
 
 
 
-  const pdf =
-    new jsPDF(
-      'p',
-      'mm',
-      'a4'
+  for(
+
+    let i = 0;
+
+    i < pages.length;
+
+    i++
+
+  ){
+
+
+
+    const canvas = await html2canvas(
+
+      pages[i],
+
+      {
+
+        scale:2,
+
+        useCORS:true,
+
+        backgroundColor:'#ffffff'
+
+      }
+
     )
 
 
 
+    const imgData =
 
+      canvas.toDataURL(
 
-  const pdfWidth = 210
+        'image/png'
 
-  const pdfHeight = 297
-
-
-
-
-  const imgWidth = pdfWidth
+      )
 
 
 
-  const imgHeight =
-    (
-      canvas.height * pdfWidth
-    )
-    /
-    canvas.width
+    const pdfWidth =
+
+      210
 
 
 
+    const pdfHeight =
+
+      297
 
 
 
-  let position = 0
+    const imgWidth =
+
+      pdfWidth
 
 
 
+    const imgHeight =
 
-  while(position < imgHeight){
+      (
+
+        canvas.height *
+
+        imgWidth
+
+      )
+
+      /
+
+      canvas.width
+
+
+
+    if(i>0){
+
+      pdf.addPage()
+
+    }
 
 
 
@@ -474,7 +747,7 @@ async function generatePdf(){
 
       0,
 
-      -position,
+      0,
 
       imgWidth,
 
@@ -484,53 +757,37 @@ async function generatePdf(){
 
 
 
-
-    position += pdfHeight
-
-
-
-
-    if(position < imgHeight){
-
-      pdf.addPage()
-
-    }
-
-
   }
-
 
 
 
   return pdf
 
-
 }
+
+
+
+
 
 /**
  * ============================================================
- * GET PDF BLOB
- * ------------------------------------------------------------
- *
- * Restituisce il PDF come file temporaneo.
- *
- * Usato per:
- *
- * - allegato email
- * - invio preventivo
- *
+ * BLOB
  * ============================================================
  */
+
 async function getPdfBlob(){
 
-
   const pdf =
+
     await generatePdf()
 
 
 
-  return pdf.output('blob')
+  return pdf.output(
 
+    'blob'
+
+  )
 
 }
 
@@ -538,36 +795,27 @@ async function getPdfBlob(){
 
 
 
-
-
-
 /**
  * ============================================================
- * DOWNLOAD PDF
- * ------------------------------------------------------------
- *
- * Scaricamento manuale utente
- *
+ * DOWNLOAD
  * ============================================================
  */
+
 async function download(){
 
-
-
   const pdf =
+
     await generatePdf()
 
 
 
   pdf.save(
-    "Genulux.pdf"
+
+    'Genulux.pdf'
+
   )
 
-
 }
-
-
-
 
 
 
@@ -583,7 +831,6 @@ defineExpose({
 
 })
 
-
 </script>
 
 
@@ -591,83 +838,30 @@ defineExpose({
 
 <style scoped>
 
-.print-wrapper {
-
-  width:210mm;
-
-  min-height:297mm;
-
-  padding:20mm;
-
-  background:white;
-
-  color:black;
-
-  position:fixed;
-
-  top:-9999px;
-
-  left:-9999px;
-
-  font-family:'Inter',sans-serif;
-
-}
-
-
-
-header h1 {
-
-  margin-bottom:5px;
-
-  font-size:1.4rem;
-
-}
-
-
-
-table {
-
-  width:100%;
-
-  border-collapse:collapse;
-
-  margin-top:20px;
-
-}
-
-
-
-th,
-td {
-
-  border:1px solid #000;
-
-  padding:10px;
-
-}
-
-
-
-th {
-
-  background:#f2f2f2;
-
-  text-align:left;
-
-}
-
 /*
 ================================================
-TECHNICAL MEASURES TABLE PDF
+PDF DOCUMENT
 ================================================
 */
 
 
-.technical-measures-table{
+.print-wrapper {
 
-  width:100%;
+  position:fixed;
 
-  margin:25px 0;
+  top:-10000px;
+
+  left:-10000px;
+
+
+  width:210mm;
+
+
+  font-family:'Inter',sans-serif;
+
+  color:
+
+    v-bind('data.colors.text');
 
 }
 
@@ -675,49 +869,668 @@ TECHNICAL MEASURES TABLE PDF
 
 
 
-.technical-measures-table table{
+/*
+================================================
+SINGLE PAGE
+================================================
+*/
+
+
+.pdf-page {
+
+
+  width:210mm;
+
+  height:297mm;
+
+
+  padding:18mm;
+
+
+  box-sizing:border-box;
+
+
+  background:white;
+
+
+  position:relative;
+
+
+  display:flex;
+
+  flex-direction:column;
+
+
+  overflow:hidden;
+
+
+}
+
+
+
+
+
+
+
+
+/*
+================================================
+HEADER
+================================================
+*/
+
+
+.page-header {
+
+
+  display:flex;
+
+
+  justify-content:space-between;
+
+
+  align-items:center;
+
+
+  padding-bottom:15px;
+
+
+  margin-bottom:20px;
+
+
+  border-bottom:
+
+    2px solid
+
+    v-bind('data.colors.primary');
+
+
+}
+
+
+
+
+
+.document-title {
+
+
+  display:flex;
+
+
+  flex-direction:column;
+
+
+}
+
+
+
+
+
+.document-title h1 {
+
+
+  margin:0;
+
+
+  font-size:22px;
+
+
+  letter-spacing:1px;
+
+
+  font-weight:700;
+
+
+  color:
+
+    v-bind('data.colors.primary');
+
+
+}
+
+
+
+
+
+.document-title p {
+
+
+  margin:5px 0 0;
+
+
+  font-size:12px;
+
+
+  color:
+
+    v-bind('data.colors.textSecondary');
+
+
+}
+
+
+
+
+
+
+
+.company-logo {
+
+
+  display:flex;
+
+
+  justify-content:flex-end;
+
+
+  align-items:center;
+
+
+}
+
+
+
+
+
+.company-logo img {
+
+
+  max-width:55mm;
+
+
+  max-height:25mm;
+
+
+  object-fit:contain;
+
+
+}
+
+
+
+
+
+
+
+
+/*
+================================================
+FOOTER
+================================================
+*/
+
+
+.page-footer {
+
+
+  position:absolute;
+
+
+  bottom:12mm;
+
+
+  left:18mm;
+
+
+  right:18mm;
+
+
+  display:flex;
+
+
+  justify-content:space-between;
+
+
+  align-items:center;
+
+
+  padding-top:10px;
+
+
+  border-top:
+
+    1px solid
+
+    #dddddd;
+
+
+  font-size:10px;
+
+
+  color:
+
+    v-bind('data.colors.textSecondary');
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+IMAGE HEADER
+================================================
+*/
+
+
+.image-container {
+
 
   width:100%;
+
+
+  display:flex;
+
+
+  justify-content:center;
+
+
+  margin-bottom:25px;
+
+
+}
+
+
+
+.image-container img {
+
+
+  max-width:100%;
+
+
+  max-height:90mm;
+
+
+  object-fit:contain;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+SECTION TITLE
+================================================
+*/
+
+
+.section-title {
+
+
+  margin-bottom:12px;
+
+
+  padding-left:10px;
+
+
+  border-left:
+
+    4px solid
+
+    v-bind('data.colors.primary');
+
+
+  font-size:15px;
+
+
+  font-weight:700;
+
+
+  color:
+
+    v-bind('data.colors.primary');
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+TECHNICAL TABLE
+================================================
+*/
+
+
+.technical-measures-table {
+
+
+  width:100%;
+
+
+  margin-bottom:20px;
+
+
+}
+
+
+
+.technical-measures-table table {
+
+
+  width:100%;
+
 
   border-collapse:collapse;
 
+
 }
 
 
 
+.technical-measures-table th {
 
 
-.technical-measures-table th{
-  text-align: center;
+  background:
+
+    v-bind('data.colors.primary');
+
+
+  color:white;
+
 
   padding:8px 4px;
 
-  font-size:10px;
-
-  font-weight:bold;
-
-  border:1px solid;
-
-}
-
-
-
-
-
-.technical-measures-table td{
-
-  height:35px;
 
   text-align:center;
 
-  border:1px solid #000;
 
   font-size:10px;
+
+
+  font-weight:700;
+
 
 }
 
 
 
+.technical-measures-table td {
+
+
+  height:35px;
+
+
+  padding:8px 4px;
+
+
+  text-align:center;
+
+
+  font-size:10px;
+
+
+  font-weight:600;
+
+
+  border:
+
+    1px solid #dddddd;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+CONFIGURATION TABLE
+================================================
+*/
+
+
+.configuration-section {
+
+
+  margin-top:5px;
+
+
+}
+
+
+
+.configuration-table {
+
+
+  width:100%;
+
+
+  border-collapse:collapse;
+
+
+}
+
+
+
+.configuration-table th {
+
+
+  width:38%;
+
+
+  background:
+
+    #f7f7f7;
+
+
+  text-align:left;
+
+
+  padding:9px;
+
+
+  font-size:11px;
+
+
+  font-weight:700;
+
+
+  border:
+
+    1px solid #dddddd;
+
+
+}
+
+
+
+.configuration-table td {
+
+
+  padding:9px;
+
+
+  font-size:11px;
+
+
+  font-weight:600;
+
+
+  border:
+
+    1px solid #dddddd;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+INSTALLATION NOTES
+================================================
+*/
+
+
+.installation-section {
+
+
+  margin-top:25px;
+
+
+}
+
+
+
+.installation-note {
+
+
+  margin-bottom:15px;
+
+
+  padding:14px;
+
+
+  background:
+
+    #fafafa;
+
+
+  border:
+
+    1px solid #e5e5e5;
+
+
+  border-radius:8px;
+
+
+}
+
+
+
+.installation-note h3 {
+
+
+  margin:0 0 8px;
+
+
+  font-size:12px;
+
+
+  color:
+
+    v-bind('data.colors.primary');
+
+
+}
+
+
+
+.installation-note p {
+
+
+  margin:0;
+
+
+  font-size:11px;
+
+
+  line-height:1.5;
+
+
+  color:
+
+    v-bind('data.colors.textSecondary');
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+PDF FIRST PAGE CONTROL
+================================================
+*/
+
+
+.pdf-page:first-child {
+
+
+  justify-content:flex-start;
+
+
+}
+
+
+
+.pdf-page:first-child .page-footer {
+
+
+  display:flex;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+================================================
+PRINT SAFETY
+================================================
+*/
+
+
+table {
+
+
+  page-break-inside:avoid;
+
+
+}
+
+
+
+section {
+
+
+  page-break-inside:avoid;
+
+
+}
 
 
 
