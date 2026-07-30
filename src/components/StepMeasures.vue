@@ -601,8 +601,7 @@ const standardMeasures = computed(()=>{
 /**
  * Larghezze disponibili
  */
-const availableWidths = computed(()=>{
-
+const availableWidths = computed(() => {
 
   return [
 
@@ -610,14 +609,13 @@ const availableWidths = computed(()=>{
 
       standardMeasures.value.map(
 
-        item=>item.width
+        item => item.width
 
       )
 
     )
 
-  ]
-
+  ].sort((a, b) => a - b)
 
 })
 
@@ -632,13 +630,14 @@ const availableWidths = computed(()=>{
 /**
  * Altezze filtrate
  */
-const availableHeights = computed(()=>{
-
+const availableHeights = computed(() => {
 
   const measures = props.config.width
 
     ? standardMeasures.value.filter(item =>
+
         item.width === props.config.width
+
       )
 
     : standardMeasures.value
@@ -649,14 +648,15 @@ const availableHeights = computed(()=>{
 
     ...new Set(
 
-      measures.map(item =>
-        item.height
+      measures.map(
+
+        item => item.height
+
       )
 
     )
 
-  ]
-
+  ].sort((a, b) => a - b)
 
 })
 
