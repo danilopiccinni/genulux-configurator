@@ -12,13 +12,20 @@
 
   <div class="logo-container">
 
+    <a
+      :href="companyWebsite"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="AG Systems"
+    >
 
-    <img
-      class="logo"
-      src="./assets/images/logo_ags_weis.png"
-      alt="AGS"
-    />
+      <img
+        class="logo"
+        src="./assets/images/logo_ags_weis.png"
+        alt="AG Systems"
+      />
 
+    </a>
 
   </div>
 
@@ -281,6 +288,38 @@ import {
   isRollback,
   canEnterStep
 } from './helpers/configHelpers'
+
+
+import { computed } from 'vue'
+
+
+
+
+const companyWebsite = computed(() => {
+
+  switch (config.currentLang) {
+
+    case 'it':
+      return 'https://www.ags-systems.info/it'
+
+    case 'en':
+      return 'https://www.ags-systems.info/en'
+
+    case 'fr':
+      return 'https://www.ags-systems.info/fr'
+
+    case 'de':
+      return 'https://www.ags-systems.info/'
+
+    case 'es':
+      return 'https://www.ags-systems.info/'
+
+    default:
+      return 'https://www.ags-systems.info/'
+
+  }
+
+})
 
 
 
@@ -667,6 +706,12 @@ LOGO
   align-items:center;
 
   flex-shrink:0;
+
+}
+
+.logo-container a{
+
+  display:inline-flex;
 
 }
 
