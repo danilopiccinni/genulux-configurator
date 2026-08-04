@@ -208,7 +208,169 @@ export const locales = {
     impressumCopyrightText2: 'La riproduzione delle informazioni, in particolare l’utilizzo di testi, parti di testi o materiale grafico, richiede la preventiva autorizzazione scritta di AGS-systems GmbH.',
     impressumCopyrightText3: '© AGS-systems GmbH 2025 - Tutti i diritti riservati.',
 
-    impressumBackButton: 'Vai al configuratore'
+    impressumBackButton: 'Vai al configuratore',
+
+    /*
+    ================================================
+    PRIVACY - INTRODUCTION
+    ================================================
+    */
+
+    privacyTitle: 'Privacy',
+
+    privacySubtitle: 'Dichiarazione sul trattamento dei dati personali',
+
+    privacyIntroText:
+      'Il responsabile dell\'elaborazione dei dati personali sul nostro sito web è AGS systems GmbH/srl stessa. I dati sono reperibili nel colophon. Nella presente dichiarazione "noi", "ci", "nostro(a)" si riferiscono a AGS systems GmbH/srl.',
+
+    /*
+    ================================================
+    PRIVACY - GENERAL CONDITIONS
+    ================================================
+    */
+
+    privacyGeneralTitle: 'Condizioni generali',
+
+    privacyGeneralText:
+      'I Suoi dati verranno trattati seriamente, in conformità alle disposizioni vigenti nonché alla presente dichiarazione dei dati. Nella presente dichiarazione verrà informato sugli scopi del trattamento dei dati, sulla sua durata, sulle norme giuridiche eventualmente relative alle categorie dei destinatari, sui diritti legali della protezione dei dati (i cosiddetti "diritti dei soggetti interessati") e su altre circostanze riguardanti il trattamento dei Suoi dati personali. Di norma l’utilizzo della nostra pagina web non è possibile senza l\'indicazione dei dati personali. Pur disponendo i nostri siti dei dati personali (nome, indirizzo o indirizzo e-mail), il loro utilizzo avviene, laddove risulti possibile, sempre su base volontaria.',
+
+      /*
+      ================================================
+      PRIVACY - RACCOLTA AUTOMATICA DATI
+      ================================================
+      */
+
+      privacyAutomaticDataTitle:
+        'Raccolta automatica dei dati',
+
+
+      privacyAutomaticDataText:
+        'Visitando la nostra pagina web, è possibile che i dati relativi all\'indirizzo IP vengano elaborati automaticamente: la data e l\'ora del Suo utilizzo, l\'hardware, il software o il tipo di browser, il sistema operativo del Suo computer, l\'impostazione della lingua, le informazioni sui clic e le pagine interessate. Qualora accedesse ai nostri servizi con lo smartphone, provvederemo eventualmente al trattamento di ulteriori informazioni: tipo di smartphone e sistema operativo, installazioni specifiche del tipo di dispositivo utilizzato e sue caratteristiche, posizione geografica e altre attività di sistema. Il fondamento giuridico del trattamento è l\'espletamento dei servizi accordati alla persona in questione e la necessità tecnica del trattamento nonché i nostri interessi autorizzati, la perseguibilità e l\'ottimizzazione dei nostri servizi senza che gli interessi o i diritti fondamentali della parte coinvolta vengano lesi (art. 6 par. 1 lett. f sulla legge della tutela dei dati personali). Stando a quanto riportato nel fondamento giuridico la persona interessata ha diritto di obiezione in caso di lesione di interesse – per i dettagli si rimanda ai diritti degli interessati nella parte sottostante. I dati vengono elaborati nonché salvati fino alla cessazione degli scopi sopra citati.',
+
+
+      privacyDataControllerTitle:
+        'Responsabile del trattamento dati, destinatario',
+
+
+      privacyDataControllerText:
+        'Tratteremo i Suoi dati con l\'appoggio dei responsabili del trattamento dei dati personali che ci sosterranno nella somministrazione dei servizi (per es. provider di hosting, di mail o di newsletter). I responsabili del trattamento sono tenuti alla stretta osservanza dei Suoi dati e non sono assolutamente tenuti a elaborarli per fini che esulano dalla prestazione dei nostri servizi. L\'inoltro dei dati avverrà inoltre solo per fini tipicamente economici: per esempio banche (in caso di bonifici eseguiti in Suo favore), commercialisti (se Lei rientra nella nostra contabilità) e gestori dei servizi di trasmissione (in caso di inoltro a Lei personalmente), ecc. nel rispetto delle norme sulla tutela dei dati.',
+  
+      // ITALIANO
+
+      privacyContactFormTitle:
+      "Modulo di contatto",
+
+      privacyContactFormFields:
+      "Campi: nome, indirizzo, e-mail, altri campi previsti nel modulo",
+
+      privacyContactFormText:
+      "Dopo l'invio del modulo di contatto i dati da Lei inseriti verranno elaborati dal responsabile del trattamento allo scopo di elaborare la Sua richiesta in base al consenso da Lei fornito mediante l'invio del presente modulo. Non esistono obblighi di tipo legale o contrattuale relativi al rilascio dei dati personali. I dati non rilasciati non potranno essere elaborati. Ha il diritto di revocare in qualsiasi momento il Suo consenso per iscritto, senza inficiare la legalità del trattamento avvenuto in base al consenso da Lei fornito fino al momento della revoca. Inoltre, ha il diritto di richiedere l’accesso ai dati personali da noi conservati, la rettifica di dati inesatti e la cancellazione dei Suoi dati, qualora non sussistano obblighi di conservazione previsti dalla legge.",
+
+      privacyContactFormExtendedTitle:
+      "Trattamento prolungato dei dati del modulo di contatto",
+
+      privacyContactFormExtendedText:
+      "Seguirà un trattamento prolungato dei dati personali in accordo al trattamento originario e sulla base del principio giuridico precedente, a fini di marketing diretto in forme svincolate dall’obbligo del consenso nonché nell'inoltro postale di materiale pubblicitario fino alla revoca del trattamento. In tal caso i dati verranno inoltrati al gestore dei servizi di trasmissione. Ha il diritto di revocare in qualsiasi momento il Suo consenso – per i dettagli si rimanda ai diritti delle persone interessate nella parte sottostante, senza venire meno alla legalità del trattamento avvenuto in base al consenso da Lei fornito fino al momento della revoca.",
+
+    // ========================================
+    // PRIVACY - COOKIES
+    // ========================================
+
+    privacyCookiesTitle: "Cookies",
+
+    privacyCookiesText: 
+    "Questa pagina web utilizza i cookies. I cookies rendono l'uso delle pagine web più pratico e più efficiente. Un cookie è un piccolo file testuale finalizzato all'archiviazione delle informazioni. Aprendo la pagina web si attiva un cookie sul computer dell'utente. Riaprendola successivamente la pagina web legge i dati dei cookie salvati precedentemente e verifica se l’utente è già entrato in quella pagina e a quali settori è interessato. Per maggiori informazioni a riguardo consulti la pagina: allaboutcookies.org",
+
+    privacyCookiesSettingsTitle:
+    "Modifica delle impostazioni dei cookies",
+
+    privacyCookiesSettingsText:
+    "Il funzionamento del browser con i cookies, i cookies accettati e i cookies rifiutati vengono decisi dall'utente nelle impostazioni del browser. La posizione di queste impostazioni dipende dal browser utilizzato. Informazioni dettagliate a riguardo sono disponibili nella funzione Aiuto del browser. Limitando l'utilizzo dei cookies, tutte le funzioni della pagina web potrebbero non essere sempre disponibili.",
+
+    // ========================================
+    // PRIVACY - MATOMO
+    // ========================================
+
+    privacyMatomoTitle:
+    "Matomo",
+
+    privacyMatomoText:
+    "Per analizzare l'utilizzo del nostro sito web utilizziamo Matomo, uno strumento di analisi rispettoso della privacy che ci aiuta a comprendere il comportamento degli utenti e a ottimizzare il nostro sito web di conseguenza. Il trattamento si basa sul nostro legittimo interesse al miglioramento dei nostri servizi online (art. 6 par. 1 lett. f GDPR). Matomo non utilizza cookie e memorizza i dati esclusivamente in forma anonima sul nostro server. Questo garantisce che nessuna informazione venga trasmessa a terzi. La raccolta dei dati tramite Matomo è facoltativa; gli utenti possono disattivarla in qualsiasi momento utilizzando l'opzione di opt-out.",
+
+
+    privacyServerLogTitle:
+    "Server Log File",
+
+    privacyServerLogText:
+    "Per il controllo della funzione tecnica e per innalzare il livello di sicurezza del sistema del server sulla base del legittimo interesse prevalente del responsabile del trattamento dati, questo sito elabora i seguenti dati personali in un server log file:",
+
+    privacyServerLogDownloaded:
+    "Contenuto scaricato",
+
+    privacyServerLogRequestTime:
+    "Orario della richiesta del server",
+
+    privacyServerLogBrowser:
+    "Tipo di browser / versione del browser",
+
+    privacyServerLogSystem:
+    "Sistema utilizzato",
+
+    privacyServerLogReferer:
+    "URL referer",
+
+    privacyServerLogIp:
+    "Indirizzo IP",
+
+    privacyServerLogHost:
+    "Host name",
+
+    privacyServerLogIpAnonymous:
+    "L'indirizzo IP verrà anonimizzato.",
+
+    // ========================================
+    // PRIVACY - SICUREZZA
+    // ========================================
+
+    privacySecurityTitle:
+    "Sicurezza",
+
+    privacySecurityText:
+    "Le misure amministrative, tecniche e fisiche di sicurezza vengono da noi progressivamente migliorate al fine di tutelare la protezione dei Suoi dati dall'accesso non consentito, dalla perdita, dalla distruzione o dalla modifica degli stessi. Nelle misure di sicurezza rientrano i firewall e la codificazione dei dati nonché i controlli relativi all'accesso alle informazioni condivise.",
+
+
+    privacyDataSubjectsTitle:
+    "Dati soggetti coinvolti",
+
+    privacyDataSubjectsText:
+    "È un Suo costante diritto informarsi, rettificare, cancellare e limitare il trattamento dei dati personali. Pur essendo il trattamento dei dati personali vincolato al consenso o al contratto da Lei stipulato, Le spetta il diritto di trasferibilità dei dati. Può eventualmente revocare il consenso rilasciato sul trattamento dei Suoi dati personali. La legittimità del trattamento dei dati fino all'atto di revoca non verrà compromessa dal procedimento di revoca. Può negare il consenso al trattamento dei Suoi dati personali a scopo pubblicitario e in caso di interesse legittimo prevalente. In tal caso i Suoi dati non verranno più sottoposti a trattamento. Per l'esercizio dei diritti spettanti si rimanda ai dati di contatto menzionati sopra nella dichiarazione sulla tutela dei dati.",
+
+
+    privacyAuthorityText:
+    "Ha il diritto di interpellare l'autorità di vigilanza Il Garante per la protezione dei dati personali, Piazza di Monte Citorio 121, 00186 Roma, garante@gpdp.it",
+
+    // ========================================
+    // PRIVACY - LINK COLLEGATI
+    // IT
+    // ========================================
+
+    privacyLinksTitle:
+    "Link collegati con altri siti web",
+
+    privacyLinksText:
+    "Siamo collegati a pagine web di gestori non affiliati. Aprendo questi link non potremo accedere alla registrazione e all'utilizzo dei Suoi dati. Potrà reperire tali informazioni nelle dichiarazioni sulla protezione dei dati dei partner delle pagine linkate. In tal caso non saremo responsabili della registrazione e del trattamento dei dati. Abbandonando la pagina con i nostri servizi verrà quindi rimandato, nei limiti del possibile, a un altro gestore tramite il collegamento selezionato.",
+
+
+    privacyChangesTitle:
+    "Modifiche apportate alla presente dichiarazione sulla protezione dei dati",
+
+    privacyChangesText:
+    "Ci riserviamo il diritto di adattare e modificare periodicamente la nostra dichiarazione sulla tutela dei dati secondo le disposizioni vigenti. Le modifiche apportate verranno pubblicate sulla nostra piattaforma insieme alla data dell'ultimo aggiornamento della presente dichiarazione.",
+
+
+    privacyStatus:
+    "Stato: 23.07.2026",
+
   },
 
   en: {
@@ -420,7 +582,176 @@ export const locales = {
     impressumCopyrightText2: 'The reproduction of information, in particular the use of texts, parts of texts or images, requires prior written authorization from AGS-systems GmbH.',
     impressumCopyrightText3: '© AGS-systems GmbH 2025 - All rights reserved.',
 
-    impressumBackButton: 'Go to configurator'
+    impressumBackButton: 'Go to configurator',
+
+
+    /*
+    ================================================
+    PRIVACY - INTRODUCTION
+    ================================================
+    */
+
+    privacyTitle: 'Privacy',
+
+    privacySubtitle: 'Privacy Policy',
+
+    privacyIntroText:
+      'The controller responsible for processing personal data on this website is AGS systems GmbH/srl. Company details can be found in the legal notice. In this privacy policy, "we", "us" and "our" refer to AGS systems GmbH/srl.',
+
+    /*
+    ================================================
+    PRIVACY - GENERAL CONDITIONS
+    ================================================
+    */
+
+    privacyGeneralTitle: 'General Conditions',
+
+    privacyGeneralText:
+      'Your personal data will be processed carefully in accordance with the applicable legal provisions and this privacy policy. This privacy policy informs you about the purposes of data processing, its duration, the legal basis, possible categories of recipients, your data protection rights (the so-called "data subject rights") and other circumstances relating to the processing of your personal data. As a rule, the use of our website is possible without providing personal data. Wherever personal data (such as name, address or email address) is collected, this is done, where possible, on a voluntary basis.',
+    
+    
+    /*
+    ================================================
+    PRIVACY - AUTOMATIC DATA COLLECTION
+    ================================================
+    */
+
+    privacyAutomaticDataTitle:
+      'Automatic Data Collection',
+
+
+    privacyAutomaticDataText:
+      'When visiting our website, data relating to your IP address may be processed automatically: the date and time of your use, hardware, software or browser type, your computer operating system, language settings, click information and the pages visited. If you access our services using a smartphone, we may also process additional information such as smartphone type and operating system, device-specific installations and characteristics, geographic location and other system activities. The legal basis for processing is the provision of services requested by the data subject, the technical necessity of processing and our legitimate interests in pursuing and optimizing our services without infringing the interests or fundamental rights of the data subject (Art. 6 para. 1 lit. f GDPR). Based on this legal basis, the data subject has the right to object in the event of a legitimate interest conflict. Data is processed and stored until the purposes described above have been fulfilled.',
+
+
+    privacyDataControllerTitle:
+      'Data Controller and Recipient',
+
+
+    privacyDataControllerText:
+      'We process your data with the support of data processors who assist us in providing our services (for example hosting providers, email providers or newsletter providers). These processors are required to strictly comply with data protection regulations and are not authorized to process your data for purposes beyond the provision of our services. Data may also be transferred for typical business purposes, for example to banks (for payments made in your favor), accountants (if you are included in our accounting records) and delivery service providers (for sending information or materials directly to you), always in compliance with data protection regulations.',
+
+    // INGLESE
+
+    privacyContactFormTitle:
+    "Contact form",
+
+    privacyContactFormFields:
+    "Fields: name, address, e-mail, other fields provided in the form",
+
+    privacyContactFormText:
+    "After submitting the contact form, the data you provide will be processed by the data controller for the purpose of handling your request based on the consent you have given by submitting this form. There are no legal or contractual obligations to provide personal data. Data that is not provided cannot be processed. You have the right to withdraw your consent in writing at any time, without affecting the lawfulness of processing carried out on the basis of consent given before withdrawal. Furthermore, you have the right to request access to the personal data stored by us, correction of inaccurate data and deletion of your data, provided that there are no legal retention obligations.",
+
+    privacyContactFormExtendedTitle:
+    "Extended processing of contact form data",
+
+    privacyContactFormExtendedText:
+    "Personal data will subsequently be processed further in accordance with the original processing and on the basis of the aforementioned legal principle, for direct marketing purposes in forms not requiring consent and for postal delivery of advertising material until withdrawal of processing. In this case, the data will be forwarded to the transmission service provider. You have the right to withdraw your consent at any time – for details, please refer to the rights of data subjects below – without affecting the lawfulness of processing carried out on the basis of consent given before withdrawal.",
+  
+    // ========================================
+    // PRIVACY - COOKIES
+    // EN
+    // ========================================
+
+    privacyCookiesTitle: "Cookies",
+
+    privacyCookiesText:
+    "This website uses cookies. Cookies make the use of websites more practical and efficient. A cookie is a small text file used to store information. When the website is opened, a cookie is activated on the user's computer. When visiting the website again, the website reads the previously stored cookie data and checks whether the user has already visited the page and which areas they are interested in. For more information, please visit: allaboutcookies.org",
+
+    privacyCookiesSettingsTitle:
+    "Changing cookie settings",
+
+    privacyCookiesSettingsText:
+    "The browser's cookie behaviour, including accepted and rejected cookies, is determined by the user in the browser settings. The location of these settings depends on the browser used. Detailed information is available through the browser's Help function. Restricting the use of cookies may prevent some website functions from working properly.",
+
+    // ========================================
+    // PRIVACY - MATOMO
+    // EN
+    // ========================================
+
+    privacyMatomoTitle:
+    "Matomo",
+
+    privacyMatomoText:
+    "To analyse the use of our website, we use Matomo, a privacy-friendly analytics tool that helps us understand user behaviour and optimise our website accordingly. Processing is based on our legitimate interest in improving our online services (Art. 6 para. 1 lit. f GDPR). Matomo does not use cookies and stores data exclusively in anonymous form on our server. This ensures that no information is transmitted to third parties. Data collection through Matomo is optional; users can deactivate it at any time using the opt-out option.",
+
+
+    privacyServerLogTitle:
+    "Server Log File",
+
+    privacyServerLogText:
+    "For monitoring technical functionality and increasing the security level of the server system, this website processes the following personal data in a server log file based on the legitimate interest of the data controller:",
+
+    privacyServerLogDownloaded:
+    "Downloaded content",
+
+    privacyServerLogRequestTime:
+    "Time of server request",
+
+    privacyServerLogBrowser:
+    "Browser type / browser version",
+
+    privacyServerLogSystem:
+    "System used",
+
+    privacyServerLogReferer:
+    "Referrer URL",
+
+    privacyServerLogIp:
+    "IP address",
+
+    privacyServerLogHost:
+    "Host name",
+
+    privacyServerLogIpAnonymous:
+    "The IP address will be anonymised.",
+
+
+    // ========================================
+    // PRIVACY - SECURITY
+    // EN
+    // ========================================
+
+    privacySecurityTitle:
+    "Security",
+
+    privacySecurityText:
+    "We continuously improve our administrative, technical and physical security measures in order to protect your data from unauthorised access, loss, destruction or modification. Security measures include firewalls, data encryption and access controls for shared information.",
+
+
+    privacyDataSubjectsTitle:
+    "Data subjects",
+
+    privacyDataSubjectsText:
+    "You have the permanent right to obtain information about, rectify, delete and restrict the processing of your personal data. If the processing of personal data is based on your consent or on a contract concluded with you, you are entitled to data portability. You may withdraw your consent to the processing of your personal data at any time. The lawfulness of processing carried out before withdrawal remains unaffected. You may object to the processing of your personal data for advertising purposes and in cases of overriding legitimate interest. In such cases, your data will no longer be processed. To exercise your rights, please refer to the contact details provided above in the privacy statement.",
+
+
+    privacyAuthorityText:
+    "You have the right to contact the supervisory authority: Garante per la protezione dei dati personali, Piazza di Monte Citorio 121, 00186 Roma, garante@gpdp.it",
+
+    // ========================================
+    // PRIVACY - LINKED WEBSITES
+    // EN
+    // ========================================
+
+    privacyLinksTitle:
+    "Links to other websites",
+
+    privacyLinksText:
+    "We are linked to websites operated by unaffiliated providers. By opening these links, we cannot access the collection or use of your data. You can find this information in the privacy statements of the partners' linked websites. In such cases, we are not responsible for the collection and processing of data. When leaving our services, you will be redirected, where possible, to another provider through the selected link.",
+
+
+    privacyChangesTitle:
+    "Changes to this privacy statement",
+
+    privacyChangesText:
+    "We reserve the right to adapt and modify our privacy statement from time to time in accordance with current regulations. Any changes will be published on our platform together with the date of the latest update of this statement.",
+
+
+    privacyStatus:
+    "Status: 23.07.2026",
+
+
   },
 
   de: {
@@ -632,7 +963,176 @@ export const locales = {
     impressumCopyrightText2: 'Die Vervielfältigung von Informationen, insbesondere die Verwendung von Texten, Textteilen oder Bildmaterial bedarf der vorherigen schriftlichen Genehmigung der AGS-systems GmbH.',
     impressumCopyrightText3: '© AGS-systems GmbH 2025 - Alle Rechte vorbehalten.',
 
-    impressumBackButton: 'Zum Konfigurator'
+    impressumBackButton: 'Zum Konfigurator',
+
+
+
+    /*
+    ================================================
+    PRIVACY - INTRODUCTION
+    ================================================
+    */
+
+    privacyTitle: 'Datenschutz',
+
+    privacySubtitle: 'Erklärung zur Verarbeitung personenbezogener Daten',
+
+    privacyIntroText:
+      'Verantwortlicher für die Verarbeitung personenbezogener Daten auf dieser Website ist die AGS systems GmbH/srl. Die Unternehmensdaten finden Sie im Impressum. In dieser Datenschutzerklärung beziehen sich "wir", "uns" und "unser" auf die AGS systems GmbH/srl.',
+
+    /*
+    ================================================
+    PRIVACY - GENERAL CONDITIONS
+    ================================================
+    */
+
+    privacyGeneralTitle: 'Allgemeine Bedingungen',
+
+    privacyGeneralText:
+      'Ihre personenbezogenen Daten werden sorgfältig und gemäß den geltenden gesetzlichen Bestimmungen sowie dieser Datenschutzerklärung verarbeitet. In dieser Datenschutzerklärung informieren wir Sie über die Zwecke der Datenverarbeitung, deren Dauer, die Rechtsgrundlagen, mögliche Empfängerkategorien, Ihre datenschutzrechtlichen Rechte (die sogenannten "Betroffenenrechte") sowie weitere Umstände der Verarbeitung Ihrer personenbezogenen Daten. Die Nutzung unserer Website ist grundsätzlich ohne Angabe personenbezogener Daten möglich. Soweit personenbezogene Daten (wie Name, Anschrift oder E-Mail-Adresse) erhoben werden, erfolgt dies – soweit möglich – stets auf freiwilliger Basis.',
+    
+
+    /*
+    ================================================
+    PRIVACY - AUTOMATISCHE DATENERFASSUNG
+    ================================================
+    */
+
+    privacyAutomaticDataTitle:
+      'Automatische Datenerfassung',
+
+
+    privacyAutomaticDataText:
+      'Beim Besuch unserer Website können Daten im Zusammenhang mit Ihrer IP-Adresse automatisch verarbeitet werden: Datum und Uhrzeit der Nutzung, Hardware, Software oder Browsertyp, Betriebssystem Ihres Computers, Spracheinstellungen, Klickinformationen und besuchte Seiten. Wenn Sie über ein Smartphone auf unsere Dienste zugreifen, können zusätzlich Informationen wie Smartphone-Typ und Betriebssystem, gerätespezifische Installationen und Eigenschaften, geografische Position sowie weitere Systemaktivitäten verarbeitet werden. Rechtsgrundlage der Verarbeitung sind die Erbringung der vereinbarten Leistungen, die technische Notwendigkeit der Verarbeitung sowie unsere berechtigten Interessen an der Verfolgung und Optimierung unserer Dienste, ohne dass Interessen oder Grundrechte der betroffenen Person verletzt werden (Art. 6 Abs. 1 lit. f DSGVO). Die betroffene Person hat aufgrund dieser Rechtsgrundlage das Recht auf Widerspruch. Die Daten werden verarbeitet und gespeichert, bis die oben genannten Zwecke erfüllt sind.',
+
+
+    privacyDataControllerTitle:
+      'Verantwortlicher für die Datenverarbeitung und Empfänger',
+
+
+    privacyDataControllerText:
+      'Wir verarbeiten Ihre Daten mit Unterstützung von Auftragsverarbeitern, die uns bei der Bereitstellung unserer Dienstleistungen unterstützen (z. B. Hosting-Anbieter, Mailanbieter oder Newsletter-Anbieter). Diese Auftragsverarbeiter sind verpflichtet, Ihre Daten streng vertraulich zu behandeln und dürfen diese nicht für andere Zwecke als die Erbringung unserer Dienstleistungen verwenden. Eine Weitergabe erfolgt nur für typische wirtschaftliche Zwecke, beispielsweise an Banken (bei Überweisungen zu Ihren Gunsten), Steuerberater (wenn Sie Bestandteil unserer Buchhaltung sind) oder Versanddienstleister (bei der direkten Zusendung von Informationen oder Materialien), stets unter Einhaltung der Datenschutzbestimmungen.',
+
+    // TEDESCO
+
+    privacyContactFormTitle:
+    "Kontaktformular",
+
+    privacyContactFormFields:
+    "Felder: Name, Adresse, E-Mail, weitere im Formular vorgesehene Felder",
+
+    privacyContactFormText:
+    "Nach dem Absenden des Kontaktformulars werden die von Ihnen eingegebenen Daten vom Verantwortlichen verarbeitet, um Ihre Anfrage auf Grundlage Ihrer durch das Absenden des Formulars erteilten Einwilligung zu bearbeiten. Es besteht keine gesetzliche oder vertragliche Verpflichtung zur Bereitstellung personenbezogener Daten. Nicht bereitgestellte Daten können nicht verarbeitet werden. Sie haben das Recht, Ihre Einwilligung jederzeit schriftlich zu widerrufen, ohne dass die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung beeinträchtigt wird. Darüber hinaus haben Sie das Recht, Auskunft über die bei uns gespeicherten personenbezogenen Daten zu verlangen, unrichtige Daten berichtigen zu lassen und die Löschung Ihrer Daten zu beantragen, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.",
+
+    privacyContactFormExtendedTitle:
+    "Erweiterte Verarbeitung der Daten aus dem Kontaktformular",
+
+    privacyContactFormExtendedText:
+    "Die personenbezogenen Daten werden anschließend entsprechend der ursprünglichen Verarbeitung und auf Grundlage der zuvor genannten Rechtsgrundlage zu Zwecken des Direktmarketings ohne gesonderte Einwilligung sowie zur postalischen Zusendung von Werbematerial bis zum Widerruf weiterverarbeitet. In diesem Fall werden die Daten an den Dienstleister für die Übermittlung weitergegeben. Sie haben das Recht, Ihre Einwilligung jederzeit zu widerrufen – weitere Informationen finden Sie unter den Rechten der betroffenen Personen – ohne dass die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung beeinträchtigt wird.",
+  
+    // ========================================
+    // PRIVACY - COOKIES
+    // DE
+    // ========================================
+
+    privacyCookiesTitle: "Cookies",
+
+    privacyCookiesText:
+    "Diese Webseite verwendet Cookies. Cookies machen die Nutzung von Webseiten praktischer und effizienter. Ein Cookie ist eine kleine Textdatei zur Speicherung von Informationen. Beim Öffnen der Webseite wird ein Cookie auf dem Computer des Nutzers aktiviert. Beim erneuten Besuch liest die Webseite die zuvor gespeicherten Cookie-Daten und überprüft, ob der Nutzer die Seite bereits besucht hat und für welche Bereiche er sich interessiert. Weitere Informationen hierzu finden Sie unter: allaboutcookies.org",
+
+    privacyCookiesSettingsTitle:
+    "Änderung der Cookie-Einstellungen",
+
+    privacyCookiesSettingsText:
+    "Die Funktionsweise des Browsers in Bezug auf Cookies sowie akzeptierte oder abgelehnte Cookies wird vom Nutzer in den Browsereinstellungen festgelegt. Wo sich diese Einstellungen befinden, hängt vom verwendeten Browser ab. Detaillierte Informationen dazu sind über die Hilfe-Funktion des Browsers verfügbar. Durch die Einschränkung der Cookie-Nutzung können möglicherweise nicht alle Funktionen der Webseite vollständig genutzt werden.",
+
+    // ========================================
+    // PRIVACY - MATOMO
+    // DE
+    // ========================================
+
+    privacyMatomoTitle:
+    "Matomo",
+
+    privacyMatomoText:
+    "Zur Analyse der Nutzung unserer Webseite verwenden wir Matomo, ein datenschutzfreundliches Analysewerkzeug, das uns hilft, das Nutzerverhalten zu verstehen und unsere Webseite entsprechend zu optimieren. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an der Verbesserung unserer Online-Dienste (Art. 6 Abs. 1 lit. f DSGVO). Matomo verwendet keine Cookies und speichert die Daten ausschließlich anonymisiert auf unserem Server. Dadurch wird gewährleistet, dass keine Informationen an Dritte weitergegeben werden. Die Datenerfassung durch Matomo ist freiwillig; Nutzer können diese jederzeit über die Opt-out-Funktion deaktivieren.",
+
+
+    privacyServerLogTitle:
+    "Server-Log-Datei",
+
+    privacyServerLogText:
+    "Zur Kontrolle der technischen Funktion und zur Erhöhung der Sicherheit des Servers verarbeitet diese Webseite auf Grundlage des überwiegenden berechtigten Interesses des Verantwortlichen folgende personenbezogene Daten in einer Server-Log-Datei:",
+
+    privacyServerLogDownloaded:
+    "Heruntergeladener Inhalt",
+
+    privacyServerLogRequestTime:
+    "Zeitpunkt der Serveranfrage",
+
+    privacyServerLogBrowser:
+    "Browsertyp / Browserversion",
+
+    privacyServerLogSystem:
+    "Verwendetes System",
+
+    privacyServerLogReferer:
+    "Referrer-URL",
+
+    privacyServerLogIp:
+    "IP-Adresse",
+
+    privacyServerLogHost:
+    "Hostname",
+
+    privacyServerLogIpAnonymous:
+    "Die IP-Adresse wird anonymisiert.",
+
+    // ========================================
+    // PRIVACY - SICHERHEIT
+    // DE
+    // ========================================
+
+    privacySecurityTitle:
+    "Sicherheit",
+
+    privacySecurityText:
+    "Die administrativen, technischen und physischen Sicherheitsmaßnahmen werden von uns kontinuierlich verbessert, um den Schutz Ihrer Daten vor unbefugtem Zugriff, Verlust, Zerstörung oder Veränderung zu gewährleisten. Zu den Sicherheitsmaßnahmen gehören Firewalls, die Verschlüsselung von Daten sowie Zugriffskontrollen auf gemeinsam genutzte Informationen.",
+
+
+    privacyDataSubjectsTitle:
+    "Betroffene Personen",
+
+    privacyDataSubjectsText:
+    "Sie haben jederzeit das Recht, sich über die Verarbeitung Ihrer personenbezogenen Daten zu informieren, diese berichtigen, löschen oder die Verarbeitung einschränken zu lassen. Sofern die Verarbeitung personenbezogener Daten auf Ihrer Einwilligung oder einem mit Ihnen geschlossenen Vertrag beruht, steht Ihnen das Recht auf Datenübertragbarkeit zu. Sie können eine erteilte Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt. Sie können der Verarbeitung Ihrer personenbezogenen Daten zu Werbezwecken sowie aufgrund eines überwiegenden berechtigten Interesses widersprechen. In diesem Fall werden Ihre Daten nicht mehr verarbeitet. Für die Ausübung Ihrer Rechte verweisen wir auf die oben genannten Kontaktdaten in der Datenschutzerklärung.",
+
+
+    privacyAuthorityText:
+    "Sie haben das Recht, sich an die Datenschutzaufsichtsbehörde zu wenden: Garante per la protezione dei dati personali, Piazza di Monte Citorio 121, 00186 Roma, garante@gpdp.it",
+
+    // ========================================
+    // PRIVACY - VERLINKTE WEBSITES
+    // DE
+    // ========================================
+
+    privacyLinksTitle:
+    "Verlinkte Websites",
+
+    privacyLinksText:
+    "Wir sind mit Webseiten nicht verbundener Anbieter verlinkt. Beim Öffnen dieser Links haben wir keinen Zugriff auf die Erfassung und Nutzung Ihrer Daten. Diese Informationen finden Sie in den Datenschutzerklärungen der jeweiligen Partnerseiten. In diesem Fall sind wir nicht für die Erfassung und Verarbeitung der Daten verantwortlich. Beim Verlassen unserer Dienste werden Sie über den entsprechenden Link nach Möglichkeit zu einem anderen Anbieter weitergeleitet.",
+
+
+    privacyChangesTitle:
+    "Änderungen dieser Datenschutzerklärung",
+
+    privacyChangesText:
+    "Wir behalten uns das Recht vor, unsere Datenschutzerklärung entsprechend den aktuellen gesetzlichen Bestimmungen anzupassen und zu ändern. Änderungen werden auf unserer Plattform veröffentlicht und mit dem Datum der letzten Aktualisierung dieser Erklärung versehen.",
+
+
+    privacyStatus:
+    "Stand: 23.07.2026",
+
+
   },
 
   es: {
@@ -844,7 +1344,175 @@ export const locales = {
     impressumCopyrightText2: 'La reproducción de información, especialmente el uso de textos, partes de textos o material gráfico, requiere la autorización previa por escrito de AGS-systems GmbH.',
     impressumCopyrightText3: '© AGS-systems GmbH 2025 - Todos los derechos reservados.',
 
-    impressumBackButton: 'Ir al configurador'
+    impressumBackButton: 'Ir al configurador',
+
+
+
+    /*
+    ================================================
+    PRIVACY - INTRODUCTION
+    ================================================
+    */
+
+    privacyTitle: 'Privacidad',
+
+    privacySubtitle: 'Declaración sobre el tratamiento de datos personales',
+
+    privacyIntroText:
+      'El responsable del tratamiento de los datos personales en este sitio web es AGS systems GmbH/srl. Los datos de la empresa pueden consultarse en el aviso legal. En esta política de privacidad, "nosotros", "nuestro" y "nos" se refieren a AGS systems GmbH/srl.',
+
+    /*
+    ================================================
+    PRIVACY - GENERAL CONDITIONS
+    ================================================
+    */
+
+    privacyGeneralTitle: 'Condiciones generales',
+
+    privacyGeneralText:
+      'Sus datos personales serán tratados cuidadosamente de conformidad con la normativa vigente y con la presente política de privacidad. En esta política se le informa sobre los fines del tratamiento de los datos, su duración, las bases jurídicas, las posibles categorías de destinatarios, sus derechos en materia de protección de datos (los llamados "derechos del interesado") y otras circunstancias relacionadas con el tratamiento de sus datos personales. Como norma general, el uso de nuestro sitio web es posible sin proporcionar datos personales. Cuando se recopilan datos personales (como nombre, dirección o dirección de correo electrónico), ello se realiza, siempre que sea posible, de forma voluntaria.',
+    
+    /*
+    ================================================
+    PRIVACY - RECOGIDA AUTOMÁTICA DE DATOS
+    ================================================
+    */
+
+    privacyAutomaticDataTitle:
+      'Recogida automática de datos',
+
+
+    privacyAutomaticDataText:
+      'Al visitar nuestro sitio web, es posible que los datos relacionados con la dirección IP sean tratados automáticamente: fecha y hora de uso, hardware, software o tipo de navegador, sistema operativo del ordenador, configuración del idioma, información sobre clics y páginas consultadas. Si accede a nuestros servicios mediante un smartphone, podremos tratar también información adicional como el tipo de dispositivo y sistema operativo, instalaciones específicas del dispositivo utilizado y sus características, ubicación geográfica y otras actividades del sistema. La base jurídica del tratamiento es la prestación de los servicios solicitados, la necesidad técnica del tratamiento y nuestros intereses legítimos para garantizar, mejorar y optimizar nuestros servicios sin vulnerar los intereses o derechos fundamentales de las personas afectadas (art. 6 apartado 1 letra f RGPD). Conforme a esta base jurídica, la persona interesada tiene derecho a oponerse cuando exista un conflicto con sus intereses. Los datos serán tratados y almacenados hasta que finalicen las finalidades indicadas anteriormente.',
+
+
+    privacyDataControllerTitle:
+      'Responsable del tratamiento y destinatarios',
+
+
+    privacyDataControllerText:
+      'Trataremos sus datos con el apoyo de encargados del tratamiento que nos ayudan en la prestación de nuestros servicios (por ejemplo proveedores de alojamiento, correo electrónico o boletines informativos). Estos encargados están obligados a respetar estrictamente sus datos y no están autorizados a utilizarlos para fines distintos de la prestación de nuestros servicios. La comunicación de datos se realizará únicamente para fines económicos habituales, por ejemplo a bancos (en caso de transferencias realizadas a su favor), asesores fiscales (si forma parte de nuestra contabilidad) y proveedores de servicios de envío (para remitirle información o materiales directamente), siempre respetando la normativa de protección de datos.',
+
+    // SPAGNOLO
+
+    privacyContactFormTitle:
+    "Formulario de contacto",
+
+    privacyContactFormFields:
+    "Campos: nombre, dirección, correo electrónico y otros campos previstos en el formulario",
+
+    privacyContactFormText:
+    "Después del envío del formulario de contacto, los datos introducidos por usted serán tratados por el responsable del tratamiento con el fin de gestionar su solicitud, basándose en el consentimiento otorgado mediante el envío del formulario. No existen obligaciones legales o contractuales relacionadas con la entrega de datos personales. Los datos no proporcionados no podrán ser tratados. Tiene derecho a retirar su consentimiento por escrito en cualquier momento, sin afectar a la legalidad del tratamiento realizado hasta ese momento sobre la base del consentimiento otorgado. Además, tiene derecho a solicitar el acceso a los datos personales almacenados por nosotros, la rectificación de datos incorrectos y la eliminación de sus datos, siempre que no existan obligaciones legales de conservación.",
+
+    privacyContactFormExtendedTitle:
+    "Tratamiento prolongado de los datos del formulario de contacto",
+
+    privacyContactFormExtendedText:
+    "Posteriormente, los datos personales serán tratados de forma prolongada de acuerdo con el tratamiento original y sobre la base del principio jurídico mencionado anteriormente, con fines de marketing directo sin necesidad de consentimiento adicional y para el envío postal de material publicitario hasta la retirada del tratamiento. En este caso, los datos serán comunicados al proveedor de servicios de transmisión. Tiene derecho a retirar su consentimiento en cualquier momento – para más información consulte los derechos de las personas interesadas indicados a continuación – sin afectar a la legalidad del tratamiento realizado hasta el momento de la retirada.",
+
+    // ========================================
+    // PRIVACY - COOKIES
+    // ES
+    // ========================================
+
+    privacyCookiesTitle: "Cookies",
+
+    privacyCookiesText:
+    "Esta página web utiliza cookies. Las cookies hacen que el uso de las páginas web sea más práctico y eficiente. Una cookie es un pequeño archivo de texto destinado al almacenamiento de información. Al abrir la página web se activa una cookie en el ordenador del usuario. Al volver a acceder posteriormente, la página web lee los datos de las cookies guardadas anteriormente y verifica si el usuario ya ha visitado la página y qué áreas son de su interés. Para más información consulte: allaboutcookies.org",
+
+    privacyCookiesSettingsTitle:
+    "Modificación de la configuración de cookies",
+
+    privacyCookiesSettingsText:
+    "El funcionamiento del navegador con las cookies, así como las cookies aceptadas y rechazadas, se determina en la configuración del navegador del usuario. La ubicación de estas opciones depende del navegador utilizado. Puede obtener información detallada mediante la función de ayuda del navegador. Al limitar el uso de cookies, es posible que algunas funciones de la página web no estén siempre disponibles.",
+
+    // ========================================
+    // PRIVACY - MATOMO
+    // ES
+    // ========================================
+
+    privacyMatomoTitle:
+    "Matomo",
+
+    privacyMatomoText:
+    "Para analizar el uso de nuestro sitio web utilizamos Matomo, una herramienta de análisis respetuosa con la privacidad que nos ayuda a comprender el comportamiento de los usuarios y optimizar nuestro sitio web en consecuencia. El tratamiento se basa en nuestro interés legítimo en la mejora de nuestros servicios online (art. 6 apartado 1 letra f del RGPD). Matomo no utiliza cookies y almacena los datos exclusivamente de forma anónima en nuestro servidor. Esto garantiza que ninguna información se transmita a terceros. La recopilación de datos mediante Matomo es opcional; los usuarios pueden desactivarla en cualquier momento mediante la opción de exclusión voluntaria.",
+
+
+    privacyServerLogTitle:
+    "Archivo de registro del servidor",
+
+    privacyServerLogText:
+    "Para controlar la función técnica y aumentar el nivel de seguridad del sistema del servidor, basándose en el interés legítimo predominante del responsable del tratamiento, este sitio web procesa los siguientes datos personales en un archivo de registro del servidor:",
+
+    privacyServerLogDownloaded:
+    "Contenido descargado",
+
+    privacyServerLogRequestTime:
+    "Hora de la solicitud del servidor",
+
+    privacyServerLogBrowser:
+    "Tipo de navegador / versión del navegador",
+
+    privacyServerLogSystem:
+    "Sistema utilizado",
+
+    privacyServerLogReferer:
+    "URL de referencia",
+
+    privacyServerLogIp:
+    "Dirección IP",
+
+    privacyServerLogHost:
+    "Nombre del host",
+
+    privacyServerLogIpAnonymous:
+    "La dirección IP será anonimizada.",
+
+    // ========================================
+    // PRIVACY - SEGURIDAD
+    // ES
+    // ========================================
+
+    privacySecurityTitle:
+    "Seguridad",
+
+    privacySecurityText:
+    "Mejoramos continuamente nuestras medidas de seguridad administrativas, técnicas y físicas con el fin de proteger sus datos frente al acceso no autorizado, la pérdida, la destrucción o la modificación. Entre las medidas de seguridad se incluyen los cortafuegos, la codificación de datos y los controles de acceso a la información compartida.",
+
+
+    privacyDataSubjectsTitle:
+    "Personas interesadas",
+
+    privacyDataSubjectsText:
+    "Usted tiene en todo momento el derecho a obtener información, rectificar, eliminar y limitar el tratamiento de sus datos personales. Cuando el tratamiento de datos personales esté basado en su consentimiento o en un contrato celebrado con usted, le corresponde el derecho a la portabilidad de los datos. Puede retirar en cualquier momento el consentimiento otorgado para el tratamiento de sus datos personales. La legalidad del tratamiento realizado hasta el momento de la retirada no se verá afectada. Puede oponerse al tratamiento de sus datos personales con fines publicitarios y cuando exista un interés legítimo predominante. En tal caso, sus datos dejarán de ser tratados. Para ejercer sus derechos, consulte los datos de contacto indicados anteriormente en la declaración de protección de datos.",
+
+
+    privacyAuthorityText:
+    "Tiene derecho a ponerse en contacto con la autoridad de control: Garante per la protezione dei dati personali, Piazza di Monte Citorio 121, 00186 Roma, garante@gpdp.it",
+
+    // ========================================
+    // PRIVACY - SITIOS WEB VINCULADOS
+    // ES
+    // ========================================
+
+    privacyLinksTitle:
+    "Enlaces a otros sitios web",
+
+    privacyLinksText:
+    "Estamos enlazados con páginas web de proveedores no afiliados. Al abrir estos enlaces no podremos acceder a la recopilación ni al uso de sus datos. Puede encontrar esta información en las declaraciones de protección de datos de las páginas web asociadas enlazadas. En estos casos, no somos responsables de la recopilación ni del tratamiento de los datos. Al abandonar nuestros servicios será redirigido, siempre que sea posible, a otro proveedor mediante el enlace seleccionado.",
+
+
+    privacyChangesTitle:
+    "Modificaciones de la presente declaración de protección de datos",
+
+    privacyChangesText:
+    "Nos reservamos el derecho de adaptar y modificar periódicamente nuestra declaración de protección de datos conforme a las disposiciones vigentes. Las modificaciones realizadas serán publicadas en nuestra plataforma junto con la fecha de la última actualización de esta declaración.",
+
+
+    privacyStatus:
+    "Estado: 23.07.2026",
+
+
   },
 
   fr: {
@@ -1056,6 +1724,175 @@ export const locales = {
     impressumCopyrightText2: 'La reproduction d’informations, notamment l’utilisation de textes, parties de textes ou images, nécessite l’autorisation écrite préalable d’AGS-systems GmbH.',
     impressumCopyrightText3: '© AGS-systems GmbH 2025 - Tous droits réservés.',
 
-    impressumBackButton: 'Accéder au configurateur'
+    impressumBackButton: 'Accéder au configurateur',
+
+
+
+    /*
+    ================================================
+    PRIVACY - INTRODUCTION
+    ================================================
+    */
+
+    privacyTitle: 'Confidentialité',
+
+    privacySubtitle: 'Déclaration relative au traitement des données personnelles',
+
+    privacyIntroText:
+      'Le responsable du traitement des données personnelles sur ce site est AGS systems GmbH/srl. Les informations de l’entreprise figurent dans les mentions légales. Dans cette déclaration de confidentialité, les termes « nous », « notre » et « nos » désignent AGS systems GmbH/srl.',
+
+    /*
+    ================================================
+    PRIVACY - GENERAL CONDITIONS
+    ================================================
+    */
+
+    privacyGeneralTitle: 'Conditions générales',
+
+    privacyGeneralText:
+      'Vos données personnelles sont traitées avec le plus grand soin, conformément à la législation en vigueur ainsi qu’à la présente déclaration de confidentialité. Cette déclaration vous informe des finalités du traitement, de sa durée, des bases juridiques, des catégories éventuelles de destinataires, de vos droits en matière de protection des données (appelés « droits des personnes concernées ») ainsi que de toute autre information relative au traitement de vos données personnelles. En règle générale, l’utilisation de notre site est possible sans fournir de données personnelles. Lorsque des données personnelles (nom, adresse ou adresse e-mail) sont collectées, cela se fait, dans la mesure du possible, sur une base volontaire.',
+    
+
+    /*
+    ================================================
+    PRIVACY - COLLECTE AUTOMATIQUE DES DONNÉES
+    ================================================
+    */
+
+    privacyAutomaticDataTitle:
+      'Collecte automatique des données',
+
+
+    privacyAutomaticDataText:
+      'Lors de la consultation de notre site web, certaines données liées à votre adresse IP peuvent être traitées automatiquement : la date et l’heure de votre utilisation, le matériel, le logiciel ou le type de navigateur, le système d’exploitation de votre ordinateur, les paramètres de langue, les informations relatives aux clics et les pages consultées. Si vous accédez à nos services avec un smartphone, nous pouvons également traiter des informations supplémentaires telles que le type de smartphone et son système d’exploitation, les installations spécifiques au dispositif utilisé, ses caractéristiques, la position géographique et d’autres activités du système. La base juridique du traitement repose sur l’exécution des services demandés, la nécessité technique du traitement ainsi que nos intérêts légitimes à assurer le suivi et l’optimisation de nos services sans porter atteinte aux intérêts ou aux droits fondamentaux des personnes concernées (art. 6 par. 1 let. f RGPD). La personne concernée dispose d’un droit d’opposition conformément à cette base juridique. Les données sont traitées et conservées jusqu’à la réalisation des finalités mentionnées ci-dessus.',
+
+
+    privacyDataControllerTitle:
+      'Responsable du traitement des données et destinataires',
+
+
+    privacyDataControllerText:
+      'Nous traitons vos données avec l’aide de sous-traitants qui nous assistent dans la fourniture de nos services (par exemple fournisseurs d’hébergement, de messagerie ou de newsletters). Ces sous-traitants sont tenus de respecter strictement vos données et ne sont pas autorisés à les utiliser à d’autres fins que la prestation de nos services. Les données peuvent également être transmises uniquement dans le cadre d’activités économiques courantes, par exemple aux banques (pour les virements effectués en votre faveur), aux experts-comptables (si vous êtes inclus dans notre comptabilité) ou aux prestataires de livraison (pour vous transmettre directement des informations ou du matériel), dans le respect des règles relatives à la protection des données.',
+
+    // FRANCESE
+
+    privacyContactFormTitle:
+    "Formulaire de contact",
+
+    privacyContactFormFields:
+    "Champs : nom, adresse, e-mail, autres champs prévus dans le formulaire",
+
+    privacyContactFormText:
+    "Après l’envoi du formulaire de contact, les données que vous avez fournies seront traitées par le responsable du traitement afin de traiter votre demande sur la base du consentement que vous avez donné en envoyant ce formulaire. Il n’existe aucune obligation légale ou contractuelle de fournir des données personnelles. Les données non fournies ne pourront pas être traitées. Vous avez le droit de retirer votre consentement par écrit à tout moment, sans affecter la légalité du traitement effectué sur la base du consentement donné avant son retrait. Vous avez également le droit de demander l’accès aux données personnelles que nous conservons, la rectification des données inexactes et la suppression de vos données, sauf obligation légale de conservation.",
+
+    privacyContactFormExtendedTitle:
+    "Traitement prolongé des données du formulaire de contact",
+
+    privacyContactFormExtendedText:
+    "Les données personnelles feront ensuite l’objet d’un traitement prolongé conformément au traitement initial et sur la base du principe juridique mentionné précédemment, à des fins de marketing direct sans obligation de consentement ainsi que pour l’envoi postal de matériel publicitaire jusqu’au retrait du traitement. Dans ce cas, les données seront transmises au prestataire de services de transmission. Vous avez le droit de retirer votre consentement à tout moment – pour plus de détails, veuillez consulter les droits des personnes concernées ci-dessous – sans affecter la légalité du traitement effectué avant ce retrait.",
+  
+    // ========================================
+    // PRIVACY - COOKIES
+    // FR
+    // ========================================
+
+    privacyCookiesTitle: "Cookies",
+
+    privacyCookiesText:
+    "Cette page web utilise des cookies. Les cookies rendent l'utilisation des pages web plus pratique et plus efficace. Un cookie est un petit fichier texte destiné à stocker des informations. Lors de l'ouverture de la page web, un cookie est activé sur l'ordinateur de l'utilisateur. Lors d'une visite ultérieure, la page web lit les données des cookies précédemment enregistrées et vérifie si l'utilisateur a déjà visité cette page et quels domaines l'intéressent. Pour plus d'informations, consultez : allaboutcookies.org",
+
+    privacyCookiesSettingsTitle:
+    "Modification des paramètres des cookies",
+
+    privacyCookiesSettingsText:
+    "Le fonctionnement du navigateur avec les cookies, ainsi que les cookies acceptés ou refusés, sont définis par l'utilisateur dans les paramètres du navigateur. L'emplacement de ces paramètres dépend du navigateur utilisé. Des informations détaillées sont disponibles via la fonction d'aide du navigateur. La limitation de l'utilisation des cookies peut empêcher certaines fonctions du site web de fonctionner correctement.",
+
+    // ========================================
+    // PRIVACY - MATOMO
+    // FR
+    // ========================================
+
+    privacyMatomoTitle:
+    "Matomo",
+
+    privacyMatomoText:
+    "Pour analyser l'utilisation de notre site web, nous utilisons Matomo, un outil d'analyse respectueux de la vie privée qui nous aide à comprendre le comportement des utilisateurs et à optimiser notre site web en conséquence. Le traitement repose sur notre intérêt légitime à améliorer nos services en ligne (art. 6, paragraphe 1, point f du RGPD). Matomo n'utilise pas de cookies et stocke les données exclusivement sous forme anonyme sur notre serveur. Cela garantit qu'aucune information n'est transmise à des tiers. La collecte des données via Matomo est facultative ; les utilisateurs peuvent la désactiver à tout moment à l'aide de l'option d'exclusion (opt-out).",
+
+
+    privacyServerLogTitle:
+    "Fichier journal du serveur",
+
+    privacyServerLogText:
+    "Pour contrôler le fonctionnement technique et renforcer le niveau de sécurité du système serveur, ce site traite les données personnelles suivantes dans un fichier journal du serveur sur la base de l'intérêt légitime prépondérant du responsable du traitement :",
+
+
+    privacyServerLogDownloaded:
+    "Contenu téléchargé",
+
+    privacyServerLogRequestTime:
+    "Heure de la requête du serveur",
+
+    privacyServerLogBrowser:
+    "Type de navigateur / version du navigateur",
+
+    privacyServerLogSystem:
+    "Système utilisé",
+
+    privacyServerLogReferer:
+    "URL de référence",
+
+    privacyServerLogIp:
+    "Adresse IP",
+
+    privacyServerLogHost:
+    "Nom d'hôte",
+
+    privacyServerLogIpAnonymous:
+    "L'adresse IP sera anonymisée.",
+
+    // ========================================
+    // PRIVACY - SÉCURITÉ
+    // FR
+    // ========================================
+
+    privacySecurityTitle:
+    "Sécurité",
+
+    privacySecurityText:
+    "Nous améliorons progressivement nos mesures de sécurité administratives, techniques et physiques afin de protéger vos données contre tout accès non autorisé, toute perte, destruction ou modification. Les mesures de sécurité comprennent notamment les pare-feu, le chiffrement des données ainsi que les contrôles d'accès aux informations partagées.",
+
+
+    privacyDataSubjectsTitle:
+    "Personnes concernées",
+
+    privacyDataSubjectsText:
+    "Vous disposez à tout moment du droit d'obtenir des informations, de faire rectifier, supprimer ou limiter le traitement de vos données personnelles. Lorsque le traitement des données personnelles repose sur votre consentement ou sur un contrat conclu avec vous, vous bénéficiez du droit à la portabilité des données. Vous pouvez retirer à tout moment votre consentement au traitement de vos données personnelles. La légalité du traitement effectué avant le retrait reste inchangée. Vous pouvez vous opposer au traitement de vos données personnelles à des fins publicitaires ainsi qu'en cas d'intérêt légitime prépondérant. Dans ce cas, vos données ne seront plus traitées. Pour l'exercice de vos droits, veuillez vous référer aux coordonnées indiquées ci-dessus dans la déclaration de protection des données.",
+
+
+    privacyAuthorityText:
+    "Vous avez le droit de contacter l'autorité de contrôle : Garante per la protezione dei dati personali, Piazza di Monte Citorio 121, 00186 Roma, garante@gpdp.it",
+
+    // ========================================
+    // PRIVACY - SITES WEB LIÉS
+    // FR
+    // ========================================
+
+    privacyLinksTitle:
+    "Liens vers d'autres sites web",
+
+    privacyLinksText:
+    "Nous sommes liés à des pages web de fournisseurs non affiliés. En ouvrant ces liens, nous n'avons pas accès à la collecte ni à l'utilisation de vos données. Vous trouverez ces informations dans les déclarations de protection des données des sites partenaires liés. Dans ce cas, nous ne sommes pas responsables de la collecte et du traitement des données. En quittant nos services, vous serez redirigé, dans la mesure du possible, vers un autre fournisseur via le lien sélectionné.",
+
+
+    privacyChangesTitle:
+    "Modifications de la présente déclaration de protection des données",
+
+    privacyChangesText:
+    "Nous nous réservons le droit d'adapter et de modifier ponctuellement notre déclaration de protection des données conformément aux dispositions en vigueur. Les modifications seront publiées sur notre plateforme avec la date de la dernière mise à jour de cette déclaration.",
+
+
+    privacyStatus:
+    "État : 23.07.2026",
+
   }
 };

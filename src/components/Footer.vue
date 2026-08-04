@@ -68,23 +68,52 @@
 
 
 
-      <!-- ========================================
-           IMPRESSUM LINK
-      ========================================= -->
+  <!-- ========================================
+      LEGAL LINKS
+  ========================================= -->
 
 
-      <RouterLink
-
-        to="/impressum"
-
-        class="footer-link"
-
-      >
-
-        {{ locales[config.currentLang || 'it'].impressum }}
+  <div class="footer-legal">
 
 
-      </RouterLink>
+    <RouterLink
+
+      to="/impressum"
+
+      class="footer-link"
+
+    >
+
+      {{ locales[config.currentLang || 'it'].impressum }}
+
+    </RouterLink>
+
+
+
+
+
+    <span>
+      |
+    </span>
+
+
+
+
+
+    <RouterLink
+
+      to="/privacy"
+
+      class="footer-link"
+
+    >
+
+      {{ locales[config.currentLang || 'it'].privacyTitle }}
+
+    </RouterLink>
+
+
+  </div>
 
 
 
@@ -470,7 +499,26 @@ IMPRESSUM
 }
 
 
+/*
+========================================
+LEGAL LINKS
+========================================
+*/
 
+
+.footer-legal{
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  gap:10px;
+
+
+}
 
 
 
@@ -621,6 +669,12 @@ MOBILE
 
 
   }
+
+  .footer-legal{
+
+  justify-content:center;
+
+}
 
 
 

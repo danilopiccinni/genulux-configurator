@@ -483,7 +483,7 @@ watch(
      *
      * Non fanno parte del flusso configuratore
      */
-    if(newPath === '/impressum'){
+    if(newPath === '/impressum' || newPath === '/privacy'){
 
       return
 

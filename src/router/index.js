@@ -6,6 +6,7 @@ import StepWallThickness from '../components/StepWallThickness.vue'
 import StepMeasures from '../components/StepMeasures.vue'
 import Summary from '../components/Summary.vue'
 import Impressum from '../components/Impressum.vue'
+import Privacy from '../components/Privacy.vue'
 
 const routes = [
 
@@ -37,6 +38,11 @@ const routes = [
   {
     path: '/impressum',
     component: Impressum
+  },
+
+  {
+    path: '/privacy',
+    component: Privacy
   }
 
 ]
