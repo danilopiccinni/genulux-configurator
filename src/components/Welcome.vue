@@ -314,6 +314,8 @@ WELCOME CARD
 
 .step-card {
 
+  margin-top: 100px;
+
   background:v-bind('data.colors.cardBg');
 
   padding:45px;
