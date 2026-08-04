@@ -3,121 +3,57 @@
   <div class="step-card">
 
 
-    <div class="welcome-header">
-
-      <h1>
-        Genulux
-      </h1>
+<div class="welcome-header">
 
 
-      <h2>
-        {{ locales[config.currentLang].welcomeTitle }}
-      </h2>
+  <div class="welcome-label">
+
+    {{ locales[config.currentLang].welcomeBrandLabel }}
+
+  </div>
 
 
-      <p class="description">
 
-        {{ locales[config.currentLang].welcomeText1 }}
 
-      </p>
+  <div class="brand-title">
 
-            <p class="description">
 
-        {{ locales[config.currentLang].welcomeText2 }}
+    <h1>
 
-      </p>
+      {{ locales[config.currentLang].welcomeBrandTitle }}
+
+    </h1>
+
+
+
+    <div class="welcome-subtitle">
+
+      {{ locales[config.currentLang].welcomeBrandSubtitle }}
 
     </div>
 
 
+  </div>
 
 
 
 
 
-    <!-- <div class="features">
-
-
-      <h3>
-
-        {{ locales[config.currentLang].welcomeFeaturesTitle }}
-
-      </h3>
-
-
-
-
-      <div class="feature-list">
-
-
-        <div class="feature-item">
-
-          <span class="feature-icon">
-            ✓
-          </span>
-
-          <p>
-            {{ locales[config.currentLang].welcomeFeatureDoor }}
-          </p>
-
-        </div>
+  <div class="welcome-divider"></div>
 
 
 
 
 
-        <div class="feature-item">
+  <p class="description">
 
-          <span class="feature-icon">
-            ✓
-          </span>
+    {{ locales[config.currentLang].welcomeText1 }}
 
-          <p>
-            {{ locales[config.currentLang].welcomeFeatureWallType }}
-          </p>
-
-        </div>
+  </p>
 
 
 
-
-
-        <div class="feature-item">
-
-          <span class="feature-icon">
-            ✓
-          </span>
-
-          <p>
-            {{ locales[config.currentLang].welcomeFeatureWallThickness }}
-          </p>
-
-        </div>
-
-
-
-
-
-        <div class="feature-item">
-
-          <span class="feature-icon">
-            ✓
-          </span>
-
-          <p>
-            {{ locales[config.currentLang].welcomeFeatureMeasures }}
-          </p>
-
-        </div>
-
-
-
-      </div>
-
-
-    </div> -->
-
-
+</div>
 
 
 
@@ -307,36 +243,83 @@ function startNewConfiguration(){
 
 
 /*
-==============================
+========================================
 WELCOME CARD
-==============================
+========================================
 */
+
 
 .step-card {
 
-  margin-top: 100px;
 
-  background:v-bind('data.colors.cardBg');
+  max-width:850px;
 
-  padding:45px;
 
-  border-radius:v-bind('data.colors.radiusXL');
+  margin:
 
-  box-shadow:v-bind('data.colors.cardShadow');
+    100px auto 40px;
 
-  border:1px solid v-bind('data.colors.cardBorder');
+
+
+  background:
+
+    v-bind('data.colors.cardBg');
+
+
+
+  padding:
+
+    60px 70px;
+
+
+
+  border-radius:
+
+    v-bind('data.colors.radiusXL');
+
+
+
+  box-shadow:
+
+    v-bind('data.colors.cardShadow');
+
+
+
+  border:
+
+    1px solid
+
+    v-bind('data.colors.cardBorder');
+
+
 
   text-align:center;
 
-  transition:.25s ease;
+
+
+  transition:.3s ease;
+
+
 
 }
+
 
 
 
 .step-card:hover {
 
-  box-shadow:v-bind('data.colors.cardShadowHover');
+
+  transform:
+
+    translateY(-3px);
+
+
+
+  box-shadow:
+
+    v-bind('data.colors.cardShadowHover');
+
+
 
 }
 
@@ -344,13 +327,27 @@ WELCOME CARD
 
 
 
+
+
+/*
+========================================
+HEADER
+========================================
+*/
 
 
 .welcome-header{
 
-  max-width:680px;
 
-  margin:auto;
+  max-width:
+
+    720px;
+
+
+  margin:
+
+    0 auto;
+
 
 }
 
@@ -359,17 +356,40 @@ WELCOME CARD
 
 
 
-h1{
 
-  font-size:2.5rem;
 
-  margin:0 0 18px;
+.welcome-label{
 
-  letter-spacing:1px;
 
-  color:#8C1D40;
+  margin-bottom:
 
-  font-weight:700;
+    25px;
+
+
+  font-size:
+
+    1.25rem;
+
+
+  font-weight:
+
+    700;
+
+
+  letter-spacing:
+
+    2px;
+
+
+  text-transform:
+
+    uppercase;
+
+
+  color:
+
+    v-bind('data.colors.textSecondary');
+
 
 }
 
@@ -378,15 +398,30 @@ h1{
 
 
 
-h2{
 
-  font-size:1.55rem;
 
-  margin-bottom:28px;
 
-  color:#2f2930;
+/*
+========================================
+GENULUX BRAND
+========================================
+*/
 
-  font-weight:600;
+
+.brand-title{
+
+
+  position:
+
+    relative;
+
+
+
+  display:
+
+    inline-block;
+
+
 
 }
 
@@ -394,22 +429,188 @@ h2{
 
 
 
+
+
+.brand-title h1{
+
+
+  margin:
+
+    0;
+
+
+
+  font-size:
+
+    clamp(3rem,6vw,4rem);
+
+
+
+  line-height:
+
+    1;
+
+
+
+  font-weight:
+
+    900;
+
+
+
+  letter-spacing:
+
+    1px;
+
+
+
+  color:
+
+    v-bind('data.colors.primary');
+
+
+
+}
+
+
+
+
+
+
+
+
+.welcome-subtitle{
+
+
+  margin-top:
+
+    10px;
+
+
+
+  font-size:
+
+    clamp(1.5rem,3vw,2rem);
+
+
+
+  font-weight:
+
+    600;
+
+
+
+  letter-spacing:
+
+    1px;
+
+
+
+  color:
+
+    v-bind('data.colors.text');
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+DIVIDER
+========================================
+*/
+
+
+.welcome-divider{
+
+
+  width:
+
+    70px;
+
+
+
+  height:
+
+    3px;
+
+
+
+  margin:
+
+    35px auto;
+
+
+
+  background:
+
+    v-bind('data.colors.primary');
+
+
+
+  border-radius:
+
+    10px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+========================================
+DESCRIPTION
+========================================
+*/
 
 
 .description{
 
-  line-height:1.8;
 
-  font-size:1.08rem;
+  max-width:
 
-  color:#5b5560;
+    650px;
 
-  margin-bottom:50px;
+
+
+  margin:
+
+    0 auto 18px;
+
+
+
+  font-size:
+
+    1.05rem;
+
+
+
+  line-height:
+
+    1.8;
+
+
+
+  color:
+
+    v-bind('data.colors.textSecondary');
+
 
 }
-
-
-
 
 
 
@@ -417,156 +618,46 @@ h2{
 
 
 /*
-==============================
-FEATURES
-==============================
-*/
-
-
-.features{
-
-  max-width:620px;
-
-  margin:0 auto 50px;
-
-}
-
-
-
-
-
-
-.features h3{
-
-  margin-bottom:28px;
-
-  font-size:1.2rem;
-
-  color:#2f2930;
-
-}
-
-
-
-
-
-
-.feature-list{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:16px;
-
-}
-
-
-
-
-
-
-.feature-item{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:18px;
-
-  padding:18px 22px;
-
-  background:#faf7f8;
-
-  border-radius:16px;
-
-  text-align:left;
-
-  border:1px solid rgba(140,29,64,.08);
-
-  transition:.25s ease;
-
-}
-
-
-
-
-
-
-.feature-item:hover{
-
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 8px 20px rgba(140,29,64,.10);
-
-}
-
-
-
-
-
-
-.feature-icon{
-
-  width:32px;
-
-  height:32px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:#8C1D40;
-
-  color:white;
-
-  font-weight:bold;
-
-  flex-shrink:0;
-
-  box-shadow:
-    0 4px 10px rgba(140,29,64,.25);
-
-}
-
-
-
-
-
-
-.feature-item p{
-
-  margin:0;
-
-  color:#3f3740;
-
-}
-
-
-
-
-
-
-
-
-
-/*
-==============================
-CONFIGURAZIONE SALVATA
-==============================
+========================================
+SAVED CONFIGURATION
+========================================
 */
 
 
 .saved-box{
 
-  border-top:1px solid #eadde1;
 
-  padding-top:40px;
+  margin-top:
+
+    45px;
+
+
+
+  padding:
+
+    30px;
+
+
+
+  border-radius:
+
+    v-bind('data.colors.radius');
+
+
+
+  background:
+
+    rgba(140,29,64,.05);
+
+
+
+  border:
+
+    1px solid
+
+    rgba(140,29,64,.12);
+
+
 
 }
 
@@ -577,9 +668,18 @@ CONFIGURAZIONE SALVATA
 
 .saved-box h3{
 
-  margin-bottom:12px;
 
-  color:#2f2930;
+  margin:
+
+    0 0 12px;
+
+
+
+  color:
+
+    v-bind('data.colors.primary');
+
+
 
 }
 
@@ -590,7 +690,24 @@ CONFIGURAZIONE SALVATA
 
 .saved-box p{
 
-  color:#5b5560;
+
+  margin:
+
+    0;
+
+
+
+  color:
+
+    v-bind('data.colors.textSecondary');
+
+
+
+  line-height:
+
+    1.6;
+
+
 
 }
 
@@ -603,23 +720,44 @@ CONFIGURAZIONE SALVATA
 
 
 /*
-==============================
+========================================
 BUTTONS
-==============================
+========================================
 */
 
 
 .buttons{
 
+
   display:flex;
+
+
 
   justify-content:center;
 
-  gap:18px;
 
-  flex-wrap:wrap;
 
-  margin-top:35px;
+  align-items:center;
+
+
+
+  gap:
+
+    18px;
+
+
+
+  flex-wrap:
+
+    wrap;
+
+
+
+  margin-top:
+
+    40px;
+
+
 
 }
 
@@ -628,25 +766,47 @@ BUTTONS
 
 
 
+
 button{
 
-  padding:14px 34px;
 
-  border-radius:14px;
+  padding:
+
+    15px 38px;
+
+
+
+  border-radius:
+
+    v-bind('data.colors.radius');
+
+
 
   border:none;
 
+
+
   cursor:pointer;
 
-  font-weight:600;
 
-  font-size:.95rem;
+
+  font-size:
+
+    1rem;
+
+
+
+  font-weight:
+
+    700;
+
+
 
   transition:
 
-    transform .25s ease,
+    .25s ease;
 
-    box-shadow .25s ease;
+
 
 }
 
@@ -657,9 +817,15 @@ button{
 
 button:hover{
 
-  transform:translateY(-3px);
+
+  transform:
+
+    translateY(-3px);
+
+
 
 }
+
 
 
 
@@ -668,15 +834,27 @@ button:hover{
 
 .primary{
 
-  background:#8C1D40;
 
-  color:white;
+  background:
+
+    v-bind('data.colors.buttonActive');
+
+
+
+  color:
+
+    v-bind('data.colors.buttonActiveText');
+
+
 
   box-shadow:
 
-    0 8px 18px rgba(140,29,64,.25);
+    0 10px 25px rgba(140,29,64,.25);
+
+
 
 }
+
 
 
 
@@ -685,13 +863,15 @@ button:hover{
 
 .primary:hover{
 
-  background:#B02D53;
 
   box-shadow:
 
-    0 12px 25px rgba(140,29,64,.30);
+    0 15px 35px rgba(140,29,64,.35);
+
+
 
 }
+
 
 
 
@@ -700,13 +880,29 @@ button:hover{
 
 .secondary{
 
-  background:#f5eef1;
 
-  color:#8C1D40;
+  background:
 
-  border:1px solid rgba(140,29,64,.15);
+    transparent;
+
+
+
+  color:
+
+    v-bind('data.colors.primary');
+
+
+
+  border:
+
+    1px solid
+
+    v-bind('data.colors.primary');
+
+
 
 }
+
 
 
 
@@ -715,9 +911,16 @@ button:hover{
 
 .secondary:hover{
 
-  background:#eadde1;
+
+  background:
+
+    rgba(140,29,64,.08);
+
+
 
 }
+
+
 
 
 
@@ -726,10 +929,128 @@ button:hover{
 
 .start{
 
-  min-width:240px;
+
+  min-width:
+
+    260px;
+
+
 
 }
 
 
+
+
+
+
+
+
+
+/*
+========================================
+MOBILE
+========================================
+*/
+
+
+@media(max-width:700px){
+
+
+
+.step-card{
+
+
+  margin:
+
+    40px 15px;
+
+
+
+  padding:
+
+    40px 25px;
+
+
+
+}
+
+
+
+
+
+.welcome-header h1{
+
+
+  font-size:
+
+    2rem;
+
+
+
+}
+
+
+
+
+
+.welcome-header h3{
+
+
+  margin-bottom:
+
+    25px;
+
+
+
+}
+
+
+
+
+
+.description{
+
+
+  font-size:
+
+    .95rem;
+
+
+
+}
+
+
+
+
+
+.buttons{
+
+
+  flex-direction:
+
+    column;
+
+
+
+}
+
+
+
+
+
+button{
+
+
+  width:
+
+    100%;
+
+
+
+}
+
+
+
+}
 
 </style>
