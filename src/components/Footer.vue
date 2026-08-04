@@ -15,12 +15,12 @@
 
 
         <strong>
-          AGS-systems GmbH
+          {{ locales[config.currentLang || 'it'].footerCompanyName }}
         </strong>
 
 
         <span>
-          Staben 47B · 39025 Naturns (BZ) · Italia
+          {{ locales[config.currentLang || 'it'].footerCompanyAddress }}
         </span>
 
 

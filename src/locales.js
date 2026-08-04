@@ -1,5 +1,12 @@
 export const locales = {
   it: {
+
+    footerCompanyName:
+    "AGS-systems Srl",
+
+    footerCompanyAddress:
+    "Stava 47B · 39025 Naturno (BZ) · Italia",
+
     /*
   ========================================
   BRANDING
@@ -374,6 +381,13 @@ export const locales = {
   },
 
   en: {
+
+    footerCompanyName:
+    "AGS-systems Srl",
+
+    footerCompanyAddress:
+    "Stava 47B · 39025 Naturno (BZ) · Italy",
+    
     /*
   ========================================
   BRANDING
@@ -755,6 +769,13 @@ export const locales = {
   },
 
   de: {
+
+    footerCompanyName:
+    "AGS-systems GmbH",
+
+    footerCompanyAddress:
+    "Staben 47B · 39025 Naturns (BZ) · Italien",
+
     /*
   ========================================
   BRANDING
@@ -1136,6 +1157,13 @@ export const locales = {
   },
 
   es: {
+
+    footerCompanyName:
+    "AGS-systems Srl",
+
+    footerCompanyAddress:
+    "Stava 47B · 39025 Naturno (BZ) · Italia",
+
     /*
   ========================================
   BRANDING
@@ -1516,6 +1544,13 @@ export const locales = {
   },
 
   fr: {
+
+    footerCompanyName:
+    "AGS-systems Srl",
+
+    footerCompanyAddress:
+    "Stava 47B · 39025 Naturno (BZ) · Italie",
+
     /*
   ========================================
   BRANDING
