@@ -1,5 +1,8 @@
 export const locales = {
   it: {
+
+    pageTitle: "Configuratore GENULUX",
+
     footerCompanyName: 'AGS-systems Srl',
 
     footerCompanyAddress: 'Stava 47B · 39025 Naturno (BZ) · Italia',
@@ -343,6 +346,9 @@ export const locales = {
   },
 
   en: {
+
+    pageTitle: "GENULUX Configurator",
+
     footerCompanyName: 'AGS-systems Srl',
 
     footerCompanyAddress: 'Stava 47B · 39025 Naturno (BZ) · Italy',
@@ -688,6 +694,9 @@ export const locales = {
   },
 
   de: {
+
+    pageTitle: "GENULUX Konfigurator",
+
     footerCompanyName: 'AGS-systems GmbH',
 
     footerCompanyAddress: 'Staben 47B · 39025 Naturns (BZ) · Italien',
@@ -1034,6 +1043,9 @@ export const locales = {
   },
 
   es: {
+
+    pageTitle: "Configurador GENULUX",
+
     footerCompanyName: 'AGS-systems Srl',
 
     footerCompanyAddress: 'Stava 47B · 39025 Naturno (BZ) · Italia',
@@ -1380,6 +1392,9 @@ export const locales = {
   },
 
   fr: {
+
+    pageTitle: "Configurateur GENULUX",
+
     footerCompanyName: 'AGS-systems Srl',
 
     footerCompanyAddress: 'Stava 47B · 39025 Naturno (BZ) · Italie',

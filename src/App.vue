@@ -447,6 +447,29 @@ function goHome(){
 
 
 
+/**
+ * Aggiorna il titolo della pagina
+ * in base alla lingua selezionata
+ */
+watch(
+
+  () => config.currentLang,
+
+  (lang) => {
+
+    document.title =
+      locales[lang].pageTitle
+
+  },
+
+  {
+
+    immediate: true
+
+  }
+
+)
+
 
 
 /**
