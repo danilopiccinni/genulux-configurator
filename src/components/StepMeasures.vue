@@ -271,11 +271,13 @@
             v-if="widthInvalid"
             class="field-error"
           >
-            {{ locales[config.currentLang].width }}
+            {{ locales[config.currentLang].width }}:
             {{ locales[config.currentLang].measureOutOfRange }}
 
-            ({{ measureConfig.limits.minWidth }} –
-            {{ measureConfig.limits.maxWidth }} mm)
+            {{ measureConfig.limits.minWidth }} –
+            {{ measureConfig.limits.maxWidth }} mm
+
+            {{ locales[config.currentLang].measureOutOfRangeSuffix }}
           </p>
 
         </div>
@@ -306,11 +308,13 @@
             v-if="heightInvalid"
             class="field-error"
           >
-            {{ locales[config.currentLang].height }}
+            {{ locales[config.currentLang].height }}:
             {{ locales[config.currentLang].measureOutOfRange }}
 
-            ({{ measureConfig.limits.minHeight }} –
-            {{ measureConfig.limits.maxHeight }} mm)
+            {{ measureConfig.limits.minHeight }} –
+            {{ measureConfig.limits.maxHeight }} mm
+
+            {{ locales[config.currentLang].measureOutOfRangeSuffix }}
           </p>
 
         </div>

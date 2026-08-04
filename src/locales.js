@@ -79,6 +79,7 @@ export const locales = {
     min: 'min',
     max: 'max',
     measureOutOfRange: 'Il valore deve essere compreso tra',
+    measureOutOfRangeSuffix: '',
 
     /*
   ========================================
@@ -425,6 +426,7 @@ export const locales = {
     min: 'min',
     max: 'max',
     measureOutOfRange: 'The value must be between',
+    measureOutOfRangeSuffix: '',
 
     /*
   ========================================
@@ -773,6 +775,7 @@ export const locales = {
     min: 'min',
     max: 'max',
     measureOutOfRange: 'Der Wert muss zwischen',
+    measureOutOfRangeSuffix: 'sein',
 
     /*
   ========================================
@@ -1122,6 +1125,7 @@ export const locales = {
     min: 'mín',
     max: 'máx',
     measureOutOfRange: 'El valor debe estar comprendido entre',
+    measureOutOfRangeSuffix: '',
 
     /*
   ========================================
@@ -1471,6 +1475,7 @@ export const locales = {
     min: 'min',
     max: 'max',
     measureOutOfRange: 'La valeur doit être comprise entre',
+    measureOutOfRangeSuffix: '',
 
     /*
   ========================================
