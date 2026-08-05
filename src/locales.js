@@ -101,8 +101,8 @@ export const locales = {
   ========================================
   */
 
-    solidcostructionInfoTitle: 'Informazione per pareti in muratura',
-    solidcostructionInfoText: "Per l'installazione su pareti in muratura è necessario prevedere un pannello porta intonaco. Il pannello non è incluso nella fornitura Genulux e dovrà essere procurato separatamente.",
+  solidcostructionInfoTitle: 'Nota per struttura massiccia',
+  solidcostructionInfoText: 'Per l’installazione in struttura massiccia è necessaria una lastra porta intonaco. Questa non è inclusa nella fornitura Genulux e deve essere predisposta in cantiere.',
 
     /*
   ========================================
@@ -448,8 +448,8 @@ export const locales = {
   ========================================
   */
 
-    solidcostructionInfoTitle: 'Information for solid construction walls',
-    solidcostructionInfoText: 'For installation in solid construction walls, a plaster carrier panel is required. The panel is not supplied by Genulux and must be sourced separately.',
+  solidcostructionInfoTitle: 'Note for solid masonry',
+  solidcostructionInfoText: 'For installation in solid masonry, a plaster carrier board is required. It is not included with the Genulux delivery and must be provided on site.',
 
     /*
   ========================================
@@ -797,8 +797,8 @@ export const locales = {
   ========================================
   */
 
-    solidcostructionInfoTitle: 'Hinweis für Massivbauwände',
-    solidcostructionInfoText: 'Für den Einbau in Massivbauwände ist eine Putzträgerplatte erforderlich. Diese ist nicht im Lieferumfang von Genulux enthalten und muss bauseits bereitgestellt werden.',
+    solidcostructionInfoTitle: 'Hinweis für Massivbau',
+    solidcostructionInfoText: 'Für den Einbau in Massivbau ist eine Putzträgerplatte erforderlich. Diese ist nicht im Lieferumfang von Genulux enthalten und muss bauseits bereitgestellt werden.',
 
     /*
   ========================================
@@ -1147,9 +1147,9 @@ export const locales = {
   ========================================
   */
 
-    solidcostructionInfoTitle: 'Información para paredes de mampostería',
-    solidcostructionInfoText: 'Para la instalación en paredes de mampostería es necesario prever un panel portaenlucido. Este panel no está incluido en el suministro de Genulux y deberá adquirirse por separado.',
-
+    solidcostructionInfoTitle: 'Nota para mampostería maciza',
+    solidcostructionInfoText: 'Para la instalación en mampostería maciza se requiere una placa soporte para enlucido. Esta no está incluida en el suministro de Genulux y debe ser proporcionada en la obra.',
+    
     /*
   ========================================
   RIEPILOGO
@@ -1497,8 +1497,8 @@ export const locales = {
   ========================================
   */
 
-    solidcostructionInfoTitle: 'Information pour les murs maçonnés',
-    solidcostructionInfoText: "Pour l'installation dans des murs maçonnés, un panneau support d'enduit est nécessaire. Ce panneau n'est pas inclus dans la fourniture Genulux et doit être fourni séparément.",
+    solidcostructionInfoTitle: 'Remarque pour maçonnerie massive',
+    solidcostructionInfoText: 'Pour une installation en maçonnerie massive, une plaque support d’enduit est nécessaire. Celle-ci n’est pas incluse dans la fourniture Genulux et doit être fournie sur le chantier.',
 
     /*
   ========================================
