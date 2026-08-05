@@ -67,7 +67,7 @@ export const locales = {
 
     measures: 'Misure',
     measureType: 'Opzione selezionabile in base a',
-    measureLuce: 'Misura luce',
+    measureLuce: 'Luce passaggio',
     measurePorta: 'Misura porta',
     measureMuro: 'Apertura muro',
     insertMeasures: 'Inserisci le misure',
@@ -414,7 +414,7 @@ export const locales = {
 
     measures: 'Measurements',
     measureType: 'Selectable option based on',
-    measureLuce: 'Light opening',
+    measureLuce: 'Clear opening',
     measurePorta: 'Door measurement',
     measureMuro: 'Wall opening',
     insertMeasures: 'Enter measurements',
@@ -763,7 +763,7 @@ export const locales = {
 
     measures: 'Maße',
     measureType: 'Auswahlmöglichkeit auf Basis von',
-    measureLuce: 'Lichtöffnung',
+    measureLuce: 'Durchgangslichte',
     measurePorta: 'Türmaß',
     measureMuro: 'Wandöffnung',
     insertMeasures: 'Maße eingeben',
@@ -1113,7 +1113,7 @@ export const locales = {
 
     measures: 'Medidas',
     measureType: 'Opción seleccionable en función de',
-    measureLuce: 'Medida de luz',
+    measureLuce: 'Luz de paso',
     measurePorta: 'Medida de puerta',
     measureMuro: 'Apertura de pared',
     insertMeasures: 'Introducir las medidas',
@@ -1463,7 +1463,7 @@ export const locales = {
 
     measures: 'Mesures',
     measureType: 'Option sélectionnable en fonction de',
-    measureLuce: 'Mesure du passage libre',
+    measureLuce: 'Passage libre',
     measurePorta: 'Mesure de la porte',
     measureMuro: 'Ouverture du mur',
     insertMeasures: 'Saisir les mesures',
