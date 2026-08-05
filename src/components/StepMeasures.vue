@@ -30,9 +30,9 @@
           {{ locales[config.currentLang].measureLuce }}
         </strong>
 
-        <small>
+        <!-- <small>
           {{ locales[config.currentLang].international }}
-        </small>
+        </small> -->
 
       </button>
 
@@ -56,9 +56,9 @@
           {{ locales[config.currentLang].measurePorta }}
         </strong>
 
-        <small>
+        <!-- <small>
           {{ locales[config.currentLang].germany }}
-        </small>
+        </small> -->
 
       </button>
 
@@ -82,9 +82,9 @@
           {{ locales[config.currentLang].measureMuro }}
         </strong>
 
-        <small>
+        <!-- <small>
           IT / DE
-        </small>
+        </small> -->
 
       </button>
 
