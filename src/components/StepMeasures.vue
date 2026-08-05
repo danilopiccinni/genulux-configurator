@@ -338,11 +338,6 @@
           {{ availabilityInfo.title }}
         </strong>
 
-        <p>
-          {{ availabilityInfo.description }}
-        </p>
-
-
       </div>
 
 

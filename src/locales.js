@@ -784,9 +784,9 @@ export const locales = {
   */
 
     availability: 'Verfügbarkeit',
-    availabilityStock: 'Auf Lager verfügbar',
+    availabilityStock: 'Verfügbar',
     availabilityStockDelivery: 'Schnelle Lieferung',
-    availabilityProduction: 'Auf Bestellung verfügbar',
+    availabilityProduction: 'Liefertermin auf Anfrage',
     availabilityProductionDelivery: 'Längere Lieferzeiten',
     availabilityUnavailable: 'Maß nicht verfügbar',
     availabilityContact: 'Kontaktieren Sie unser Verkaufsbüro',

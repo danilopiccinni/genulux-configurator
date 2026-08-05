@@ -542,12 +542,6 @@
           {{ availabilityInfo.title }}
 
 
-          <br>
-
-
-          {{ availabilityInfo.description }}
-
-
 
         </p>
 

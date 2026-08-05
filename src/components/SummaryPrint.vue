@@ -480,10 +480,6 @@
 
                 {{ availabilityInfo.title }}
 
-                -
-
-                {{ availabilityInfo.description }}
-
               </td>
 
             </tr>
