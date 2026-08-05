@@ -3,7 +3,7 @@
 
 
     <h2>
-      {{ locales[config.currentLang].measureType }}
+      {{ locales[config.currentLang].measureType }}:
     </h2>
 
 
