@@ -303,11 +303,11 @@ wallThicknessOptions: {
 
       limits: {
 
-        minWidth: 500,
-        maxWidth: 1200,
+        minWidth: 700,
+        maxWidth: 1100,
 
-        minHeight: 1800,
-        maxHeight: 2600,
+        minHeight: 2000,
+        maxHeight: 3000,
 
         stepWidth: 1,
         stepHeight: 1
@@ -320,11 +320,11 @@ wallThicknessOptions: {
 
       limits: {
 
-        minWidth: 550,
+        minWidth: 730,
         maxWidth: 1100,
 
-        minHeight: 1900,
-        maxHeight: 2400,
+        minHeight: 1985,
+        maxHeight: 3000,
 
         stepWidth: 1,
         stepHeight: 1
@@ -337,11 +337,11 @@ wallThicknessOptions: {
 
       limits: {
 
-        minWidth: 0,
-        maxWidth: 3000,
+        minWidth: 1534,
+        maxWidth: 2334,
 
-        minHeight: 0,
-        maxHeight: 3000,
+        minHeight: 1950,
+        maxHeight: 3063,
 
         stepWidth: 1,
         stepHeight: 1
